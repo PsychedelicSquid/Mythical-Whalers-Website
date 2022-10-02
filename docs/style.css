@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap');
+
+html {
+  margin: 0;
+  font-family: 'Alkalami', serif;
+}
+
+body {
+  /* Background Image */
+  background-image: url(img/space.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+main {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #fff4;
+  min-height: 150vh;
+  border-radius: 0.5rem;
+}
+
+img.default {
+  max-width: 100%;
+  max-height: 50vh;
+}
