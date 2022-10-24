@@ -20,7 +20,7 @@ main {
   max-width: 1024px;
   margin: 0 auto;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   min-height: 150vh;
   border-radius: 0.5rem;
 }
