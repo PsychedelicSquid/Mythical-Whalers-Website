@@ -9,7 +9,7 @@ html {
 body {
   color: rgb(242, 236, 236);
   /* Background Image */
-  background-image: url(img/background.png);
+  background-image: url(img/website_bg.png);
   background-size: cover;
   background-position: center center;
   background-attachment: scroll;
