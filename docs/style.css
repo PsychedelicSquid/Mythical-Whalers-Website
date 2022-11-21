@@ -37,6 +37,7 @@ img.default {
 }
 
 p {
+  font-size:16px;
   text-indent: 30px;
   line-height: 1.5;
   white-space: normal;
@@ -44,6 +45,6 @@ p {
 
 
 h1 {
-  font-size:25px;
+  font-size:32px;
 }
 
