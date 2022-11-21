@@ -30,6 +30,12 @@ img.default {
   max-height: 50vh;
 }
 
-p.indent {
+p {
   text-indent: 30px;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+p.indent {
+  text-indent: 40px;
 }
