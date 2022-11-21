@@ -36,6 +36,11 @@ p {
   white-space: normal;
 }
 
-p.indent {
+/* p.indent {
   text-indent: 40px;
+} */
+
+h1 {
+  font-size:80%;
 }
+
