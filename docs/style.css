@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap'); */
+
+@font-face{
+  font-family: "pixel_font";
+  src: url("pixel_font.ttf") format("truetype");
+}
 
 html {
   margin: 0;
