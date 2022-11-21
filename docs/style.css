@@ -7,7 +7,8 @@
 
 html {
   margin: 0;
-  font-family: 'Alkalami', serif;
+  /* font-family: 'Alkalami', serif; */
+  font-family: "pixel_font";
   color: rgb(242, 236, 236);
 }
 
