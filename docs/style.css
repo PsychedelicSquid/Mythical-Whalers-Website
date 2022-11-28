@@ -43,6 +43,11 @@ p {
   white-space: normal;
 }
 
+li {
+  font-size:32px;
+  line-height: 1.5;
+}
+
 
 h1 {
   font-size:32px;
