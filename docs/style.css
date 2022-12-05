@@ -9,11 +9,11 @@ html {
   margin: 0;
   /* font-family: 'Alkalami', serif; */
   font-family: "pixel_font";
-  color: rgb(242, 236, 236);
+  color: rgb(252, 247, 204);
 }
 
 body {
-  color: rgb(242, 236, 236);
+  color: rgb(252, 247, 204);
   /* Background Image */
   background-image: url(img/website_bg.png);
   background-size: cover;
