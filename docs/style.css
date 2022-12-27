@@ -45,6 +45,11 @@ img.center {
   width: 75%;
 }
 
+img.left { 
+  float: left; 
+  padding: 0 20px 20px 0;
+}
+
 p {
   text-align: justify;
 
