@@ -29,6 +29,7 @@ main {
   background-color: rgba(13, 14, 18, 0.9);
   min-height: 150vh;
   border-radius: 0.5rem;
+  display: flex
 }
 
 img.default {
