@@ -34,8 +34,6 @@ main {
 img.default {
   max-width: 100%;
   max-height: 50vh;
-
-  /* float: left;  */
 }
 
 img.center {
@@ -64,6 +62,7 @@ li {
 }
 
 h1 {
+  clear: both;
   font-size:26px;
   flex-wrap: nowrap
 }
