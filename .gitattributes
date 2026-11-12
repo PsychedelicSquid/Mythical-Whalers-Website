@@ -1,0 +1,13 @@
+# Text is stored and checked out with LF line endings, so a build on any
+# machine writes identical files.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.ttf binary
+
+# Build output: collapsed in GitHub's diffs.
+docs/** linguist-generated
