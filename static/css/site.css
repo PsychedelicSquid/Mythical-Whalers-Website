@@ -1,0 +1,74 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap'); */
+
+@font-face{
+  font-family: "pixel_font";
+  src: url("/fonts/public_pixel.ttf") format("truetype");
+}
+
+html {
+  margin: 0;
+  /* font-family: 'Alkalami', serif; */
+  font-family: "pixel_font";
+  color: rgb(252, 247, 204);
+}
+
+body {
+  color: rgb(252, 247, 204);
+  /* Background Image */
+  background-image: url(/images/site/website_bg.png);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: scroll;
+  background-repeat: no-repeat;
+}
+
+main {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: rgba(13, 14, 18, 0.9);
+  min-height: 150vh;
+  border-radius: 0.5rem;
+}
+
+/* Pictures carry their real width and height in the HTML so the page does not
+   jump while they load. auto lets these rules size them as before. */
+img.default {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 50vh;
+}
+
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  height: auto;
+}
+
+img.left { 
+  float: left; 
+  padding: 0 20px 20px 0;
+}
+
+p {
+  text-align: justify;
+  font-size:16px;
+  text-indent: 30px;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+li {
+  font-size:26px;
+  line-height: 1.5;
+}
+
+h1, h2 {
+  clear: both;
+  font-size:26px;
+  flex-wrap: nowrap
+}
+

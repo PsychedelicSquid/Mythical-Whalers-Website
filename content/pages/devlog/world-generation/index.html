@@ -1,0 +1,44 @@
+title: World Generation
+description: From height maps in a text file to islands on screen.
+summary: From height maps in a text file to islands on screen.
+template: post.html
+date: 2022-10-30
+old_url: /post/2022/10/02/World Generation/
+---
+    <a href="/">&lt;- Back</a>
+    <h1>World Generation</h1>
+    <p>
+      I have always loved proceedurally generated games, they scratch an itch no other games can't.
+    Exploring a world no other human has ever seen before is a uniquely novel experience.
+    </p>
+    {{ image("dwarf.png", "A bearded dwarf leans over an anvil beside a forge fire.", "default") }}
+    <p>
+      Random generation provides a certain magic, the melons you just stumbled across in
+    minecraft may as well of been put there by god himself.
+    </p>
+    <p>
+      In Dwarf fortress that underground cavern full of mushroom trees and exotic creatures might be
+    2 blocks below you or 200.
+    </p>
+    {{ image("stronghold.png", "An underground dwarven hall lit by forges and green light.", "default") }}
+    <p>
+      Having it be impossible to know what you will stumble across in these games
+    makes them a unique experience everytime you play them.
+    Perhaps linear games with a carefuly curated experience provide a more polished experience, but
+    that comes at the cost of the players sense of freewill and agency.
+    </p>
+    <p>
+      Anyhow, I became curious in the alchemy of world generation.
+    After watching dozens of youtube video and reading a few blogs I was finally able to
+    wrap my brain around the concept of hight maps and randomized smoothing.
+    After a few failed attemps and some iteration I was able to
+    write a python script that was outputing something that resembled islands to a .txt file.
+    </p>
+    {{ image("map.png", "A Notepad window full of characters that together form the outline of islands.", "default") }}
+    <p>
+      The next step was to get this raw data to the display in meaningful way.
+    After drawing some 32x32 pixel tiles and several hours of research
+    I was able to scrape together this.
+
+    </p>
+    {{ image("game_1.png", "An early version of the game: blue water tiles, a small ship and a strip of forest.", "default") }}
