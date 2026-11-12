@@ -10,6 +10,9 @@ branch. `docs/` is build output: `build.py` writes it from `content/`,
 
 - **Build:** from the repo root, `python build.py`. It needs Python 3.11 with
   `jinja2` and `Pillow` (`pip install -r requirements.txt`).
+- **After the game changes:** `python build.py --extract`. This first copies art
+  out of the game repository into `game/`, then builds. Read `git diff game/`
+  before committing: that diff is everything a game update would put on the site.
 - **Preview:** `python -m http.server 8000 --directory docs`, then open
   `http://localhost:8000/`.
 - **Never edit `docs/` by hand.** The build deletes anything in `docs/` it did
@@ -28,13 +31,17 @@ branch. `docs/` is build output: `build.py` writes it from `content/`,
 Before doing any work in a new chat, read these to build complete context.
 
 - **Build** — `build.py` (entry point), `builder/config.py` (settings: site
-  address, Steam link, folder paths), `builder/pages.py` (reads `content/pages`),
-  `builder/render.py` (renders pages, writes `docs/`), `builder/check.py`
-  (checks every built page before anything is written)
-- **Layout** — `templates/base.html` (the only file with the `<head>` and the
-  page shell), `templates/redirect.html` (the forwarding page left at an old
-  address)
-- **Style** — `static/css/site.css`
+  address, Steam link, navigation, fonts, and the tables `GUI_PIECES` and
+  `SITE_ART` that say which game art is copied), `builder/pages.py` (reads
+  `content/pages`), `builder/render.py` (renders pages, writes `docs/`),
+  `builder/check.py` (checks every built page before anything is written),
+  `builder/assets.py` (the extract: cuts frame pieces and copies art from the
+  game)
+- **Layout** — `templates/base.html` (the only file with the `<head>`,
+  navigation and footer), `home.html`, `page.html`, `post.html`,
+  `devlog_index.html`, `parts.html` (pieces more than one layout uses),
+  `redirect.html` (the forwarding page left at an old address)
+- **Style and script** — `static/css/site.css`, `static/js/site.js`
 
 ## Where things go
 
@@ -43,11 +50,36 @@ Before doing any work in a new chat, read these to build complete context.
   `key: value` lines (`title`, `description`, and optionally `template`, `date`,
   `summary`, `old_url`), then a line holding only `---`, then the page's HTML.
   A page with a `date` is a devlog post. Pictures sit beside the page that
-  shows them and are placed with `{{ image("name.png", "alt text", "class") }}`.
+  shows them and are placed with `{{ image("name.png", "alt text") }}`. A third
+  argument is the widest the picture may be shown, in pixels (640 if absent);
+  `kind="photo"` is for anything that is not pixel art. `{{ art("menu/logo.png",
+  "alt text") }}` places a site-wide picture from `images/`, and
+  `{{ player("still.png", "animation.gif", "alt text") }}` a still frame with a
+  Play button.
 - `templates/` — Jinja layouts. Keep them free of logic beyond `for` and `if`.
-- `static/` — copied to `docs/` unchanged: the stylesheet, fonts, `CNAME`,
-  `.nojekyll`, site-wide pictures.
+- `static/` — copied to `docs/` unchanged: the stylesheet, the script, `CNAME`,
+  `.nojekyll`, and any hand-drawn pictures under `static/images/`.
+- `game/` — written only by `python build.py --extract`: `game/images/` (frame
+  pieces in `gui/`, menu art, screenshots) and `game/fonts/`. Committed. Never
+  edited by hand; to change what is copied, edit the tables in
+  `builder/config.py`.
 - `docs/` — generated. Committed, because GitHub Pages serves it.
+
+## The look
+
+The site is drawn like the game: 640x360 game pixels, each `--px` screen pixels
+wide (2, or 2.4 and 2.2857 on displays scaled to 125% and 175%), in the game's
+colours. Windows are stacks of `.win-head`, `.win-mid` and `.win-foot`, drawn
+with `border-image` from the pieces in `images/gui`, which the extract cuts from
+the game's own GUI pictures. `.tip` is the tooltip frame, used for cards, and
+`.btn` the game's button. The home page's first screen is the game's main menu,
+built from the same layers and timings as `Menu.main_menu` in the game's
+`gui.py`.
+
+Headings use the font family "MW Title" and fall back to "MW Body" (m5x7).
+"MW Title" is the game's `df_font.ttf`, which is published only when its row in
+`config.FONTS` says `"publish": True`. It is off because no licence for it has
+been found.
 
 ## How to write code here
 
@@ -65,7 +97,11 @@ Before doing any work in a new chat, read these to build complete context.
   The check enforces this; the five forwarding pages under `docs/post/` are the
   only exception.
 - **Pixel art scales by whole numbers only,** with `image-rendering: pixelated`.
-  Store art at its real size and enlarge it in CSS.
+  Store art at its real size and enlarge it in CSS. The `.pixel` rule in
+  `site.css` does this for every picture placed with `image()` or `art()`.
+- **Compare pictures by their bytes** (`assets.same_pixels`). Pillow's
+  `ImageChops.difference(a, b).getbbox()` looks only at the alpha channel of an
+  RGBA picture and calls any two opaque pictures identical.
 - **In manual mode, show the explanation and full context.** When the developer
   applies changes by hand (manual mode), present each fix with an explanation of
   what it does and why, and show the whole function it lives in so the code can

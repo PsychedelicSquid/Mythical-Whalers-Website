@@ -12,10 +12,18 @@ Needs Python 3.11 with `jinja2` and `Pillow`:
     pip install -r requirements.txt
     python build.py
 
-`build.py` reads `content/`, `templates/` and `static/`, checks the result, and
-only then rewrites `docs/`. If it finds a problem (a broken link, a picture with
-no alt text, a file name that is not lowercase) it prints every problem and
-writes nothing.
+`build.py` reads `content/`, `templates/`, `static/` and `game/`, checks the
+result, and only then rewrites `docs/`. If it finds a problem (a broken link, a
+picture with no alt text, a file name that is not lowercase) it prints every
+problem and writes nothing.
+
+After the game changes, run this instead:
+
+    python build.py --extract
+
+It first copies art out of the game repository, which it expects beside this
+one at `..\Mythical-Whalers`, into `game/`. It only reads the game repository.
+Read `git diff game/` before committing.
 
 ## Preview
 
@@ -29,7 +37,8 @@ Then open http://localhost:8000/.
     builder/       the build code
     templates/     page layouts; base.html holds the <head> and page shell
     content/pages/ the pages: words, and the pictures that belong to them
-    static/        copied to docs/ unchanged: stylesheet, fonts, CNAME
+    static/        copied to docs/ unchanged: stylesheet, script, CNAME
+    game/          art and fonts copied from the game by --extract
     docs/          generated; served by GitHub Pages
 
 ## Adding a devlog post

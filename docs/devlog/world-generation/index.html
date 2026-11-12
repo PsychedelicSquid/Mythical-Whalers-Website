@@ -5,20 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>World Generation - Mythical Whalers</title>
   <meta name="description" content="From height maps in a text file to islands on screen.">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0d0e12">
   <link rel="canonical" href="http://www.mythicalwhalers.com/devlog/world-generation/">
+  <meta property="og:site_name" content="Mythical Whalers">
+  <meta property="og:title" content="World Generation">
+  <meta property="og:description" content="From height maps in a text file to islands on screen.">
+  <meta property="og:url" content="http://www.mythicalwhalers.com/devlog/world-generation/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://www.mythicalwhalers.com/images/site/card.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="stylesheet" href="/css/site.css?v=815a21dd">
+  <link rel="preload" href="/fonts/m5x7.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face { font-family: "MW Body"; src: url("/fonts/m5x7.ttf") format("truetype"); font-display: block; }
+  </style>
+  <link rel="stylesheet" href="/css/site.css?v=77b55eaa">
+  <script src="/js/site.js?v=6730cbd2" defer></script>
 </head>
 <body>
-  <main>
-    <a href="/">&lt;- Back</a>
-    <h1>World Generation</h1>
+  <a class="skip" href="#main">Skip to the page</a>
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="/">Mythical Whalers</a>
+      <nav aria-label="Site">
+        <a class="btn" href="/">Home</a>
+        <a class="btn" href="/devlog/" aria-current="page">Devlog</a>
+        <a class="btn" href="/team/">Team</a>
+        <a class="btn" href="https://store.steampowered.com/app/2787860/">Steam</a>
+      </nav>
+    </div>
+  </header>
+  <div class="rule"></div>
+  <main id="main" class="main wrap">
+    <article class="win">
+      <div class="win-head has-x">
+        <h1>World Generation</h1>
+        <a class="win-x" href="/devlog/" aria-label="Close: back to the Devlog"></a>
+      </div>
+      <div class="win-mid">
+        <div class="prose">
+          <p class="dim">30 October 2022</p>
     <p>
       I have always loved proceedurally generated games, they scratch an itch no other games can't.
     Exploring a world no other human has ever seen before is a uniquely novel experience.
     </p>
-    <img class="default" src="dwarf.png" alt="A bearded dwarf leans over an anvil beside a forge fire." width="1152" height="576">
+    <img class="pixel" style="--w:192; --max:768px" src="dwarf.png" alt="A bearded dwarf leans over an anvil beside a forge fire." width="192" height="96">
     <p>
       Random generation provides a certain magic, the melons you just stumbled across in
     minecraft may as well of been put there by god himself.
@@ -27,7 +59,7 @@
       In Dwarf fortress that underground cavern full of mushroom trees and exotic creatures might be
     2 blocks below you or 200.
     </p>
-    <img class="default" src="stronghold.png" alt="An underground dwarven hall lit by forges and green light." width="1280" height="720">
+    <img class="pixel" style="--w:320; --max:640px" src="stronghold.png" alt="An underground dwarven hall lit by forges and green light." width="320" height="180">
     <p>
       Having it be impossible to know what you will stumble across in these games
     makes them a unique experience everytime you play them.
@@ -41,15 +73,36 @@
     After a few failed attemps and some iteration I was able to
     write a python script that was outputing something that resembled islands to a .txt file.
     </p>
-    <img class="default" src="map.png" alt="A Notepad window full of characters that together form the outline of islands." width="1141" height="1389">
+    <img class="photo" src="map.png" alt="A Notepad window full of characters that together form the outline of islands." width="1141" height="1389">
     <p>
       The next step was to get this raw data to the display in meaningful way.
     After drawing some 32x32 pixel tiles and several hours of research
     I was able to scrape together this.
 
     </p>
-    <img class="default" src="game_1.png" alt="An early version of the game: blue water tiles, a small ship and a strip of forest." width="1180" height="668">
+    <img class="photo" src="game_1.png" alt="An early version of the game: blue water tiles, a small ship and a strip of forest." width="1180" height="668">
 
+        </div>
+      </div>
+      <div class="win-foot">
+        <div class="split">
+          <a class="btn" href="/devlog/the-vision/">Older post</a>
+          <a class="btn" href="/devlog/artificial-intelligence/">Newer post</a>
+        </div>
+      </div>
+    </article>
   </main>
+  <div class="rule"></div>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>Mythical Whalers &middot; Kleen Fleet</span>
+      <nav aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/devlog/">Devlog</a>
+        <a href="/team/">Team</a>
+        <a href="https://store.steampowered.com/app/2787860/">Wishlist on Steam</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

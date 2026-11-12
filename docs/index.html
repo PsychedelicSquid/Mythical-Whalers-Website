@@ -4,34 +4,149 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mythical Whalers</title>
-  <meta name="description" content="Mythical Whalers Development Blog">
-  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="A turn-based adventure on the Shrouded Seas. Raise a crew, hunt the whales, and survive the storm that comes every thirteenth day.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0d0e12">
   <link rel="canonical" href="http://www.mythicalwhalers.com/">
+  <meta property="og:site_name" content="Mythical Whalers">
+  <meta property="og:title" content="Mythical Whalers">
+  <meta property="og:description" content="A turn-based adventure on the Shrouded Seas. Raise a crew, hunt the whales, and survive the storm that comes every thirteenth day.">
+  <meta property="og:url" content="http://www.mythicalwhalers.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="http://www.mythicalwhalers.com/images/site/card.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="stylesheet" href="/css/site.css?v=815a21dd">
+  <link rel="preload" href="/fonts/m5x7.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face { font-family: "MW Body"; src: url("/fonts/m5x7.ttf") format("truetype"); font-display: block; }
+  </style>
+  <link rel="stylesheet" href="/css/site.css?v=77b55eaa">
+  <script src="/js/site.js?v=6730cbd2" defer></script>
 </head>
 <body>
-  <main>
-    <h1><img class="default" src="title.png" alt="Mythical Whalers" width="1661" height="664"></h1>
+  <a class="skip" href="#main">Skip to the page</a>
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="/">Mythical Whalers</a>
+      <nav aria-label="Site">
+        <a class="btn" href="/" aria-current="page">Home</a>
+        <a class="btn" href="/devlog/">Devlog</a>
+        <a class="btn" href="/team/">Team</a>
+        <a class="btn" href="https://store.steampowered.com/app/2787860/">Steam</a>
+      </nav>
+    </div>
+  </header>
+  <div class="rule"></div>
+  <section class="hero wrap">
+    <div class="stage-wrap" aria-hidden="true">
+      <div class="stage">
+        <div class="layer cloud cloud-1"></div>
+        <div class="layer cloud cloud-2"></div>
+        <div class="layer cloud cloud-3"></div>
+        <div class="layer strip castle"></div>
+        <div class="layer cloud cloud-4"></div>
+        <div class="layer strip sea"></div>
+      </div>
+    </div>
+    <div class="hero-copy">
+      <h1><img class="logo" src="/images/menu/logo.png" width="206" height="80" alt="Mythical Whalers"></h1>
+      <p class="pitch">Raise a crew. Hunt the whales. Survive the storm that comes every thirteenth day.</p>
+      <div class="menu">
+        <a class="btn" href="https://store.steampowered.com/app/2787860/">Wishlist on Steam</a>
+        <a class="btn" href="/devlog/">Read the Devlog</a>
+      </div>
+    </div>
+  </section>
+  <div class="rule wrap"></div>
+  <main id="main" class="main wrap">
+    <section class="win">
+      <div class="win-head"><h2>What is Mythical Whalers?</h2></div>
+      <div class="win-mid">
+        <p>A turn-based adventure on the Shrouded Seas. You hire a crew, sail between islands, and hunt whales whose blubber the whaling ports render down to gems.</p>
+      </div>
+      <div class="win-foot">
+        <input class="sr" type="radio" name="feat" id="feat-hunt" checked>
+        <input class="sr" type="radio" name="feat" id="feat-crew">
+        <input class="sr" type="radio" name="feat" id="feat-factions">
+        <input class="sr" type="radio" name="feat" id="feat-storm">
+        <div class="feat-tabs">
+          <label class="btn" for="feat-hunt">Hunt</label>
+          <label class="btn" for="feat-crew">Crew</label>
+          <label class="btn" for="feat-factions">Factions</label>
+          <label class="btn" for="feat-storm">Storm</label>
+        </div>
+        <div class="panes">
+          <figure class="pane" data-for="hunt">
+            <img class="pixel" style="--w:640; --max:640px" src="/images/screenshots/hunt.png" alt="A battle on arctic water: one crewmate faces a Narwhal among ice floes." width="640" height="360">
+            <figcaption>
+              <h3>Hunt the whales</h3>
+              <p>Eight kinds of whale swim the Shrouded Seas. Fight them turn by turn, then sell the blubber at a Whaling Port.</p>
+            </figcaption>
+          </figure>
+          <figure class="pane" data-for="crew">
+            <img class="pixel" style="--w:640; --max:640px" src="/images/screenshots/crew.png" alt="The Tavern window asks: Hire Jezebel for 15 gold? with Hire and Nay buttons." width="640" height="360">
+            <figcaption>
+              <h3>Raise a crew</h3>
+              <p>Hire crewmates from twenty races. Each race has its own stats, traits and starting gear, and crewmates gain traits as they level up.</p>
+            </figcaption>
+          </figure>
+          <figure class="pane" data-for="factions">
+            <img class="pixel" style="--w:640; --max:640px" src="/images/screenshots/factions.png" alt="The ship journal lists factions with a standing number and a face beside each." width="640" height="360">
+            <figcaption>
+              <h3>Pick your friends</h3>
+              <p>Eight factions keep track of what you do. Their heralds offer quests, and your standing with a faction opens up more of its races.</p>
+            </figcaption>
+          </figure>
+          <figure class="pane" data-for="storm">
+            <img class="pixel" style="--w:640; --max:640px" src="/images/screenshots/storm.png" alt="A storm scene: black clouds and lightning over the ship." width="640" height="360">
+            <figcaption>
+              <h3>Outlast the storm</h3>
+              <p>Every thirteenth day the storm comes.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-    <ul>
-      <li>
-        <a href="/devlog/the-vision/">The Vision</a>
-      </li>
-      <li>
-        <a href="/team/">Our Team</a>
-      </li>
-      <li>
-        <a href="/devlog/world-generation/">World Generation</a>
-      </li>
-      <li>
-        <a href="/devlog/artificial-intelligence/">Artificial Intelligence</a>
-      </li>
-      <li>
-        <a href="/devlog/art/">Art</a>
-      </li>
-    </ul>
+    <section class="win">
+      <div class="win-head"><h2>From the devlog</h2></div>
+      <div class="win-foot">
+        <div class="cards">
+          <a class="card tip" href="/devlog/art/">
+            <img class="pixel" style="--w:96; --max:192px" src="/devlog/art/crewmates.png" alt="" width="96" height="96">
+            <h3>Art</h3>
+            <p class="dim">4 December 2022</p>
+            <p>Tiles, borders and how the look came together.</p>
+          </a>
 
+          <a class="card tip" href="/devlog/artificial-intelligence/">
+            <h3>Artificial Intelligence</h3>
+            <p class="dim">31 October 2022</p>
+            <p>Factions, reputation, and nudging the races toward peace or war.</p>
+          </a>
+
+          <a class="card tip" href="/devlog/world-generation/">
+            <img class="pixel" style="--w:192; --max:384px" src="/devlog/world-generation/dwarf.png" alt="" width="192" height="96">
+            <h3>World Generation</h3>
+            <p class="dim">30 October 2022</p>
+            <p>From height maps in a text file to islands on screen.</p>
+          </a>
+
+        </div>
+      </div>
+    </section>
   </main>
+  <div class="rule"></div>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>Mythical Whalers &middot; Kleen Fleet</span>
+      <nav aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/devlog/">Devlog</a>
+        <a href="/team/">Team</a>
+        <a href="https://store.steampowered.com/app/2787860/">Wishlist on Steam</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

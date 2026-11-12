@@ -1,0 +1,12 @@
+{# Pieces more than one layout uses. #}
+
+{% macro post_card(post) %}
+          <a class="card tip" href="{{ post.url }}">
+{% if post.card %}
+            <img class="pixel" style="--w:{{ post.card.width }}; --max:{{ post.card.width * 2 }}px" src="{{ post.card.url }}" alt="" width="{{ post.card.width }}" height="{{ post.card.height }}">
+{% endif %}
+            <h3>{{ post.title }}</h3>
+            <p class="dim">{{ post.date_text }}</p>
+            <p>{{ post.summary }}</p>
+          </a>
+{% endmacro %}

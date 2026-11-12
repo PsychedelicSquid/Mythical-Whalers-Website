@@ -14,35 +14,80 @@ from PIL import Image
 from builder import config
 
 
+def has_exact_name(folder, name):
+    """Windows would open Tavern.png for tavern.png. GitHub Pages would not."""
+    return os.path.isdir(folder) and name in os.listdir(folder)
+
+
+def picture_size(path):
+    with Image.open(path) as picture:
+        return picture.size
+
+
 class BodyHelpers:
-    """The functions a page's HTML can call, bound to the page being rendered."""
+    """The functions a page's HTML can call, bound to the page being rendered.
+
+    Every picture needs alt text. Pass "" for a picture that only decorates.
+    """
 
     def __init__(self, page, problems):
         self.page = page
         self.problems = problems
 
-    def image(self, name, alt=None, css_class=""):
-        """An <img> for a picture in the page's own folder, with its real size.
+    def tag(self, source, path, alt, max_width, kind):
+        width, height = picture_size(path)
+        if kind == "pixel":
+            # --w is the picture's real width; the stylesheet enlarges it by
+            # whole numbers up to --max.
+            html = '<img class="pixel" style="--w:%d; --max:%dpx"' % (width, max_width)
+        else:
+            html = '<img class="photo"'
+        html += ' src="%s" alt="%s" width="%d" height="%d">' % (escape(source), escape(alt), width, height)
+        return Markup(html)
 
-        alt is required. Pass "" for a picture that only decorates.
-        """
-        folder = self.page["folder"]
-        path = os.path.join(folder, name)
+    def need_alt(self, name, alt):
         if alt is None:
-            self.problems.append("%s: image('%s') has no alt text" % (self.page["source"], name))
-            alt = ""
-        if name not in os.listdir(folder):
-            # Windows would open Tavern.png for tavern.png. GitHub Pages would not.
+            self.problems.append("%s: picture '%s' has no alt text" % (self.page["source"], name))
+            return ""
+        return alt
+
+    def image(self, name, alt=None, max_width=640, kind="pixel"):
+        """A picture from the page's own folder.
+
+        kind "pixel" is pixel art, shown at whole-number sizes up to max_width.
+        kind "photo" is anything else: a screenshot of another program, a photo.
+        """
+        alt = self.need_alt(name, alt)
+        folder = self.page["folder"]
+        if not has_exact_name(folder, name):
             self.problems.append("%s: no picture named exactly '%s' in its folder" % (self.page["source"], name))
             return Markup("")
+        return self.tag(name, os.path.join(folder, name), alt, max_width, kind)
 
-        with Image.open(path) as picture:
-            width, height = picture.size
+    def art(self, path, alt=None, max_width=640):
+        """A site-wide picture under /images/: game art, or a hand-made one in static/."""
+        alt = self.need_alt(path, alt)
+        relative = path.replace("/", os.sep)
+        for root in [config.GAME_OUT_IMAGES, os.path.join(config.STATIC, "images")]:
+            full = os.path.join(root, relative)
+            if has_exact_name(os.path.dirname(full), os.path.basename(full)):
+                return self.tag("/images/" + path, full, alt, max_width, "pixel")
+        self.problems.append("%s: no picture at images/%s" % (self.page["source"], path))
+        return Markup("")
 
-        html = "<img"
-        if css_class:
-            html += ' class="%s"' % escape(css_class)
-        html += ' src="%s" alt="%s" width="%d" height="%d">' % (escape(name), escape(alt), width, height)
+    def player(self, still, animation, alt=None):
+        """A still frame with a Play button that fetches the animation when pressed."""
+        alt = self.need_alt(still, alt)
+        folder = self.page["folder"]
+        for name in [still, animation]:
+            if not has_exact_name(folder, name):
+                self.problems.append("%s: no file named exactly '%s' in its folder" % (self.page["source"], name))
+                return Markup("")
+        width, height = picture_size(os.path.join(folder, still))
+        html = '<figure class="player">'
+        html += '<img class="photo" src="%s" alt="%s" width="%d" height="%d">' % (escape(still), escape(alt), width, height)
+        html += '<button class="btn" type="button" data-play="%s" aria-pressed="false">Play</button>' % escape(animation)
+        html += '</figure>'
         return Markup(html)
 
 
@@ -69,15 +114,26 @@ def add_output(outputs, relative, data, problems):
     outputs[relative] = data
 
 
-def add_static_files(outputs, problems):
-    """Everything under static/ is copied to docs/ unchanged."""
-    for folder, folder_names, file_names in os.walk(config.STATIC):
+def add_tree(outputs, root, prefix, problems):
+    """Every file under root goes to docs/ unchanged, under prefix."""
+    for folder, folder_names, file_names in os.walk(root):
         folder_names.sort()
         file_names.sort()
         for name in file_names:
             source = os.path.join(folder, name)
-            relative = os.path.relpath(source, config.STATIC).replace(os.sep, "/")
-            add_output(outputs, relative, read_bytes(source), problems)
+            relative = os.path.relpath(source, root).replace(os.sep, "/")
+            add_output(outputs, prefix + relative, read_bytes(source), problems)
+
+
+def add_static_files(outputs, problems):
+    """static/ is hand-made; game/ was copied out of the game by the extract.
+
+    A name present in both is reported, so a hand-drawn piece can never
+    silently replace a cut one or the other way round.
+    """
+    add_tree(outputs, config.STATIC, "", problems)
+    add_tree(outputs, config.GAME_OUT_IMAGES, "images/", problems)
+    add_tree(outputs, config.GAME_OUT_FONTS, "fonts/", problems)
 
 
 def section_of(address):
@@ -88,7 +144,19 @@ def section_of(address):
     return parts[0]
 
 
-def page_view(page):
+def card_of(page, problems):
+    """The picture a post shows in lists: its address and real size, or None."""
+    name = page["card"]
+    if name == "":
+        return None
+    if not has_exact_name(page["folder"], name):
+        problems.append("%s: card picture '%s' is not in its folder" % (page["source"], name))
+        return None
+    width, height = picture_size(os.path.join(page["folder"], name))
+    return {"url": page["url"] + name, "width": width, "height": height}
+
+
+def page_view(page, problems):
     """What a template is given about a page."""
     title = page["title"]
     if page["url"] == "/":
@@ -104,33 +172,61 @@ def page_view(page):
         "date": page["date"],
         "date_text": page["date_text"],
         "summary": page["summary"],
+        "pitch": page["pitch"],
+        "card": card_of(page, problems),
+        # Set for devlog posts by link_posts.
+        "older": None,
+        "newer": None,
     }
 
 
-def newest_first(pages):
-    """Devlog posts are the pages with a date."""
+def link_posts(pages, views):
+    """Devlog posts are the pages with a date. Returns their views, newest first."""
     dated = []
     for page in pages:
         if page["date"]:
-            dated.append((page["date"], page["url"], page))
+            dated.append((page["date"], page["url"]))
     dated.sort()
     dated.reverse()
+
     posts = []
-    for date, address, page in dated:
-        posts.append(page_view(page))
+    for date, address in dated:
+        posts.append(views[address])
+    for position in range(len(posts)):
+        if position > 0:
+            posts[position]["newer"] = posts[position - 1]
+        if position + 1 < len(posts):
+            posts[position]["older"] = posts[position + 1]
     return posts
 
 
+def short_hash(data):
+    return hashlib.sha1(data).hexdigest()[:8]
+
+
 def site_context(outputs):
-    stylesheet = outputs.get(config.STYLESHEET, b"")
+    # Only fonts the extract was allowed to copy get an @font-face rule.
+    fonts = []
+    for font in config.FONTS:
+        if "fonts/" + font["file"] in outputs:
+            fonts.append({"family": font["family"], "url": "/fonts/" + font["file"]})
+
+    card_image = ""
+    if "images/site/card.png" in outputs:
+        card_image = "/images/site/card.png"
+
     return {
         "name": config.SITE_NAME,
         "studio": config.STUDIO,
         "url": config.SITE_URL,
         "steam_url": config.STEAM_URL,
+        "nav": config.NAV,
+        "fonts": fonts,
+        "card_image": card_image,
         "stylesheet": "/" + config.STYLESHEET,
-        # Changes whenever the stylesheet does, so browsers fetch the new one.
-        "stylesheet_version": hashlib.sha1(stylesheet).hexdigest()[:8],
+        # These change whenever the file does, so browsers fetch the new one.
+        "stylesheet_version": short_hash(outputs.get(config.STYLESHEET, b"")),
+        "script_version": short_hash(outputs.get("js/site.js", b"")),
     }
 
 
@@ -149,15 +245,20 @@ def render_all(pages, outputs, problems):
 
     environment = make_environment()
     site = site_context(outputs)
-    posts = newest_first(pages)
-    sitemap_addresses = []
 
+    views = {}
     for page in pages:
-        view = page_view(page)
+        views[page["url"]] = page_view(page, problems)
+    posts = link_posts(pages, views)
+
+    sitemap_addresses = []
+    for page in pages:
+        view = views[page["url"]]
         helpers = BodyHelpers(page, problems)
         try:
             body_template = environment.from_string(page["body"])
-            body = body_template.render(site=site, page=view, posts=posts, image=helpers.image)
+            body = body_template.render(site=site, page=view, posts=posts, image=helpers.image,
+                                        art=helpers.art, player=helpers.player)
             layout = environment.get_template(page["template"])
             html = layout.render(site=site, page=view, posts=posts, body=Markup(body))
         except jinja2.TemplateError as error:

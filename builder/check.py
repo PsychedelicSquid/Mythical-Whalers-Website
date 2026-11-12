@@ -47,6 +47,9 @@ class PageScan(HTMLParser):
             self.links.append(("href", attributes["href"]))
         if "src" in attributes and attributes["src"] is not None:
             self.links.append(("src", attributes["src"]))
+        # A Play button names the animation it fetches.
+        if "data-play" in attributes and attributes["data-play"] is not None:
+            self.links.append(("data-play", attributes["data-play"]))
 
 
 def is_outside(address):

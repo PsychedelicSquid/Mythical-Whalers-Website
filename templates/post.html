@@ -1,1 +1,29 @@
 {% extends "base.html" %}
+{% block main %}
+    <article class="win">
+      <div class="win-head has-x">
+        <h1>{{ page.title }}</h1>
+        <a class="win-x" href="/devlog/" aria-label="Close: back to the Devlog"></a>
+      </div>
+      <div class="win-mid">
+        <div class="prose">
+          <p class="dim">{{ page.date_text }}</p>
+{{ body }}
+        </div>
+      </div>
+      <div class="win-foot">
+        <div class="split">
+{% if page.older %}
+          <a class="btn" href="{{ page.older.url }}">Older post</a>
+{% else %}
+          <span></span>
+{% endif %}
+{% if page.newer %}
+          <a class="btn" href="{{ page.newer.url }}">Newer post</a>
+{% else %}
+          <a class="btn" href="/devlog/">Devlog</a>
+{% endif %}
+        </div>
+      </div>
+    </article>
+{% endblock %}

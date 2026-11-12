@@ -1,74 +1,347 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Alkalami&display=swap'); */
+/* Mythical Whalers website.
 
-@font-face{
-  font-family: "pixel_font";
-  src: url("/fonts/public_pixel.ttf") format("truetype");
+   The site is drawn like the game: 640x360 game pixels, each one --px screen
+   pixels wide, in the game's own colours, with frames cut from the game's GUI
+   art (images/gui). Pixel art is only ever enlarged by whole numbers. */
+
+:root {
+  color-scheme: dark;
+
+  /* The game's colours (constants.py and data/images/pallet.png) */
+  --charcoal: #0d0e12;   /* CHARCOAL: every panel */
+  --well: #232423;       /* the darker well inside trait rows */
+  --cream: #fcf7cc;      /* CREAM: body text */
+  --teal: #52d09b;       /* TEAL: titles */
+  --teal-deep: #20976b;
+  --rim-1: #2d221e;      /* the four rim browns, dark to bright */
+  --rim-2: #4f3421;
+  --rim-3: #865425;
+  --rim-4: #c2862f;
+  --yellow: #fffb40;     /* hovered text */
+  --olive: #9fa746;      /* small labels, selected rims */
+  --mist: #aea9c5;       /* quieter text */
+
+  /* "MW Title" is the game's heading font and exists only once it has been
+     published (builder/config.py FONTS). Until then titles use the body font.
+     The names are the site's own so that a font installed on a visitor's
+     computer can never stand in for one the site did not send. */
+  --font-title: "MW Title", "MW Body", "Courier New", monospace;
+  --font-body: "MW Body", "Courier New", monospace;
+
+  /* One game pixel is this many CSS pixels. */
+  --px: 2;
+  /* The smallest step a picture may grow by: one device pixel. */
+  --step: 1px;
 }
 
-html {
-  margin: 0;
-  /* font-family: 'Alkalami', serif; */
-  font-family: "pixel_font";
-  color: rgb(252, 247, 204);
-}
+/* On screens scaled to 125% or 175%, two CSS pixels are not a whole number of
+   device pixels, and pixel art turns uneven. These keep a game pixel on whole
+   device pixels: 3 at 125%, 4 at 175%. */
+@media (min-resolution: 1.25dppx) and (max-resolution: 1.49dppx) { :root { --px: 2.4; --step: 0.8px; } }
+@media (min-resolution: 1.5dppx) and (max-resolution: 1.74dppx) { :root { --step: 0.66667px; } }
+@media (min-resolution: 1.75dppx) and (max-resolution: 1.99dppx) { :root { --px: 2.28571; --step: 0.57143px; } }
+@media (min-resolution: 2dppx) and (max-resolution: 2.99dppx) { :root { --step: 0.5px; } }
+@media (min-resolution: 3dppx) { :root { --step: 0.33333px; } }
+
+* { box-sizing: border-box; }
+
+html { background: var(--charcoal); }
 
 body {
-  color: rgb(252, 247, 204);
-  /* Background Image */
-  background-image: url(/images/site/website_bg.png);
-  background-size: cover;
-  background-position: center center;
-  background-attachment: scroll;
-  background-repeat: no-repeat;
+  margin: 0;
+  background: var(--charcoal) url(/images/gui/sea-tile.png) 0 0 / calc(24px * var(--px)) repeat;
+  color: var(--cream);
+  font: 400 calc(16px * var(--px)) / calc(18px * var(--px)) var(--font-body);
+  image-rendering: pixelated;
+  cursor: url(/images/gui/cursor.png) 6 2, auto;
+  -webkit-text-size-adjust: 100%;
 }
 
-main {
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 1rem;
-  background-color: rgba(13, 14, 18, 0.9);
-  min-height: 150vh;
-  border-radius: 0.5rem;
+h1, h2, h3 {
+  margin: 0;
+  font: 400 calc(16px * var(--px)) / calc(16px * var(--px)) var(--font-title);
+  color: var(--teal);
+  text-wrap: balance;
 }
 
-/* Pictures carry their real width and height in the HTML so the page does not
-   jump while they load. auto lets these rules size them as before. */
-img.default {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 50vh;
+p { margin: 0; }
+
+a { color: var(--teal); cursor: url(/images/gui/cursor.png) 6 2, pointer; }
+a:hover { color: var(--yellow); }
+
+:focus-visible {
+  outline: calc(1px * var(--px)) solid var(--yellow);
+  outline-offset: calc(1px * var(--px));
 }
 
-img.center {
+.skip {
+  position: absolute;
+  left: calc(4px * var(--px));
+  top: calc(-40px * var(--px));
+  z-index: 10;
+  padding: calc(2px * var(--px)) calc(4px * var(--px));
+  background: var(--charcoal);
+}
+.skip:focus { top: calc(4px * var(--px)); }
+
+.olive { color: var(--olive); }
+.dim { color: var(--mist); }
+
+/* The site is one column as wide as the game's screen. */
+.wrap {
+  max-width: calc(640px * var(--px));
+  margin-inline: auto;
+}
+
+/* ------------------------------------------------------------------ */
+/* Pictures                                                            */
+/* ------------------------------------------------------------------ */
+
+/* Pixel art. --w is the picture's real width, set in the HTML. The picture
+   takes the largest whole multiple of one device pixel per art pixel that fits
+   its column, up to --max. If even its real size does not fit, it shrinks. */
+img { max-width: 100%; height: auto; }
+
+.pixel {
   display: block;
-  margin-left: auto;
+  margin-inline: auto;
+  width: min(100%, var(--max, 640px));
+  width: max(min(100%, calc(var(--w) * 1px)),
+             round(down, min(100%, var(--max, 640px)), calc(var(--w) * var(--step))));
+}
+
+/* Screenshots of other programs and photographs: smoothed, never enlarged. */
+.photo {
+  display: block;
+  image-rendering: auto;
+}
+
+/* A four-frame sprite strip, 250 ms a frame, like tools.animate_strip. */
+.sprite {
+  width: calc(var(--w) * 1px * var(--px));
+  height: calc(var(--w) * 1px * var(--px));
+  background-repeat: no-repeat;
+  background-size: calc(var(--w) * 4px * var(--px)) 100%;
+  animation: strip 1s steps(4) infinite;
+}
+@keyframes strip { to { background-position-x: calc(var(--w) * -4px * var(--px)); } }
+
+/* ------------------------------------------------------------------ */
+/* Frames: the pieces in images/gui                                    */
+/* ------------------------------------------------------------------ */
+
+/* A window is a stack: .win-head (title bar), any number of .win-mid, and a
+   .win-foot. The corner knots stick out 12 game pixels past the rim. */
+.win { margin: calc(12px * var(--px)) calc(12px * var(--px) - 16px); min-width: 0; }
+
+.panel {
+  border: calc(6px * var(--px)) solid transparent;
+  border-image: url(/images/gui/panel.png) 27 fill / calc(27px * var(--px)) / calc(12px * var(--px)) stretch;
+  padding: calc(5px * var(--px)) calc(8px * var(--px));
+}
+
+.win-head {
+  position: relative;
+  border-style: solid;
+  border-color: transparent;
+  border-width: calc(6px * var(--px));
+  border-image: url(/images/gui/window-head.png) 27 27 6 27 fill / calc(27px * var(--px)) calc(27px * var(--px)) calc(6px * var(--px)) / calc(12px * var(--px)) calc(12px * var(--px)) 0 stretch;
+  padding: 0 calc(6px * var(--px));
+  min-height: calc(26px * var(--px));
+  text-align: center;
+}
+.win-head > h1, .win-head > h2 { line-height: calc(14px * var(--px)); }
+
+/* A title bar with the close button's cell at its right end. */
+.win-head.has-x {
+  border-right-width: calc(27px * var(--px));
+  border-image-source: url(/images/gui/window-head-x.png);
+  border-image-slice: 27 39 6 27 fill;
+  border-image-width: calc(27px * var(--px)) calc(39px * var(--px)) calc(6px * var(--px)) calc(27px * var(--px));
+}
+.win-x {
+  position: absolute;
+  top: calc(1px * var(--px));
+  right: calc(-20px * var(--px));
+  width: calc(13px * var(--px));
+  height: calc(13px * var(--px));
+  background: url(/images/gui/close.png) 0 0 / 100% 100% no-repeat;
+}
+.win-x:hover, .win-x:focus-visible { background-image: url(/images/gui/close-hover.png); }
+
+.win-mid, .win-foot {
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0 calc(6px * var(--px)) calc(6px * var(--px));
+  padding: calc(6px * var(--px)) calc(8px * var(--px));
+  min-width: 0;
+}
+.win-mid {
+  border-image: url(/images/gui/window-mid.png) 0 27 6 27 fill / 0 calc(27px * var(--px)) calc(6px * var(--px)) / 0 calc(12px * var(--px)) stretch;
+}
+.win-foot {
+  border-image: url(/images/gui/window-foot.png) 0 27 27 27 fill / 0 calc(27px * var(--px)) calc(27px * var(--px)) / 0 calc(12px * var(--px)) calc(12px * var(--px)) stretch;
+}
+
+/* The tooltip frame, used for cards. */
+.tip {
+  border: calc(7px * var(--px)) solid transparent;
+  border-image: url(/images/gui/tooltip.png) 8 fill / calc(8px * var(--px)) stretch;
+  padding: calc(2px * var(--px)) calc(3px * var(--px));
+  min-width: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(25px * var(--px));
+  border-style: solid;
+  border-color: transparent;
+  border-width: calc(6px * var(--px)) calc(7px * var(--px));
+  border-image: url(/images/gui/btn.png) 12 8 12 8 fill / calc(12px * var(--px)) calc(8px * var(--px)) stretch;
+  padding: 0 calc(3px * var(--px));
+  background: none;
+  font: 400 calc(16px * var(--px)) / 1 var(--font-title);
+  color: var(--teal);
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: url(/images/gui/cursor.png) 6 2, pointer;
+}
+.btn:hover, .btn:focus-visible { border-image-source: url(/images/gui/btn-hover.png); color: var(--yellow); }
+.btn[aria-current], .btn.is-on { border-image-source: url(/images/gui/btn-selected.png); color: var(--cream); }
+
+.rule {
+  height: calc(5px * var(--px));
+  background: linear-gradient(to bottom, var(--rim-1) 0 20%, var(--rim-2) 20% 40%, var(--rim-3) 40% 60%, var(--rim-2) 60% 80%, var(--rim-1) 80% 100%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Page shell                                                          */
+/* ------------------------------------------------------------------ */
+
+.site-nav { background: var(--charcoal); }
+.site-nav .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(4px * var(--px)) calc(5px * var(--px));
+  padding: calc(5px * var(--px)) 16px;
+}
+.brand {
   margin-right: auto;
-  width: 75%;
-  height: auto;
+  font: 400 calc(16px * var(--px)) / 1 var(--font-title);
+  color: var(--cream);
+  text-decoration: none;
+}
+.site-nav nav { display: flex; flex-wrap: wrap; gap: calc(3px * var(--px)); }
+
+.main { padding: calc(3px * var(--px)) 16px calc(9px * var(--px)); }
+
+.site-foot { background: var(--charcoal); color: var(--mist); }
+.site-foot .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: calc(3px * var(--px)) calc(12px * var(--px));
+  padding: calc(6px * var(--px)) 16px calc(8px * var(--px));
+}
+.site-foot nav { display: flex; flex-wrap: wrap; gap: calc(8px * var(--px)); }
+
+.stack { display: flex; flex-direction: column; gap: calc(6px * var(--px)); min-width: 0; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: calc(5px * var(--px)); }
+.split { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: calc(5px * var(--px)); }
+
+/* Running text: a column about sixty characters wide. */
+.prose { max-width: 26em; margin-inline: auto; display: flex; flex-direction: column; gap: calc(6px * var(--px)); }
+.prose p { text-wrap: pretty; }
+.prose a { text-decoration: underline; }
+.prose h2 { margin-top: calc(4px * var(--px)); }
+.prose .pixel, .prose .photo, .prose .player { margin-inline: auto; }
+
+/* ------------------------------------------------------------------ */
+/* Home: the game's main menu                                          */
+/* ------------------------------------------------------------------ */
+
+/* The stage is the game's 640x360 menu, anchored to the right so the castle
+   and ship stay in view on a narrow screen. Layers and timings are those of
+   Menu.main_menu and Window.run in gui.py: sea and castle change frame every
+   150 ms; back clouds move one pixel every five frames at 60 frames a second,
+   the front cloud one every three. */
+.hero { position: relative; background: var(--charcoal); overflow: hidden; --hpx: 1; }
+.stage-wrap { position: relative; height: calc(232px * var(--hpx)); overflow: hidden; }
+.stage { position: absolute; top: 0; right: 0; width: calc(640px * var(--hpx)); height: calc(360px * var(--hpx)); }
+.layer { position: absolute; inset: 0; background-repeat: no-repeat; background-size: calc(640px * var(--hpx)) auto; }
+.cloud { background-repeat: repeat-x; background-position: var(--x0) 0; animation: drift var(--t) steps(640) infinite; }
+.cloud-1 { background-image: url(/images/menu/cloud-1.png); --x0: 0px; --t: 53.33s; }
+.cloud-2 { background-image: url(/images/menu/cloud-2.png); --x0: calc(-214px * var(--hpx)); --t: 53.33s; }
+.cloud-3 { background-image: url(/images/menu/cloud-3.png); --x0: calc(-427px * var(--hpx)); --t: 53.33s; }
+.cloud-4 { background-image: url(/images/menu/cloud-4.png); --x0: calc(-320px * var(--hpx)); --t: 32s; }
+@keyframes drift { to { background-position: calc(var(--x0) - 640px * var(--hpx)) 0; } }
+.strip { background-size: calc(640px * var(--hpx)) calc(4320px * var(--hpx)); animation: frames 1.8s steps(12) infinite; }
+.castle { background-image: url(/images/menu/castle.png); }
+.sea { background-image: url(/images/menu/sea.png); }
+@keyframes frames { to { background-position: 0 calc(-4320px * var(--hpx)); } }
+
+.hero-copy { position: relative; display: flex; flex-direction: column; align-items: center; gap: calc(6px * var(--px)); padding: calc(8px * var(--px)) 16px; text-align: center; }
+.logo { display: block; width: calc(206px * var(--hpx)); max-width: 100%; height: auto; }
+.pitch { max-width: 16em; }
+.menu { display: flex; flex-direction: column; align-items: stretch; gap: calc(5px * var(--px)); }
+
+@media (min-width: 760px) {
+  .hero { --hpx: var(--px); height: calc(300px * var(--hpx)); }
+  .stage-wrap { position: absolute; inset: 0; height: auto; }
+  .hero-copy { align-items: flex-start; text-align: left; gap: calc(8px * var(--px)); padding: calc(24px * var(--px)) 0 0 calc(34px * var(--px)); max-width: calc(250px * var(--px)); }
+  .hero-copy .logo { animation: bob 1.05s steps(8) infinite alternate; }
+  .menu { align-items: flex-start; }
+}
+@keyframes bob { from { transform: translateY(calc(-3px * var(--px))); } to { transform: translateY(calc(3px * var(--px))); } }
+
+/* What you do: four screenshots chosen with radio buttons. */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.feat-tabs { display: flex; flex-wrap: wrap; gap: calc(4px * var(--px)); margin-bottom: calc(7px * var(--px)); }
+.pane { display: none; margin: 0; gap: calc(7px * var(--px)) calc(11px * var(--px)); align-items: start; }
+.pane figcaption { display: flex; flex-direction: column; gap: calc(4px * var(--px)); min-width: 0; }
+.pane .pixel { outline: calc(1px * var(--px)) solid var(--rim-2); }
+#feat-hunt:checked ~ .panes .pane[data-for="hunt"],
+#feat-crew:checked ~ .panes .pane[data-for="crew"],
+#feat-factions:checked ~ .panes .pane[data-for="factions"],
+#feat-storm:checked ~ .panes .pane[data-for="storm"] { display: grid; }
+#feat-hunt:checked ~ .feat-tabs label[for="feat-hunt"],
+#feat-crew:checked ~ .feat-tabs label[for="feat-crew"],
+#feat-factions:checked ~ .feat-tabs label[for="feat-factions"],
+#feat-storm:checked ~ .feat-tabs label[for="feat-storm"] { border-image-source: url(/images/gui/btn-selected.png); color: var(--cream); }
+#feat-hunt:focus-visible ~ .feat-tabs label[for="feat-hunt"],
+#feat-crew:focus-visible ~ .feat-tabs label[for="feat-crew"],
+#feat-factions:focus-visible ~ .feat-tabs label[for="feat-factions"],
+#feat-storm:focus-visible ~ .feat-tabs label[for="feat-storm"] { outline: calc(1px * var(--px)) solid var(--yellow); outline-offset: calc(1px * var(--px)); }
+@media (min-width: 1100px) {
+  .pane { grid-template-columns: auto minmax(0, 1fr); }
 }
 
-img.left { 
-  float: left; 
-  padding: 0 20px 20px 0;
+/* ------------------------------------------------------------------ */
+/* Cards, the devlog and the team                                      */
+/* ------------------------------------------------------------------ */
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(168px * var(--px))), 1fr)); gap: calc(5px * var(--px)); }
+a.card { display: flex; flex-direction: column; gap: calc(3px * var(--px)); color: var(--cream); text-decoration: none; }
+a.card:hover h3, a.card:focus-visible h3 { color: var(--yellow); }
+a.card:hover, a.card:focus-visible { color: var(--cream); }
+
+.post-meta { text-align: center; }
+
+.members { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(200px * var(--px))), 1fr)); gap: calc(5px * var(--px)); }
+.member { display: grid; grid-template-columns: minmax(0, 1fr); gap: calc(3px * var(--px)) calc(6px * var(--px)); align-items: start; align-content: start; }
+.member h2 { grid-column: 1 / -1; }
+.member .pixel { margin-inline: 0; }
+@media (min-width: 760px) {
+  .member { grid-template-columns: calc(64px * var(--px)) minmax(0, 1fr); }
 }
 
-p {
-  text-align: justify;
-  font-size:16px;
-  text-indent: 30px;
-  line-height: 1.5;
-  white-space: normal;
-}
+/* The Art post's recording: a still frame until Play is pressed. */
+.player { display: flex; flex-direction: column; align-items: center; gap: calc(4px * var(--px)); margin: 0; }
 
-li {
-  font-size:26px;
-  line-height: 1.5;
+@media (prefers-reduced-motion: reduce) {
+  .cloud, .strip, .sprite, .hero-copy .logo { animation: none; }
 }
-
-h1, h2 {
-  clear: both;
-  font-size:26px;
-  flex-wrap: nowrap
-}
-

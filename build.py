@@ -1,13 +1,19 @@
 """Builds the website into docs/.
 
-    python build.py
+    python build.py             words, layouts or styles changed
+    python build.py --extract   the game changed: re-read it first
 
-Reads content/, templates/ and static/, checks the result, and only then
+Reads content/, templates/, static/ and game/, checks the result, and only then
 rewrites docs/. If anything is wrong it prints every problem and changes nothing.
+
+--extract first copies art out of the game repository into game/. It only reads
+the game repository. Look at `git diff game/` before committing: that diff is
+everything a game update would change on the site.
 """
 
 import sys
 
+from builder import assets
 from builder import check
 from builder import pages
 from builder import render
@@ -21,6 +27,13 @@ def report(problems):
 
 def main():
     problems = []
+
+    if "--extract" in sys.argv[1:]:
+        changed, removed = assets.extract(problems)
+        if problems:
+            report(problems)
+            return 1
+        print("Extracted game art into game/ (%d changed, %d removed)." % (changed, removed))
 
     all_pages = pages.load_pages(problems)
     if problems:

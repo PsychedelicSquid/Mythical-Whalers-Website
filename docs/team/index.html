@@ -5,33 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Our Team - Mythical Whalers</title>
   <meta name="description" content="The people making Mythical Whalers.">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0d0e12">
   <link rel="canonical" href="http://www.mythicalwhalers.com/team/">
+  <meta property="og:site_name" content="Mythical Whalers">
+  <meta property="og:title" content="Our Team">
+  <meta property="og:description" content="The people making Mythical Whalers.">
+  <meta property="og:url" content="http://www.mythicalwhalers.com/team/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="http://www.mythicalwhalers.com/images/site/card.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="stylesheet" href="/css/site.css?v=815a21dd">
+  <link rel="preload" href="/fonts/m5x7.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face { font-family: "MW Body"; src: url("/fonts/m5x7.ttf") format("truetype"); font-display: block; }
+  </style>
+  <link rel="stylesheet" href="/css/site.css?v=77b55eaa">
+  <script src="/js/site.js?v=6730cbd2" defer></script>
 </head>
 <body>
-  <main>
-    <a href="/">&lt;- Back</a>
-    <h1>Our Team</h1>
+  <a class="skip" href="#main">Skip to the page</a>
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="/">Mythical Whalers</a>
+      <nav aria-label="Site">
+        <a class="btn" href="/">Home</a>
+        <a class="btn" href="/devlog/">Devlog</a>
+        <a class="btn" href="/team/" aria-current="page">Team</a>
+        <a class="btn" href="https://store.steampowered.com/app/2787860/">Steam</a>
+      </nav>
+    </div>
+  </header>
+  <div class="rule"></div>
+  <main id="main" class="main wrap">
+    <article class="win">
+      <div class="win-head"><h1>Our Team</h1></div>
+      <div class="win-foot">
+        <div class="stack">
+          <img class="pixel" style="--w:570; --max:1140px" src="mercity.png" alt="A Mer city harbour: blue shell-shaped buildings and sailing boats on green water." width="570" height="360">
+          <div class="members">
+            <section class="member tip">
+              <h2>Valera, Sprite Architect. Artistic prodigy and code wrangler.</h2>
+              <img class="pixel" style="--w:64; --max:128px" src="valera.png" alt="Pixel portrait of Valera with a sphynx cat." width="64" height="64">
+              <p>
+                Valera is a game developer from Russia, he has been tirelessly working on refining the games
+                tiles and sprites, relentlessly polishing and animating them. He has also been been diving into the
+                code to add features and crush bugs.
+              </p>
+            </section>
+            <section class="member tip">
+              <h2>Joel, Doer of stuff. Learner of things.</h2>
+              <img class="pixel" style="--w:64; --max:128px" src="joel.png" alt="Pixel portrait of Joel with a cat." width="64" height="64">
+              <p>
+                From the Communist state of Canada, developement optimizer.
+              </p>
+            </section>
+          </div>
+        </div>
 
-    <img class="center" src="mercity.png" alt="A Mer city harbour: blue shell-shaped buildings and sailing boats on green water." width="2280" height="1440">
-
-    <h2>Valera, Sprite Architect. Artistic prodigy and code wrangler.</h2>
-    <img class="left" src="valera.png" alt="Pixel portrait of Valera with a sphynx cat." width="192" height="192">
-
-    <p>
-      Valera is a game developer from Russia, he has been tirelessly working on refining the games
-      tiles and sprites, relentlessly polishing and animating them. He has also been been diving into the
-      code to add features and crush bugs.
-    </p>
-
-    <h2>Joel, Doer of stuff. Learner of things.</h2>
-    <img class="left" src="joel.png" alt="Pixel portrait of Joel with a cat." width="192" height="192">
-    <p>
-      From the Communist state of Canada, developement optimizer.
-    </p>
-
+      </div>
+    </article>
   </main>
+  <div class="rule"></div>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>Mythical Whalers &middot; Kleen Fleet</span>
+      <nav aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/devlog/">Devlog</a>
+        <a href="/team/">Team</a>
+        <a href="https://store.steampowered.com/app/2787860/">Wishlist on Steam</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

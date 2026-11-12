@@ -5,16 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.full_title }}</title>
   <meta name="description" content="{{ page.description }}">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0d0e12">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+{% if site.card_image %}
+  <meta property="og:image" content="{{ site.url }}{{ site.card_image }}">
+  <meta name="twitter:card" content="summary_large_image">
+{% endif %}
   <link rel="icon" href="/favicon.png" type="image/png">
+{% for font in site.fonts %}
+  <link rel="preload" href="{{ font.url }}" as="font" type="font/ttf" crossorigin>
+{% endfor %}
+{% if site.fonts %}
+  <style>
+{% for font in site.fonts %}
+    @font-face { font-family: "{{ font.family }}"; src: url("{{ font.url }}") format("truetype"); font-display: block; }
+{% endfor %}
+  </style>
+{% endif %}
   <link rel="stylesheet" href="{{ site.stylesheet }}?v={{ site.stylesheet_version }}">
+  <script src="/js/site.js?v={{ site.script_version }}" defer></script>
 </head>
 <body>
-  <main>
-{% block main %}
-{{ body }}
-{% endblock %}
+  <a class="skip" href="#main">Skip to the page</a>
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="/">{{ site.name }}</a>
+      <nav aria-label="Site">
+{% for item in site.nav %}
+        <a class="btn" href="{{ item.url }}"{% if item.section == page.section %} aria-current="page"{% endif %}>{{ item.label }}</a>
+{% endfor %}
+        <a class="btn" href="{{ site.steam_url }}">Steam</a>
+      </nav>
+    </div>
+  </header>
+  <div class="rule"></div>
+{% block hero %}{% endblock %}
+  <main id="main" class="main wrap">
+{% block main %}{% endblock %}
   </main>
+  <div class="rule"></div>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>{{ site.name }} &middot; {{ site.studio }}</span>
+      <nav aria-label="Footer">
+{% for item in site.nav %}
+        <a href="{{ item.url }}">{{ item.label }}</a>
+{% endfor %}
+        <a href="{{ site.steam_url }}">Wishlist on Steam</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

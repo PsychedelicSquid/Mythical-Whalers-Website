@@ -1,22 +1,53 @@
 title: Mythical Whalers
-description: Mythical Whalers Development Blog
+description: A turn-based adventure on the Shrouded Seas. Raise a crew, hunt the whales, and survive the storm that comes every thirteenth day.
+template: home.html
+pitch: Raise a crew. Hunt the whales. Survive the storm that comes every thirteenth day.
 ---
-    <h1>{{ image("title.png", "Mythical Whalers", "default") }}</h1>
-
-    <ul>
-      <li>
-        <a href="/devlog/the-vision/">The Vision</a>
-      </li>
-      <li>
-        <a href="/team/">Our Team</a>
-      </li>
-      <li>
-        <a href="/devlog/world-generation/">World Generation</a>
-      </li>
-      <li>
-        <a href="/devlog/artificial-intelligence/">Artificial Intelligence</a>
-      </li>
-      <li>
-        <a href="/devlog/art/">Art</a>
-      </li>
-    </ul>
+    <section class="win">
+      <div class="win-head"><h2>What is Mythical Whalers?</h2></div>
+      <div class="win-mid">
+        <p>A turn-based adventure on the Shrouded Seas. You hire a crew, sail between islands, and hunt whales whose blubber the whaling ports render down to gems.</p>
+      </div>
+      <div class="win-foot">
+        <input class="sr" type="radio" name="feat" id="feat-hunt" checked>
+        <input class="sr" type="radio" name="feat" id="feat-crew">
+        <input class="sr" type="radio" name="feat" id="feat-factions">
+        <input class="sr" type="radio" name="feat" id="feat-storm">
+        <div class="feat-tabs">
+          <label class="btn" for="feat-hunt">Hunt</label>
+          <label class="btn" for="feat-crew">Crew</label>
+          <label class="btn" for="feat-factions">Factions</label>
+          <label class="btn" for="feat-storm">Storm</label>
+        </div>
+        <div class="panes">
+          <figure class="pane" data-for="hunt">
+            {{ art("screenshots/hunt.png", "A battle on arctic water: one crewmate faces a Narwhal among ice floes.") }}
+            <figcaption>
+              <h3>Hunt the whales</h3>
+              <p>Eight kinds of whale swim the Shrouded Seas. Fight them turn by turn, then sell the blubber at a Whaling Port.</p>
+            </figcaption>
+          </figure>
+          <figure class="pane" data-for="crew">
+            {{ art("screenshots/crew.png", "The Tavern window asks: Hire Jezebel for 15 gold? with Hire and Nay buttons.") }}
+            <figcaption>
+              <h3>Raise a crew</h3>
+              <p>Hire crewmates from twenty races. Each race has its own stats, traits and starting gear, and crewmates gain traits as they level up.</p>
+            </figcaption>
+          </figure>
+          <figure class="pane" data-for="factions">
+            {{ art("screenshots/factions.png", "The ship journal lists factions with a standing number and a face beside each.") }}
+            <figcaption>
+              <h3>Pick your friends</h3>
+              <p>Eight factions keep track of what you do. Their heralds offer quests, and your standing with a faction opens up more of its races.</p>
+            </figcaption>
+          </figure>
+          <figure class="pane" data-for="storm">
+            {{ art("screenshots/storm.png", "A storm scene: black clouds and lightning over the ship.") }}
+            <figcaption>
+              <h3>Outlast the storm</h3>
+              <p>Every thirteenth day the storm comes.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>

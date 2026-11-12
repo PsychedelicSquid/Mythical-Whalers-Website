@@ -5,17 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The Vision - Mythical Whalers</title>
   <meta name="description" content="Why I started making Mythical Whalers.">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0d0e12">
   <link rel="canonical" href="http://www.mythicalwhalers.com/devlog/the-vision/">
+  <meta property="og:site_name" content="Mythical Whalers">
+  <meta property="og:title" content="The Vision">
+  <meta property="og:description" content="Why I started making Mythical Whalers.">
+  <meta property="og:url" content="http://www.mythicalwhalers.com/devlog/the-vision/">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="http://www.mythicalwhalers.com/images/site/card.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="stylesheet" href="/css/site.css?v=815a21dd">
+  <link rel="preload" href="/fonts/m5x7.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face { font-family: "MW Body"; src: url("/fonts/m5x7.ttf") format("truetype"); font-display: block; }
+  </style>
+  <link rel="stylesheet" href="/css/site.css?v=77b55eaa">
+  <script src="/js/site.js?v=6730cbd2" defer></script>
 </head>
 <body>
-  <main>
-    <a href="/">&lt;- Back</a>
-    <h1>Hello! Welcome to my blog for Mythical Whalers,</h1>
+  <a class="skip" href="#main">Skip to the page</a>
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="/">Mythical Whalers</a>
+      <nav aria-label="Site">
+        <a class="btn" href="/">Home</a>
+        <a class="btn" href="/devlog/" aria-current="page">Devlog</a>
+        <a class="btn" href="/team/">Team</a>
+        <a class="btn" href="https://store.steampowered.com/app/2787860/">Steam</a>
+      </nav>
+    </div>
+  </header>
+  <div class="rule"></div>
+  <main id="main" class="main wrap">
+    <article class="win">
+      <div class="win-head has-x">
+        <h1>The Vision</h1>
+        <a class="win-x" href="/devlog/" aria-label="Close: back to the Devlog"></a>
+      </div>
+      <div class="win-mid">
+        <div class="prose">
+          <p class="dim">2 October 2022</p>
+    <h2>Hello! Welcome to my blog for Mythical Whalers,</h2>
 
-    <img class="center" src="tavern.png" alt="A tavern: a gnome bard plays a lute while a bearded barkeep pours a drink." width="1280" height="720">
+    <img class="pixel" style="--w:640; --max:640px" src="tavern.png" alt="A tavern: a gnome bard plays a lute while a bearded barkeep pours a drink." width="640" height="360">
 
     <p>
         Firstly I would like to give a huge thankyou to Trevor Richard for helping me set up this site.
@@ -35,7 +68,7 @@
       Maybe a good place to start would be telling the story of how I got started working on Mythical Whalers.
     </p>
 
-    <img class="default" src="gnome.png" alt="A figure tends a fire beneath a large mushroom, among pots and jars, in orange light." width="1152" height="576">
+    <img class="pixel" style="--w:192; --max:768px" src="gnome.png" alt="A figure tends a fire beneath a large mushroom, among pots and jars, in orange light." width="192" height="96">
 
     <p>
         A year and a half ago I was walking home through the snow on a cold winter evening in Canada.
@@ -47,7 +80,7 @@
       a person was capable of feeling.
     </p>
 
-    <img class="default" src="mushrooms.png" alt="Blue mushrooms." width="192" height="192">
+    <img class="pixel" style="--w:32; --max:192px" src="mushrooms.png" alt="Blue mushrooms." width="32" height="32">
 
     <p>
         It was remarkably unpleasant.
@@ -56,21 +89,21 @@
         Waves of nausea washed over me and reality started to disolve.
       About an hour into the trip and still feeling uncomfortable we put on a nature documentary and settled into my couch.
     </p>
-    <img class="default" src="whale_killed.png" alt="A dark red scene of a whale thrashing in bloodied water." width="1152" height="576">
+    <img class="pixel" style="--w:192; --max:768px" src="whale_killed.png" alt="A dark red scene of a whale thrashing in bloodied water." width="192" height="96">
     <p>
         A few minutes into the film an arctic iceshelf crashed into the ocean, in that moment I was hit by a massive pulse
       of energy, I could feel blood pulse through every artery in my body. Colors became brighter and my vision became crysal clear.
       The most signifigant change though was the new demension I was now inhabiting, or maybe more acuratly
       perception of a layer of the world I could not normally see.
     </p>
-    <img class="default" src="shryke.png" alt="A Shryke stands on a wooden deck in orange light." width="1152" height="576">
+    <img class="pixel" style="--w:192; --max:768px" src="shryke.png" alt="A Shryke stands on a wooden deck in orange light." width="192" height="96">
     <p>
         I could see things in a way I never had before, as if my third eye had opened and could now see,
       a barrier in my mind had disolved and all the forces that made up the entities of my subconcious mind that dictated my actions were visable.
       Touchable even, I had become the root administrator for my operating system where before I was merely a user with parental controls enabled.
       It was a lot to take in. ngl.
     </p>
-    <img class="default" src="whale.png" alt="A green whale breaches beside a small boat." width="1152" height="576">
+    <img class="pixel" style="--w:192; --max:768px" src="whale.png" alt="A green whale breaches beside a small boat." width="192" height="96">
     <p>
         During this time I became claustrophobic inside my tiny apartment and had a powerful desire to get under the sky.
       So me and one of my homies put on our parkas and went outside for a walk while everyone else decided to stay inside
@@ -94,8 +127,29 @@
       create simple applications. After a few begginer projects I wanted to create something more advanced. I started using the pygame
       library to create a simple tilemap with a sprite a player could move around, it was all so easy... how hard could it be to make a game?
     </p>
-    <img class="default" src="castle.png" alt="A town street at night: lit windows, a tavern sign, cobblestones and a castle under the moon." width="1280" height="720">
+    <img class="pixel" style="--w:640; --max:640px" src="castle.png" alt="A town street at night: lit windows, a tavern sign, cobblestones and a castle under the moon." width="640" height="360">
 
+        </div>
+      </div>
+      <div class="win-foot">
+        <div class="split">
+          <span></span>
+          <a class="btn" href="/devlog/world-generation/">Newer post</a>
+        </div>
+      </div>
+    </article>
   </main>
+  <div class="rule"></div>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>Mythical Whalers &middot; Kleen Fleet</span>
+      <nav aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/devlog/">Devlog</a>
+        <a href="/team/">Team</a>
+        <a href="https://store.steampowered.com/app/2787860/">Wishlist on Steam</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

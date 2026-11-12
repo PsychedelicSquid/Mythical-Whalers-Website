@@ -23,5 +23,116 @@ SITE_URL = "http://www.mythicalwhalers.com"
 # The stylesheet every page links.
 STYLESHEET = "css/site.css"
 
+# The navigation bar. "section" is the first part of an address; the item whose
+# section matches the page being shown is drawn as selected.
+NAV = [
+    {"label": "Home", "url": "/", "section": "home"},
+    {"label": "Devlog", "url": "/devlog/", "section": "devlog"},
+    {"label": "Team", "url": "/team/", "section": "team"},
+]
+
+# ---------------------------------------------------------------------------
+# The game repository. Read by `python build.py --extract`, never written to.
+# ---------------------------------------------------------------------------
+GAME_REPO = os.path.join(os.path.dirname(REPO), "Mythical-Whalers")
+GAME_SOURCE = os.path.join(GAME_REPO, "mythical_whalers")
+GAME_IMAGES = os.path.join(GAME_SOURCE, "data", "images")
+
+# What the extract writes. Committed, so `git diff game/` shows what a game
+# update would change on the site before any of it is public.
+GAME = os.path.join(REPO, "game")
+GAME_OUT_IMAGES = os.path.join(GAME, "images")
+GAME_OUT_FONTS = os.path.join(GAME, "fonts")
+
+# A source path holding any of these folder names is refused: drafts, cut
+# content, and a third-party effects pack that is not ours to publish.
+FORBIDDEN_FOLDERS = ["unused", "mockups", "legacy", "Effects"]
+
+# Fonts from the game. Only a font with publish True is copied to the site.
+# df_font.ttf carries no licence text and none was found published, so it stays
+# off until the developer confirms it may be put on a public website. The
+# stylesheet asks for it first and falls back to m5x7, so turning it on is this
+# one change. m5x7 is published by Daniel Linssen as CC0.
+#
+# "family" is the name the stylesheet uses, not the font's own name. A font
+# installed on a visitor's computer must never stand in for one the site did
+# not send, or the site would look different on the developer's machine.
+FONTS = [
+    {"family": "MW Body", "file": "m5x7.ttf", "publish": True},
+    {"family": "MW Title", "file": "df_font.ttf", "publish": False},
+]
+
+# ---------------------------------------------------------------------------
+# Frame pieces cut from the game's GUI art into images/gui.
+#
+# The game has no stretchable frames: its windows are 640x360 pictures with the
+# panel painted in. Each piece below keeps the corners and one pixel of each
+# edge, so CSS border-image can stretch it to any size.
+#
+# "columns" and "rows" are inclusive pixel ranges in the source picture. A
+# column written (file, first, last) is cut from that other file instead.
+# A piece with neither is the whole source picture.
+# ---------------------------------------------------------------------------
+POPUP = "gui/popup.png"
+LEFT_CORNER = (173, 199)       # 27 px: the left knots and rim
+MIDDLE = (300, 300)            # 1 px of plain edge
+RIGHT_CORNER = (440, 466)      # 27 px: the right knots and rim
+RIGHT_CORNER_X = (428, 466)    # 39 px: as above plus the close-button cell
+
+GUI_PIECES = [
+    {"name": "panel.png", "source": POPUP,
+     "columns": [LEFT_CORNER, MIDDLE, RIGHT_CORNER], "rows": [(39, 65), (150, 150), (295, 321)]},
+    {"name": "window-head.png", "source": POPUP,
+     "columns": [LEFT_CORNER, MIDDLE, RIGHT_CORNER], "rows": [(39, 65), (68, 68), (71, 76)]},
+    {"name": "window-head-x.png", "source": POPUP,
+     "columns": [LEFT_CORNER, MIDDLE, RIGHT_CORNER_X], "rows": [(39, 65), (68, 68), (71, 76)]},
+    {"name": "window-mid.png", "source": POPUP,
+     "columns": [LEFT_CORNER, MIDDLE, RIGHT_CORNER], "rows": [(150, 150), (222, 227)]},
+    {"name": "window-foot.png", "source": POPUP,
+     "columns": [LEFT_CORNER, MIDDLE, RIGHT_CORNER], "rows": [(150, 150), (295, 321)]},
+    {"name": "frame.png", "source": "gui/main_menu/frame.png",
+     "columns": [(0, 39), (320, 320), (600, 639)], "rows": [(0, 33), (180, 180), (326, 359)]},
+    {"name": "tooltip.png", "source": "gui/tooltip.png",
+     "columns": [(0, 7), (65, 65), (122, 129)], "rows": [(0, 7), (32, 32), (56, 63)]},
+    {"name": "btn.png", "source": "buttons/button_left.png",
+     "columns": [(0, 7), (200, 200), ("buttons/button_right.png", 0, 7)], "rows": [(0, 24)]},
+    {"name": "trait.png", "source": "gui/trait_frame.png",
+     "columns": [(0, 37), (80, 80), (122, 129)], "rows": [(0, 7), (22, 22), (36, 43)]},
+    {"name": "slot.png", "source": "gui/frame.png"},
+    {"name": "portrait.png", "source": "gui/crewmate_frame.png"},
+    {"name": "banner.png", "source": "gui/faction_frame.png"},
+    {"name": "close.png", "source": "buttons/close.png"},
+    {"name": "close-hover.png", "source": "buttons/close_highlight.png"},
+    {"name": "cursor.png", "source": "gui/cursor_1.png", "enlarge": 2},
+    {"name": "sea-tile.png", "source": "tiles/water_1.png", "columns": [(0, 23)], "rows": [(0, 23)]},
+]
+
+# These pieces also get a -hover and a -selected version, made the way the game
+# makes them: the rim browns are repainted with tools.HOVER_SHIFTS and
+# tools.SELECTED_SHIFTS, which the extract reads from the game's tools.py.
+GUI_VARIANTS = ["btn.png", "slot.png", "portrait.png"]
+
+# ---------------------------------------------------------------------------
+# Other art the site's own pages show. "to" is the path under images/.
+#   crop    (left, top, right, bottom), right and bottom not included
+#   native  True stores a pre-enlarged picture at its real size (640x360 for a
+#           1920x1080 screenshot); CSS does the enlarging
+# ---------------------------------------------------------------------------
+SITE_ART = [
+    {"to": "menu/sea.png", "source": "gui/main_menu/sea.png"},
+    {"to": "menu/castle.png", "source": "gui/main_menu/castle.png"},
+    {"to": "menu/cloud-1.png", "source": "gui/main_menu/cloud_1.png"},
+    {"to": "menu/cloud-2.png", "source": "gui/main_menu/cloud_2.png"},
+    {"to": "menu/cloud-3.png", "source": "gui/main_menu/cloud_3.png"},
+    {"to": "menu/cloud-4.png", "source": "gui/main_menu/cloud_4.png"},
+    {"to": "menu/logo.png", "source": "gui/main_menu/logo.png", "crop": (39, 21, 245, 101)},
+    {"to": "screenshots/hunt.png", "source": "steam art/screenshots/screen 7.png", "native": True},
+    {"to": "screenshots/crew.png", "source": "steam art/screenshots/screen 8.png", "native": True},
+    {"to": "screenshots/factions.png", "source": "steam art/screenshots/screen 16.png", "native": True},
+    {"to": "screenshots/storm.png", "source": "steam art/screenshots/screen 5.png", "native": True},
+    # The picture link previews show (Steam's main capsule).
+    {"to": "site/card.png", "source": "steam art/store/Main Capsule.png"},
+]
+
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",
           "August", "September", "October", "November", "December"]
