@@ -1,0 +1,40 @@
+{
+  "immunity_icons": {
+    "charm": "charmed.png",
+    "fire": "fire_debuff.png",
+    "frozen": "frozen.png",
+    "poisoned": "poison_debuff.png",
+    "stunned": "stun.png"
+  },
+  "item_icons": {
+    "armor": "armor",
+    "hp": "hp",
+    "knots": "ship_speed",
+    "luck": "luck",
+    "mana": "max_mana",
+    "max_hp": "hp",
+    "max_stamina": "max_stamina",
+    "navigating": "navigator",
+    "piercing": "piercing",
+    "range": "range",
+    "speed": "speed",
+    "strength": "strength",
+    "vision": "vision",
+    "will": "will"
+  },
+  "storm_interval": 13,
+  "trait_icons": {
+    "armor": "armor",
+    "healing": "hp",
+    "luck": "luck",
+    "max_hp": "hp",
+    "max_mana": "max_mana",
+    "max_stamina": "max_stamina",
+    "piercing": "piercing",
+    "range": "range",
+    "speed": "speed",
+    "strength": "strength",
+    "will": "will"
+  },
+  "version": "v0.29"
+}

@@ -15,6 +15,7 @@ import sys
 
 from builder import assets
 from builder import check
+from builder import extract
 from builder import pages
 from builder import render
 
@@ -29,6 +30,12 @@ def main():
     problems = []
 
     if "--extract" in sys.argv[1:]:
+        lines = extract.extract(problems)
+        if problems:
+            report(problems)
+            return 1
+        for line in lines:
+            print("  " + line)
         changed, removed = assets.extract(problems)
         if problems:
             report(problems)

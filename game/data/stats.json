@@ -1,0 +1,61 @@
+{
+  "crew": [
+    {
+      "description": "The amount of damage this crewmate can take before being killed.",
+      "icon": "hp",
+      "name": "Health"
+    },
+    {
+      "description": "Blocks incoming damage. Each point blocks 1 damage.",
+      "icon": "armor",
+      "name": "Armor"
+    },
+    {
+      "description": "Magical energy used for spells and special abilities.",
+      "icon": "max_mana",
+      "name": "Mana"
+    },
+    {
+      "description": "Increases damage and duration of magic abilities.",
+      "icon": "will",
+      "name": "Will"
+    },
+    {
+      "description": "Increases damage for melee attacks and physical abilities.",
+      "icon": "strength",
+      "name": "Strength"
+    },
+    {
+      "description": "Increases chance to crit, decreases chance to miss, and increases damage with ranged weapons.",
+      "icon": "luck",
+      "name": "Luck"
+    },
+    {
+      "description": "Determines how many abilities this crewmate can perform in a turn.",
+      "icon": "max_stamina",
+      "name": "Stamina"
+    },
+    {
+      "description": "Determines how far a crewmate can move and turn order in combat.",
+      "icon": "speed",
+      "name": "Speed"
+    }
+  ],
+  "ship": [
+    {
+      "description": "How far you can see on the map.",
+      "icon": "vision",
+      "name": "Vision"
+    },
+    {
+      "description": "How swiftly your crew crosses the map.",
+      "icon": "ship_speed",
+      "name": "Knots"
+    },
+    {
+      "description": "How much of the rough terrain penalty your crew avoids.",
+      "icon": "navigator",
+      "name": "Navigating"
+    }
+  ]
+}

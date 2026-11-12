@@ -41,6 +41,7 @@ GAME_IMAGES = os.path.join(GAME_SOURCE, "data", "images")
 # What the extract writes. Committed, so `git diff game/` shows what a game
 # update would change on the site before any of it is public.
 GAME = os.path.join(REPO, "game")
+GAME_DATA = os.path.join(GAME, "data")
 GAME_OUT_IMAGES = os.path.join(GAME, "images")
 GAME_OUT_FONTS = os.path.join(GAME, "fonts")
 

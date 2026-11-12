@@ -1,0 +1,86 @@
+{
+  "effects.Berserk": {
+    "description": "Strength is doubled.",
+    "duration": 3,
+    "image": "abilities/buffs/attack_boost_buff.png",
+    "key": "berserk",
+    "name": "Berserk"
+  },
+  "effects.Burning": {
+    "description": "Burns for 1 health each turn, ignoring armor.",
+    "duration": 3,
+    "image": "abilities/buffs/fire_debuff.png",
+    "key": "fire",
+    "name": "Burning"
+  },
+  "effects.Charmed": {
+    "description": "Fights for the other side.",
+    "duration": 2,
+    "image": "abilities/buffs/charmed.png",
+    "key": "charm",
+    "name": "Charmed"
+  },
+  "effects.Feared": {
+    "description": "Runs from enemies instead of acting.",
+    "duration": 0,
+    "image": "gui/stats/fleeing.png",
+    "key": "fear",
+    "name": "Feared"
+  },
+  "effects.Frozen": {
+    "description": "Can't act.",
+    "duration": 1,
+    "image": "abilities/buffs/frozen.png",
+    "key": "frozen",
+    "name": "Frozen"
+  },
+  "effects.Haste": {
+    "description": "+1 speed and +1 stamina.",
+    "duration": 3,
+    "image": "abilities/buffs/speed_boost_buff.png",
+    "key": "haste",
+    "name": "Haste"
+  },
+  "effects.Inspired": {
+    "description": "+1 strength, luck, will and speed.",
+    "duration": 3,
+    "image": "abilities/buffs/attack_boost_buff.png",
+    "key": "inspired",
+    "name": "Inspired"
+  },
+  "effects.Latched": {
+    "description": "A piranha is clamped on and comes along when this unit moves.",
+    "duration": 0,
+    "image": "abilities/buffs/latched_debuff.png",
+    "key": "latched",
+    "name": "Latched"
+  },
+  "effects.MagicArmor": {
+    "description": "",
+    "duration": 3,
+    "image": "abilities/buffs/armor_boost.png",
+    "key": "magic_armor",
+    "name": "Magic Armor"
+  },
+  "effects.Poisoned": {
+    "description": "Takes 1 poison each turn, ignoring armor.",
+    "duration": 3,
+    "image": "abilities/buffs/poison_debuff.png",
+    "key": "poisoned",
+    "name": "Poisoned"
+  },
+  "effects.Slow": {
+    "description": "Speed is halved.",
+    "duration": 2,
+    "image": "abilities/buffs/stun.png",
+    "key": "slow",
+    "name": "Slow"
+  },
+  "effects.Stunned": {
+    "description": "Can't act.",
+    "duration": 1,
+    "image": "abilities/buffs/stun.png",
+    "key": "stunned",
+    "name": "Stunned"
+  }
+}

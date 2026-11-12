@@ -1,0 +1,3814 @@
+{
+  "mobs.Abhoth": {
+    "abilities": [
+      "abilities.Melee",
+      "abilities.SpawnCorruptedTentacle"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Ivory",
+      "items.Ivory",
+      "items.Blubber"
+    ],
+    "group": "boss",
+    "image": "mobs/mobs/abhoth_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Abhoth",
+    "stats": {
+      "armor": 4,
+      "luck": 3,
+      "max_hp": 55,
+      "max_mana": 6,
+      "max_stamina": 2,
+      "speed": 2,
+      "strength": 5,
+      "will": 3
+    }
+  },
+  "mobs.Alchemist": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Someone has to run the stills.",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "crewmate",
+    "hire_cost": 35,
+    "image": "portraits/alchemist_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Pyromancer"
+      }
+    ],
+    "name": "Alchemist",
+    "names": [
+      "Aldric",
+      "Magnus",
+      "Thaddeus",
+      "Gideon",
+      "Mortimer"
+    ],
+    "portraits": [
+      "portraits/alchemist_1.png",
+      "portraits/alchemist_2.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.MerchantsRobes",
+          "items.Shroomstick"
+        ],
+        [
+          "items.MerchantsHat",
+          "items.MerchantsRobes",
+          "items.Shroomstick"
+        ],
+        [
+          "items.MerchantsHat",
+          "items.Shroomstick"
+        ]
+      ],
+      "2": [
+        [
+          "items.MerchantsHat",
+          "items.MerchantsRobes",
+          "items.Staff"
+        ],
+        [
+          "items.MerchantsHat",
+          "items.MerchantsRobes",
+          "items.Scepter"
+        ]
+      ],
+      "3": [
+        [
+          "items.MysticalHat",
+          "items.MysticalRobes",
+          "items.Staff"
+        ],
+        [
+          "items.MysticalHat",
+          "items.MysticalRobes",
+          "items.Scepter"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 3,
+      "max_stamina": 2,
+      "speed": 2,
+      "strength": 1,
+      "will": 3
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Wisdom",
+        "traits.Willful",
+        "traits.Pyromancer",
+        "traits.Mystic"
+      ],
+      "legendary": [
+        "traits.Strong",
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Necromancer",
+        "traits.Heroic",
+        "traits.Steady",
+        "traits.Cook",
+        "traits.Navigator"
+      ],
+      "never": [
+        "traits.Bloodlust"
+      ],
+      "rare": [
+        "traits.Hearty",
+        "traits.Agile",
+        "traits.Oracle",
+        "traits.Priest",
+        "traits.Optimist",
+        "traits.StoneSkin"
+      ],
+      "uncommon": [
+        "traits.Cryomancer",
+        "traits.Surgeon",
+        "traits.Lucky"
+      ]
+    }
+  },
+  "mobs.Alligator": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.6,
+    "drops": [
+      "items.ToughHide",
+      "items.Fish"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/alligator_idle.png",
+    "immunities": [],
+    "name": "Alligator",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 10,
+      "max_mana": 2,
+      "max_stamina": 1,
+      "speed": 5,
+      "strength": 5,
+      "will": 0
+    }
+  },
+  "mobs.AlphaEel": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Bite"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Fish"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/eel_alpha_idle.png",
+    "immunities": [],
+    "name": "Alpha Eel",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 20,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 6,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.AlphaJellyfish": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee",
+      "abilities.Shock"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/jellyfish_alpha_idle.png",
+    "immunities": [],
+    "name": "Alpha Jellyfish",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 20,
+      "max_mana": 4,
+      "max_stamina": 2,
+      "speed": 2,
+      "strength": 1,
+      "will": 5
+    }
+  },
+  "mobs.AlphaScorpion": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "The pack's old matriarch. Its sting carries a venom the small ones have not grown into.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Poison"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/scorpion_alpha_idle.png",
+    "immunities": [],
+    "name": "Alpha Scorpion",
+    "stats": {
+      "armor": 10,
+      "luck": 3,
+      "max_hp": 12,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.AlphaScuttler": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Carapace"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/scuttler_alpha_idle.png",
+    "immunities": [],
+    "name": "Alpha Scuttler",
+    "stats": {
+      "armor": 10,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 2,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.AlphaYeti": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.EarthShatter"
+    ],
+    "description": "The biggest of the cave. The ground shakes when it lands a blow.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.ToughHide"
+    ],
+    "group": "boss",
+    "image": "mobs/mobs/yeti_alpha_idle.png",
+    "immunities": [
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Alpha Yeti",
+    "stats": {
+      "armor": 4,
+      "luck": 3,
+      "max_hp": 30,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 5,
+      "will": 1
+    }
+  },
+  "mobs.Amazon": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee",
+      "abilities.Whirlwind"
+    ],
+    "description": "Island warriors.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Bow",
+      "items.Harpoon"
+    ],
+    "group": "crewmate",
+    "hire_cost": 65,
+    "image": "portraits/amazon_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Marksman"
+      }
+    ],
+    "name": "Amazon",
+    "names": [
+      "Athena",
+      "Freya",
+      "Ishtar"
+    ],
+    "portraits": [
+      "portraits/amazon_1.png",
+      "portraits/amazon_2.png",
+      "portraits/amazon_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.OrkhideArmor",
+          "items.FlintSpear"
+        ],
+        [
+          "items.OrkhideArmor",
+          "items.Bow"
+        ],
+        [
+          "items.OrkhideArmor",
+          "items.Boomerang"
+        ]
+      ],
+      "2": [
+        [
+          "items.OrkhideArmor",
+          "items.Harpoon"
+        ],
+        [
+          "items.OrkhideArmor",
+          "items.Axe"
+        ]
+      ],
+      "3": [
+        [
+          "items.TrollhideArmor",
+          "items.Macuahuitl"
+        ],
+        [
+          "items.TrollhideArmor",
+          "items.Harpoon"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 3,
+      "strength": 2,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Strong",
+        "traits.Agile",
+        "traits.Marksman"
+      ],
+      "legendary": [
+        "traits.Wisdom",
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Priest",
+        "traits.Oracle",
+        "traits.Mystic",
+        "traits.Cook",
+        "traits.Surgeon"
+      ],
+      "never": [
+        "traits.Necromancer"
+      ],
+      "rare": [
+        "traits.Lucky",
+        "traits.EagleEye",
+        "traits.Navigator",
+        "traits.Optimist",
+        "traits.StoneSkin"
+      ],
+      "uncommon": [
+        "traits.Hearty",
+        "traits.Willful",
+        "traits.Heroic",
+        "traits.Steady",
+        "traits.Bloodlust"
+      ]
+    }
+  },
+  "mobs.Beholder": {
+    "abilities": [
+      "abilities.Melee",
+      "abilities.Heal",
+      "abilities.Inspire"
+    ],
+    "description": "The storm's eye. It mends the Guthulim around it and drives them on.",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/beholder_idle.png",
+    "immunities": [],
+    "name": "Beholder",
+    "stats": {
+      "armor": 2,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 6,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 1,
+      "will": 3
+    }
+  },
+  "mobs.BoarRider": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.BossCharge"
+    ],
+    "description": "A goblin on a war boar. The boar does the thinking.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Meat"
+    ],
+    "group": "boss",
+    "image": "mobs/mobs/boar_idle.png",
+    "immunities": [],
+    "name": "Boar Rider",
+    "stats": {
+      "armor": 2,
+      "luck": 3,
+      "max_hp": 16,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 4,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Bullfrog": {
+    "abilities": [
+      "abilities.Leap",
+      "abilities.Melee",
+      "abilities.TonguePull"
+    ],
+    "description": "The slaad's great frog. It hops, and it bites.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Poison"
+    ],
+    "group": "boss",
+    "image": "mobs/mobs/bullfrog_idle.png",
+    "immunities": [
+      "poisoned",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Bullfrog",
+    "stats": {
+      "armor": 4,
+      "luck": 3,
+      "max_hp": 24,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 4,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Caridian": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Scavengers of the tidal flats.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Harpoon",
+      "items.Bow"
+    ],
+    "group": "crewmate",
+    "hire_cost": 55,
+    "image": "portraits/caridian_1.png",
+    "immunities": [
+      "frozen"
+    ],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.StoneSkin"
+      },
+      {
+        "level": 1,
+        "trait": "traits.Steady"
+      }
+    ],
+    "name": "Caridian",
+    "names": [
+      "Kronch",
+      "Calcis",
+      "Skarn",
+      "Cruxx",
+      "Chelm"
+    ],
+    "portraits": [
+      "portraits/caridian_1.png",
+      "portraits/caridian_2.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.Seashellarmor",
+          "items.FinCutter"
+        ],
+        [
+          "items.ClamArmor",
+          "items.Harpoon"
+        ],
+        [
+          "items.Seashellarmor",
+          "items.CrustaceanRod"
+        ]
+      ],
+      "2": [
+        [
+          "items.ClamHelm",
+          "items.ClamArmor",
+          "items.Harpoon"
+        ],
+        [
+          "items.ClamHelm",
+          "items.ClamArmor",
+          "items.CrustaceanRod"
+        ]
+      ],
+      "3": [
+        [
+          "items.RangersHood",
+          "items.RangersCloak",
+          "items.Crossbow"
+        ],
+        [
+          "items.ClamHelm",
+          "items.ClamArmor",
+          "items.Trident"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 2,
+      "strength": 2,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Hearty",
+        "traits.Strong",
+        "traits.Steady",
+        "traits.StoneSkin"
+      ],
+      "legendary": [
+        "traits.Wisdom",
+        "traits.Cryomancer",
+        "traits.Priest",
+        "traits.Oracle",
+        "traits.Mystic",
+        "traits.Optimist",
+        "traits.Surgeon"
+      ],
+      "never": [
+        "traits.Pyromancer",
+        "traits.Necromancer"
+      ],
+      "rare": [
+        "traits.Agile",
+        "traits.EagleEye",
+        "traits.Navigator",
+        "traits.Cook"
+      ],
+      "uncommon": [
+        "traits.Willful",
+        "traits.Lucky",
+        "traits.Marksman",
+        "traits.Heroic",
+        "traits.Bloodlust"
+      ]
+    }
+  },
+  "mobs.CaridianCaptain": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.CrustaceanRod"
+    ],
+    "group": "captain",
+    "image": "mobs/mobs/caridian_captain_idle.png",
+    "immunities": [],
+    "name": "Caridian Captain",
+    "stats": {
+      "armor": 6,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 4,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.CorruptedDuck": {
+    "abilities": [
+      "abilities.Leap",
+      "abilities.Melee",
+      "abilities.Fear"
+    ],
+    "description": "Something wearing the shape of a duck, right up until it isn't.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.FeatherySlippers"
+    ],
+    "group": "boss",
+    "image": "mobs/mobs/duck_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Corrupted Duck",
+    "stats": {
+      "armor": 0,
+      "luck": 5,
+      "max_hp": 24,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 5,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Cyclops": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "One-eyed giants. Strength enough for ten.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.OrkhideHelm",
+      "items.OrkhideHelm",
+      "items.Sprig",
+      "items.Harpoon"
+    ],
+    "group": "crewmate",
+    "hire_cost": 90,
+    "image": "portraits/cyclops_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Glutton"
+      }
+    ],
+    "name": "Cyclops",
+    "names": [
+      "Monos",
+      "Argos",
+      "Goliath",
+      "Brawn"
+    ],
+    "portraits": [
+      "portraits/cyclops_1.png",
+      "portraits/cyclops_2.png",
+      "portraits/cyclops_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.OrkhideArmor",
+          "items.Club",
+          "items.ElixirCharge"
+        ],
+        [
+          "items.OrkhideArmor",
+          "items.Sprig",
+          "items.ElixirCharge"
+        ],
+        [
+          "items.OrkhideArmor",
+          "items.Club"
+        ]
+      ],
+      "2": [
+        [
+          "items.PlateHelm",
+          "items.PlateArmor",
+          "items.Cleaver",
+          "items.ElixirCharge"
+        ],
+        [
+          "items.TrollhideArmor",
+          "items.Club",
+          "items.ElixirCharge"
+        ]
+      ],
+      "3": [
+        [
+          "items.TrollhideHelm",
+          "items.TrollhideArmor",
+          "items.Macuahuitl",
+          "items.ElixirCharge"
+        ],
+        [
+          "items.TrollhideHelm",
+          "items.TrollhideArmor",
+          "items.WarClub",
+          "items.ElixirCharge"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 10,
+      "max_mana": 1,
+      "max_stamina": 2,
+      "speed": 2,
+      "strength": 5,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Strong",
+        "traits.Hearty",
+        "traits.Bloodlust"
+      ],
+      "legendary": [
+        "traits.Wisdom",
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Oracle",
+        "traits.Mystic"
+      ],
+      "never": [
+        "traits.EagleEye",
+        "traits.Surgeon",
+        "traits.Priest",
+        "traits.Necromancer"
+      ],
+      "rare": [
+        "traits.Agile",
+        "traits.Marksman",
+        "traits.Steady",
+        "traits.Navigator",
+        "traits.Optimist"
+      ],
+      "uncommon": [
+        "traits.Willful",
+        "traits.Lucky",
+        "traits.Heroic",
+        "traits.Cook",
+        "traits.StoneSkin"
+      ]
+    }
+  },
+  "mobs.Dragon": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.FireBreath"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.DragonsPowder"
+    ],
+    "group": "boss",
+    "image": "mobs/mobs/dragon_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Dragon",
+    "stats": {
+      "armor": 20,
+      "luck": 3,
+      "max_hp": 22,
+      "max_mana": 3,
+      "max_stamina": 3,
+      "speed": 2,
+      "strength": 5,
+      "will": 1
+    }
+  },
+  "mobs.Dryad": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Pretentious magic users. They forget nothing.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Sprig",
+      "items.Bow"
+    ],
+    "group": "crewmate",
+    "hire_cost": 30,
+    "image": "portraits/dryad_male_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Mystic"
+      }
+    ],
+    "name": "Dryad",
+    "names": [
+      "Fenris",
+      "Lucion",
+      "Elric",
+      "Thalion",
+      "Aelar",
+      "Kael",
+      "Faelyn",
+      "Sylvia",
+      "Niamh",
+      "Seren"
+    ],
+    "portraits": [
+      "portraits/dryad_male_1.png",
+      "portraits/dryad_male_2.png",
+      "portraits/dryad_male_3.png",
+      "portraits/dryad_female_1.png",
+      "portraits/dryad_female_2.png",
+      "portraits/dryad_female_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.WhimsicalClothes",
+          "items.Bow"
+        ],
+        [
+          "items.WhimsicalHat",
+          "items.WhimsicalClothes",
+          "items.Dagger"
+        ],
+        [
+          "items.WhimsicalHat",
+          "items.WhimsicalClothes",
+          "items.Bow"
+        ]
+      ],
+      "2": [
+        [
+          "items.FaeHood",
+          "items.FaeArmor",
+          "items.Bow"
+        ],
+        [
+          "items.FaeHood",
+          "items.FaeArmor",
+          "items.Dagger"
+        ]
+      ],
+      "3": [
+        [
+          "items.DryadHelm",
+          "items.DryadArmor",
+          "items.DryadBow",
+          "items.ElixirArrow"
+        ],
+        [
+          "items.DryadHelm",
+          "items.DryadArmor",
+          "items.Dagger"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 5,
+      "strength": 2,
+      "will": 2
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Wisdom",
+        "traits.Mystic",
+        "traits.Willful"
+      ],
+      "legendary": [
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Priest",
+        "traits.Heroic",
+        "traits.Cook",
+        "traits.Surgeon"
+      ],
+      "never": [
+        "traits.Necromancer",
+        "traits.Bloodlust"
+      ],
+      "rare": [
+        "traits.Hearty",
+        "traits.Strong",
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Oracle",
+        "traits.Optimist",
+        "traits.StoneSkin"
+      ],
+      "uncommon": [
+        "traits.Lucky",
+        "traits.Agile",
+        "traits.Steady",
+        "traits.Navigator"
+      ]
+    }
+  },
+  "mobs.Dwarf": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Thick skinned and stubborn as stone.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Sword",
+      "items.SentinelArmor",
+      "items.SentinelHelm",
+      "items.HornHelmet"
+    ],
+    "group": "crewmate",
+    "hire_cost": 55,
+    "image": "portraits/dwarf_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.StoneSkin"
+      },
+      {
+        "level": 1,
+        "trait": "traits.Strong"
+      }
+    ],
+    "name": "Dwarf",
+    "names": [
+      "Borubo",
+      "Thrain",
+      "Dwalin",
+      "Fili",
+      "Kronn",
+      "Rurrik",
+      "Ragna",
+      "Hilda",
+      "Astrid",
+      "Thora",
+      "Bruni"
+    ],
+    "portraits": [
+      "portraits/dwarf_1.png",
+      "portraits/dwarf_2.png",
+      "portraits/dwarf_female_1.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.HornHelmet",
+          "items.SentinelArmor",
+          "items.Ballpeen"
+        ],
+        [
+          "items.SentinelArmor",
+          "items.Ballpeen"
+        ],
+        [
+          "items.SentinelArmor",
+          "items.Axe"
+        ]
+      ],
+      "2": [
+        [
+          "items.SentinelHelm",
+          "items.SentinelArmor",
+          "items.BattleAxe"
+        ],
+        [
+          "items.SentinelHelm",
+          "items.SentinelArmor",
+          "items.Ballpeen"
+        ]
+      ],
+      "3": [
+        [
+          "items.AdamantineHelm",
+          "items.AdamantineCuirass",
+          "items.WarHammer"
+        ],
+        [
+          "items.AdamantineHelm",
+          "items.AdamantineCuirass",
+          "items.BattleAxe"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 2,
+      "strength": 3,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Hearty",
+        "traits.Strong",
+        "traits.StoneSkin"
+      ],
+      "legendary": [
+        "traits.Wisdom",
+        "traits.EagleEye",
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Necromancer",
+        "traits.Priest",
+        "traits.Oracle",
+        "traits.Mystic",
+        "traits.Optimist"
+      ],
+      "never": [],
+      "rare": [
+        "traits.Agile",
+        "traits.Marksman",
+        "traits.Steady",
+        "traits.Surgeon"
+      ],
+      "uncommon": [
+        "traits.Cook",
+        "traits.Lucky",
+        "traits.Heroic",
+        "traits.Navigator",
+        "traits.Bloodlust",
+        "traits.Willful"
+      ]
+    }
+  },
+  "mobs.Eel": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Fish"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/eel_idle.png",
+    "immunities": [],
+    "name": "Eel",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 5,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.Fly": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/fly_idle.png",
+    "immunities": [],
+    "name": "Fly",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 2,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 6,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.GlideFin": {
+    "abilities": [
+      "abilities.Dive",
+      "abilities.Melee",
+      "abilities.Torrent"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Blubber",
+      "items.Blubber",
+      "items.ZypherBlubber"
+    ],
+    "group": "whale",
+    "image": "mobs/mobs/glidefin_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Glide Fin",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 24,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 5,
+      "strength": 2,
+      "will": 1
+    }
+  },
+  "mobs.Gnome": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Nimble folk of shrimpish stature.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.GnomishHat",
+      "items.Sprig"
+    ],
+    "group": "crewmate",
+    "hire_cost": 30,
+    "image": "portraits/gnome_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Agile"
+      }
+    ],
+    "name": "Gnome",
+    "names": [
+      "Adan",
+      "Zephyr",
+      "Pip",
+      "Sprocket",
+      "Sprig",
+      "Fern",
+      "Hazel",
+      "Tink"
+    ],
+    "portraits": [
+      "portraits/gnome_1.png",
+      "portraits/gnome_2.png",
+      "portraits/gnome_female_1.png",
+      "portraits/gnome_female_2.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.GnomishHat",
+          "items.GnomishGarb",
+          "items.Sprig"
+        ],
+        [
+          "items.ShroomHat",
+          "items.ShroomArmor",
+          "items.Shroomstick",
+          "items.ElixirHealth"
+        ],
+        [
+          "items.ShroomHat",
+          "items.ShroomArmor",
+          "items.Sprig"
+        ]
+      ],
+      "2": [
+        [
+          "items.GnomishHat",
+          "items.BriarbarkArmor",
+          "items.Sprig"
+        ],
+        [
+          "items.GnomishHat",
+          "items.GnomishGarb",
+          "items.Staff",
+          "items.ElixirFireBall"
+        ]
+      ],
+      "3": [
+        [
+          "items.MysticalHat",
+          "items.MysticalRobes",
+          "items.Staff",
+          "items.ElixirFrostBolt"
+        ],
+        [
+          "items.LivingHelm",
+          "items.LivingArmor",
+          "items.Shroomstick",
+          "items.ElixirFireBreath"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 2,
+      "strength": 1,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Agile",
+        "traits.Lucky",
+        "traits.Marksman"
+      ],
+      "legendary": [
+        "traits.Cryomancer",
+        "traits.Priest",
+        "traits.Heroic",
+        "traits.Steady",
+        "traits.Navigator",
+        "traits.StoneSkin"
+      ],
+      "never": [
+        "traits.Necromancer",
+        "traits.Bloodlust"
+      ],
+      "rare": [
+        "traits.Wisdom",
+        "traits.Strong",
+        "traits.Pyromancer",
+        "traits.Mystic",
+        "traits.Oracle",
+        "traits.Cook"
+      ],
+      "uncommon": [
+        "traits.EagleEye",
+        "traits.Optimist",
+        "traits.Surgeon",
+        "traits.Hearty",
+        "traits.Willful"
+      ]
+    }
+  },
+  "mobs.Goblin": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Cunning thieves and scavengers.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.NavigatorsJacket",
+      "items.Sprig",
+      "items.Harpoon"
+    ],
+    "group": "crewmate",
+    "hire_cost": 25,
+    "image": "portraits/goblin_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Lucky"
+      }
+    ],
+    "name": "Goblin",
+    "names": [
+      "Skiv",
+      "Grax",
+      "Snagg",
+      "Gnarl"
+    ],
+    "portraits": [
+      "portraits/goblin_1.png",
+      "portraits/goblin_2.png",
+      "portraits/goblin_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.OrkhideArmor",
+          "items.Harpoon"
+        ],
+        [
+          "items.OrkhideHelm",
+          "items.OrkhideArmor",
+          "items.Club"
+        ],
+        [
+          "items.OrkhideArmor",
+          "items.Bow"
+        ]
+      ],
+      "2": [
+        [
+          "items.OrkhideHelm",
+          "items.OrkhideArmor",
+          "items.Bow"
+        ],
+        [
+          "items.FossilHelm",
+          "items.FossilArmor",
+          "items.Club"
+        ]
+      ],
+      "3": [
+        [
+          "items.FossilHelm",
+          "items.FossilArmor",
+          "items.BattleAxe"
+        ],
+        [
+          "items.TrollhideHelm",
+          "items.TrollhideArmor",
+          "items.Macuahuitl"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 4,
+      "max_hp": 5,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 4,
+      "strength": 1,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Agile",
+        "traits.Lucky",
+        "traits.Cook"
+      ],
+      "legendary": [
+        "traits.Wisdom",
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Oracle",
+        "traits.Mystic",
+        "traits.Navigator",
+        "traits.StoneSkin"
+      ],
+      "never": [
+        "traits.Heroic",
+        "traits.Priest",
+        "traits.Necromancer"
+      ],
+      "rare": [
+        "traits.Willful",
+        "traits.Steady",
+        "traits.EagleEye",
+        "traits.Optimist",
+        "traits.Surgeon"
+      ],
+      "uncommon": [
+        "traits.Marksman",
+        "traits.Bloodlust",
+        "traits.Hearty",
+        "traits.Strong"
+      ]
+    }
+  },
+  "mobs.GoblinCaptain": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.BattleAxe"
+    ],
+    "group": "captain",
+    "image": "mobs/mobs/goblin_captain_idle.png",
+    "immunities": [],
+    "name": "Goblin Captain",
+    "stats": {
+      "armor": 1,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Goliath": {
+    "abilities": [
+      "abilities.Dive",
+      "abilities.Melee",
+      "abilities.BossCharge"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Blubber",
+      "items.TitanBlubber"
+    ],
+    "group": "whale",
+    "image": "mobs/mobs/goliath_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Goliath",
+    "stats": {
+      "armor": 6,
+      "luck": 3,
+      "max_hp": 18,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Gorger": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/gorger_idle.png",
+    "immunities": [],
+    "name": "Gorger",
+    "stats": {
+      "armor": 1,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 4,
+      "strength": 2,
+      "will": 1
+    }
+  },
+  "mobs.Gulgothra": {
+    "abilities": [
+      "abilities.Melee",
+      "abilities.PoisonBurst"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "boss",
+    "image": "mobs/mobs/gulgothra_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Gulgothra",
+    "stats": {
+      "armor": 4,
+      "luck": 4,
+      "max_hp": 60,
+      "max_mana": 4,
+      "max_stamina": 3,
+      "speed": 2,
+      "strength": 6,
+      "will": 3
+    }
+  },
+  "mobs.Human": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Replaceable.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.PeasantHat",
+      "items.Sprig"
+    ],
+    "group": "crewmate",
+    "hire_cost": 25,
+    "image": "portraits/man_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Hearty"
+      }
+    ],
+    "name": "Human",
+    "names": [
+      "Billy",
+      "Francis",
+      "Timothy",
+      "Jezebel",
+      "Sadie",
+      "Charlotte"
+    ],
+    "portraits": [
+      "portraits/man_1.png",
+      "portraits/man_2.png",
+      "portraits/man_3.png",
+      "portraits/man_4.png",
+      "portraits/man_5.png",
+      "portraits/man_6.png",
+      "portraits/woman_1.png",
+      "portraits/woman_2.png",
+      "portraits/woman_3.png",
+      "portraits/woman_4.png",
+      "portraits/woman_5.png",
+      "portraits/woman_6.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.PeasantTunic",
+          "items.Sprig"
+        ],
+        [
+          "items.PeasantHat",
+          "items.PeasantTunic",
+          "items.WoodenSword"
+        ],
+        [
+          "items.PeasantHat",
+          "items.NavigatorsJacket",
+          "items.WoodenSword"
+        ]
+      ],
+      "2": [
+        [
+          "items.ArchersHat",
+          "items.ArchersArmor",
+          "items.Bow"
+        ],
+        [
+          "items.ArchersHat",
+          "items.ArchersArmor",
+          "items.Sword"
+        ]
+      ],
+      "3": [
+        [
+          "items.KnightsHelm",
+          "items.KnightsArmor",
+          "items.Greatsword"
+        ],
+        [
+          "items.KnightsHelm",
+          "items.KnightsArmor",
+          "items.Crossbow"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 2,
+      "will": 2
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Hearty",
+        "traits.Strong",
+        "traits.Lucky"
+      ],
+      "legendary": [
+        "traits.Wisdom",
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Necromancer",
+        "traits.Priest",
+        "traits.Oracle"
+      ],
+      "never": [],
+      "rare": [
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Steady",
+        "traits.Cook",
+        "traits.Navigator",
+        "traits.Bloodlust",
+        "traits.Mystic",
+        "traits.StoneSkin"
+      ],
+      "uncommon": [
+        "traits.Willful",
+        "traits.Agile",
+        "traits.Heroic",
+        "traits.Optimist",
+        "traits.Surgeon"
+      ]
+    }
+  },
+  "mobs.HumanCaptain": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Sword",
+      "items.KnightsHelm"
+    ],
+    "group": "captain",
+    "image": "mobs/mobs/human_captain_idle.png",
+    "immunities": [],
+    "name": "Human Captain",
+    "stats": {
+      "armor": 8,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.Immortal": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "The deathless. Faces intact. Mostly.",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "crewmate",
+    "hire_cost": 50,
+    "image": "portraits/undead_male_1.png",
+    "immunities": [
+      "poisoned"
+    ],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Willful"
+      }
+    ],
+    "name": "Immortal",
+    "names": [
+      "Lazarus",
+      "Mordred",
+      "Acheron",
+      "Thanatos",
+      "Hades",
+      "Orpheus",
+      "Lilith",
+      "Ravenna",
+      "Shade",
+      "Nyx",
+      "Morgana",
+      "Persephone"
+    ],
+    "portraits": [
+      "portraits/undead_male_1.png",
+      "portraits/undead_male_2.png",
+      "portraits/undead_male_3.png",
+      "portraits/undead_female_1.png",
+      "portraits/undead_female_2.png",
+      "portraits/undead_female_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.RatArmor",
+          "items.Sprig"
+        ],
+        [
+          "items.RatHat",
+          "items.RatArmor",
+          "items.WoodenSword"
+        ],
+        [
+          "items.RatHat",
+          "items.RatArmor",
+          "items.Sickle"
+        ]
+      ],
+      "2": [
+        [
+          "items.DeathknightHelm",
+          "items.DeathknightArmor",
+          "items.Shield"
+        ],
+        [
+          "items.DeathknightHelm",
+          "items.DeathknightArmor",
+          "items.Sword"
+        ]
+      ],
+      "3": [
+        [
+          "items.MysticalRobes",
+          "items.ElixirRaiseUndead"
+        ],
+        [
+          "items.SanguisHelm",
+          "items.SanguisArmor",
+          "items.SanguineBlade"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 10,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 2,
+      "strength": 1,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Hearty",
+        "traits.Strong",
+        "traits.Willful"
+      ],
+      "legendary": [
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Pyromancer",
+        "traits.Steady",
+        "traits.Navigator",
+        "traits.Surgeon"
+      ],
+      "never": [
+        "traits.Cook",
+        "traits.Optimist",
+        "traits.Priest"
+      ],
+      "rare": [
+        "traits.Agile",
+        "traits.Oracle",
+        "traits.Cryomancer"
+      ],
+      "uncommon": [
+        "traits.Wisdom",
+        "traits.Lucky",
+        "traits.Heroic",
+        "traits.Necromancer",
+        "traits.Bloodlust",
+        "traits.Mystic",
+        "traits.StoneSkin"
+      ]
+    }
+  },
+  "mobs.ImmortalsCaptain": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Staff"
+    ],
+    "group": "captain",
+    "image": "mobs/mobs/necromancer_idle.png",
+    "immunities": [],
+    "name": "Immortals Captain",
+    "stats": {
+      "armor": 1,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Jellyfish": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee",
+      "abilities.Shock"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/jellyfish_idle.png",
+    "immunities": [],
+    "name": "Jellyfish",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 1,
+      "will": 3
+    }
+  },
+  "mobs.Kraken": {
+    "abilities": [
+      "abilities.Dive",
+      "abilities.Melee",
+      "abilities.SpawnTentacles"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "boss",
+    "image": "mobs/mobs/kraken_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Kraken",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 42,
+      "max_mana": 4,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Mer": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Guardians of the sea.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Harpoon"
+    ],
+    "group": "crewmate",
+    "hire_cost": 45,
+    "image": "portraits/mer_male_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Heroic"
+      }
+    ],
+    "name": "Mer",
+    "names": [],
+    "portraits": [
+      "portraits/mer_male_1.png",
+      "portraits/mer_male_2.png",
+      "portraits/mer_female_1.png",
+      "portraits/mer_female_2.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.Seashellarmor",
+          "items.FinCutter"
+        ],
+        [
+          "items.ClamHelm",
+          "items.ClamArmor",
+          "items.Harpoon"
+        ],
+        [
+          "items.Seashellarmor",
+          "items.Harpoon"
+        ]
+      ],
+      "2": [
+        [
+          "items.ClamHelm",
+          "items.ClamArmor",
+          "items.Trident"
+        ],
+        [
+          "items.VenomHelm",
+          "items.VenomArmor",
+          "items.Harpoon"
+        ]
+      ],
+      "3": [
+        [
+          "items.VenomHelm",
+          "items.VenomArmor",
+          "items.Trident"
+        ],
+        [
+          "items.MerHelm",
+          "items.MerArmor",
+          "items.IvoryHarpoon"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 2,
+      "will": 2
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Hearty",
+        "traits.Strong",
+        "traits.Heroic"
+      ],
+      "legendary": [
+        "traits.Wisdom",
+        "traits.EagleEye",
+        "traits.Cryomancer",
+        "traits.Oracle",
+        "traits.Optimist",
+        "traits.Surgeon"
+      ],
+      "never": [
+        "traits.Pyromancer",
+        "traits.Necromancer"
+      ],
+      "rare": [
+        "traits.Agile",
+        "traits.Steady",
+        "traits.Mystic",
+        "traits.Cook",
+        "traits.Priest",
+        "traits.StoneSkin"
+      ],
+      "uncommon": [
+        "traits.Willful",
+        "traits.Lucky",
+        "traits.Marksman",
+        "traits.Navigator",
+        "traits.Bloodlust"
+      ]
+    }
+  },
+  "mobs.MerCaptain": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee",
+      "abilities.Geyser"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Trident"
+    ],
+    "group": "captain",
+    "image": "mobs/mobs/mer_captain_idle.png",
+    "immunities": [],
+    "name": "Mer Captain",
+    "stats": {
+      "armor": 4,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 4,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.Mimic": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.BossCharge"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "boss",
+    "image": "mobs/mobs/mimic_idle.png",
+    "immunities": [
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Mimic",
+    "stats": {
+      "armor": 20,
+      "luck": 3,
+      "max_hp": 20,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 2,
+      "strength": 5,
+      "will": 1
+    }
+  },
+  "mobs.Minotaur": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.Fear",
+      "abilities.BossCharge"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "boss",
+    "image": "mobs/mobs/minotaur_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Minotaur",
+    "stats": {
+      "armor": 2,
+      "luck": 5,
+      "max_hp": 32,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 2,
+      "strength": 5,
+      "will": 1
+    }
+  },
+  "mobs.MireQuill": {
+    "abilities": [
+      "abilities.Dive",
+      "abilities.Melee",
+      "abilities.PoisonBurst"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Blubber",
+      "items.ToughHide"
+    ],
+    "group": "whale",
+    "image": "mobs/mobs/mirequill_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Mire Quill",
+    "stats": {
+      "armor": 10,
+      "luck": 3,
+      "max_hp": 22,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Mystique": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.PoisonBurst"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Blubber",
+      "items.Blubber",
+      "items.MysticalBlubber"
+    ],
+    "group": "whale",
+    "image": "mobs/mobs/mystique_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Mystique",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 42,
+      "max_mana": 4,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 5
+    }
+  },
+  "mobs.Narwhal": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.FreezeRay",
+      "abilities.BossCharge"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Blubber",
+      "items.Blubber",
+      "items.Ivory"
+    ],
+    "group": "whale",
+    "image": "mobs/mobs/narwhal_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Narwhal",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 26,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 4,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Necromancer": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee",
+      "abilities.RaiseUndead"
+    ],
+    "description": "Merchants of life, at a cost.",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "crewmate",
+    "hire_cost": 60,
+    "image": "portraits/necromancer_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Necromancer"
+      }
+    ],
+    "name": "Necromancer",
+    "names": [
+      "Noxis",
+      "Moros"
+    ],
+    "portraits": [
+      "portraits/necromancer_1.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.RatArmor",
+          "items.Staff"
+        ],
+        [
+          "items.RatHat",
+          "items.RatArmor",
+          "items.Shroomstick"
+        ],
+        [
+          "items.RatArmor",
+          "items.Shroomstick"
+        ]
+      ],
+      "2": [
+        [
+          "items.RatHat",
+          "items.RatArmor",
+          "items.Staff"
+        ],
+        [
+          "items.DeathknightHelm",
+          "items.DeathknightArmor",
+          "items.Scepter"
+        ]
+      ],
+      "3": [
+        [
+          "items.DeathknightHelm",
+          "items.DeathknightArmor",
+          "items.Staff"
+        ],
+        [
+          "items.SanguisHelm",
+          "items.SanguisArmor",
+          "items.Scepter"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 2,
+      "strength": 1,
+      "will": 3
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Wisdom",
+        "traits.Willful",
+        "traits.Necromancer",
+        "traits.Mystic"
+      ],
+      "legendary": [
+        "traits.Strong",
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Bloodlust",
+        "traits.Steady",
+        "traits.Navigator",
+        "traits.StoneSkin"
+      ],
+      "never": [
+        "traits.Cook",
+        "traits.Optimist",
+        "traits.Heroic"
+      ],
+      "rare": [
+        "traits.Hearty",
+        "traits.Agile",
+        "traits.Priest",
+        "traits.Pyromancer",
+        "traits.Surgeon"
+      ],
+      "uncommon": [
+        "traits.Oracle",
+        "traits.Cryomancer",
+        "traits.Lucky"
+      ]
+    }
+  },
+  "mobs.Piranha": {
+    "abilities": [
+      "abilities.Leap",
+      "abilities.Bite"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Fish"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/piranha_idle.png",
+    "immunities": [],
+    "name": "Piranha",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 2,
+      "max_stamina": 3,
+      "speed": 3,
+      "strength": 2,
+      "will": 0
+    }
+  },
+  "mobs.Pirate": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Sea-raiders. Loyal to their crew, usually.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.PirateHat",
+      "items.Saber",
+      "items.Bow"
+    ],
+    "group": "crewmate",
+    "hire_cost": 40,
+    "image": "portraits/pirate_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Navigator"
+      }
+    ],
+    "name": "Pirate",
+    "names": [
+      "Bartholomew",
+      "Thomas",
+      "Redhook",
+      "Charles",
+      "Mordecai",
+      "Long Tom",
+      "Benjamin",
+      "Anne",
+      "Mary",
+      "Grace",
+      "Jacquotte",
+      "Ingela",
+      "Sayyida",
+      "Ching"
+    ],
+    "portraits": [
+      "portraits/pirate_1.png",
+      "portraits/pirate_2.png",
+      "portraits/pirate_3.png",
+      "portraits/pirate_4.png",
+      "portraits/pirate_5.png",
+      "portraits/pirate_6.png",
+      "portraits/pirate_female_1.png",
+      "portraits/pirate_female_2.png",
+      "portraits/pirate_female_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.NavigatorsJacket",
+          "items.Scimitar"
+        ],
+        [
+          "items.NavigatorsHat",
+          "items.NavigatorsJacket",
+          "items.Saber"
+        ],
+        [
+          "items.NavigatorsJacket",
+          "items.Bow"
+        ],
+        [
+          "items.Harpoon"
+        ]
+      ],
+      "2": [
+        [
+          "items.BucaneersHat",
+          "items.BucaneersCoat",
+          "items.Cutlass"
+        ],
+        [
+          "items.BucaneersHat",
+          "items.BucaneersCoat",
+          "items.Pistol"
+        ]
+      ],
+      "3": [
+        [
+          "items.SwashbucklersHat",
+          "items.SwashbucklersJacket",
+          "items.Musket"
+        ],
+        [
+          "items.PirateHat",
+          "items.SwashbucklersJacket",
+          "items.Cutlass"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 2,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Lucky",
+        "traits.Agile",
+        "traits.Navigator"
+      ],
+      "legendary": [
+        "traits.Wisdom",
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Oracle",
+        "traits.Mystic",
+        "traits.Optimist",
+        "traits.Surgeon"
+      ],
+      "never": [
+        "traits.Priest",
+        "traits.Necromancer"
+      ],
+      "rare": [
+        "traits.Willful",
+        "traits.EagleEye",
+        "traits.Steady",
+        "traits.Heroic",
+        "traits.Cook",
+        "traits.StoneSkin"
+      ],
+      "uncommon": [
+        "traits.Strong",
+        "traits.Hearty",
+        "traits.Marksman",
+        "traits.Bloodlust"
+      ]
+    }
+  },
+  "mobs.PirateBoss": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.Bullet"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Musket"
+    ],
+    "group": "boss",
+    "image": "mobs/mobs/pirate_boss_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Pirate Boss",
+    "stats": {
+      "armor": 6,
+      "luck": 3,
+      "max_hp": 16,
+      "max_mana": 3,
+      "max_stamina": 3,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.PirateCaptain": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Saber",
+      "items.PirateHat"
+    ],
+    "group": "captain",
+    "image": "mobs/mobs/pirate_captain_idle.png",
+    "immunities": [],
+    "name": "Pirate Captain",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 4,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.PoisonSpider": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee",
+      "abilities.PoisonBurst"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Silk"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/spider_poison_idle.png",
+    "immunities": [],
+    "name": "Poison Spider",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 8,
+      "max_stamina": 1,
+      "speed": 3,
+      "strength": 1,
+      "will": 1
+    }
+  },
+  "mobs.Raptor": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/raptor_idle.png",
+    "immunities": [],
+    "name": "Raptor",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 12,
+      "max_mana": 0,
+      "max_stamina": 3,
+      "speed": 3,
+      "strength": 4,
+      "will": 0
+    }
+  },
+  "mobs.RotSpout": {
+    "abilities": [
+      "abilities.Dive",
+      "abilities.Melee",
+      "abilities.PoisonBurst"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Blubber",
+      "items.Poison"
+    ],
+    "group": "whale",
+    "image": "mobs/mobs/rotspout_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Rot Spout",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 42,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Salorian": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Arctic dwellers. They survive where nothing should.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Seashellarmor",
+      "items.Harpoon"
+    ],
+    "group": "crewmate",
+    "hire_cost": 45,
+    "image": "portraits/salorian_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Cryomancer"
+      },
+      {
+        "level": 1,
+        "trait": "traits.Priest"
+      }
+    ],
+    "name": "Salorian",
+    "names": [
+      "Murgen",
+      "Gill",
+      "Glim",
+      "Slyne"
+    ],
+    "portraits": [
+      "portraits/salorian_1.png",
+      "portraits/salorian_2.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.InsulatedHood",
+          "items.InsulatedArmor",
+          "items.FinCutter"
+        ],
+        [
+          "items.Seashellarmor",
+          "items.Harpoon"
+        ],
+        [
+          "items.InsulatedArmor",
+          "items.Harpoon"
+        ]
+      ],
+      "2": [
+        [
+          "items.InsulatedHood",
+          "items.InsulatedArmor",
+          "items.Harpoon"
+        ],
+        [
+          "items.ArcticHood",
+          "items.ArcticArmor",
+          "items.Trident",
+          "items.ElixirHealth"
+        ]
+      ],
+      "3": [
+        [
+          "items.ArcticHood",
+          "items.ArcticArmor",
+          "items.Trident",
+          "items.ElixirHealth"
+        ],
+        [
+          "items.SalorianHelm",
+          "items.SalorianArmor",
+          "items.IvoryHarpoon"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 3,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 1,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Wisdom",
+        "traits.Willful",
+        "traits.Priest",
+        "traits.Mystic",
+        "traits.Cryomancer"
+      ],
+      "legendary": [
+        "traits.Strong",
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Heroic",
+        "traits.Steady",
+        "traits.Cook"
+      ],
+      "never": [
+        "traits.Pyromancer",
+        "traits.Necromancer",
+        "traits.Bloodlust"
+      ],
+      "rare": [
+        "traits.Agile",
+        "traits.Hearty",
+        "traits.Optimist",
+        "traits.Navigator",
+        "traits.StoneSkin"
+      ],
+      "uncommon": [
+        "traits.Lucky",
+        "traits.Surgeon",
+        "traits.Oracle"
+      ]
+    }
+  },
+  "mobs.Satyr": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Revelers and drummers. The wine never runs dry.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Sprig"
+    ],
+    "group": "crewmate",
+    "hire_cost": 55,
+    "image": "portraits/satyr_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.StoneSkin"
+      },
+      {
+        "level": 1,
+        "trait": "traits.Optimist"
+      }
+    ],
+    "name": "Satyr",
+    "names": [
+      "Grov",
+      "Thistle",
+      "Rowan",
+      "Bramble",
+      "Thorn"
+    ],
+    "portraits": [
+      "portraits/satyr_1.png",
+      "portraits/satyr_2.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.BriarbarkArmor",
+          "items.Sickle",
+          "items.ElixirCharge"
+        ],
+        [
+          "items.BriarbarkArmor",
+          "items.Club",
+          "items.ElixirCharge"
+        ],
+        [
+          "items.BriarbarkHelm",
+          "items.BriarbarkArmor",
+          "items.Sickle",
+          "items.ElixirCharge"
+        ]
+      ],
+      "2": [
+        [
+          "items.BriarbarkArmor",
+          "items.Club",
+          "items.ElixirCharge"
+        ],
+        [
+          "items.BriarbarkHelm",
+          "items.BriarbarkArmor",
+          "items.Axe",
+          "items.ElixirCharge"
+        ]
+      ],
+      "3": [
+        [
+          "items.LivingHelm",
+          "items.LivingArmor",
+          "items.WarClub",
+          "items.ElixirCharge"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 3,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Hearty",
+        "traits.Strong",
+        "traits.Optimist"
+      ],
+      "legendary": [
+        "traits.EagleEye",
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Priest",
+        "traits.Oracle",
+        "traits.Mystic",
+        "traits.Steady",
+        "traits.Surgeon"
+      ],
+      "never": [
+        "traits.Necromancer"
+      ],
+      "rare": [
+        "traits.Agile",
+        "traits.Wisdom",
+        "traits.Bloodlust",
+        "traits.Marksman",
+        "traits.Navigator"
+      ],
+      "uncommon": [
+        "traits.Willful",
+        "traits.Lucky",
+        "traits.Cook",
+        "traits.Heroic",
+        "traits.StoneSkin"
+      ]
+    }
+  },
+  "mobs.Scorpion": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/scorpion_idle.png",
+    "immunities": [],
+    "name": "Scorpion",
+    "stats": {
+      "armor": 6,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.Scuttler": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/scuttler_idle.png",
+    "immunities": [],
+    "name": "Scuttler",
+    "stats": {
+      "armor": 3,
+      "luck": 3,
+      "max_hp": 2,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 2,
+      "strength": 2,
+      "will": 1
+    }
+  },
+  "mobs.SeaSerpent": {
+    "abilities": [
+      "abilities.SerpentDive",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 1.0,
+    "drops": [
+      "items.Scales"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/sea_serpent_head_idle.png",
+    "immunities": [
+      "frozen",
+      "stunned"
+    ],
+    "name": "Sea Serpent",
+    "stats": {
+      "armor": 6,
+      "luck": 3,
+      "max_hp": 30,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 4,
+      "strength": 5,
+      "will": 1
+    }
+  },
+  "mobs.Shryke": {
+    "abilities": [
+      "abilities.Leap",
+      "abilities.Melee"
+    ],
+    "description": "Ruthless pillagers.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Harpoon"
+    ],
+    "group": "crewmate",
+    "hire_cost": 45,
+    "image": "portraits/shryke_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Bloodlust"
+      }
+    ],
+    "name": "Shryke",
+    "names": [
+      "Bloodbeak",
+      "Kralith",
+      "Grimquill",
+      "Skree"
+    ],
+    "portraits": [
+      "portraits/shryke_1.png",
+      "portraits/shryke_2.png",
+      "portraits/shryke_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.PlumedArmor",
+          "items.Dagger"
+        ],
+        [
+          "items.PlumedHelm",
+          "items.PlumedArmor",
+          "items.FlintSpear"
+        ],
+        [
+          "items.PlumedHelm",
+          "items.PlumedArmor",
+          "items.Boomerang"
+        ]
+      ],
+      "2": [
+        [
+          "items.PlumedHelm",
+          "items.PlumedArmor",
+          "items.Macuahuitl"
+        ],
+        [
+          "items.AvianHelm",
+          "items.AvianArmor",
+          "items.Axe",
+          "items.ElixirWhirlwind"
+        ]
+      ],
+      "3": [
+        [
+          "items.AvianHelm",
+          "items.AvianArmor",
+          "items.Macuahuitl",
+          "items.ElixirWhirlwind"
+        ],
+        [
+          "items.CheiftansHelm",
+          "items.CheiftansArmor",
+          "items.FlintSpear",
+          "items.ElixirInspire"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 1,
+      "max_stamina": 3,
+      "speed": 3,
+      "strength": 1,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Agile",
+        "traits.Strong",
+        "traits.Bloodlust"
+      ],
+      "legendary": [
+        "traits.Wisdom",
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Oracle",
+        "traits.Mystic",
+        "traits.Navigator",
+        "traits.Surgeon",
+        "traits.StoneSkin"
+      ],
+      "never": [
+        "traits.Priest",
+        "traits.Necromancer"
+      ],
+      "rare": [
+        "traits.Marksman",
+        "traits.Steady",
+        "traits.EagleEye",
+        "traits.Cook",
+        "traits.Optimist"
+      ],
+      "uncommon": [
+        "traits.Hearty",
+        "traits.Willful",
+        "traits.Lucky",
+        "traits.Heroic"
+      ]
+    }
+  },
+  "mobs.ShrykeCaptain": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Macuahuitl"
+    ],
+    "group": "captain",
+    "image": "mobs/mobs/shryke_captain_idle.png",
+    "immunities": [],
+    "name": "Shryke Captain",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 5,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Siren": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee",
+      "abilities.Charm"
+    ],
+    "description": "Devious depth dwellers.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Seashellarmor",
+      "items.Harpoon"
+    ],
+    "group": "crewmate",
+    "hire_cost": 30,
+    "image": "portraits/siren_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Wisdom"
+      }
+    ],
+    "name": "Siren",
+    "names": [
+      "Melusine",
+      "Sirena",
+      "Lorelei",
+      "Naiad"
+    ],
+    "portraits": [
+      "portraits/siren_1.png",
+      "portraits/siren_2.png",
+      "portraits/siren_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.Harpoon"
+        ],
+        [
+          "items.FinCutter",
+          "items.ElixirGeyser"
+        ],
+        [
+          "items.FinCutter"
+        ]
+      ],
+      "2": [
+        [
+          "items.MerHelm",
+          "items.Trident"
+        ],
+        [
+          "items.MerHelm",
+          "items.Harpoon"
+        ],
+        [
+          "items.MerHelm",
+          "items.ElixirGeyser"
+        ]
+      ],
+      "3": [
+        [
+          "items.SalorianHelm",
+          "items.IvoryHarpoon"
+        ],
+        [
+          "items.SalorianHelm",
+          "items.Trident"
+        ],
+        [
+          "items.SalorianHelm",
+          "items.ElixirHealth"
+        ],
+        [
+          "items.SalorianHelm",
+          "items.ElixirShield"
+        ],
+        [
+          "items.SalorianHelm",
+          "items.ElixirTorrent"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 1,
+      "will": 2
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Wisdom",
+        "traits.Agile",
+        "traits.Willful"
+      ],
+      "legendary": [
+        "traits.Strong",
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Heroic",
+        "traits.Steady",
+        "traits.Cook",
+        "traits.StoneSkin"
+      ],
+      "never": [
+        "traits.Pyromancer",
+        "traits.Necromancer",
+        "traits.Bloodlust"
+      ],
+      "rare": [
+        "traits.Lucky",
+        "traits.Hearty",
+        "traits.Optimist",
+        "traits.Surgeon"
+      ],
+      "uncommon": [
+        "traits.Oracle",
+        "traits.Cryomancer",
+        "traits.Priest",
+        "traits.Navigator",
+        "traits.Mystic"
+      ]
+    }
+  },
+  "mobs.Skeleton": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "Those who stopped paying their debt.",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "crewmate",
+    "hire_cost": 25,
+    "image": "portraits/skeleton_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 2,
+        "trait": "traits.StoneSkin"
+      },
+      {
+        "level": 1,
+        "trait": "traits.Strong"
+      }
+    ],
+    "name": "Skeleton",
+    "names": [
+      "Bones"
+    ],
+    "portraits": [
+      "portraits/skeleton_1.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.RatArmor",
+          "items.WoodenSword"
+        ],
+        [
+          "items.RatHat",
+          "items.RatArmor",
+          "items.Sickle"
+        ],
+        [
+          "items.RatArmor",
+          "items.Bow"
+        ]
+      ],
+      "2": [
+        [
+          "items.RatHat",
+          "items.RatArmor",
+          "items.Sword"
+        ],
+        [
+          "items.DeathknightHelm",
+          "items.DeathknightArmor",
+          "items.Sickle"
+        ]
+      ],
+      "3": [
+        [
+          "items.DeathknightHelm",
+          "items.DeathknightArmor",
+          "items.Sword"
+        ],
+        [
+          "items.SanguisHelm",
+          "items.SanguisArmor",
+          "items.SanguineBlade"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 3,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 1,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Hearty",
+        "traits.Strong",
+        "traits.Bloodlust",
+        "traits.StoneSkin"
+      ],
+      "legendary": [
+        "traits.Willful",
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Oracle",
+        "traits.Mystic",
+        "traits.Navigator"
+      ],
+      "never": [
+        "traits.Cook",
+        "traits.Surgeon",
+        "traits.Optimist",
+        "traits.Priest"
+      ],
+      "rare": [
+        "traits.Wisdom",
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Necromancer"
+      ],
+      "uncommon": [
+        "traits.Agile",
+        "traits.Heroic",
+        "traits.Lucky",
+        "traits.Steady"
+      ]
+    }
+  },
+  "mobs.Slaad": {
+    "abilities": [
+      "abilities.Leap",
+      "abilities.Melee"
+    ],
+    "description": "Amphibious folk of the deep marsh.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Sprig",
+      "items.Harpoon",
+      "items.Bow"
+    ],
+    "group": "crewmate",
+    "hire_cost": 40,
+    "image": "portraits/slaad_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Agile"
+      }
+    ],
+    "name": "Slaad",
+    "names": [
+      "Murk",
+      "Grist",
+      "Fen",
+      "Gorb",
+      "Lurch",
+      "Dreg"
+    ],
+    "portraits": [
+      "portraits/slaad_1.png",
+      "portraits/slaad_2.png",
+      "portraits/slaad_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.PlumedArmor",
+          "items.Sprig"
+        ],
+        [
+          "items.PlumedHelm",
+          "items.Bow"
+        ],
+        [
+          "items.PlumedHelm",
+          "items.Harpoon"
+        ]
+      ],
+      "2": [
+        [
+          "items.PlumedHelm",
+          "items.PlumedArmor",
+          "items.Harpoon"
+        ],
+        [
+          "items.PlumedArmor",
+          "items.Bow"
+        ]
+      ],
+      "3": [
+        [
+          "items.CheiftansHelm",
+          "items.CheiftansArmor",
+          "items.Macuahuitl"
+        ],
+        [
+          "items.CheiftansHelm",
+          "items.CheiftansArmor",
+          "items.FlintSpear"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 5,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 4,
+      "strength": 2,
+      "will": 1
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Agile",
+        "traits.Strong",
+        "traits.Willful",
+        "traits.Bloodlust"
+      ],
+      "legendary": [
+        "traits.Pyromancer",
+        "traits.Cryomancer",
+        "traits.Mystic",
+        "traits.Cook",
+        "traits.Navigator",
+        "traits.Optimist",
+        "traits.Surgeon"
+      ],
+      "never": [
+        "traits.Necromancer",
+        "traits.Priest"
+      ],
+      "rare": [
+        "traits.Lucky",
+        "traits.Wisdom",
+        "traits.Heroic",
+        "traits.Steady",
+        "traits.Oracle",
+        "traits.StoneSkin"
+      ],
+      "uncommon": [
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Hearty"
+      ]
+    }
+  },
+  "mobs.SlaadCaptain": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.FlintSpear"
+    ],
+    "group": "captain",
+    "image": "mobs/mobs/slaad_captain_idle.png",
+    "immunities": [],
+    "name": "Slaad Captain",
+    "stats": {
+      "armor": 1,
+      "luck": 3,
+      "max_hp": 8,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 4,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.Sogoth": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.EyeBeam"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "boss",
+    "image": "mobs/mobs/sogoth_idle.png",
+    "immunities": [
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Sogoth",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 32,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Spider": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee",
+      "abilities.Web"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Silk"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/spider_idle.png",
+    "immunities": [],
+    "name": "Spider",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.SpiderEgg": {
+    "abilities": [
+      "abilities.SpawnSpider"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Silk"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/egg_idle.png",
+    "immunities": [],
+    "name": "Spider Egg",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 3,
+      "max_stamina": 2,
+      "speed": 0,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.SpikeBack": {
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.SpikeShot",
+      "abilities.BossCharge"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Blubber",
+      "items.Spikes"
+    ],
+    "group": "whale",
+    "image": "mobs/mobs/spikeback_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Spike Back",
+    "stats": {
+      "armor": 20,
+      "luck": 3,
+      "max_hp": 26,
+      "max_mana": 3,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.SpinySpider": {
+    "abilities": [
+      "abilities.Leap",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Silk"
+    ],
+    "group": "creature",
+    "image": "mobs/mobs/spiny_spider_idle.png",
+    "immunities": [],
+    "name": "Spiny Spider",
+    "stats": {
+      "armor": 2,
+      "luck": 3,
+      "max_hp": 6,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 3,
+      "will": 1
+    }
+  },
+  "mobs.Strigoi": {
+    "abilities": [
+      "abilities.Leap",
+      "abilities.Melee"
+    ],
+    "description": "Once human, they live off the living.",
+    "drop_chance": 0.5,
+    "drops": [
+      "items.Dagger",
+      "items.Sickle"
+    ],
+    "group": "crewmate",
+    "hire_cost": 40,
+    "image": "portraits/strigoi_1.png",
+    "immunities": [],
+    "innate_traits": [
+      {
+        "level": 1,
+        "trait": "traits.Bloodlust"
+      }
+    ],
+    "name": "Strigoi",
+    "names": [
+      "Rozhin",
+      "Vadik",
+      "Krolev",
+      "Vurak",
+      "Moroi"
+    ],
+    "portraits": [
+      "portraits/strigoi_1.png",
+      "portraits/strigoi_2.png",
+      "portraits/strigoi_3.png"
+    ],
+    "starting_gear": {
+      "1": [
+        [
+          "items.RatArmor",
+          "items.Dagger"
+        ],
+        [
+          "items.RatHat",
+          "items.RatArmor",
+          "items.Sickle"
+        ],
+        [
+          "items.RatArmor",
+          "items.Sickle"
+        ]
+      ],
+      "2": [
+        [
+          "items.RatHat",
+          "items.RatArmor",
+          "items.Dagger"
+        ],
+        [
+          "items.RangersHood",
+          "items.RangersCloak",
+          "items.Sickle"
+        ]
+      ],
+      "3": [
+        [
+          "items.RangersHood",
+          "items.RangersCloak",
+          "items.Dagger"
+        ],
+        [
+          "items.SanguisHelm",
+          "items.SanguisArmor",
+          "items.SanguineBlade"
+        ]
+      ]
+    },
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 7,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 2,
+      "will": 2
+    },
+    "trait_tiers": {
+      "common": [
+        "traits.Agile",
+        "traits.Lucky",
+        "traits.Bloodlust"
+      ],
+      "legendary": [
+        "traits.Pyromancer",
+        "traits.Necromancer",
+        "traits.Oracle",
+        "traits.Mystic",
+        "traits.Navigator",
+        "traits.Surgeon"
+      ],
+      "never": [
+        "traits.Cook",
+        "traits.Optimist",
+        "traits.Priest"
+      ],
+      "rare": [
+        "traits.Wisdom",
+        "traits.Marksman",
+        "traits.EagleEye",
+        "traits.Steady",
+        "traits.Cryomancer",
+        "traits.StoneSkin"
+      ],
+      "uncommon": [
+        "traits.Willful",
+        "traits.Hearty",
+        "traits.Strong",
+        "traits.Heroic"
+      ]
+    }
+  },
+  "mobs.Turtle": {
+    "abilities": [
+      "abilities.Dive",
+      "abilities.Melee",
+      "abilities.BossCharge"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "whale",
+    "image": "mobs/mobs/turtle_idle.png",
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "name": "Turtle",
+    "stats": {
+      "armor": 20,
+      "luck": 3,
+      "max_hp": 14,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 4,
+      "will": 1
+    }
+  },
+  "mobs.Visk": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.EyeBeam"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/visk_idle.png",
+    "immunities": [],
+    "name": "Visk",
+    "stats": {
+      "armor": 1,
+      "luck": 3,
+      "max_hp": 4,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 2,
+      "will": 0
+    }
+  },
+  "mobs.Yeti": {
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "description": "",
+    "drop_chance": 0.5,
+    "drops": [],
+    "group": "creature",
+    "image": "mobs/mobs/yeti_idle.png",
+    "immunities": [],
+    "name": "Yeti",
+    "stats": {
+      "armor": 0,
+      "luck": 3,
+      "max_hp": 10,
+      "max_mana": 2,
+      "max_stamina": 2,
+      "speed": 3,
+      "strength": 3,
+      "will": 1
+    }
+  }
+}

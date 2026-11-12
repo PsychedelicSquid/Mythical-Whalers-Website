@@ -1,0 +1,149 @@
+{
+  "factions.Empire": {
+    "ally": "Fae",
+    "description": "Masters of wave and trade, the Empire spreads its banner in the name of Order. By decree there are no gods in these waters. Yet in their towers, the nobility dabbles in what they deny.",
+    "enemy": "Immortals",
+    "heralds": [
+      "Imperial Commander"
+    ],
+    "image": "factions/empire_banner.png",
+    "members": [
+      "mobs.Human",
+      "mobs.Dwarf",
+      "mobs.Alchemist",
+      "mobs.Amazon"
+    ],
+    "name": "Empire",
+    "sites": [
+      "Empire Castle",
+      "Empire Port",
+      "Dwarf Stronghold"
+    ]
+  },
+  "factions.Fae": {
+    "ally": "Empire",
+    "description": "A fellowship of forest folk bound not by law but by the old magic that runs in their blood. ",
+    "enemy": "Ravagers",
+    "heralds": [
+      "Grove Tender"
+    ],
+    "image": "factions/fae_banner.png",
+    "members": [
+      "mobs.Dryad",
+      "mobs.Gnome",
+      "mobs.Slaad",
+      "mobs.Satyr"
+    ],
+    "name": "Fae",
+    "sites": [
+      "Fae Village",
+      "Dryad City",
+      "Slaad Port"
+    ]
+  },
+  "factions.Immortals": {
+    "ally": "Ravagers",
+    "description": "From blighted reaches where old magic pooled and soured, the Immortals emerge. They speak little. Remember much. What they serve, the living cannot fathom.",
+    "enemy": "Empire",
+    "heralds": [
+      "Vampire Countess",
+      "Skeleton King"
+    ],
+    "image": "factions/immortals_banner.png",
+    "members": [
+      "mobs.Immortal",
+      "mobs.Skeleton",
+      "mobs.Strigoi",
+      "mobs.Necromancer"
+    ],
+    "name": "Immortals",
+    "sites": [
+      "Immortals Port",
+      "Immortals Town",
+      "Graveyard"
+    ]
+  },
+  "factions.Merchants": {
+    "ally": "",
+    "description": "Traders who work the sea lanes and the roads between ports, carrying whatever sells. They remember who pays fair and who takes at swordpoint.",
+    "enemy": "",
+    "heralds": [],
+    "image": "factions/merchants_banner.png",
+    "members": [],
+    "name": "Merchants",
+    "sites": []
+  },
+  "factions.Pirates": {
+    "ally": "",
+    "description": "Most pirate crews began on a whaleport deck. Captains elected by vote and plunder split even. The fairest society on the water, funded entirely by other people's work.",
+    "enemy": "",
+    "heralds": [
+      "Corsair Admiral"
+    ],
+    "image": "factions/pirate_banner.png",
+    "members": [
+      "mobs.Pirate"
+    ],
+    "name": "Pirates",
+    "sites": [
+      "Pirate Cove",
+      "Pirate Tavern"
+    ]
+  },
+  "factions.Ravagers": {
+    "ally": "Selkie",
+    "description": "From sun-scorched badlands and fetid swamps the ravagers descend upon lesser folk. Seizing plunder and binding the broken in chains, some for market, others for the pot.",
+    "enemy": "Fae",
+    "heralds": [
+      "Troll Chieftain",
+      "Brood Mother"
+    ],
+    "image": "factions/ravagers_banner.png",
+    "members": [
+      "mobs.Goblin",
+      "mobs.Shryke",
+      "mobs.Cyclops"
+    ],
+    "name": "Ravagers",
+    "sites": [
+      "Goblin City",
+      "Shryke Village",
+      "Shryke Port"
+    ]
+  },
+  "factions.Selkie": {
+    "ally": "Ravagers",
+    "description": "Guardians of the seas. Though generally peaceful, the Selkies respond with swift vengeance to those who desecrate their waters or harm the whales they consider sacred.",
+    "enemy": "Immortals",
+    "heralds": [
+      "Sea Warden"
+    ],
+    "image": "factions/selkie_banner.png",
+    "members": [
+      "mobs.Mer",
+      "mobs.Salorian",
+      "mobs.Siren",
+      "mobs.Caridian"
+    ],
+    "name": "Selkie",
+    "sites": [
+      "Mer City",
+      "Salorian Village",
+      "Caridian Camp"
+    ]
+  },
+  "factions.Whalers": {
+    "ally": "",
+    "description": "A chartered union of free tradesmen. Shares are set by charter, widows are paid, and a captain who shorts his crew never sails again. The tryworks must be fed.",
+    "enemy": "",
+    "heralds": [
+      "Harbor Master"
+    ],
+    "image": "factions/whalers_banner.png",
+    "members": [],
+    "name": "Whalers",
+    "sites": [
+      "Whaling Port"
+    ]
+  }
+}

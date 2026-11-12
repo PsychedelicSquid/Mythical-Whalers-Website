@@ -1,0 +1,736 @@
+{
+  "abilities.Arrow": {
+    "base_stats": {
+      "damage": 2,
+      "piercing": 0,
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "Fire an arrow at an enemy.",
+    "image": "abilities/images/ArrowStrike.png",
+    "mana_cost": 0,
+    "name": "Arrow",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "ranged"
+  },
+  "abilities.Berserker": {
+    "base_stats": {
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "Doubles an ally's strength.",
+    "image": "abilities/images/juggernaut.png",
+    "mana_cost": 2,
+    "name": "Berserker",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Berserk"
+    ],
+    "type": ""
+  },
+  "abilities.Bite": {
+    "base_stats": {
+      "damage": 0,
+      "piercing": 0
+    },
+    "damage_type": "",
+    "description": "Physical damage. On hit, latches onto the target and is dragged along when they move.",
+    "image": "abilities/images/fist.png",
+    "mana_cost": 0,
+    "name": "Bite",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Latched"
+    ],
+    "type": "melee"
+  },
+  "abilities.Boomerang": {
+    "base_stats": {
+      "damage": 1,
+      "piercing": 0,
+      "range": 6
+    },
+    "damage_type": "",
+    "description": "Throw a boomerang that bounces between enemies.",
+    "image": "abilities/images/boomerang.png",
+    "mana_cost": 0,
+    "name": "Boomerang",
+    "stamina_cost": 2,
+    "status_effects": [],
+    "type": "ranged"
+  },
+  "abilities.BossCharge": {
+    "base_stats": {
+      "damage": 0,
+      "range": 5
+    },
+    "damage_type": "",
+    "description": "Rush in a straight line, trampling all in the path.",
+    "image": "abilities/images/earth_shatter.png",
+    "mana_cost": 0,
+    "name": "Boss Charge",
+    "stamina_cost": 2,
+    "status_effects": [],
+    "type": "melee"
+  },
+  "abilities.BossMove": {
+    "base_stats": {},
+    "damage_type": "",
+    "description": "Move to a nearby tile. Scales with Speed.",
+    "image": "abilities/images/move.png",
+    "mana_cost": 0,
+    "name": "Boss Move",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.Bullet": {
+    "base_stats": {
+      "damage": 2,
+      "piercing": 0,
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "Fire a bullet at an enemy.",
+    "image": "abilities/images/ArrowStrike.png",
+    "mana_cost": 0,
+    "name": "Bullet",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "ranged"
+  },
+  "abilities.ChainLightning": {
+    "base_stats": {
+      "damage": 3,
+      "range": 5
+    },
+    "damage_type": "lightning",
+    "description": "Lightning arcs between nearby enemies, weakening with each jump. Scales with Will.",
+    "image": "abilities/images/Shock.png",
+    "mana_cost": 2,
+    "name": "Chain Lightning",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.Charge": {
+    "base_stats": {
+      "damage": 2
+    },
+    "damage_type": "",
+    "description": "Rush forward, damaging all in your path. Damage scales with Strength, range with Speed.",
+    "image": "abilities/images/charge.png",
+    "mana_cost": 0,
+    "name": "Charge",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "melee"
+  },
+  "abilities.Charm": {
+    "base_stats": {
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "Beguile an enemy: for 2 turns it fights for your side. Pits your Will against theirs; some minds cannot be swayed.",
+    "image": "abilities/images/charm.png",
+    "mana_cost": 2,
+    "name": "Charm",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Charmed"
+    ],
+    "type": ""
+  },
+  "abilities.Cleave": {
+    "base_stats": {
+      "damage": 0,
+      "piercing": 0
+    },
+    "damage_type": "",
+    "description": "Hit the target and adjacent enemies in an arc. Scales with Strength.",
+    "image": "abilities/images/Cleave.png",
+    "mana_cost": 0,
+    "name": "Cleave",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "melee"
+  },
+  "abilities.Dive": {
+    "base_stats": {},
+    "damage_type": "",
+    "description": "Vanish and reappear at a chosen tile.",
+    "image": "",
+    "mana_cost": 0,
+    "name": "Dive",
+    "stamina_cost": 2,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.EarthShatter": {
+    "base_stats": {
+      "damage": 0,
+      "radius": 3
+    },
+    "damage_type": "earth",
+    "description": "Slam the ground in a cone, with a 50% chance to stun each target. Scales with Strength.",
+    "image": "abilities/images/earth_shatter.png",
+    "mana_cost": 0,
+    "name": "Earth Shatter",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Stunned"
+    ],
+    "type": "melee"
+  },
+  "abilities.EyeBeam": {
+    "base_stats": {
+      "damage": 2,
+      "range": 4
+    },
+    "damage_type": "fire",
+    "description": "Fire a searing beam at a foe in range. Scales with Will.",
+    "image": "abilities/images/stone_skin.png",
+    "mana_cost": 0,
+    "name": "Eye Beam",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.Fear": {
+    "base_stats": {
+      "radius": 3
+    },
+    "damage_type": "",
+    "description": "A dreadful bellow! Nearby enemies flee in terror on their next turn. The heroic may resist; cowards flee longer.",
+    "image": "abilities/images/BrokenArmor.png",
+    "mana_cost": 2,
+    "name": "Fear",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Feared"
+    ],
+    "type": ""
+  },
+  "abilities.FireBall": {
+    "base_stats": {
+      "damage": 2,
+      "radius": 2,
+      "range": 4
+    },
+    "damage_type": "fire",
+    "description": "Hurl a fireball that ignites an area. Scales with Will.",
+    "image": "abilities/images/fireball.png",
+    "mana_cost": 2,
+    "name": "Fire Ball",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Burning"
+    ],
+    "type": "magic"
+  },
+  "abilities.FireBomb": {
+    "base_stats": {
+      "damage": 3,
+      "radius": 2,
+      "range": 5
+    },
+    "damage_type": "fire",
+    "description": "Throw an explosive that ignites an area. Single use.",
+    "image": "items/artifact/weapons/fire_bomb.png",
+    "mana_cost": 0,
+    "name": "Fire Bomb",
+    "stamina_cost": 2,
+    "status_effects": [
+      "effects.Burning"
+    ],
+    "type": "thrown"
+  },
+  "abilities.FireBreath": {
+    "base_stats": {
+      "damage": 2,
+      "radius": 2
+    },
+    "damage_type": "fire",
+    "description": "Breathe fire in a cone, igniting tiles. Scales with Will.",
+    "image": "abilities/images/fire_breath.png",
+    "mana_cost": 1,
+    "name": "Fire Breath",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Burning"
+    ],
+    "type": "magic"
+  },
+  "abilities.FreezeRay": {
+    "base_stats": {
+      "damage": 2,
+      "range": 4
+    },
+    "damage_type": "ice",
+    "description": "Fire a freezing beam that immobilizes the target. Scales with Will.",
+    "image": "abilities/images/frost_bolt.png",
+    "mana_cost": 1,
+    "name": "Freeze Ray",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Frozen"
+    ],
+    "type": "magic"
+  },
+  "abilities.FrostBolt": {
+    "base_stats": {
+      "damage": 2,
+      "range": 6
+    },
+    "damage_type": "ice",
+    "description": "Fire an icy bolt. Scales with Will.",
+    "image": "abilities/images/frost_bolt.png",
+    "mana_cost": 1,
+    "name": "Frost Bolt",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.FrostBreath": {
+    "base_stats": {
+      "damage": 1,
+      "radius": 4
+    },
+    "damage_type": "ice",
+    "description": "Exhale ice in a cone, freezing enemies. Scales with Will.",
+    "image": "abilities/images/frost_breath.png",
+    "mana_cost": 2,
+    "name": "Frost Breath",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Frozen"
+    ],
+    "type": "magic"
+  },
+  "abilities.Geyser": {
+    "base_stats": {
+      "damage": 1,
+      "range": 7
+    },
+    "damage_type": "",
+    "description": "Launch an enemy with a column of water. Scales with Will.",
+    "image": "abilities/images/Geyser.png",
+    "mana_cost": 1,
+    "name": "Geyser",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.Haste": {
+    "base_stats": {
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "Grant an ally bonus speed and stamina for 3 turns.",
+    "image": "abilities/images/Haste.png",
+    "mana_cost": 3,
+    "name": "Haste",
+    "stamina_cost": 2,
+    "status_effects": [
+      "effects.Haste"
+    ],
+    "type": ""
+  },
+  "abilities.Heal": {
+    "base_stats": {
+      "healing": 3,
+      "range": 7
+    },
+    "damage_type": "",
+    "description": "Restore an ally's health.",
+    "image": "abilities/images/HealthBoost.png",
+    "mana_cost": 2,
+    "name": "Heal",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.IceWall": {
+    "base_stats": {
+      "range": 8
+    },
+    "damage_type": "",
+    "description": "Create a wall of ice that blocks movement.",
+    "image": "abilities/images/EmergeIceWall.png",
+    "mana_cost": 1,
+    "name": "Ice Wall",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.Inspire": {
+    "base_stats": {
+      "radius": 3
+    },
+    "damage_type": "",
+    "description": "Rally nearby allies: +1 Strength, Luck, Will and Speed for 3 turns, and shakes off fear.",
+    "image": "abilities/images/AttackBoost.png",
+    "mana_cost": 2,
+    "name": "Inspire",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Inspired"
+    ],
+    "type": ""
+  },
+  "abilities.Leap": {
+    "base_stats": {},
+    "damage_type": "",
+    "description": "Jump to a tile ignoring obstacles. Scales with Speed.",
+    "image": "abilities/images/Leap.png",
+    "mana_cost": 0,
+    "name": "Leap",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "movement"
+  },
+  "abilities.MagicBolt": {
+    "base_stats": {
+      "damage": 1,
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "A bolt of raw magic. Scales with Will.",
+    "image": "abilities/images/ArrowStrike.png",
+    "mana_cost": 1,
+    "name": "Magic Bolt",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.MagicShield": {
+    "base_stats": {
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "Grant an ally armor for 3 turns. Scales with Will.",
+    "image": "abilities/images/magic_shield.png",
+    "mana_cost": 2,
+    "name": "Magic Shield",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.MagicArmor"
+    ],
+    "type": ""
+  },
+  "abilities.Melee": {
+    "base_stats": {
+      "damage": 0,
+      "piercing": 0
+    },
+    "damage_type": "",
+    "description": "Physical damage. Scales with Strength.",
+    "image": "abilities/images/fist.png",
+    "mana_cost": 0,
+    "name": "Melee",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "melee"
+  },
+  "abilities.Move": {
+    "base_stats": {},
+    "damage_type": "",
+    "description": "Move to a nearby tile. Scales with Speed.",
+    "image": "abilities/images/move.png",
+    "mana_cost": 0,
+    "name": "Move",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.PhantomArrow": {
+    "base_stats": {
+      "damage": 0,
+      "piercing": 1,
+      "range": 8
+    },
+    "damage_type": "",
+    "description": "Conjure a magical arrow that passes through armor. Scales with Will.",
+    "image": "abilities/images/ArrowStrike.png",
+    "mana_cost": 1,
+    "name": "Phantom Arrow",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.PoisonBomb": {
+    "base_stats": {
+      "damage": 3,
+      "radius": 2,
+      "range": 5
+    },
+    "damage_type": "",
+    "description": "Throw a flask that poisons an area. Single use.",
+    "image": "items/artifact/weapons/poison_bomb.png",
+    "mana_cost": 0,
+    "name": "Poison Bomb",
+    "stamina_cost": 2,
+    "status_effects": [
+      "effects.Poisoned"
+    ],
+    "type": "thrown"
+  },
+  "abilities.PoisonBurst": {
+    "base_stats": {
+      "damage": 2,
+      "radius": 2,
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "Spray venom that poisons an area. Scales with Will.",
+    "image": "abilities/images/venom.png",
+    "mana_cost": 2,
+    "name": "Poison Burst",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Poisoned"
+    ],
+    "type": "magic"
+  },
+  "abilities.RaiseUndead": {
+    "base_stats": {},
+    "damage_type": "",
+    "description": "Raise a skeleton ally.",
+    "image": "abilities/images/SummonUndead.png",
+    "mana_cost": 2,
+    "name": "Raise Undead",
+    "stamina_cost": 2,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.Resurrect": {
+    "base_stats": {
+      "healing": 5,
+      "range": 7
+    },
+    "damage_type": "",
+    "description": "Revive a fallen ally and return them to the fight.",
+    "image": "abilities/images/Ressurect.png",
+    "mana_cost": 3,
+    "name": "Resurrect",
+    "stamina_cost": 2,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.Sanctuary": {
+    "base_stats": {
+      "healing": 2,
+      "radius": 3
+    },
+    "damage_type": "",
+    "description": "A blessing washes over nearby allies, restoring health. Scales with Will.",
+    "image": "abilities/images/HealthBoost.png",
+    "mana_cost": 2,
+    "name": "Sanctuary",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.SerpentDive": {
+    "base_stats": {},
+    "damage_type": "",
+    "description": "Vanish and reappear at a chosen tile.",
+    "image": "",
+    "mana_cost": 0,
+    "name": "Serpent Dive",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.Shock": {
+    "base_stats": {
+      "damage": 1,
+      "range": 3
+    },
+    "damage_type": "",
+    "description": "Damage all enemies in a cross around you. Scales with Will.",
+    "image": "abilities/images/Shock.png",
+    "mana_cost": 1,
+    "name": "Shock",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.SpawnCorruptedTentacle": {
+    "base_stats": {},
+    "damage_type": "",
+    "description": "Force a tentacle up through the deck. Twice a turn, while mana lasts.",
+    "image": "",
+    "mana_cost": 1,
+    "name": "Spawn Corrupted Tentacle",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.SpawnSpider": {
+    "base_stats": {},
+    "damage_type": "",
+    "description": "Call a spider to the fight.",
+    "image": "",
+    "mana_cost": 1,
+    "name": "Spawn Spider",
+    "stamina_cost": 2,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.SpawnTentacles": {
+    "base_stats": {},
+    "damage_type": "",
+    "description": "Call a tentacle up from the deep.",
+    "image": "",
+    "mana_cost": 1,
+    "name": "Spawn Tentacles",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.SpikeShot": {
+    "base_stats": {
+      "damage": 2,
+      "range": 5
+    },
+    "damage_type": "",
+    "description": "Fling a spike at a distant foe.",
+    "image": "",
+    "mana_cost": 0,
+    "name": "Spike Shot",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "ranged"
+  },
+  "abilities.Sting": {
+    "base_stats": {
+      "damage": 0,
+      "piercing": 0
+    },
+    "damage_type": "",
+    "description": "Physical damage. Poisons the target. Scales with Strength.",
+    "image": "abilities/images/fist.png",
+    "mana_cost": 0,
+    "name": "Sting",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Poisoned"
+    ],
+    "type": "melee"
+  },
+  "abilities.Stormpearl": {
+    "base_stats": {
+      "range": 7
+    },
+    "damage_type": "",
+    "description": "Hurl a stormpearl that bursts on impact, shoving surrounding mobs back. Knockback scales with will.",
+    "image": "abilities/images/stormpearl.png",
+    "mana_cost": 2,
+    "name": "Stormpearl",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.ThrowHarpoon": {
+    "base_stats": {
+      "damage": 2,
+      "piercing": 0,
+      "range": 3
+    },
+    "damage_type": "",
+    "description": "Hurl a harpoon. Scales with Strength.",
+    "image": "abilities/images/ArrowStrike.png",
+    "mana_cost": 0,
+    "name": "Throw Harpoon",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "thrown"
+  },
+  "abilities.ThrowPearl": {
+    "base_stats": {
+      "knockback": 2,
+      "range": 5
+    },
+    "damage_type": "",
+    "description": "Throw a stormpearl that bursts on impact, pushing surrounding mobs back. Single use.",
+    "image": "items/artifact/weapons/storm_pearl.png",
+    "mana_cost": 0,
+    "name": "Throw Pearl",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "thrown"
+  },
+  "abilities.Thrust": {
+    "base_stats": {
+      "damage": 0,
+      "piercing": 0
+    },
+    "damage_type": "",
+    "description": "Strike a target up to 2 tiles away. Scales with Strength.",
+    "image": "abilities/images/thrust.png",
+    "mana_cost": 0,
+    "name": "Thrust",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "melee"
+  },
+  "abilities.TonguePull": {
+    "base_stats": {
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "Lash out with the tongue and reel the target in.",
+    "image": "abilities/images/SlaadTongue.png",
+    "mana_cost": 0,
+    "name": "Tongue Pull",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": ""
+  },
+  "abilities.Torrent": {
+    "base_stats": {
+      "damage": 2,
+      "knockback": 3,
+      "range": 2
+    },
+    "damage_type": "",
+    "description": "Blast a target with a jet of water, knocking them back. Scales with Will.",
+    "image": "abilities/images/Geyser.png",
+    "mana_cost": 1,
+    "name": "Torrent",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "magic"
+  },
+  "abilities.Web": {
+    "base_stats": {
+      "damage": 0,
+      "range": 4
+    },
+    "damage_type": "",
+    "description": "Spit a web that slows the target.",
+    "image": "abilities/images/boomerang.png",
+    "mana_cost": 1,
+    "name": "Web",
+    "stamina_cost": 1,
+    "status_effects": [
+      "effects.Slow"
+    ],
+    "type": "ranged"
+  },
+  "abilities.Whirlwind": {
+    "base_stats": {
+      "damage": 1
+    },
+    "damage_type": "",
+    "description": "Spin and strike every adjacent tile. Scales with Strength.",
+    "image": "abilities/images/Cleave.png",
+    "mana_cost": 0,
+    "name": "Whirlwind",
+    "stamina_cost": 1,
+    "status_effects": [],
+    "type": "melee"
+  }
+}
