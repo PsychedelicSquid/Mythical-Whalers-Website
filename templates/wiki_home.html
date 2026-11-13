@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% from "wiki_parts.html" import category_tile %}
+{% block main %}
+    <section class="win">
+      <div class="win-head"><h1>{{ page.title }}</h1></div>
+      <div class="win-mid stack">
+        <p>{{ total }} entries, read from the game itself. Matches game version {{ version }}.</p>
+        <div class="row">
+          <input class="field" id="wiki-search" type="search" placeholder="Search the Wiki" aria-label="Search the Wiki" data-search="/wiki/search.json" data-results="#wiki-results" autocomplete="off">
+        </div>
+        <div class="cards" id="wiki-results" hidden></div>
+      </div>
+{% for group in groups %}
+      <div class="{% if loop.last %}win-foot{% else %}win-mid{% endif %} stack">
+        <h2 class="label">{{ group.title }}</h2>
+        <div class="cats">
+{% for category in group.categories %}
+{{ category_tile(category) }}
+{% endfor %}
+        </div>
+      </div>
+{% endfor %}
+    </section>
+{% endblock %}

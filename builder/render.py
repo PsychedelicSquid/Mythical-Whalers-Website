@@ -12,6 +12,7 @@ from markupsafe import Markup, escape
 from PIL import Image
 
 from builder import config
+from builder import wiki
 
 
 def has_exact_name(folder, name):
@@ -246,12 +247,26 @@ def render_all(pages, outputs, problems):
     environment = make_environment()
     site = site_context(outputs)
 
+    # The Wiki is built first so the other pages can link to its categories.
+    try:
+        wiki_addresses, site["wiki"] = wiki.build(environment, site, outputs, problems)
+    except jinja2.TemplateError as error:
+        problems.append("the Wiki: %s: %s" % (type(error).__name__, error))
+        return
+    if not wiki_addresses:
+        # No game data has been extracted: leave the Wiki out of the navigation.
+        without_wiki = []
+        for item in site["nav"]:
+            if item["section"] != "wiki":
+                without_wiki.append(item)
+        site["nav"] = without_wiki
+
     views = {}
     for page in pages:
         views[page["url"]] = page_view(page, problems)
     posts = link_posts(pages, views)
 
-    sitemap_addresses = []
+    sitemap_addresses = list(wiki_addresses)
     for page in pages:
         view = views[page["url"]]
         helpers = BodyHelpers(page, problems)

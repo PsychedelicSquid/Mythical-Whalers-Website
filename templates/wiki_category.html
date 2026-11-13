@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% from "wiki_parts.html" import icon %}
+{% block main %}
+    <p class="crumbs"><a href="/wiki/">Wiki</a> &gt; {{ category.title }}</p>
+    <section class="win">
+      <div class="win-head has-x">
+        <h1>{{ category.title }}</h1>
+        <a class="win-x" href="/wiki/" aria-label="Close: back to the Wiki"></a>
+      </div>
+      <div class="win-mid stack">
+        <p>{{ category.count }} entries. {{ category.intro }}</p>
+        <div class="row">
+          <input class="field" id="wiki-filter" type="search" placeholder="Filter {{ category.title|lower }}" aria-label="Filter {{ category.title|lower }}" data-filter="#wiki-cards" data-none="#wiki-none" autocomplete="off">
+        </div>
+      </div>
+      <div class="win-foot stack">
+        <div class="cards" id="wiki-cards">
+{% for entry in category.entries %}
+          <a class="card tip entry-card" href="{{ entry.url }}" data-name="{{ entry.name|lower }}">
+            {{ icon(entry, entry.card_zoom) }}
+            <span><b>{{ entry.name }}</b>{% if entry.summary %}<span>{{ entry.summary }}</span>{% endif %}</span>
+          </a>
+{% endfor %}
+        </div>
+        <p class="dim" id="wiki-none" hidden>Nothing here has that in its name.</p>
+      </div>
+    </section>
+{% endblock %}

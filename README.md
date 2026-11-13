@@ -21,9 +21,19 @@ After the game changes, run this instead:
 
     python build.py --extract
 
-It first copies art out of the game repository, which it expects beside this
-one at `..\Mythical-Whalers`, into `game/`. It only reads the game repository.
-Read `git diff game/` before committing.
+It first reads the game repository, which it expects beside this one at
+`..\Mythical-Whalers`, and writes what the site needs into `game/`: the game's
+content as JSON in `game/data/` and its art in `game/images/`. It only reads
+the game repository and never runs it. Read `git diff game/` before committing:
+that diff is everything the update would change on the site.
+
+## The Wiki
+
+Every page under `/wiki/` is generated from `game/data/`. It shows what the
+in-game Bestiary shows: creatures, crewmate races, weapons, armor, consumables,
+cargo, ship upgrades, factions and traits, plus the abilities and status
+effects they use. To take a category off the site, set its `enabled` to False
+in `WIKI_CATEGORIES` in `builder/config.py`.
 
 ## Preview
 
@@ -38,7 +48,7 @@ Then open http://localhost:8000/.
     templates/     page layouts; base.html holds the <head> and page shell
     content/pages/ the pages: words, and the pictures that belong to them
     static/        copied to docs/ unchanged: stylesheet, script, CNAME
-    game/          art and fonts copied from the game by --extract
+    game/          data, art and fonts read from the game by --extract
     docs/          generated; served by GitHub Pages
 
 ## Adding a devlog post

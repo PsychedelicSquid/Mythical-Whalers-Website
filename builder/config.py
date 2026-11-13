@@ -27,9 +27,82 @@ STYLESHEET = "css/site.css"
 # section matches the page being shown is drawn as selected.
 NAV = [
     {"label": "Home", "url": "/", "section": "home"},
+    {"label": "Wiki", "url": "/wiki/", "section": "wiki"},
     {"label": "Devlog", "url": "/devlog/", "section": "devlog"},
     {"label": "Team", "url": "/team/", "section": "team"},
 ]
+
+# ---------------------------------------------------------------------------
+# The Wiki. One row per category. Set "enabled" to False to take a category
+# off the site: its pages are not built and links to its entries become plain
+# text. The Wiki follows the in-game Bestiary's tabs; its Mobs tab is split by
+# "group" into five.
+#   source   the file in game/data the entries come from
+#   group    for mobs: crewmate, whale, boss, captain or creature
+#   tab      for items: the Bestiary tab
+# ---------------------------------------------------------------------------
+WIKI_CATEGORIES = [
+    {"key": "crewmates", "title": "Crewmates", "source": "mobs", "group": "crewmate", "enabled": True,
+     "intro": "The races you can hire. Each has its own stats, traits and starting gear."},
+    {"key": "whales", "title": "Whales", "source": "mobs", "group": "whale", "enabled": True,
+     "intro": "The whales of the Shrouded Seas."},
+    {"key": "bosses", "title": "Bosses", "source": "mobs", "group": "boss", "enabled": True,
+     "intro": "The largest things you can fight."},
+    {"key": "captains", "title": "Captains", "source": "mobs", "group": "captain", "enabled": True,
+     "intro": "The captains who lead other crews."},
+    {"key": "creatures", "title": "Creatures", "source": "mobs", "group": "creature", "enabled": True,
+     "intro": "Everything else that fights."},
+    {"key": "weapons", "title": "Weapons", "source": "items", "tab": "Weapons", "enabled": True,
+     "intro": "A weapon gives the crewmate holding it an ability and stat bonuses."},
+    {"key": "armor", "title": "Armor", "source": "items", "tab": "Armor", "enabled": True,
+     "intro": "Worn on the head, chest or feet."},
+    {"key": "consumables", "title": "Consumables", "source": "items", "tab": "Consumables", "enabled": True,
+     "intro": "Elixirs, tonics, mushrooms and potions."},
+    {"key": "cargo", "title": "Cargo", "source": "items", "tab": "Cargo", "enabled": True,
+     "intro": "What you carry, eat, sell and brew."},
+    {"key": "ship-upgrades", "title": "Ship upgrades", "source": "items", "tab": "Upgrades", "enabled": True,
+     "intro": "Fittings for your ship."},
+    {"key": "traits", "title": "Traits", "source": "traits", "enabled": True,
+     "intro": "What makes one crewmate different from another."},
+    {"key": "abilities", "title": "Abilities", "source": "abilities", "enabled": True,
+     "intro": "What a crewmate or creature can do on its turn."},
+    {"key": "status-effects", "title": "Status effects", "source": "effects", "enabled": True,
+     "intro": "What an ability can leave on its target."},
+    {"key": "factions", "title": "Factions", "source": "factions", "enabled": True,
+     "intro": "The powers of the Shrouded Seas."},
+]
+
+# How the Wiki's front page groups the categories.
+WIKI_GROUPS = [
+    {"title": "Bestiary", "keys": ["crewmates", "whales", "bosses", "captains", "creatures"]},
+    {"title": "Gear", "keys": ["weapons", "armor", "consumables", "cargo", "ship-upgrades"]},
+    {"title": "Crew and combat", "keys": ["traits", "abilities", "status-effects", "factions"]},
+]
+
+# The entry whose picture stands for each category on its tile. A category
+# not listed here, or whose entry is gone, shows its first entry.
+WIKI_TILE_PICTURES = {
+    "crewmates": "mobs.Salorian",
+    "whales": "mobs.Narwhal",
+    "bosses": "mobs.Kraken",
+    "captains": "mobs.PirateCaptain",
+    "creatures": "mobs.Spider",
+    "weapons": "items.Cutlass",
+    "armor": "items.SalorianArmor",
+    "consumables": "items.ElixirHealth",
+    "cargo": "items.ZypherBlubber",
+    "ship-upgrades": "items.Spyglass",
+    "traits": "traits.Hearty",
+    "abilities": "abilities.FireBreath",
+    "status-effects": "effects.Burning",
+    "factions": "factions.Selkie",
+}
+
+# The categories the home page shows.
+HOME_WIKI_CATEGORIES = ["crewmates", "whales", "weapons", "traits"]
+
+# The order a race's level-up traits are listed in (traits.TIER_WEIGHTS).
+TRAIT_TIERS = ["common", "uncommon", "rare", "legendary", "never"]
 
 # ---------------------------------------------------------------------------
 # The game repository. Read by `python build.py --extract`, never written to.

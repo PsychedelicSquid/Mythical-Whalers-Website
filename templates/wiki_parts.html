@@ -1,0 +1,34 @@
+{# Pieces the Wiki layouts share. A "thing" is an entry or a link to one:
+   it has icon, style, frame and name. #}
+
+{% macro icon(thing, zoom) %}
+{% if thing.icon %}
+{% if thing.style == "slot" %}
+<span class="slot"><img src="{{ thing.icon.url }}" width="{{ thing.icon.width }}" height="{{ thing.icon.height }}" alt=""></span>
+{% elif thing.style == "portrait" %}
+<span class="portrait"><img src="{{ thing.icon.url }}" width="{{ thing.icon.width }}" height="{{ thing.icon.height }}" alt=""></span>
+{% elif thing.style == "banner" %}
+<span class="banner"><img src="{{ thing.icon.url }}" width="{{ thing.icon.width }}" height="{{ thing.icon.height }}" alt=""></span>
+{% elif thing.style == "sprite" %}
+<span class="sprite" style="--w:{{ thing.frame }}; --zoom:{{ zoom }}; background-image:url({{ thing.icon.url }})"></span>
+{% elif thing.style == "small" %}
+<img class="mini" style="--w:{{ thing.icon.width }}" src="{{ thing.icon.url }}" width="{{ thing.icon.width }}" height="{{ thing.icon.height }}" alt="">
+{% endif %}
+{% endif %}
+{% endmacro %}
+
+{# One link in a row of links: its icon, its name, and a note such as x2. #}
+{% macro chip(item) %}
+{% if item.url %}
+<a class="chip" href="{{ item.url }}">{{ icon(item, item.card_zoom) }}<span>{{ item.name }}{% if item.note %} <span class="dim">{{ item.note }}</span>{% endif %}</span></a>
+{% else %}
+<span class="chip">{{ icon(item, item.card_zoom) }}<span>{{ item.name }}{% if item.note %} <span class="dim">{{ item.note }}</span>{% endif %}</span></span>
+{% endif %}
+{% endmacro %}
+
+{% macro category_tile(category) %}
+          <a class="cat tip" href="{{ category.url }}">
+            <span class="cat-art">{{ icon(category.sample, category.sample.card_zoom) }}</span>
+            <span><b>{{ category.title }}</b><span>{{ category.count }} entries</span></span>
+          </a>
+{% endmacro %}

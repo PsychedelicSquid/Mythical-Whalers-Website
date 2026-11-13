@@ -45,6 +45,10 @@
 
 * { box-sizing: border-box; }
 
+/* The hidden attribute hides an element whatever display its class gives it.
+   Without this rule a card (display: flex) stays visible when the filter hides it. */
+[hidden] { display: none !important; }
+
 html { background: var(--charcoal); }
 
 body {
@@ -118,13 +122,18 @@ img { max-width: 100%; height: auto; }
 
 /* A four-frame sprite strip, 250 ms a frame, like tools.animate_strip. */
 .sprite {
-  width: calc(var(--w) * 1px * var(--px));
-  height: calc(var(--w) * 1px * var(--px));
+  display: block;
+  flex: none;
+  width: calc(var(--w) * var(--zoom, 1) * 1px * var(--px));
+  height: calc(var(--w) * var(--zoom, 1) * 1px * var(--px));
   background-repeat: no-repeat;
-  background-size: calc(var(--w) * 4px * var(--px)) 100%;
+  background-size: calc(var(--w) * var(--zoom, 1) * 4px * var(--px)) 100%;
   animation: strip 1s steps(4) infinite;
 }
-@keyframes strip { to { background-position-x: calc(var(--w) * -4px * var(--px)); } }
+@keyframes strip { to { background-position-x: calc(var(--w) * var(--zoom, 1) * -4px * var(--px)); } }
+
+/* A small icon, such as a status effect's, at the site's pixel size. */
+.mini { flex: none; width: calc(var(--w) * 1px * var(--px)); height: auto; }
 
 /* ------------------------------------------------------------------ */
 /* Frames: the pieces in images/gui                                    */
@@ -211,6 +220,41 @@ img { max-width: 100%; height: auto; }
 }
 .btn:hover, .btn:focus-visible { border-image-source: url(/images/gui/btn-hover.png); color: var(--yellow); }
 .btn[aria-current], .btn.is-on { border-image-source: url(/images/gui/btn-selected.png); color: var(--cream); }
+
+/* An item slot: a 32-pixel icon sits 5 pixels in from each edge. The icon is
+   drawn at its own height, as the game blits it: three trait icons are 33
+   pixels tall and run one pixel onto the frame's lower rim. */
+.slot {
+  display: inline-block;
+  flex: none;
+  width: calc(42px * var(--px));
+  height: calc(42px * var(--px));
+  padding: calc(5px * var(--px));
+  background: url(/images/gui/slot.png) 0 0 / 100% 100% no-repeat;
+}
+.slot > img { display: block; width: calc(32px * var(--px)); height: auto; }
+a:hover > .slot, a:focus-visible > .slot { background-image: url(/images/gui/slot-hover.png); }
+
+/* A portrait frame (48-pixel portrait) and a faction banner frame (48x64). */
+.portrait {
+  display: inline-block;
+  flex: none;
+  width: calc(58px * var(--px));
+  height: calc(58px * var(--px));
+  padding: calc(5px * var(--px));
+  background: url(/images/gui/portrait.png) 0 0 / 100% 100% no-repeat;
+}
+.portrait > img { display: block; width: calc(48px * var(--px)); height: calc(48px * var(--px)); }
+a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images/gui/portrait-hover.png); }
+.banner {
+  display: inline-block;
+  flex: none;
+  width: calc(58px * var(--px));
+  height: calc(74px * var(--px));
+  padding: calc(5px * var(--px));
+  background: url(/images/gui/banner.png) 0 0 / 100% 100% no-repeat;
+}
+.banner > img { display: block; width: calc(48px * var(--px)); height: calc(64px * var(--px)); }
 
 .rule {
   height: calc(5px * var(--px));
@@ -338,6 +382,67 @@ a.card:hover, a.card:focus-visible { color: var(--cream); }
 @media (min-width: 760px) {
   .member { grid-template-columns: calc(64px * var(--px)) minmax(0, 1fr); }
 }
+
+/* ------------------------------------------------------------------ */
+/* Wiki                                                                */
+/* ------------------------------------------------------------------ */
+
+.crumbs { padding: calc(4px * var(--px)) calc(12px * var(--px) - 16px) 0; color: var(--mist); }
+h2.label { font: 400 calc(16px * var(--px)) / calc(16px * var(--px)) var(--font-body); color: var(--olive); text-transform: uppercase; }
+
+/* A text box drawn with the button frame. */
+.field {
+  flex: 1 1 calc(110px * var(--px));
+  min-width: 0;
+  max-width: calc(280px * var(--px));
+  height: calc(25px * var(--px));
+  border-style: solid;
+  border-color: transparent;
+  border-width: calc(6px * var(--px)) calc(7px * var(--px));
+  border-image: url(/images/gui/btn.png) 12 8 12 8 fill / calc(12px * var(--px)) calc(8px * var(--px)) stretch;
+  background: none;
+  padding: 0 calc(3px * var(--px));
+  font: 400 calc(16px * var(--px)) / 1 var(--font-body);
+  color: var(--teal);
+}
+.field::placeholder { color: var(--teal-deep); opacity: 1; }
+.field:focus-visible { border-image-source: url(/images/gui/btn-hover.png); outline: none; }
+
+/* Category tiles on the Wiki's front page. */
+.cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(108px * var(--px))), 1fr)); gap: calc(5px * var(--px)); }
+a.cat { display: flex; flex-direction: column; align-items: center; gap: calc(3px * var(--px)); padding-top: calc(4px * var(--px)); padding-bottom: calc(3px * var(--px)); text-align: center; color: var(--cream); text-decoration: none; }
+/* Every tile's picture sits in the same box, whatever its own size. */
+.cat-art { display: flex; align-items: center; justify-content: center; min-height: calc(58px * var(--px)); }
+.cat-art .mini { width: calc(var(--w) * 2px * var(--px)); }
+.cat b, .entry-card b { display: block; font-weight: 400; font-family: var(--font-title); color: var(--teal); }
+.cat span > span, .entry-card span > span { display: block; }
+a.cat:hover, a.cat:focus-visible { color: var(--cream); }
+a.cat:hover b, a.cat:focus-visible b, a.entry-card:hover b, a.entry-card:focus-visible b { color: var(--yellow); }
+
+/* One entry on a category page: its picture, then its name and one line. */
+a.entry-card { flex-direction: row; align-items: center; gap: calc(5px * var(--px)); }
+.entry-card > span:last-child { min-width: 0; }
+
+/* An entry page, laid out like the Bestiary. */
+.entry-top { display: grid; grid-template-columns: minmax(0, 1fr); gap: calc(6px * var(--px)) calc(11px * var(--px)); align-items: start; }
+.entry-art { display: flex; flex-wrap: wrap; gap: calc(3px * var(--px)); align-items: flex-start; }
+.facts { display: flex; flex-direction: column; gap: calc(3px * var(--px)); min-width: 0; }
+@media (min-width: 760px) {
+  .entry-top { grid-template-columns: auto minmax(0, 1fr); }
+}
+.stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(100px * var(--px))), 1fr)); gap: calc(1px * var(--px)) calc(12px * var(--px)); max-width: calc(330px * var(--px)); }
+.stat { display: flex; align-items: center; gap: calc(4px * var(--px)); }
+.stat img { flex: none; width: calc(16px * var(--px)); height: calc(16px * var(--px)); }
+.stat span { color: var(--teal); }
+.stat b { margin-left: auto; font-weight: 400; }
+.linkrow { display: flex; flex-wrap: wrap; gap: calc(3px * var(--px)) calc(8px * var(--px)); align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: calc(3px * var(--px)); min-width: 0; text-decoration: none; }
+.tier { display: grid; grid-template-columns: minmax(0, 1fr); gap: calc(2px * var(--px)) calc(6px * var(--px)); align-items: center; }
+@media (min-width: 760px) {
+  .tier { grid-template-columns: calc(70px * var(--px)) minmax(0, 1fr); }
+}
+.gear { display: flex; flex-direction: column; gap: calc(3px * var(--px)); }
+.gear > .linkrow + .linkrow::before { content: "or"; color: var(--mist); }
 
 /* The Art post's recording: a still frame until Play is pressed. */
 .player { display: flex; flex-direction: column; align-items: center; gap: calc(4px * var(--px)); margin: 0; }

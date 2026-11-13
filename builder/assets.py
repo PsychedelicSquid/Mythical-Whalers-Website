@@ -7,6 +7,7 @@ copied whole, so drafts and cut content stay behind.
 
 import ast
 import io
+import json
 import os
 import shutil
 
@@ -271,6 +272,73 @@ def extract_fonts(problems):
         remove_stale(config.GAME_OUT_FONTS, kept)
 
 
+def image_destination(source):
+    """Where a game picture goes under images/: the same path, lowercase, no spaces."""
+    return source.lower().replace(" ", "_")
+
+
+def key_out_black(picture):
+    """Make pure black transparent, as tools.animate_strip does for sprite strips."""
+    result = picture.copy()
+    pixels = result.load()
+    for y in range(result.height):
+        for x in range(result.width):
+            if pixels[x, y] == (0, 0, 0, 255):
+                pixels[x, y] = (0, 0, 0, 0)
+    return result
+
+
+def read_data(name):
+    with open(os.path.join(config.GAME_DATA, name), encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+def entry_pictures(pictures, cache, problems):
+    """Add every picture a published Wiki entry shows, as named by game/data."""
+    wanted = {}   # game path -> True if it is a sprite strip
+
+    for name in ["items.json", "traits.json", "abilities.json", "effects.json", "factions.json"]:
+        records = read_data(name)
+        for key in records:
+            if records[key]["image"]:
+                wanted[records[key]["image"]] = False
+
+    mobs = read_data("mobs.json")
+    for key in mobs:
+        if mobs[key]["group"] == "crewmate":
+            for portrait in mobs[key]["portraits"]:
+                wanted[portrait] = False
+        elif mobs[key]["image"]:
+            wanted[mobs[key]["image"]] = True
+
+    stats = read_data("stats.json")
+    for group in stats:
+        for stat in stats[group]:
+            wanted["gui/stats/%s.png" % stat["icon"]] = False
+    meta = read_data("meta.json")
+    for table in ["item_icons", "trait_icons"]:
+        for key in meta.get(table, {}):
+            wanted["gui/stats/%s.png" % meta[table][key]] = False
+    for key in meta.get("immunity_icons", {}):
+        wanted["abilities/buffs/" + meta["immunity_icons"][key]] = False
+    wanted["items/resource/gold_coins.png"] = False
+    wanted["items/resource/gems.png"] = False
+
+    sources = list(wanted.keys())
+    sources.sort()
+    for source in sources:
+        picture = open_picture(source, cache, problems)
+        if picture is None:
+            continue
+        if wanted[source]:
+            picture = key_out_black(picture)
+        destination = image_destination(source)
+        if destination in pictures:
+            problems.append("two game pictures both become images/%s" % destination)
+            continue
+        pictures[destination] = picture
+
+
 def extract(problems):
     """Cut the frame pieces and copy the site's art. Returns (changed, removed)."""
     if not os.path.isdir(config.GAME_IMAGES):
@@ -305,6 +373,8 @@ def extract(problems):
             problems.append("two config rows both write images/%s" % row["to"])
             continue
         pictures[row["to"]] = picture
+
+    entry_pictures(pictures, cache, problems)
 
     if problems:
         return 0, 0

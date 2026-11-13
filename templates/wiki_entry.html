@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% from "wiki_parts.html" import icon, chip %}
+{% block main %}
+    <p class="crumbs"><a href="/wiki/">Wiki</a> &gt; <a href="{{ category.url }}">{{ category.title }}</a> &gt; {{ entry.name }}</p>
+    <article class="win">
+      <div class="win-head has-x">
+        <h1>{{ entry.name }}</h1>
+        <a class="win-x" href="{{ category.url }}" aria-label="Close: back to {{ category.title }}"></a>
+      </div>
+
+      <div class="win-mid">
+        <div class="entry-top">
+          <div class="entry-art">
+{% if details.portraits %}
+{% for portrait in details.portraits %}
+            <span class="portrait"><img src="{{ portrait.url }}" width="{{ portrait.width }}" height="{{ portrait.height }}" alt="{{ entry.name }} portrait {{ loop.index }}"></span>
+{% endfor %}
+{% else %}
+            {{ icon(entry, entry.zoom) }}
+{% endif %}
+          </div>
+          <div class="facts">
+{% if entry.description %}
+            <p>{{ entry.description }}</p>
+{% endif %}
+{% for fact in details.facts %}
+            <p><span class="olive">{{ fact.label }}</span> {{ fact.text }}{% for item in fact.links %}{% if item.url %}<a href="{{ item.url }}">{{ item.name }}</a>{% else %}{{ item.name }}{% endif %}{% endfor %}</p>
+{% endfor %}
+          </div>
+        </div>
+      </div>
+
+{% if details.stat_rows %}
+      <div class="win-mid stack">
+        <h2 class="label">{{ details.stat_title }}</h2>
+        <ul class="stats">
+{% for row in details.stat_rows %}
+          <li class="stat">{% if row.icon %}<img src="{{ row.icon.url }}" width="{{ row.icon.width }}" height="{{ row.icon.height }}" alt="">{% endif %}<span>{{ row.label }}</span><b>{{ row.value }}</b></li>
+{% endfor %}
+        </ul>
+      </div>
+{% endif %}
+
+{% for group in details.groups %}
+      <div class="win-mid stack">
+        <h2 class="label">{{ group.title }}</h2>
+{% if group["items"] %}
+        <div class="linkrow">
+{% for item in group["items"] %}
+          {{ chip(item) }}
+{% endfor %}
+        </div>
+{% else %}
+        <p class="dim">{{ group.empty }}</p>
+{% endif %}
+      </div>
+{% endfor %}
+
+{% for block in details.tiers %}
+      <div class="win-mid stack">
+        <h2 class="label">{{ block.title }}</h2>
+{% for row in block.rows %}
+        <div class="tier">
+          <span class="olive">{{ row.label }}</span>
+          <div class="linkrow">
+{% for item in row["items"] %}
+            {{ chip(item) }}
+{% endfor %}
+          </div>
+        </div>
+{% endfor %}
+      </div>
+{% endfor %}
+
+{% if details.gear %}
+      <div class="win-mid stack">
+        <h2 class="label">STARTING GEAR</h2>
+{% for level in details.gear %}
+        <div class="tier">
+          <span class="olive">{{ level.label }}</span>
+          <div class="gear">
+{% for one_set in level.sets %}
+            <div class="linkrow">
+{% for item in one_set %}
+              {{ chip(item) }}
+{% endfor %}
+            </div>
+{% endfor %}
+          </div>
+        </div>
+{% endfor %}
+      </div>
+{% endif %}
+
+      <div class="win-foot">
+        <div class="split">
+          <a class="btn" href="{{ category.url }}">{{ category.title }}</a>
+          <span class="dim">Game version {{ version }}</span>
+        </div>
+      </div>
+    </article>
+{% endblock %}

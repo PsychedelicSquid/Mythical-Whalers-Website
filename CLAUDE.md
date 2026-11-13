@@ -34,12 +34,16 @@ Before doing any work in a new chat, read these to build complete context.
   address, Steam link, navigation, fonts, and the tables `GUI_PIECES` and
   `SITE_ART` that say which game art is copied), `builder/pages.py` (reads
   `content/pages`), `builder/render.py` (renders pages, writes `docs/`),
-  `builder/check.py` (checks every built page before anything is written),
-  `builder/assets.py` (the extract: cuts frame pieces and copies art from the
-  game)
+  `builder/check.py` (checks every built page before anything is written)
+- **The extract** — `builder/extract.py` (parses the game's `.py` files with
+  `ast` and writes `game/data/*.json`), `builder/assets.py` (cuts the frame
+  pieces and copies art into `game/images/`)
+- **The Wiki** — `builder/wiki.py` (turns `game/data` into the Wiki's pages and
+  works out every link between entries)
 - **Layout** — `templates/base.html` (the only file with the `<head>`,
   navigation and footer), `home.html`, `page.html`, `post.html`,
   `devlog_index.html`, `parts.html` (pieces more than one layout uses),
+  `wiki_home.html`, `wiki_category.html`, `wiki_entry.html`, `wiki_parts.html`,
   `redirect.html` (the forwarding page left at an old address)
 - **Style and script** — `static/css/site.css`, `static/js/site.js`
 
@@ -59,11 +63,49 @@ Before doing any work in a new chat, read these to build complete context.
 - `templates/` — Jinja layouts. Keep them free of logic beyond `for` and `if`.
 - `static/` — copied to `docs/` unchanged: the stylesheet, the script, `CNAME`,
   `.nojekyll`, and any hand-drawn pictures under `static/images/`.
-- `game/` — written only by `python build.py --extract`: `game/images/` (frame
-  pieces in `gui/`, menu art, screenshots) and `game/fonts/`. Committed. Never
-  edited by hand; to change what is copied, edit the tables in
+- `game/` — written only by `python build.py --extract`: `game/data/` (the
+  game's content as JSON), `game/images/` (frame pieces in `gui/`, menu art,
+  screenshots, and every picture a Wiki entry shows) and `game/fonts/`.
+  Committed. Never edited by hand; to change what is copied, edit the tables in
   `builder/config.py`.
 - `docs/` — generated. Committed, because GitHub Pages serves it.
+
+## The Wiki
+
+The Wiki is generated. Nothing under `/wiki/` is written by hand.
+
+- **The game cannot be imported.** Importing any game module opens the game
+  window and connects to Steam. `builder/extract.py` reads the source as text
+  with `ast` and follows each class the way Python would: class attributes down
+  the chain of parents, then `__init__` top to bottom, stepping into the
+  parent's `__init__` where the game calls it.
+- **It never guesses.** It accepts plain values, references to other classes
+  and picture-loading calls. Anything else in a published field is reported
+  with its file and line, and nothing is written. The fix is a small rule in
+  `extract.py` or a plain value in the game, never a default that hides it.
+  Every published field is read through `published`, `picture`, `reference` or
+  `named`, which do the reporting. A statement in `__init__` that the reader
+  does not follow (a loop, a condition) leaves the values it changes unknown.
+  A call to another method of the instance (`self.generate()`) is not followed.
+- **A record names only published records.** `check_references` stops the
+  extract if a record names a class that has no record of its own, because a
+  Wiki page shows whatever its record names.
+- **The in-game Bestiary is the specification.** `gui.Bestiary`'s tabs, its
+  `hidden` tuples and the factions it leaves out are read from `gui.py` on
+  every run, so the Wiki shows what the Bestiary shows. An entry page lays out
+  what `populate_mob`, `populate_item`, `populate_faction` and `populate_trait`
+  draw, then adds the links the Bestiary cannot show.
+- **An ability or status effect is published only if a published item or mob
+  uses it.** A trait with `secret = True` is skipped and never named in this
+  repository, and a race born with one is published without it.
+- **Categories** are the table `WIKI_CATEGORIES` in `builder/config.py`. Setting
+  a row's `enabled` to False takes that category off the site and turns links
+  to its entries into plain text.
+- **After a game update:** run `python build.py --extract`, read what it prints
+  (counts, new and removed entries) and `git diff game/data`, then commit.
+- **Not built yet:** hand-written text for entries the game gives no
+  description (43 of the 69 mobs, including all eight whales), and the
+  how-to-play pages.
 
 ## The look
 
