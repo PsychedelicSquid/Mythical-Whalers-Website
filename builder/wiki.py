@@ -636,7 +636,7 @@ def card_summary(entry, data):
 def view(title, description, address):
     """The page facts every layout expects (see render.page_view)."""
     return {"title": title, "full_title": "%s - %s" % (title, config.SITE_NAME), "description": description,
-            "url": address, "section": "wiki", "date": "", "date_text": "", "summary": "", "pitch": "",
+            "url": address, "section": "wiki", "date": "", "date_text": "", "summary": "",
             "card": None, "older": None, "newer": None}
 
 

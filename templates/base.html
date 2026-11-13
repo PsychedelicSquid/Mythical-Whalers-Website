@@ -35,7 +35,7 @@
   <a class="skip" href="#main">Skip to the page</a>
   <header class="site-nav">
     <div class="wrap">
-      <a class="brand" href="/">{{ site.name }}</a>
+      <a class="brand" href="/">{{ site.name }} <span class="tagline">{{ site.tagline }}</span></a>
       <nav aria-label="Site">
 {% for item in site.nav %}
         <a class="btn" href="{{ item.url }}"{% if item.section == page.section %} aria-current="page"{% endif %}>{{ item.label }}</a>

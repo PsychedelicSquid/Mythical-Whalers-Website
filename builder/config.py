@@ -13,6 +13,8 @@ STATIC = os.path.join(REPO, "static")
 DOCS = os.path.join(REPO, "docs")
 
 SITE_NAME = "Mythical Whalers"
+# Shown after the name in the bar at the top of every page. Joel's words.
+TAGLINE = "Command a crew. Hunt. Survive."
 STUDIO = "Kleen Fleet"
 STEAM_URL = "https://store.steampowered.com/app/2787860/"
 

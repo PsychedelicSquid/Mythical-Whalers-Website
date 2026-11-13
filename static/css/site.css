@@ -307,11 +307,16 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
   color: var(--cream);
   text-decoration: none;
 }
+/* The tagline follows the name after a dash. */
+.tagline::before { content: "- "; }
 .site-nav nav { display: flex; flex-wrap: wrap; gap: calc(3px * var(--px)); }
 /* On a phone the name is the link home, and the Home button gives up its
-   place so the others fit on one line. */
+   place so the others fit on one line. The tagline does not fit beside the
+   name there, so it takes the line under it, without the dash. */
 @media (max-width: 759px) {
   .site-nav nav a[href="/"] { display: none; }
+  .tagline { display: block; }
+  .tagline::before { content: none; }
 }
 
 /* The first window's knots stand 6 game pixels under the line above the page,
@@ -371,7 +376,6 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
 
 .hero-copy { position: relative; display: flex; flex-direction: column; align-items: center; gap: calc(6px * var(--px)); padding: calc(8px * var(--px)) 16px; text-align: center; }
 .logo { display: block; width: calc(206px * var(--hpx)); max-width: 100%; height: auto; }
-.pitch { max-width: 16em; }
 .menu { display: flex; flex-direction: column; align-items: stretch; gap: calc(5px * var(--px)); }
 
 @media (min-width: 760px) {
@@ -381,9 +385,11 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
      either side. A whole number of tiles leaves the clouds inside the scene
      exactly where they were. */
   .cloud { left: calc(-1920px * var(--hpx)); right: calc(-1920px * var(--hpx)); }
-  .hero-copy { align-items: flex-start; text-align: left; gap: calc(8px * var(--px)); padding: calc(24px * var(--px)) 0 0 calc(34px * var(--px)); max-width: calc(250px * var(--px)); }
+  /* The column is as wide as the logo (206) after its 34 pixels of room on
+     the left, so the menu's buttons are centred under the logo. */
+  .hero-copy { gap: calc(8px * var(--px)); padding: calc(24px * var(--px)) 0 0 calc(34px * var(--px)); max-width: calc(240px * var(--px)); }
   .hero-copy .logo { animation: bob 1.05s steps(8) infinite alternate; }
-  .menu { align-items: flex-start; }
+  .menu { align-items: center; }
 }
 @keyframes bob { from { transform: translateY(calc(-3px * var(--px))); } to { transform: translateY(calc(3px * var(--px))); } }
 

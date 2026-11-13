@@ -173,7 +173,6 @@ def page_view(page, problems):
         "date": page["date"],
         "date_text": page["date_text"],
         "summary": page["summary"],
-        "pitch": page["pitch"],
         "card": card_of(page, problems),
         # Set for devlog posts by link_posts.
         "older": None,
@@ -218,6 +217,7 @@ def site_context(outputs):
 
     return {
         "name": config.SITE_NAME,
+        "tagline": config.TAGLINE,
         "studio": config.STUDIO,
         "url": config.SITE_URL,
         "steam_url": config.STEAM_URL,

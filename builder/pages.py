@@ -13,7 +13,6 @@ Header keys:
     date         YYYY-MM-DD; a page with a date is a devlog post
     summary      one line shown beside the post in lists
     card         a picture in the post's folder, shown beside it in lists
-    pitch        the home page's one-line pitch, shown under the logo
     old_url      the address this page used to have; a forwarding page is written there
 """
 
@@ -22,7 +21,7 @@ import os
 from builder import config
 
 REQUIRED_KEYS = ["title", "description"]
-KNOWN_KEYS = ["title", "description", "template", "date", "summary", "card", "pitch", "old_url"]
+KNOWN_KEYS = ["title", "description", "template", "date", "summary", "card", "old_url"]
 
 
 def read_page_file(path, problems):
@@ -120,7 +119,6 @@ def load_pages(problems):
                 "date_text": "",
                 "summary": meta.get("summary", ""),
                 "card": meta.get("card", ""),
-                "pitch": meta.get("pitch", ""),
                 "old_url": meta.get("old_url", ""),
                 "assets": [],
             }

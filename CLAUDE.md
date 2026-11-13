@@ -128,9 +128,10 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
   `description`. The four tabs hold the five paragraphs of the game's
   description on its Steam page ("About this game"): Command the third,
   Explore the first, Hunt the second, Plan the fourth and fifth. All were
-  copied word for word on 12 November 2026. The tabs' names and the tagline
-  under the logo, "Command a crew. Hunt. Survive.", are Joel's. Do not rewrite
-  any of them.
+  copied word for word on 12 November 2026. The tabs' names are Joel's, and
+  so is the tagline, "Command a crew. Hunt. Survive.", which follows the
+  site's name in the bar at the top of every page (`TAGLINE` in
+  `builder/config.py`). Do not rewrite any of them.
 - **The four screenshots are the Steam page's**, in `static/images/steam/`.
   The game repository's own `steam art/screenshots` folder is from 2024 and is
   not used. Each was made from the store's 1920x1080 JPEG by taking the middle
