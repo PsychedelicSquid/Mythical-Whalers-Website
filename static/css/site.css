@@ -333,6 +333,9 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
    Menu.main_menu and Window.run in gui.py: sea and castle change frame every
    150 ms; back clouds move one pixel every five frames at 60 frames a second,
    the front cloud one every three. */
+/* In a window wider than the scene, the band beside it is the game's black,
+   as when the game fills a monitor wider than its own screen. */
+.hero-band { background: var(--charcoal); }
 .hero { position: relative; background: var(--charcoal); overflow: hidden; --hpx: 1; }
 .stage-wrap { position: relative; height: calc(232px * var(--hpx)); overflow: hidden; }
 .stage { position: absolute; top: 0; right: 0; width: calc(640px * var(--hpx)); height: calc(360px * var(--hpx)); }
