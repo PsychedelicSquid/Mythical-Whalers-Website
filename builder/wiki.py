@@ -640,45 +640,7 @@ def view(title, description, address):
             "card": None, "older": None, "newer": None}
 
 
-def guide_pages(pages, views, problems):
-    """The how-to-play pages' views, in the order config.WIKI_GUIDES lists them.
-
-    They are the hand-written pages under content/pages/wiki/guide/.
-    """
-    found = {}
-    for page in pages:
-        if page["url"].startswith(config.WIKI_GUIDE_ADDRESS) and page["url"].endswith("/"):
-            found[page["url"][len(config.WIKI_GUIDE_ADDRESS):-1]] = page
-
-    ordered = []
-    for name in config.WIKI_GUIDES:
-        if name not in found:
-            problems.append("WIKI_GUIDES in builder/config.py lists '%s', but there is no page at %s%s/"
-                            % (name, config.WIKI_GUIDE_ADDRESS, name))
-            continue
-        if found[name]["game_version"] == "":
-            problems.append("%s: a how-to-play page needs 'game_version' in its header" % found[name]["source"])
-        ordered.append(views[found[name]["url"]])
-    for name in found:
-        if name not in config.WIKI_GUIDES:
-            problems.append("%s is not listed in WIKI_GUIDES in builder/config.py" % found[name]["source"])
-    return ordered
-
-
-def stale_guides(pages):
-    """A line for each how-to-play page written for another version of the game than game/data holds."""
-    lines = []
-    meta = read_data("meta.json")
-    if meta is None:
-        return lines
-    for page in pages:
-        if page["url"].startswith(config.WIKI_GUIDE_ADDRESS) and page["game_version"] != meta["version"]:
-            lines.append("%s was written for game version %s, and game/data is now %s. Read it against the game again."
-                         % (page["source"], page["game_version"], meta["version"]))
-    return lines
-
-
-def build(environment, site, guides, outputs, problems):
+def build(environment, site, outputs, problems):
     """Add every Wiki page to outputs. Returns the addresses for the sitemap."""
     data = {}
     for name in ["mobs", "items", "traits", "abilities", "effects", "factions", "locations", "stats", "meta"]:
@@ -754,11 +716,9 @@ def build(environment, site, guides, outputs, problems):
             groups.append({"title": group["title"], "categories": members})
 
     page = view("Wiki", "The Mythical Whalers Wiki: crewmates, creatures, gear, traits and factions.", "/wiki/")
-    html = home_layout.render(site=site, page=page, groups=groups, guides=guides, version=version)
+    html = home_layout.render(site=site, page=page, groups=groups, version=version)
     outputs["wiki/index.html"] = html.encode("utf-8")
     addresses.append("/wiki/")
-    for guide in guides:
-        search.append({"n": guide["title"], "c": "How to play", "u": guide["url"]})
 
     outputs["wiki/search.json"] = (json.dumps(search, ensure_ascii=False, separators=(",", ":")) + "\n").encode("utf-8")
 

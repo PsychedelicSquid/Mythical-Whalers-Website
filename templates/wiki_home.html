@@ -10,19 +10,6 @@
         </div>
         <div class="cards" id="wiki-results" aria-live="polite" hidden></div>
       </div>
-{% if guides %}
-      <div class="win-mid stack">
-        <h2 class="label">How to play</h2>
-        <div class="cards">
-{% for guide in guides %}
-          <a class="card tip" href="{{ guide.url }}">
-            <h3>{{ guide.title }}</h3>
-            <p>{{ guide.summary }}</p>
-          </a>
-{% endfor %}
-        </div>
-      </div>
-{% endif %}
 {% for group in groups %}
       <div class="{% if loop.last %}win-foot{% else %}win-mid{% endif %} stack">
         <h2 class="label">{{ group.title }}</h2>

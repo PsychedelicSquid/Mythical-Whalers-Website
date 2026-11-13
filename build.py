@@ -18,7 +18,6 @@ from builder import check
 from builder import extract
 from builder import pages
 from builder import render
-from builder import wiki
 
 
 def report(problems):
@@ -68,8 +67,6 @@ def main():
           % (len(all_pages), len(outputs), written, removed))
 
     for message in check.tracked_case_mismatches(outputs):
-        print("WARNING: " + message)
-    for message in wiki.stale_guides(all_pages):
         print("WARNING: " + message)
     return 0
 
