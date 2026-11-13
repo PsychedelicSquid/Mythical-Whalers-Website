@@ -18,9 +18,9 @@ TAGLINE = "Command a crew. Hunt. Survive."
 STUDIO = "Kleen Fleet"
 STEAM_URL = "https://store.steampowered.com/app/2787860/"
 
-# http until GitHub Pages holds a certificate for the domain. Then change this
-# to https and rebuild: every canonical address and the sitemap follow it.
-SITE_URL = "http://www.mythicalwhalers.com"
+# Every canonical address and the sitemap are built from this. GitHub Pages
+# holds the certificate and sends http to https (Enforce HTTPS).
+SITE_URL = "https://www.mythicalwhalers.com"
 
 # The stylesheet every page links.
 STYLESHEET = "css/site.css"
