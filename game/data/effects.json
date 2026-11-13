@@ -1,86 +1,86 @@
 {
   "effects.Berserk": {
+    "name": "Berserk",
+    "key": "berserk",
     "description": "Strength is doubled.",
     "duration": 3,
-    "image": "abilities/buffs/attack_boost_buff.png",
-    "key": "berserk",
-    "name": "Berserk"
+    "image": "abilities/buffs/attack_boost_buff.png"
   },
   "effects.Burning": {
+    "name": "Burning",
+    "key": "fire",
     "description": "Burns for 1 health each turn, ignoring armor.",
     "duration": 3,
-    "image": "abilities/buffs/fire_debuff.png",
-    "key": "fire",
-    "name": "Burning"
+    "image": "abilities/buffs/fire_debuff.png"
   },
   "effects.Charmed": {
+    "name": "Charmed",
+    "key": "charm",
     "description": "Fights for the other side.",
     "duration": 2,
-    "image": "abilities/buffs/charmed.png",
-    "key": "charm",
-    "name": "Charmed"
+    "image": "abilities/buffs/charmed.png"
   },
   "effects.Feared": {
-    "description": "Runs from enemies instead of acting.",
-    "duration": 0,
-    "image": "gui/stats/fleeing.png",
+    "name": "Feared",
     "key": "fear",
-    "name": "Feared"
+    "description": "Runs from enemies instead of acting.",
+    "duration": 1,
+    "image": "gui/stats/fleeing.png"
   },
   "effects.Frozen": {
+    "name": "Frozen",
+    "key": "frozen",
     "description": "Can't act.",
     "duration": 1,
-    "image": "abilities/buffs/frozen.png",
-    "key": "frozen",
-    "name": "Frozen"
+    "image": "abilities/buffs/frozen.png"
   },
   "effects.Haste": {
+    "name": "Haste",
+    "key": "haste",
     "description": "+1 speed and +1 stamina.",
     "duration": 3,
-    "image": "abilities/buffs/speed_boost_buff.png",
-    "key": "haste",
-    "name": "Haste"
+    "image": "abilities/buffs/speed_boost_buff.png"
   },
   "effects.Inspired": {
+    "name": "Inspired",
+    "key": "inspired",
     "description": "+1 strength, luck, will and speed.",
     "duration": 3,
-    "image": "abilities/buffs/attack_boost_buff.png",
-    "key": "inspired",
-    "name": "Inspired"
+    "image": "abilities/buffs/attack_boost_buff.png"
   },
   "effects.Latched": {
+    "name": "Latched",
+    "key": "latched",
     "description": "A piranha is clamped on and comes along when this unit moves.",
     "duration": 0,
-    "image": "abilities/buffs/latched_debuff.png",
-    "key": "latched",
-    "name": "Latched"
+    "image": "abilities/buffs/latched_debuff.png"
   },
   "effects.MagicArmor": {
-    "description": "",
-    "duration": 3,
-    "image": "abilities/buffs/armor_boost.png",
+    "name": "Magic Armor",
     "key": "magic_armor",
-    "name": "Magic Armor"
+    "description": "+6 armor.",
+    "duration": 3,
+    "image": "abilities/buffs/armor_boost.png"
   },
   "effects.Poisoned": {
+    "name": "Poisoned",
+    "key": "poisoned",
     "description": "Takes 1 poison each turn, ignoring armor.",
     "duration": 3,
-    "image": "abilities/buffs/poison_debuff.png",
-    "key": "poisoned",
-    "name": "Poisoned"
+    "image": "abilities/buffs/poison_debuff.png"
   },
   "effects.Slow": {
+    "name": "Slow",
+    "key": "slow",
     "description": "Speed is halved.",
     "duration": 2,
-    "image": "abilities/buffs/stun.png",
-    "key": "slow",
-    "name": "Slow"
+    "image": "abilities/buffs/stun.png"
   },
   "effects.Stunned": {
+    "name": "Stunned",
+    "key": "stunned",
     "description": "Can't act.",
     "duration": 1,
-    "image": "abilities/buffs/stun.png",
-    "key": "stunned",
-    "name": "Stunned"
+    "image": "abilities/buffs/stun.png"
   }
 }

@@ -1,61 +1,61 @@
 {
   "crew": [
     {
-      "description": "The amount of damage this crewmate can take before being killed.",
       "icon": "hp",
-      "name": "Health"
+      "name": "Health",
+      "description": "The amount of damage this crewmate can take before being killed."
     },
     {
-      "description": "Blocks incoming damage. Each point blocks 1 damage.",
       "icon": "armor",
-      "name": "Armor"
+      "name": "Armor",
+      "description": "Blocks incoming damage. Each point blocks 1 damage."
     },
     {
-      "description": "Magical energy used for spells and special abilities.",
       "icon": "max_mana",
-      "name": "Mana"
+      "name": "Mana",
+      "description": "Magical energy used for spells and special abilities."
     },
     {
-      "description": "Increases damage and duration of magic abilities.",
       "icon": "will",
-      "name": "Will"
+      "name": "Will",
+      "description": "Increases damage and duration of magic abilities."
     },
     {
-      "description": "Increases damage for melee attacks and physical abilities.",
       "icon": "strength",
-      "name": "Strength"
+      "name": "Strength",
+      "description": "Increases damage for melee attacks and physical abilities."
     },
     {
-      "description": "Increases chance to crit, decreases chance to miss, and increases damage with ranged weapons.",
       "icon": "luck",
-      "name": "Luck"
+      "name": "Luck",
+      "description": "Increases chance to crit, decreases chance to miss, and increases damage with ranged weapons."
     },
     {
-      "description": "Determines how many abilities this crewmate can perform in a turn.",
       "icon": "max_stamina",
-      "name": "Stamina"
+      "name": "Stamina",
+      "description": "Determines how many abilities this crewmate can perform in a turn."
     },
     {
-      "description": "Determines how far a crewmate can move and turn order in combat.",
       "icon": "speed",
-      "name": "Speed"
+      "name": "Speed",
+      "description": "Determines how far a crewmate can move and turn order in combat."
     }
   ],
   "ship": [
     {
-      "description": "How far you can see on the map.",
-      "icon": "vision",
-      "name": "Vision"
-    },
-    {
-      "description": "How swiftly your crew crosses the map.",
       "icon": "ship_speed",
-      "name": "Knots"
+      "name": "Knots",
+      "description": "How swiftly your crew crosses the map."
     },
     {
-      "description": "How much of the rough terrain penalty your crew avoids.",
+      "icon": "vision",
+      "name": "Vision",
+      "description": "How far you can see on the map."
+    },
+    {
       "icon": "navigator",
-      "name": "Navigating"
+      "name": "Navigating",
+      "description": "How much of the rough terrain penalty your crew avoids."
     }
   ]
 }

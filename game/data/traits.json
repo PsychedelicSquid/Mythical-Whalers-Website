@@ -1,272 +1,272 @@
 {
   "traits.Agile": {
+    "name": "Agile",
     "description": "Increases Speed",
-    "image": "traits/agile.png",
-    "max_level": 99,
     "modifiers": {
       "speed": 1
     },
-    "name": "Agile",
-    "offered_at_level_up": true
+    "max_level": 99,
+    "offered_at_level_up": true,
+    "image": "traits/agile.png"
   },
   "traits.Angry": {
-    "description": "More likely to fight when morale is low",
-    "image": "traits/short_temper.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Angry",
-    "offered_at_level_up": false
+    "description": "More likely to fight when morale is low",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": false,
+    "image": "traits/short_temper.png"
   },
   "traits.Bloodlust": {
-    "description": "25% chance for melee kills to restore 1 stamina",
-    "image": "traits/bloodlust.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Bloodlust",
-    "offered_at_level_up": true
+    "description": "25% chance for melee kills to restore 1 stamina",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/bloodlust.png"
   },
   "traits.Cook": {
-    "description": "Reduces crew food consumption by 1",
-    "image": "traits/cook.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Cook",
-    "offered_at_level_up": true
+    "description": "Reduces crew food consumption by 1",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/cook.png"
   },
   "traits.Coward": {
-    "description": "10% chance to flee in combat; fear lasts twice as long",
-    "image": "traits/coward.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Coward",
-    "offered_at_level_up": false
+    "description": "10% chance to flee in combat; fear lasts twice as long",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": false,
+    "image": "traits/coward.png"
   },
   "traits.Cryomancer": {
+    "name": "Cryomancer",
     "description": "Increases Ice damage",
-    "image": "traits/cryomancer.png",
-    "max_level": 3,
     "modifiers": {
       "ice_damage": 2
     },
-    "name": "Cryomancer",
-    "offered_at_level_up": true
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/cryomancer.png"
   },
   "traits.Drunk": {
-    "description": "-1 Speed, -1 Will for 2 days, +2 Morale",
-    "image": "traits/drunk.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Drunk",
-    "offered_at_level_up": false
+    "description": "-1 Speed, -1 Will for 2 days, +2 Morale",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": false,
+    "image": "traits/drunk.png"
   },
   "traits.EagleEye": {
+    "name": "Eagle Eye",
     "description": "Increases range for ranged attacks",
-    "image": "traits/eagle_eye.png",
-    "max_level": 3,
     "modifiers": {
       "range": 1
     },
-    "name": "Eagle Eye",
-    "offered_at_level_up": true
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/eagle_eye.png"
   },
   "traits.Frail": {
+    "name": "Frail",
     "description": "Decreases crewmates maximum health.",
-    "image": "traits/frail.png",
-    "max_level": 3,
     "modifiers": {
       "max_hp": -1
     },
-    "name": "Frail",
-    "offered_at_level_up": false
+    "max_level": 3,
+    "offered_at_level_up": false,
+    "image": "traits/frail.png"
   },
   "traits.Glutton": {
-    "description": "Increases food consumption by 1",
-    "image": "traits/glutton.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Glutton",
-    "offered_at_level_up": false
+    "description": "Increases food consumption by 1",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": false,
+    "image": "traits/glutton.png"
   },
   "traits.Hearty": {
+    "name": "Hearty",
     "description": "Increases Max health",
-    "image": "traits/hearty.png",
-    "max_level": 99,
     "modifiers": {
       "max_hp": 2
     },
-    "name": "Hearty",
-    "offered_at_level_up": true
+    "max_level": 99,
+    "offered_at_level_up": true,
+    "image": "traits/hearty.png"
   },
   "traits.Heroic": {
-    "description": "10% chance for +1 stamina at start of turn; 33% chance to resist fear",
-    "image": "traits/heroic.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Heroic",
-    "offered_at_level_up": true
+    "description": "10% chance for +1 stamina at start of turn; 33% chance to resist fear",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/heroic.png"
   },
   "traits.Lucky": {
+    "name": "Lucky",
     "description": "Increases Luck",
-    "image": "traits/lucky.png",
-    "max_level": 99,
     "modifiers": {
       "luck": 1
     },
-    "name": "Lucky",
-    "offered_at_level_up": true
+    "max_level": 99,
+    "offered_at_level_up": true,
+    "image": "traits/lucky.png"
   },
   "traits.Marksman": {
+    "name": "Marksman",
     "description": "Increases piercing with ranged attacks",
-    "image": "traits/marksman.png",
-    "max_level": 3,
     "modifiers": {
       "piercing": 1
     },
-    "name": "Marksman",
-    "offered_at_level_up": true
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/marksman.png"
   },
   "traits.Mystic": {
-    "description": "50% chance to regenerate 1 mana at the start of each turn",
-    "image": "traits/mystic.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Mystic",
-    "offered_at_level_up": true
+    "description": "50% chance to regenerate 1 mana at the start of each turn",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/mystic.png"
   },
   "traits.Navigator": {
-    "description": "-25% rough terrain penalty",
-    "image": "traits/navigator.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Navigator",
-    "offered_at_level_up": true
+    "description": "-25% rough terrain penalty",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/navigator.png"
   },
   "traits.Necromancer": {
-    "description": "Summoned undead gain +2 HP and +1 Strength",
-    "image": "traits/necromancer.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Necromancer",
-    "offered_at_level_up": true
+    "description": "Summoned undead gain +2 HP and +1 Strength",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/necromancer.png"
   },
   "traits.Optimist": {
-    "description": "20% chance per day to boost morale",
-    "image": "traits/comedian.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Optimist",
-    "offered_at_level_up": true
+    "description": "20% chance per day to boost morale",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/comedian.png"
   },
   "traits.Oracle": {
+    "name": "Oracle",
     "description": "Increases Spell AoE",
-    "image": "traits/oracle.png",
-    "max_level": 3,
     "modifiers": {
       "radius": 1
     },
-    "name": "Oracle",
-    "offered_at_level_up": true
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/oracle.png"
   },
   "traits.Paranoid": {
-    "description": "20% chance per day to lower morale",
-    "image": "traits/paranoid.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Paranoid",
-    "offered_at_level_up": false
+    "description": "20% chance per day to lower morale",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": false,
+    "image": "traits/paranoid.png"
   },
   "traits.Priest": {
+    "name": "Priest",
     "description": "Increases Healing",
-    "image": "traits/priest.png",
-    "max_level": 3,
     "modifiers": {
       "healing": 2
     },
-    "name": "Priest",
-    "offered_at_level_up": true
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/priest.png"
   },
   "traits.Pyromancer": {
+    "name": "Pyromancer",
     "description": "Increases Fire damage",
-    "image": "traits/pyromancer.png",
-    "max_level": 3,
     "modifiers": {
       "fire_damage": 2
     },
-    "name": "Pyromancer",
-    "offered_at_level_up": true
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/pyromancer.png"
   },
   "traits.Sick": {
-    "description": "Lose 1 HP every week until cured",
-    "image": "traits/sick.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Sick",
-    "offered_at_level_up": false
+    "description": "Lose 1 HP every week until cured",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": false,
+    "image": "traits/sick.png"
   },
   "traits.Steady": {
-    "description": "Can shoot even with enemies at arm's reach",
-    "image": "traits/steady.png",
-    "max_level": 1,
-    "modifiers": {},
     "name": "Steady",
-    "offered_at_level_up": true
+    "description": "Can shoot even with enemies at arm's reach",
+    "modifiers": {},
+    "max_level": 1,
+    "offered_at_level_up": true,
+    "image": "traits/steady.png"
   },
   "traits.StoneSkin": {
+    "name": "Stone Skin",
     "description": "Increases Armor",
-    "image": "traits/stone_skin.png",
-    "max_level": 99,
     "modifiers": {
       "armor": 2
     },
-    "name": "Stone Skin",
-    "offered_at_level_up": true
+    "max_level": 99,
+    "offered_at_level_up": true,
+    "image": "traits/stone_skin.png"
   },
   "traits.Strong": {
+    "name": "Strong",
     "description": "Increases Strength",
-    "image": "traits/strong.png",
-    "max_level": 99,
     "modifiers": {
       "strength": 1
     },
-    "name": "Strong",
-    "offered_at_level_up": true
+    "max_level": 99,
+    "offered_at_level_up": true,
+    "image": "traits/strong.png"
   },
   "traits.Surgeon": {
-    "description": "Heals an injured crewmate by 1 hp every day",
-    "image": "traits/surgeon.png",
-    "max_level": 3,
-    "modifiers": {},
     "name": "Surgeon",
-    "offered_at_level_up": true
+    "description": "Heals an injured crewmate by 1 hp every day",
+    "modifiers": {},
+    "max_level": 3,
+    "offered_at_level_up": true,
+    "image": "traits/surgeon.png"
   },
   "traits.Tremor": {
+    "name": "Tremor",
     "description": "Decreases range with ranged weapons",
-    "image": "traits/shaky_hands.png",
-    "max_level": 3,
     "modifiers": {
       "range": -1
     },
-    "name": "Tremor",
-    "offered_at_level_up": false
+    "max_level": 3,
+    "offered_at_level_up": false,
+    "image": "traits/shaky_hands.png"
   },
   "traits.Willful": {
+    "name": "Willful",
     "description": "Increases Will",
-    "image": "traits/willfull.png",
-    "max_level": 99,
     "modifiers": {
       "will": 1
     },
-    "name": "Willful",
-    "offered_at_level_up": true
+    "max_level": 99,
+    "offered_at_level_up": true,
+    "image": "traits/willfull.png"
   },
   "traits.Wisdom": {
+    "name": "Wisdom",
     "description": "Increases Max Mana",
-    "image": "traits/wisdom.png",
-    "max_level": 99,
     "modifiers": {
       "max_mana": 1
     },
-    "name": "Wisdom",
-    "offered_at_level_up": true
+    "max_level": 99,
+    "offered_at_level_up": true,
+    "image": "traits/wisdom.png"
   }
 }

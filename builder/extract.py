@@ -23,8 +23,8 @@ from builder import config
 
 # The content modules. quests.py, events.py, dialogue.py and documents/ are
 # never opened.
-MODULES = ["items", "traits", "abilities", "effects", "mobs", "factions", "crews", "gui", "tools",
-           "tooltips", "constants"]
+MODULES = ["items", "traits", "abilities", "effects", "mobs", "factions", "crews", "gui", "inventory",
+           "tools", "tooltips", "constants"]
 
 # Calls that load a picture, and the folder each one loads from when it is
 # given only a file name.
@@ -99,17 +99,6 @@ def descends_from(module, class_name, ancestor):
     return ancestor in parents_first(module, class_name) and class_name != ancestor
 
 
-def class_attribute(module, class_name, attribute):
-    """The ast node of a class-level value, looking up through the parents."""
-    chain = parents_first(module, class_name)
-    chain.reverse()
-    for name in chain:
-        node = module["classes"][name]["attrs"].get(attribute)
-        if node is not None:
-            return node
-    return None
-
-
 def add_spaces(name):
     """tools.add_spaces: 'FireBreath' -> 'Fire Breath'."""
     result = name[0]
@@ -145,6 +134,10 @@ def is_unknown(value):
     if isinstance(value, dict):
         if "unknown" in value:
             return True
+        if "ref" in value:
+            # Something built from a class. What was changed on it afterwards
+            # is checked by whoever publishes those changes.
+            return False
         for key in value:
             if is_unknown(value[key]):
                 return True
@@ -211,13 +204,10 @@ def evaluate(node, context):
         return unknown(node)
 
     if isinstance(node, ast.Attribute):
-        # self.something: an instance value set earlier, else a class value
+        # self.something: a value the instance already carries
         if isinstance(node.value, ast.Name) and node.value.id == "self":
             if node.attr in context["attrs"]:
                 return context["attrs"][node.attr]
-            class_node = class_attribute(module, context["class"], node.attr)
-            if class_node is not None:
-                return evaluate(class_node, context)
             return unknown(node)
         # Something.__name__: the class's name
         if node.attr == "__name__":
@@ -331,73 +321,204 @@ def parent_with_init(module, class_name):
     return None
 
 
-def run_init(modules, module, owner, instance_class, attrs, depth):
-    """Follow owner's __init__ from top to bottom, filling attrs.
+def self_attribute(node):
+    """The name x when node is self.x, else None."""
+    if isinstance(node, ast.Attribute) and isinstance(node.value, ast.Name) and node.value.id == "self":
+        return node.attr
+    return None
+
+
+def root_attribute(node):
+    """The name x when node is self.x or is reached through it (self.x.y, self.x[k]), else None."""
+    while isinstance(node, (ast.Attribute, ast.Subscript)):
+        if self_attribute(node) is not None:
+            return node.attr
+        node = node.value
+    return None
+
+
+def assign(target, value, context):
+    """Give one assignment target its value. False if the target is not one the reader follows."""
+    if isinstance(target, ast.Name):
+        context["locals"][target.id] = value
+        return True
+    if self_attribute(target) is not None:
+        context["attrs"][target.attr] = value
+        return True
+
+    # bullet.mana_cost = 1, fire_breath.base_stats['radius'] = 4: a change to
+    # something the instance has built. It is kept on that thing, under
+    # "changes", so whatever holds it carries the change too.
+    key = None
+    if isinstance(target, ast.Subscript) and isinstance(target.slice, ast.Constant):
+        key = target.slice.value
+        target = target.value
+    if isinstance(target, ast.Attribute):
+        built = evaluate(target.value, context)
+        if isinstance(built, dict) and "ref" in built:
+            if "changes" not in built:
+                built["changes"] = {}
+            if key is None:
+                built["changes"][target.attr] = value
+            else:
+                if not isinstance(built["changes"].get(target.attr), dict):
+                    built["changes"][target.attr] = {}
+                built["changes"][target.attr][str(key)] = value
+            return True
+    return False
+
+
+def follow(statement, context):
+    """Apply one statement of a method to the instance. False if it is not one the reader follows."""
+    attrs = context["attrs"]
+
+    if isinstance(statement, ast.Assign) and len(statement.targets) == 1:
+        target = statement.targets[0]
+        # self.ally, self.enemy = 'Ravagers', 'Immortals'
+        if isinstance(target, ast.Tuple):
+            if not isinstance(statement.value, ast.Tuple) or len(target.elts) != len(statement.value.elts):
+                return False
+            for part, value in zip(target.elts, statement.value.elts):
+                if not assign(part, evaluate(value, context), context):
+                    return False
+            return True
+        return assign(target, evaluate(statement.value, context), context)
+
+    # self.reputation.update({...}), self.immunities.append('push')
+    if isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Call):
+        call = statement.value
+        if isinstance(call.func, ast.Attribute) and len(call.args) == 1 and not call.keywords:
+            name = self_attribute(call.func.value)
+            if name is not None:
+                current = attrs.get(name)
+                given = evaluate(call.args[0], context)
+                if call.func.attr == "update" and isinstance(current, dict) and isinstance(given, dict):
+                    merged = dict(current)
+                    merged.update(given)
+                    attrs[name] = merged
+                    return True
+                if call.func.attr == "append" and isinstance(current, list):
+                    attrs[name] = current + [given]
+                    return True
+                if call.func.attr == "extend" and isinstance(current, list) and isinstance(given, list):
+                    attrs[name] = current + given
+                    return True
+    return False
+
+
+# The methods by which Python changes a list, dict or set in place.
+CHANGING_METHODS = ["append", "extend", "insert", "remove", "pop", "clear", "sort", "reverse",
+                    "update", "setdefault", "popitem", "add", "discard"]
+
+
+def changed_by(statement):
+    """The instance values a statement changes: each self.x it assigns to, or changes in place."""
+    names = []
+    for node in ast.walk(statement):
+        targets = []
+        if isinstance(node, ast.Assign):
+            targets = node.targets
+        elif isinstance(node, (ast.AugAssign, ast.AnnAssign, ast.For)):
+            targets = [node.target]
+        elif isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
+            if node.func.attr in CHANGING_METHODS:
+                targets = [node.func.value]
+        for target in targets:
+            parts = [target]
+            if isinstance(target, ast.Tuple):
+                parts = target.elts
+            for part in parts:
+                name = root_attribute(part)
+                if name is not None and name not in names:
+                    names.append(name)
+    return names
+
+
+def parameters(modules, module, function, call, caller):
+    """What a method's parameters hold when it starts.
+
+    The value the call passes, else the parameter's default: the Bestiary
+    builds every entry with no arguments (Feared() lasts its default 1 turn).
+    A parameter with neither is unknown. call is None for the instance being
+    built; otherwise it is the parent's __init__ call, read in the caller's context.
+    """
+    names = []
+    for argument in function.args.args[1:]:
+        names.append(argument.arg)
+
+    values = {}
+    scope = {"modules": modules, "module": module, "attrs": {}, "locals": {}}
+    defaults = function.args.defaults
+    first = len(names) - len(defaults)
+    for position in range(len(defaults)):
+        values[names[first + position]] = evaluate(defaults[position], scope)
+
+    if call is not None:
+        passed = call.args
+        if isinstance(call.func, ast.Attribute) and isinstance(call.func.value, ast.Name):
+            # Parent.__init__(self, ...): the first argument is the instance itself
+            passed = passed[1:]
+        for position in range(min(len(passed), len(names))):
+            values[names[position]] = evaluate(passed[position], caller)
+        for keyword in call.keywords:
+            if keyword.arg in names:
+                values[keyword.arg] = evaluate(keyword.value, caller)
+    return values
+
+
+def run_init(modules, module, owner, instance_class, attrs, call, caller, depth):
+    """Follow owner's __init__ from top to bottom, changing attrs as it would.
 
     owner is the class whose __init__ is being followed; instance_class is the
-    class being built, which decides what self.something means.
+    class being built, which decides what self.something means. call and
+    caller say how a child's __init__ called this one (see parameters).
+
+    A statement the reader does not follow (a loop, a condition) leaves every
+    value it changes unknown, so that a record which needs one of them reports
+    it instead of publishing a guess. A call to another method of the instance
+    (self.generate()) is not followed, and what it changes is not tracked.
     """
     if owner is None or depth > 8:
         return
     function = module["classes"][owner]["init"]
-    context = {"modules": modules, "module": module, "class": instance_class,
-               "attrs": attrs, "locals": {}}
+    context = {"modules": modules, "module": module, "attrs": attrs,
+               "locals": parameters(modules, module, function, call, caller)}
 
     for statement in function.body:
         parent = is_parent_init(statement)
         if parent == "super":
-            run_init(modules, module, parent_with_init(module, owner), instance_class, attrs, depth + 1)
-            continue
-        if parent is not None and parent in module["classes"]:
-            run_init(modules, module, class_with_init(module, parent), instance_class, attrs, depth + 1)
-            continue
+            run_init(modules, module, parent_with_init(module, owner), instance_class, attrs,
+                     statement.value, context, depth + 1)
+        elif parent is not None and parent in module["classes"]:
+            run_init(modules, module, class_with_init(module, parent), instance_class, attrs,
+                     statement.value, context, depth + 1)
+        elif not follow(statement, context):
+            for name in changed_by(statement):
+                attrs[name] = unknown(statement)
 
-        # self.reputation.update({...})
-        if isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Call):
-            call = statement.value
-            if isinstance(call.func, ast.Attribute) and call.func.attr == "update" and len(call.args) == 1:
-                target = call.func.value
-                if isinstance(target, ast.Attribute) and isinstance(target.value, ast.Name) and target.value.id == "self":
-                    current = attrs.get(target.attr)
-                    extra = evaluate(call.args[0], context)
-                    if isinstance(current, dict) and isinstance(extra, dict) and not is_unknown(extra):
-                        merged = dict(current)
-                        merged.update(extra)
-                        attrs[target.attr] = merged
-            continue
 
-        if not isinstance(statement, ast.Assign) or len(statement.targets) != 1:
-            continue
-        target = statement.targets[0]
-
-        # self.ally, self.enemy = 'Ravagers', 'Immortals'
-        if isinstance(target, ast.Tuple) and isinstance(statement.value, ast.Tuple):
-            if len(target.elts) == len(statement.value.elts):
-                for part, value in zip(target.elts, statement.value.elts):
-                    if isinstance(part, ast.Attribute) and isinstance(part.value, ast.Name) and part.value.id == "self":
-                        attrs[part.attr] = evaluate(value, context)
-            continue
-
-        if isinstance(target, ast.Name):
-            context["locals"][target.id] = evaluate(statement.value, context)
-        elif isinstance(target, ast.Attribute) and isinstance(target.value, ast.Name) and target.value.id == "self":
-            attrs[target.attr] = evaluate(statement.value, context)
+def class_values(modules, module, class_name):
+    """Every class-level value an instance starts with. A class's own value replaces its parent's."""
+    values = {}
+    for name in parents_first(module, class_name):
+        # A class body sees the names it has already assigned, such as the one
+        # list of names the Mer give both of their body types.
+        body = {}
+        context = {"modules": modules, "module": module, "attrs": {}, "locals": body}
+        nodes = module["classes"][name]["attrs"]
+        for attribute in nodes:
+            body[attribute] = evaluate(nodes[attribute], context)
+        for attribute in body:
+            values[attribute] = body[attribute]
+    return values
 
 
 def read_instance(modules, module, class_name):
-    """The values an instance of the class would carry after __init__."""
-    attrs = {}
-    run_init(modules, module, class_with_init(module, class_name), class_name, attrs, 0)
+    """The values an instance of the class carries, as Python would look them
+    up: its class-level values, and over them whatever __init__ sets."""
+    attrs = class_values(modules, module, class_name)
+    run_init(modules, module, class_with_init(module, class_name), class_name, attrs, None, None, 0)
     return attrs
-
-
-def class_value(modules, module, class_name, attribute, default):
-    """A class-level value worked out, or default when the class has none."""
-    node = class_attribute(module, class_name, attribute)
-    if node is None:
-        return default
-    context = {"modules": modules, "module": module, "class": class_name, "attrs": {}, "locals": {}}
-    return evaluate(node, context)
 
 
 # ---------------------------------------------------------------------------
@@ -465,11 +586,13 @@ def method_literal(info, method, variable, problems):
 def build_stats(modules, problems):
     """Each stat's name, icon and description, in the order the game lists them.
 
-    They are the Stat classes in tooltips.py; STAT_CLASSES gives the order.
+    They are the Stat classes in tooltips.py. STAT_CLASSES gives the order of
+    a crewmate's, and the ship's inventory screen (inventory.ShipInventory)
+    the order of the ship's.
     """
     module = modules["tooltips"]
     result = {"crew": [], "ship": []}
-    context = {"modules": modules, "module": module, "class": "Stat", "attrs": {}, "locals": {}}
+    context = {"modules": modules, "module": module, "attrs": {}, "locals": {}}
     if "STAT_CLASSES" not in module["values"]:
         problems.append("tooltips.py no longer defines STAT_CLASSES")
         return result
@@ -478,19 +601,23 @@ def build_stats(modules, problems):
     for reference in refs_in(evaluate(module["values"]["STAT_CLASSES"], context)):
         crew_names.append(reference.split(".")[1])
     ship_names = []
-    for name in module["order"]:
-        if descends_from(module, name, "ShipStat"):
-            ship_names.append(name)
+    inventory = modules["inventory"]
+    if "ShipInventory" not in inventory["classes"]:
+        problems.append("inventory.py no longer has a class named ShipInventory")
+    else:
+        screen = read_instance(modules, inventory, "ShipInventory")
+        shown = published(screen, "stat_objects", [], inventory, "ShipInventory", problems)
+        for found in named(shown, "stat_objects", inventory, "ShipInventory", problems):
+            ship_names.append(found.split(".")[1])
 
     for group, names in [("crew", crew_names), ("ship", ship_names)]:
         for name in names:
+            attrs = read_instance(modules, module, name)
             stat = {}
             for key in ["icon_name", "name", "description"]:
-                value = class_value(modules, module, name, key, "")
-                if not isinstance(value, str) or value == "":
-                    problems.append("%s: could not read '%s'" % (where(module, name), key))
-                    value = ""
-                stat[key] = value
+                stat[key] = published(attrs, key, "", module, name, problems)
+                if stat[key] == "":
+                    problems.append("%s: has no '%s'" % (where(module, name), key))
             result[group].append({"icon": stat["icon_name"], "name": stat["name"],
                                   "description": stat["description"]})
     return result
@@ -521,18 +648,65 @@ def where(module, class_name):
     return "%s.py line %d (class %s)" % (module["name"], module["classes"][class_name]["line"], class_name)
 
 
-def need(value, field, module, class_name, problems):
-    """Report a published field that could not be worked out. Returns True if it is usable."""
+def published(attrs, key, default, module, class_name, problems):
+    """One value for a record: attrs[key], which must be the same kind of value as default.
+
+    A class without the value, or with None, gets the default. A value the
+    reader could not work out, or one of another kind, is reported.
+    """
+    value = attrs.get(key)
+    if value is None:
+        return default
     if is_unknown(value):
-        problems.append("%s: could not read '%s'" % (where(module, class_name), field))
-        return False
-    return True
+        problems.append("%s: could not read '%s'" % (where(module, class_name), key))
+        return default
+    if isinstance(default, bool):
+        fits = isinstance(value, bool)
+    elif isinstance(default, (int, float)):
+        fits = isinstance(value, (int, float)) and not isinstance(value, bool)
+    else:
+        fits = isinstance(value, type(default))
+    if not fits:
+        problems.append("%s: '%s' is %s, which is not the kind of value the Wiki expects"
+                        % (where(module, class_name), key, repr(value)[:60]))
+        return default
+    return value
 
 
-def image_of(value):
+def picture(attrs, key, module, class_name, problems):
+    """The picture a value loads, as a path under the game's images folder. '' when the class has none."""
+    value = attrs.get(key)
+    if value is None:
+        return ""
     if isinstance(value, dict) and "image" in value:
         return value["image"]
+    problems.append("%s: could not read the picture '%s'" % (where(module, class_name), key))
     return ""
+
+
+def reference(attrs, key, module, class_name, problems):
+    """The class a value names, as 'module.Class'. '' when the class names none."""
+    value = attrs.get(key)
+    if value is None:
+        return ""
+    if isinstance(value, dict) and "ref" in value:
+        return value["ref"]
+    problems.append("%s: could not read '%s'" % (where(module, class_name), key))
+    return ""
+
+
+def named(values, field, module, class_name, problems):
+    """The classes a list names, as 'module.Class', in order. Anything else in it is reported."""
+    found = []
+    if not isinstance(values, list):
+        problems.append("%s: '%s' is not a list" % (where(module, class_name), field))
+        return found
+    for value in values:
+        if isinstance(value, dict) and "ref" in value:
+            found.append(value["ref"])
+        else:
+            problems.append("%s: '%s' holds something that is not a class" % (where(module, class_name), field))
+    return found
 
 
 def ref_of(value):
@@ -565,60 +739,40 @@ def build_items(modules, rules, report, problems):
             continue
         attrs = read_instance(modules, module, name)
 
-        item_type = attrs.get("type")
-        if not isinstance(item_type, str) or item_type not in tab_of:
+        item_type = published(attrs, "type", "", module, name, problems)
+        if item_type not in tab_of:
             problems.append("%s: its type %r is in no Bestiary tab" % (where(module, name), item_type))
             continue
 
-        display = attrs.get("name")
-        if not isinstance(display, str):
-            display = add_spaces(name)
-
-        description = attrs.get("description", "")
-        if descends_from(module, name, "Elixir"):
-            # Elixir.__init__ replaces whatever the subclass wrote.
-            ability = ref_of(attrs.get("ability")) or ref_of(class_value(modules, module, name, "ability", None))
-            if ability:
-                description = "Grants %s ability" % elixir_spacing(ability.split(".")[-1])
-        if is_unknown(description) or not isinstance(description, str):
-            problems.append("%s: could not read 'description'" % where(module, name))
-            description = ""
+        display = published(attrs, "name", add_spaces(name), module, name, problems)
+        ability = reference(attrs, "ability", module, name, problems)
+        if descends_from(module, name, "Elixir") and ability:
+            # Elixir.__init__ writes the description from its ability's class
+            # name, in a way the reader does not follow. This is what it writes.
+            description = "Grants %s ability" % elixir_spacing(ability.split(".")[-1])
+        else:
+            description = published(attrs, "description", "", module, name, problems)
         if description.strip().lower() == display.strip().lower():
             report["placeholder_descriptions"].append(display)
             description = ""
 
-        modifiers = attrs.get("modifiers", {})
-        if not need(modifiers, "modifiers", module, name, problems) or not isinstance(modifiers, dict):
-            modifiers = {}
-        cost = attrs.get("cost", 0)
-        if not isinstance(cost, (int, float)):
-            cost = 0
-        resource = attrs.get("resource")
-        if not isinstance(resource, str):
-            resource = class_value(modules, module, name, "resource", "gold")
-
-        ability = ref_of(attrs.get("ability")) or ref_of(class_value(modules, module, name, "ability", None))
-        grants = ref_of(attrs.get("grants_trait")) or ref_of(class_value(modules, module, name, "grants_trait", None))
-        cures = ref_of(class_value(modules, module, name, "cures", None))
-        image = image_of(attrs.get("image"))
+        image = picture(attrs, "image", module, name, problems)
         if not image:
-            problems.append("%s: could not read its icon" % where(module, name))
+            problems.append("%s: has no icon" % where(module, name))
 
-        slot = attrs.get("slot", "")
-        arms = attrs.get("idle_arms", "")
         records["items." + name] = {
             "name": display,
             "tab": tab_of[item_type],
             "type": item_type,
-            "slot": slot if isinstance(slot, str) else "",
-            "arms": arms if isinstance(arms, str) else "",
+            "slot": published(attrs, "slot", "", module, name, problems),
+            "arms": published(attrs, "idle_arms", "", module, name, problems),
             "description": description,
-            "modifiers": modifiers,
-            "cost": cost,
-            "resource": resource,
+            "modifiers": published(attrs, "modifiers", {}, module, name, problems),
+            "cost": published(attrs, "cost", 0, module, name, problems),
+            "resource": published(attrs, "resource", "gold", module, name, problems),
             "ability": ability,
-            "grants_trait": grants,
-            "cures": cures,
+            "grants_trait": reference(attrs, "grants_trait", module, name, problems),
+            "cures": reference(attrs, "cures", module, name, problems),
             "image": image,
         }
     return records
@@ -628,40 +782,35 @@ def build_traits(modules, problems):
     module = modules["traits"]
     offerable = []
     if "OFFERABLE_TRAITS" in module["values"]:
-        context = {"modules": modules, "module": module, "class": "Trait", "attrs": {}, "locals": {}}
-        for reference in refs_in(evaluate(module["values"]["OFFERABLE_TRAITS"], context)):
-            offerable.append(reference)
+        context = {"modules": modules, "module": module, "attrs": {}, "locals": {}}
+        offerable = named(evaluate(module["values"]["OFFERABLE_TRAITS"], context), "OFFERABLE_TRAITS",
+                          module, "Trait", problems)
+    else:
+        problems.append("traits.py no longer defines OFFERABLE_TRAITS")
 
     records = {}
     for name in module["order"]:
         if not descends_from(module, name, "Trait"):
             continue
-        # A secret trait is left out, and never named in this public repository.
-        if class_value(modules, module, name, "secret", False) is True:
-            continue
         attrs = read_instance(modules, module, name)
 
-        display = attrs.get("name")
-        if not isinstance(display, str):
-            display = add_spaces(name)
-        description = attrs.get("description", "")
-        if not need(description, "description", module, name, problems) or not isinstance(description, str):
-            description = ""
-        scaling = attrs.get("scaling")
-        if scaling is None:
-            scaling = class_value(modules, module, name, "scaling", {})
-        if not need(scaling, "scaling", module, name, problems) or not isinstance(scaling, dict):
-            scaling = {}
-        max_level = class_value(modules, module, name, "max_level", 3)
-        image = image_of(attrs.get("image"))
+        # A secret trait is left out, and never named in this public
+        # repository. Only a plain False publishes a trait.
+        secret = attrs.get("secret")
+        if secret is not False:
+            if secret is not True:
+                problems.append("%s: could not read 'secret'" % where(module, name))
+            continue
+
+        image = picture(attrs, "image", module, name, problems)
         if not image:
-            problems.append("%s: could not read its icon" % where(module, name))
+            problems.append("%s: has no icon" % where(module, name))
 
         records["traits." + name] = {
-            "name": display,
-            "description": description,
-            "modifiers": scaling,
-            "max_level": max_level,
+            "name": published(attrs, "name", add_spaces(name), module, name, problems),
+            "description": published(attrs, "description", "", module, name, problems),
+            "modifiers": published(attrs, "scaling", {}, module, name, problems),
+            "max_level": published(attrs, "max_level", 3, module, name, problems),
             "offered_at_level_up": ("traits." + name) in offerable,
             "image": image,
         }
@@ -690,95 +839,89 @@ def build_mobs(modules, rules, whales, trait_records, problems):
         else:
             group = "creature"
 
-        stats = attrs.get("stats", {})
+        stats = published(attrs, "stats", {}, module, name, problems)
         shown = {}
-        if need(stats, "stats", module, name, problems) and isinstance(stats, dict):
-            for key in STAT_KEYS:
-                if key not in stats:
-                    problems.append("%s: stats has no '%s'" % (where(module, name), key))
-                else:
-                    shown[key] = stats[key]
-
-        description = class_value(modules, module, name, "description", "")
-        if is_unknown(description) or not isinstance(description, str):
-            description = ""
-
-        immunities = attrs.get("immunities")
-        if immunities is None:
-            immunities = class_value(modules, module, name, "immunities", [])
-        if is_unknown(immunities) or not isinstance(immunities, list):
-            immunities = []
+        for key in STAT_KEYS:
+            if key not in stats:
+                problems.append("%s: stats has no '%s'" % (where(module, name), key))
+            else:
+                shown[key] = stats[key]
 
         abilities = []
         for key in ["move", "default_ability"]:
-            reference = ref_of(attrs.get(key))
-            if reference:
-                abilities.append(reference)
-        for reference in refs_in(attrs.get("special_abilities")):
-            abilities.append(reference)
+            found = reference(attrs, key, module, name, problems)
+            if found:
+                abilities.append(found)
+        special = published(attrs, "special_abilities", [], module, name, problems)
+        for found in named(special, "special_abilities", module, name, problems):
+            abilities.append(found)
 
         record = {
             "name": add_spaces(name),
             "group": group,
-            "description": description,
+            "description": published(attrs, "description", "", module, name, problems),
             "stats": shown,
-            "immunities": immunities,
+            "immunities": published(attrs, "immunities", [], module, name, problems),
             "abilities": abilities,
-            "drops": refs_in(attrs.get("loot")),
-            "drop_chance": class_value(modules, module, name, "drop_chance", 0.5),
+            "drops": named(published(attrs, "loot", [], module, name, problems), "loot", module, name, problems),
+            "drop_chance": published(attrs, "drop_chance", 0.5, module, name, problems),
             "image": "",
         }
 
-        cls = attrs.get("cls")
         if group == "crewmate":
-            pool = class_value(modules, module, name, "portrait_pool", {})
             portraits = []
-            if isinstance(pool, dict) and not is_unknown(pool):
-                for key in pool:
-                    for file_name in pool[key]:
-                        portraits.append("portraits/" + file_name)
-            names = class_value(modules, module, name, "name_pool", {})
-            name_list = []
-            if isinstance(names, dict) and not is_unknown(names):
-                for key in names:
-                    for person in names[key]:
-                        name_list.append(person)
+            pool = published(attrs, "portrait_pool", {}, module, name, problems)
+            for key in pool:
+                for file_name in pool[key]:
+                    portraits.append("portraits/" + file_name)
+            if not portraits:
+                problems.append("%s: has no portraits" % where(module, name))
+
+            # A race's two lists of names can be one list (the Mer's): each name once.
+            names = []
+            pool = published(attrs, "name_pool", {}, module, name, problems)
+            for key in pool:
+                for person in pool[key]:
+                    if person not in names:
+                        names.append(person)
 
             # A race can be born with a secret trait. The game lists it nowhere
             # until an event reveals it, and it has no record, so it is left
             # out here as well.
             innate = []
-            for pair in class_value(modules, module, name, "innate_traits", []):
-                if isinstance(pair, list) and len(pair) == 2 and ref_of(pair[0]) in trait_records:
+            for pair in published(attrs, "innate_traits", [], module, name, problems):
+                if not isinstance(pair, list) or len(pair) != 2 or not ref_of(pair[0]):
+                    problems.append("%s: could not read an entry of 'innate_traits'" % where(module, name))
+                elif ref_of(pair[0]) in trait_records:
                     innate.append({"trait": ref_of(pair[0]), "level": pair[1]})
 
             tiers = {}
-            raw_tiers = class_value(modules, module, name, "trait_tiers", {})
-            if isinstance(raw_tiers, dict) and not is_unknown(raw_tiers):
-                for tier in raw_tiers:
-                    tiers[tier] = refs_in(raw_tiers[tier])
+            raw_tiers = published(attrs, "trait_tiers", {}, module, name, problems)
+            for tier in raw_tiers:
+                tiers[tier] = named(raw_tiers[tier], "trait_tiers", module, name, problems)
 
             gear = {}
-            raw_gear = class_value(modules, module, name, "equipment_sets", {})
-            if isinstance(raw_gear, dict) and not is_unknown(raw_gear):
-                for level in raw_gear:
-                    sets = []
-                    for one_set in raw_gear[level]:
-                        sets.append(refs_in(one_set))
-                    gear[str(level)] = sets
+            raw_gear = published(attrs, "equipment_sets", {}, module, name, problems)
+            for level in raw_gear:
+                sets = []
+                for one_set in raw_gear[level]:
+                    sets.append(named(one_set, "equipment_sets", module, name, problems))
+                gear[level] = sets
 
             record["portraits"] = portraits
-            record["names"] = name_list
-            record["hire_cost"] = class_value(modules, module, name, "hire_cost", 0)
+            record["names"] = names
+            record["hire_cost"] = published(attrs, "hire_cost", 0, module, name, problems)
             record["innate_traits"] = innate
             record["trait_tiers"] = tiers
             record["starting_gear"] = gear
             if portraits:
                 record["image"] = portraits[0]
-        elif isinstance(cls, str):
-            record["image"] = "mobs/mobs/%s_idle.png" % cls
         else:
-            problems.append("%s: could not read 'cls', which names its sprite" % where(module, name))
+            cls = published(attrs, "cls", "", module, name, problems)
+            if cls == "":
+                problems.append("%s: has no 'cls', which names its sprite" % where(module, name))
+            else:
+                record["image"] = "mobs/mobs/%s_idle.png" % cls
 
         records["mobs." + name] = record
     return records
@@ -791,45 +934,42 @@ def build_factions(modules, rules, mob_records, problems):
         if not descends_from(module, name, "Faction"):
             continue
         attrs = read_instance(modules, module, name)
-        display = attrs.get("name")
-        if not isinstance(display, str):
-            display = add_spaces(name)
+        display = published(attrs, "name", add_spaces(name), module, name, problems)
         if display in rules["not_factions"]:
             continue
 
-        description = attrs.get("description", "")
-        if not need(description, "description", module, name, problems) or not isinstance(description, str):
-            description = ""
-
+        # Only the members the Bestiary lists as mobs are named.
         members = []
-        for reference in refs_in(attrs.get("members")):
-            if reference in mob_records:
-                members.append(reference)
+        listed = published(attrs, "members", [], module, name, problems)
+        for found in named(listed, "members", module, name, problems):
+            if found in mob_records:
+                members.append(found)
 
+        # Only a herald's name is published, so what the herald is need not be readable.
         heralds = []
-        raw_heralds = attrs.get("heralds", {})
-        if isinstance(raw_heralds, dict):
+        raw_heralds = attrs.get("heralds")
+        if isinstance(raw_heralds, dict) and "unknown" not in raw_heralds:
             for key in raw_heralds:
                 heralds.append(add_spaces(key))
+        elif raw_heralds is not None:
+            problems.append("%s: could not read 'heralds'" % where(module, name))
 
-        sites = attrs.get("sites", [])
-        site_names = []
-        if isinstance(sites, list):
-            for site in sites:
-                if isinstance(site, str):
-                    site_names.append(add_spaces(site))
+        sites = []
+        for site in published(attrs, "sites", [], module, name, problems):
+            if isinstance(site, str):
+                sites.append(add_spaces(site))
+            else:
+                problems.append("%s: 'sites' holds something that is not a name" % where(module, name))
 
-        ally = attrs.get("ally", "")
-        enemy = attrs.get("enemy", "")
         records["factions." + name] = {
             "name": display,
-            "description": description,
+            "description": published(attrs, "description", "", module, name, problems),
             "members": members,
             "heralds": heralds,
-            "sites": site_names,
-            "ally": ally if isinstance(ally, str) else "",
-            "enemy": enemy if isinstance(enemy, str) else "",
-            "image": image_of(attrs.get("banner")),
+            "sites": sites,
+            "ally": published(attrs, "ally", "", module, name, problems),
+            "enemy": published(attrs, "enemy", "", module, name, problems),
+            "image": picture(attrs, "banner", module, name, problems),
         }
     return records
 
@@ -883,31 +1023,17 @@ def build_abilities(modules, wanted, problems):
             problems.append("abilities.py has no class named %s, which something refers to" % name)
             continue
         attrs = read_instance(modules, module, name)
-        description = class_value(modules, module, name, "description", "")
-        if is_unknown(description) or not isinstance(description, str):
-            description = ""
-        base = attrs.get("base_stats", {})
-        if is_unknown(base) or not isinstance(base, dict):
-            base = {}
-
-        record = {
+        records[reference] = {
             "name": add_spaces(name),
-            "description": description,
-            "type": "",
-            "damage_type": "",
-            "base_stats": base,
-            "stamina_cost": 0,
-            "mana_cost": 0,
+            "description": published(attrs, "description", "", module, name, problems),
+            "type": published(attrs, "type", "", module, name, problems),
+            "damage_type": published(attrs, "damage_type", "", module, name, problems),
+            "base_stats": published(attrs, "base_stats", {}, module, name, problems),
+            "stamina_cost": published(attrs, "stamina_cost", 0, module, name, problems),
+            "mana_cost": published(attrs, "mana_cost", 0, module, name, problems),
             "status_effects": status_effects_of(modules, name, attrs),
-            "image": image_of(attrs.get("image")),
+            "image": picture(attrs, "image", module, name, problems),
         }
-        for key in ["type", "damage_type"]:
-            if isinstance(attrs.get(key), str):
-                record[key] = attrs[key]
-        for key in ["stamina_cost", "mana_cost"]:
-            if isinstance(attrs.get(key), (int, float)) and not isinstance(attrs.get(key), bool):
-                record[key] = attrs[key]
-        records[reference] = record
     return records
 
 
@@ -922,18 +1048,16 @@ def build_effects(modules, wanted, problems):
         if not descends_from(module, name, "Buff"):
             continue
         attrs = read_instance(modules, module, name)
-        description = class_value(modules, module, name, "description", "")
-        if is_unknown(description) or not isinstance(description, str):
-            description = ""
-        duration = attrs.get("duration", 0)
-        key = attrs.get("name")
+        if attrs.get("duration") is False:
+            # Latched: it has no count of turns, and stays until something removes it.
+            attrs["duration"] = 0
         records[reference] = {
             "name": add_spaces(name),
             # The word a mob's immunities list uses for this effect.
-            "key": key if isinstance(key, str) else "",
-            "description": description,
-            "duration": duration if isinstance(duration, int) and not isinstance(duration, bool) else 0,
-            "image": image_of(attrs.get("icon")),
+            "key": published(attrs, "name", "", module, name, problems),
+            "description": published(attrs, "description", "", module, name, problems),
+            "duration": published(attrs, "duration", 0, module, name, problems),
+            "image": picture(attrs, "icon", module, name, problems),
         }
     return records
 
@@ -1049,7 +1173,18 @@ def read_game(problems):
 
 
 def as_text(records):
-    return json.dumps(records, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+    """The text of one file in game/data.
+
+    Records are written in alphabetical order, so moving a class within the
+    game's source changes nothing here. Inside a record the order is the
+    game's: the Bestiary draws an item's bonuses in the order its class lists them.
+    """
+    ordered = {}
+    keys = list(records.keys())
+    keys.sort()
+    for key in keys:
+        ordered[key] = records[key]
+    return json.dumps(ordered, indent=2, ensure_ascii=False) + "\n"
 
 
 def extract(problems):
