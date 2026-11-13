@@ -18,6 +18,7 @@
     "buys": "",
     "hires": [],
     "brews": true,
+    "currency": "gold",
     "scene": "scenes/alchemist.png",
     "image": "locations/alchemist_tower.png",
     "strip": true
@@ -39,6 +40,7 @@
     "buys": "",
     "hires": [],
     "brews": true,
+    "currency": "gold",
     "scene": "scenes/baba_yaga.png",
     "image": "locations/baba_yaga.png",
     "strip": true
@@ -70,6 +72,7 @@
       "mobs.Caridian"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/caridian_camp.png",
     "image": "locations/caridian_camp.png",
     "strip": true
@@ -108,6 +111,7 @@
       "mobs.Dryad"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/dryad_city.png",
     "image": "locations/dryad_city.png",
     "strip": false
@@ -142,6 +146,7 @@
       "mobs.Dwarf"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/dwarf_stronghold.png",
     "image": "locations/dwarf_stronghold.png",
     "strip": false
@@ -177,6 +182,7 @@
       "mobs.Human"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/castle.png",
     "image": "locations/castle.png",
     "strip": false
@@ -205,6 +211,7 @@
     "buys": "cargo",
     "hires": [],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/port.png",
     "image": "locations/port.png",
     "strip": true
@@ -248,6 +255,7 @@
       "mobs.Satyr"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/gnome_village.png",
     "image": "locations/gnome_village.png",
     "strip": false
@@ -283,6 +291,7 @@
       "mobs.Cyclops"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/goblin_city.png",
     "image": "locations/goblin_city.png",
     "strip": true
@@ -295,6 +304,7 @@
     "buys": "",
     "hires": [],
     "brews": false,
+    "currency": "gold",
     "scene": "",
     "image": "locations/graveyard.png",
     "strip": false
@@ -328,6 +338,7 @@
       "mobs.Human"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/undead_port.png",
     "image": "locations/undead_port.png",
     "strip": true
@@ -362,6 +373,7 @@
       "mobs.Strigoi"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/undead_city.png",
     "image": "locations/undead_town.png",
     "strip": false
@@ -394,6 +406,7 @@
       "mobs.Mer"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/merfolk.png",
     "image": "locations/mer_port.png",
     "strip": true
@@ -414,6 +427,7 @@
     "buys": "",
     "hires": [],
     "brews": true,
+    "currency": "gold",
     "scene": "scenes/mer_wizard.png",
     "image": "locations/mer_tower.png",
     "strip": true
@@ -449,6 +463,7 @@
       "mobs.Pirate"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/pirate_cove.png",
     "image": "locations/pirate_cove.png",
     "strip": true
@@ -464,6 +479,7 @@
       "mobs.Amazon"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/tavern.png",
     "image": "locations/pirate_outpost.png",
     "strip": false
@@ -498,6 +514,7 @@
       "mobs.Salorian"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/salorian_village.png",
     "image": "locations/salorian_village.png",
     "strip": false
@@ -520,6 +537,7 @@
     "buys": "",
     "hires": [],
     "brews": true,
+    "currency": "gold",
     "scene": "scenes/shaman.png",
     "image": "locations/shaman_hut.png",
     "strip": false
@@ -550,6 +568,7 @@
     "buys": "cargo",
     "hires": [],
     "brews": false,
+    "currency": "food",
     "scene": "scenes/shryke_port.png",
     "image": "locations/shryke_port.png",
     "strip": false
@@ -585,6 +604,7 @@
       "mobs.Shryke"
     ],
     "brews": false,
+    "currency": "food",
     "scene": "scenes/shryke_village.png",
     "image": "locations/shrykes_village.png",
     "strip": true
@@ -627,6 +647,7 @@
       "mobs.Slaad"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/slaad_pad.png",
     "image": "locations/slaad_pad.png",
     "strip": false
@@ -667,6 +688,7 @@
       "mobs.Amazon"
     ],
     "brews": false,
+    "currency": "gold",
     "scene": "scenes/whaling_port.png",
     "image": "locations/whaling_port.png",
     "strip": true

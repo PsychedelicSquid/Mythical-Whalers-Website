@@ -320,6 +320,8 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
 .prose p { text-wrap: pretty; }
 .prose a { text-decoration: underline; }
 .prose h2 { margin-top: calc(4px * var(--px)); }
+/* A list sits as close to its paragraph as two paragraphs do to each other. */
+.prose ul { margin: 0; padding-left: calc(10px * var(--px)); display: flex; flex-direction: column; gap: calc(2px * var(--px)); }
 .prose .pixel, .prose .photo, .prose .player { margin-inline: auto; }
 
 /* ------------------------------------------------------------------ */

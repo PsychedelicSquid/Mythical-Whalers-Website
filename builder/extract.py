@@ -1133,6 +1133,7 @@ def build_locations(modules, faction_records, problems):
             "buys": published(attrs, "buying", "", module, name, problems),
             "hires": hires,
             "brews": attrs.get("brews") is not None,
+            "currency": published(attrs, "currency", "gold", module, name, problems),
             "scene": picture(attrs, "scene", module, name, problems),
             "image": drawn,
             "strip": strip,

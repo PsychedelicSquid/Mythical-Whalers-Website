@@ -559,6 +559,9 @@ def describe_location(entry, entries, data, sizes, problems):
         page["facts"].append({"label": "FACTION", "text": "", "links": [link(entries, record["faction"])]})
     if record["buys"]:
         page["facts"].append({"label": "BUYS", "text": record["buys"].capitalize(), "links": []})
+    if record["currency"] != "gold":
+        # gui.Location.in_currency: a gold price is halved where a place trades in food.
+        page["facts"].append({"label": "TRADES IN", "text": record["currency"].capitalize(), "links": []})
     if record["brews"]:
         gems = data["meta"]["brew_cost"]
         text = "A creature drop and %d gems make an elixir or tonic." % gems

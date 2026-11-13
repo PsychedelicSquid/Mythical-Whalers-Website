@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Battles - Mythical Whalers</title>
+  <meta name="description" content="How a battle works in Mythical Whalers: turns, Stamina and Mana, how damage is worked out, status effects, fleeing and loot.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0d0e12">
+  <link rel="canonical" href="http://www.mythicalwhalers.com/wiki/guide/battles/">
+  <meta property="og:site_name" content="Mythical Whalers">
+  <meta property="og:title" content="Battles">
+  <meta property="og:description" content="How a battle works in Mythical Whalers: turns, Stamina and Mana, how damage is worked out, status effects, fleeing and loot.">
+  <meta property="og:url" content="http://www.mythicalwhalers.com/wiki/guide/battles/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="http://www.mythicalwhalers.com/images/site/card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="preload" href="/fonts/m5x7.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face { font-family: "MW Body"; src: url("/fonts/m5x7.ttf") format("truetype"); font-display: block; }
+  </style>
+  <link rel="stylesheet" href="/css/site.css?v=63496f78">
+  <script src="/js/site.js?v=16470b91" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the page</a>
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="/">Mythical Whalers</a>
+      <nav aria-label="Site">
+        <a class="btn" href="/">Home</a>
+        <a class="btn" href="/wiki/" aria-current="page">Wiki</a>
+        <a class="btn" href="/devlog/">Devlog</a>
+        <a class="btn" href="/team/">Team</a>
+        <a class="btn" href="https://store.steampowered.com/app/2787860/">Steam</a>
+      </nav>
+    </div>
+  </header>
+  <div class="rule"></div>
+  <main id="main" class="main wrap">
+    <p class="crumbs"><a href="/wiki/">Wiki</a> &gt; How to play &gt; Battles</p>
+    <article class="win">
+      <div class="win-head has-x">
+        <h1>Battles</h1>
+        <a class="win-x" href="/wiki/" aria-label="Close: back to the Wiki"></a>
+      </div>
+      <div class="win-mid">
+        <div class="prose">
+<h2>The battlefield</h2>
+<p>A battle is fought on a grid of tiles. Open water is 17 tiles wide and 9 high, a ship's deck is 14 by 7, and land is 16 by 7, or 15 by 7 in the desert.</p>
+<p>On land and on a ship's deck your crewmates start in the two left columns and the enemy in the two right columns. In open water the enemy starts in the middle and your crewmates start on both sides of it: the first three on the left and the next three on the right.</p>
+<p>An obstacle blocks movement. A small one has 4 Armor and a big one has 6, and an obstacle is destroyed when its Armor reaches 0. An exploding obstacle has 2 Armor and, when destroyed, damages every mob and obstacle on the 8 tiles around it:</p>
+<ul>
+  <li>the Powder Keg on a ship's deck deals 4 damage and leaves Fire on its own tile and those 8;</li>
+  <li>the Boom Shroom in the forest deals 4 damage and leaves Fire;</li>
+  <li>the Poison Puffball in the forest deals 1 damage and leaves Poison.</li>
+</ul>
+
+<h2>Turns</h2>
+<p>Mobs take their turns one at a time in order of Speed, highest first, and the order is worked out again at the start of every round. You give orders only to your own crewmates. The highlight under the mob whose turn it is is red for a mob fighting against you and blue for one fighting for you.</p>
+<p>Every ability costs Stamina, and some also cost Mana. A mob's turn ends by itself when its Stamina reaches 0, and its Stamina is set back to full as the turn ends. Mana and Stamina are both set back to full when the battle ends.</p>
+<ul>
+  <li><a href="/wiki/abilities/move/">Move</a> costs 1 Stamina however far the mob goes. It can reach any free tile whose path costs no more than the mob's Speed times 10, where a step up, down, left or right costs 10 and a diagonal step costs 14. A mob cannot move through an obstacle or another mob.</li>
+  <li><a href="/wiki/abilities/melee/">Melee</a>, the default attack, costs 1 Stamina and can hit any of the 8 tiles around the attacker.</li>
+</ul>
+
+<h2>Damage</h2>
+<p>An ability's Damage grows with one of its user's stats. The numbers in an ability's tooltip already include the user's stats and traits.</p>
+<ul>
+  <li>A melee ability adds the user's whole Strength, so plain Melee, whose own Damage is 0, deals the attacker's Strength.</li>
+  <li>A thrown ability adds half the user's Strength.</li>
+  <li>A ranged ability adds half the user's Luck.</li>
+  <li>A magic ability adds the caster's whole Will, unless the ability sets its own share: <a href="/wiki/abilities/heal/">Heal</a> adds half the caster's Will to its Healing.</li>
+</ul>
+<p>Damage is taken from the target's Armor first, one point of Armor for each point of damage, and only what is left over is taken from its Health. Armor that has blocked damage is used up for the rest of the battle; when the battle ends, each crewmate gets back the Armor its items and traits give. Piercing is damage on top of an ability's Damage that goes straight to Health and ignores Armor.</p>
+
+<h2>Luck: crits and misses</h2>
+<ul>
+  <li>When the attacker's Luck is higher than the target's, the attack has a 10% chance to crit for each point of difference, up to 60%. A crit doubles its Damage and its Piercing.</li>
+  <li>When the attacker's Luck is lower, the attack has a 10% chance to miss for each point of difference, up to 60%. A miss deals no damage and does not apply the attack's own status effect.</li>
+  <li>Magic abilities, fixed-damage abilities such as bombs, and attacks on obstacles never crit and never miss.</li>
+</ul>
+
+<h2>Range, Radius and friendly fire</h2>
+<p>An ability with a Range can be used on tiles inside a circle of that many tiles around its user. An ability with a Radius that is aimed at a tile affects every tile within 0.7 times the Radius of that tile.</p>
+<p>An attack hits whatever stands on the tiles it covers: friend, foe or obstacle. Your own crewmates can be hit by an area attack.</p>
+<p>A shooting ability is aimed, and an aimed ability cannot be used while a living enemy stands on a tile next to its user: the game says "Enemies are too close". Thrown abilities are exempt, and so is a crewmate with the <a href="/wiki/traits/steady/">Steady</a> trait.</p>
+
+<h2>Status effects</h2>
+<p>A <a href="/wiki/status-effects/">status effect</a> acts once when it lands and then again at the start of each of the affected mob's turns. One with a duration of 2 acts at the start of 2 of the mob's turns and is removed at the start of the turn after that. Receiving the same status effect again restarts the count; it does not stack. A mob that is immune to a status effect never receives it.</p>
+<p>Fire left on a tile gives <a href="/wiki/status-effects/burning/">Burning</a>, and Poison left on a tile gives <a href="/wiki/status-effects/poisoned/">Poisoned</a>, to a mob standing there when it lands, even when the attack that left it misses. A mob that walks onto or across such a tile gets the status effect too.</p>
+
+<h2>Fear and Will</h2>
+<p>A mob with fear does not act on its turn. It makes one Move to the free tile within its reach that is farthest from its nearest enemy, and its turn ends.</p>
+<ul>
+  <li>The <a href="/wiki/abilities/fear/">Fear</a> ability frightens every enemy within its Radius for 1 turn. A target with the <a href="/wiki/traits/heroic/">Heroic</a> trait resists with a 33% chance for each level of the trait, and a target with the <a href="/wiki/traits/coward/">Coward</a> trait flees for 2 turns.</li>
+  <li><a href="/wiki/abilities/charm/">Charm</a> pits Will against Will: the target resists with a chance equal to its own Will divided by the sum of the caster's Will and its own.</li>
+</ul>
+
+<h2>At 0 Health</h2>
+<p>One of your crewmates that reaches 0 Health is knocked down, not killed. Its body stays on its tile as an obstacle called Downed Crewmate, or Floating Crewmate in open water. The body has 4 Armor, and if it is destroyed the crewmate is dead for good.</p>
+<ul>
+  <li>The <a href="/wiki/abilities/resurrect/">Resurrect</a> ability brings a knocked-down crewmate back during the battle, with full Mana and Stamina.</li>
+  <li>When the battle is won, every knocked-down crewmate gets up with 1 Health. A crewmate that gets up this way has a 3 in 4 chance to gain <a href="/wiki/traits/tremor/">Tremor</a>, <a href="/wiki/traits/paranoid/">Paranoid</a> or <a href="/wiki/traits/coward/">Coward</a>, each equally likely.</li>
+</ul>
+<p>The battle is lost when no mob on your side is left standing, and a lost battle ends the run.</p>
+
+<h2>Fleeing</h2>
+<p>On any of your crewmates' turns you can press Flee Battle and confirm.</p>
+<ul>
+  <li>Crewmates who are knocked down when you flee are left behind and are lost for good.</li>
+  <li>Each crewmate who escapes has a 10% chance to gain the Coward trait, and a separate 10% chance to drop the item in its hand slot.</li>
+  <li>The crew's morale drops by 1, unless it is already 1.</li>
+  <li>For your next 10 moves on the map, no crew can force a new battle.</li>
+</ul>
+
+<h2>Winning</h2>
+<p>The battle is won when no enemy mob is left on the battlefield.</p>
+<ul>
+  <li>Each mob of the beaten crew that carries loot has a chance to give one of the items it carries. The chance is 50% unless the mob sets its own, and cheaper items are more likely to be the one given. A mob's page lists what it carries under DROPS.</li>
+  <li>A boss always gives every item it carries.</li>
+  <li>An elixir is never given as loot.</li>
+  <li>A beaten crew of any faction except Gaia and Leviathan also gives a bag of gold.</li>
+</ul>
+<p>Level-ups follow a won battle: see <a href="/wiki/guide/your-crew/">Your crew</a>.</p>
+
+<h2>Allies and three-way fights</h2>
+<p>A second crew can take part in a battle. An ally's mobs are played by the game on your side. A crew hostile to everyone fights all sides, and then both hostile crews must be beaten to win.</p>
+
+        </div>
+      </div>
+      <div class="win-foot">
+        <div class="split">
+          <a class="btn" href="/wiki/">Wiki</a>
+          <span class="dim">Written for game version v0.29</span>
+        </div>
+      </div>
+    </article>
+  </main>
+  <div class="rule"></div>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>Mythical Whalers &middot; Kleen Fleet</span>
+      <nav aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/wiki/">Wiki</a>
+        <a href="/devlog/">Devlog</a>
+        <a href="/team/">Team</a>
+        <a href="https://store.steampowered.com/app/2787860/">Wishlist on Steam</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

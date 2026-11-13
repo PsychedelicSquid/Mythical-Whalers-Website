@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sailing - Mythical Whalers</title>
+  <meta name="description" content="How the map works in Mythical Whalers: moving, Knots, Vision and Navigating, food, rum and morale, and meeting other crews.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0d0e12">
+  <link rel="canonical" href="http://www.mythicalwhalers.com/wiki/guide/sailing/">
+  <meta property="og:site_name" content="Mythical Whalers">
+  <meta property="og:title" content="Sailing">
+  <meta property="og:description" content="How the map works in Mythical Whalers: moving, Knots, Vision and Navigating, food, rum and morale, and meeting other crews.">
+  <meta property="og:url" content="http://www.mythicalwhalers.com/wiki/guide/sailing/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="http://www.mythicalwhalers.com/images/site/card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="preload" href="/fonts/m5x7.ttf" as="font" type="font/ttf" crossorigin>
+  <style>
+    @font-face { font-family: "MW Body"; src: url("/fonts/m5x7.ttf") format("truetype"); font-display: block; }
+  </style>
+  <link rel="stylesheet" href="/css/site.css?v=63496f78">
+  <script src="/js/site.js?v=16470b91" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the page</a>
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="/">Mythical Whalers</a>
+      <nav aria-label="Site">
+        <a class="btn" href="/">Home</a>
+        <a class="btn" href="/wiki/" aria-current="page">Wiki</a>
+        <a class="btn" href="/devlog/">Devlog</a>
+        <a class="btn" href="/team/">Team</a>
+        <a class="btn" href="https://store.steampowered.com/app/2787860/">Steam</a>
+      </nav>
+    </div>
+  </header>
+  <div class="rule"></div>
+  <main id="main" class="main wrap">
+    <p class="crumbs"><a href="/wiki/">Wiki</a> &gt; How to play &gt; Sailing</p>
+    <article class="win">
+      <div class="win-head has-x">
+        <h1>Sailing</h1>
+        <a class="win-x" href="/wiki/" aria-label="Close: back to the Wiki"></a>
+      </div>
+      <div class="win-mid">
+        <div class="prose">
+<h2>Moving on the map</h2>
+<p>A click on a map tile shows the path to it, and a second click on the same tile sends the crew along it. The keys W, A, S and D walk the crew one tile up, left, down and right, and Q, E, Z and C walk it diagonally. The number pad does the same.</p>
+<p>Time passes only while your crew travels. When it stands still, the game pauses and other crews stand still too.</p>
+
+<h2>On foot and aboard the ship</h2>
+<p>On foot the crew crosses land tiles only, and aboard the ship it crosses water tiles only.</p>
+<ul>
+  <li>On foot, moving to an open water tile brings up "Summon your ship?". Aye puts the ship on that tile with the crew aboard, wherever the ship was left.</li>
+  <li>Aboard the ship, moving to a land tile puts the crew ashore on that tile once the ship is beside it. The ship stays on its water tile.</li>
+</ul>
+
+<h2>Knots, Vision and Navigating</h2>
+<p>The Map button on the HUD opens the ship screen, which shows the ship's three stats, the Morale meter, the hold and the map.</p>
+<ul>
+  <li><b>Knots</b> is how swiftly the crew crosses the map. A step takes 700 divided by Knots frames. The crew has 25 Knots on foot, and boarding the ship adds 10.</li>
+  <li><b>Vision</b> is how far the crew sees, in tiles. It is 5 on foot, and boarding the ship adds 1. Sight runs in straight lines from the crew: cover shortens a line and mountains stop it.</li>
+  <li><b>Navigating</b> is the share of the rough terrain penalty the crew avoids. It comes from the ship's fittings and from the best <a href="/wiki/traits/navigator/">Navigator</a> trait among the crewmates.</li>
+</ul>
+<p>Rough terrain makes a step onto it take longer. A step onto pack ice takes three times as long as a normal step. A step onto kelp or lily pads at sea, or thickets or marsh on land, takes one and a half times as long.</p>
+<p>A tile the crew has seen once stays uncovered for the rest of the run, and a location on it is marked on the map. Another crew is drawn only while it stands on a tile your crew sees at that moment.</p>
+
+<h2>Ship fittings</h2>
+<p>The ship has four slots for fittings: sails, prow, instrument and lamp. <a href="/wiki/ship-upgrades/">Ship upgrades</a> go in them and change the ship's stats: <a href="/wiki/ship-upgrades/kelp-sail/">Kelp Sail</a>, for example, adds 5 Knots.</p>
+
+<h2>Hazards on the sea</h2>
+<ul>
+  <li>Open water holds reefs the ship cannot enter: icebergs in arctic water, rocks in cursed and taiga water, and coral in forest, desert, blessed and swamp water.</li>
+  <li>It also holds patches of slow water: pack ice in arctic and taiga water, lily pads in swamp water, and kelp in forest, desert and blessed water.</li>
+  <li>In the Soul Fog, Vision is 3 lower, or 2 lower with the <a href="/wiki/ship-upgrades/dead-mans-lamp/">Dead Man's Lamp</a> fitted to the ship.</li>
+</ul>
+
+<h2>Food and rum</h2>
+<p>Food costs 2 gold a ration wherever it is sold. Each level of the <a href="/wiki/traits/cook/">Cook</a> trait lowers the crew's food consumption by 1. A Sea Crate opened while the crew has no food always holds food.</p>
+<p><a href="/wiki/cargo/rum/">Rum</a> is carried in the ship's hold. Sharing one raises morale by 1, to at most 5, and uses it up.</p>
+
+<h2>Morale</h2>
+<p>Morale is a number from 0 to 5, and a new crew starts at 5. The Morale meter on the HUD shows one bar for each point and a face that changes with it; its tooltip says "Crew morale affects random events, and crewmate traits." A click on the meter offers a Rum from the hold.</p>
+<ul>
+  <li>Fleeing a battle lowers morale by 1, but never below 1.</li>
+  <li>Each day, a crewmate with the <a href="/wiki/traits/optimist/">Optimist</a> trait has a 20% chance to raise morale by 1 while it is below 5.</li>
+</ul>
+
+<h2>Resting</h2>
+<p>Rest is offered only at a place where one of a faction's heralds lives. It heals every crewmate by 4 Health, or by 2 if the crewmate has the <a href="/wiki/traits/sick/">Sick</a> trait, and passes one day at once. That day's rations are eaten straight away.</p>
+<p>Rest is free where your reputation with the place's faction is above 0. It costs 5 gold at reputation 0, and is refused below 0.</p>
+
+<h2>Other crews</h2>
+<p>Selecting a crew shows its Might above it and your own Might above your crew. An icon above a crew shows what it is doing: angry while it has a target, fleeing while it runs away, confused after it gives up a chase, and crossed swords between two crews that fight each other.</p>
+<ul>
+  <li>A crew treats yours as hostile when its faction's reputation with you is below 0.</li>
+  <li>A hostile crew attacks when its own Might, plus 10 for each point of reputation below 0, is greater than your Might. Otherwise it flees.</li>
+  <li>A crew aboard a ship does not attack a crew on land, because a crew only goes after one that stands on a tile it can cross itself.</li>
+  <li>A whale never attacks on the map. It runs.</li>
+  <li>A crew gives up a chase after 25 tiles at reputation -1 and 30 tiles at reputation -2, and goes back to where it started.</li>
+</ul>
+<p>Moving to a tile that holds another crew opens a window with Nay, Trade if the crew sells, Talk and Attack. See <a href="/wiki/guide/factions-and-trade/">Factions and trade</a> for what Talk and Attack do to your standing.</p>
+<p>When a hostile crew that attacks reaches a tile next to yours, a message names the attacker and the battle starts. See <a href="/wiki/guide/battles/">Battles</a>.</p>
+
+<h2>The storm</h2>
+<p>A storm comes every 13 days: on day 13, day 26, day 39 and so on. Hovering the hourglass on the HUD shows "Next Storm" with the day of the next one.</p>
+
+<h2>What ends a run</h2>
+<p>A run ends when a battle is lost, which is when nobody on your side is left standing in it.</p>
+
+        </div>
+      </div>
+      <div class="win-foot">
+        <div class="split">
+          <a class="btn" href="/wiki/">Wiki</a>
+          <span class="dim">Written for game version v0.29</span>
+        </div>
+      </div>
+    </article>
+  </main>
+  <div class="rule"></div>
+  <footer class="site-foot">
+    <div class="wrap">
+      <span>Mythical Whalers &middot; Kleen Fleet</span>
+      <nav aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/wiki/">Wiki</a>
+        <a href="/devlog/">Devlog</a>
+        <a href="/team/">Team</a>
+        <a href="https://store.steampowered.com/app/2787860/">Wishlist on Steam</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

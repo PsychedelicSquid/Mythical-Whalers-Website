@@ -119,7 +119,7 @@ WIKI_NAMES = {
 # with "template: guide.html" and "game_version" in the header. These are their
 # names, in the order the Wiki's front page lists them.
 WIKI_GUIDE_ADDRESS = "/wiki/guide/"
-WIKI_GUIDES = []
+WIKI_GUIDES = ["your-crew", "battles", "sailing", "factions-and-trade"]
 
 # ---------------------------------------------------------------------------
 # The game repository. Read by `python build.py --extract`, never written to.
