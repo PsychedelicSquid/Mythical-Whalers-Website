@@ -25,8 +25,9 @@ branch. `docs/` is build output: `build.py` writes it from `content/`,
 - **Never write to the game repository** and never launch the game
   (`python main.py`). The developer edits that repository in other sessions.
   Reading its files is fine.
-- **A push to `main` changes the live site.** Commit on a branch, and push only
-  when the developer asks.
+- **Work on `main`.** Joel decided this on 13 November 2026: no work branches.
+  A push to `main` changes the live site, so push only when the developer
+  asks.
 
 ## Start every chat by reviewing the modules
 
