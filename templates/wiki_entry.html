@@ -8,6 +8,11 @@
         <a class="win-x" href="{{ category.url }}" aria-label="Close: back to {{ category.title }}"></a>
       </div>
 
+{% if details.scene %}
+      <div class="win-mid">
+        <img class="pixel scene" style="--w:{{ details.scene.width }}" src="{{ details.scene.url }}" width="{{ details.scene.width }}" height="{{ details.scene.height }}" alt="{{ entry.name }}, as the game draws it when a crew lands there">
+      </div>
+{% endif %}
       <div class="win-mid">
         <div class="entry-top">
           <div class="entry-art">

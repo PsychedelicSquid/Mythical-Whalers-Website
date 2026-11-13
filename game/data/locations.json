@@ -1,0 +1,674 @@
+{
+  "locations.AlchemistTower": {
+    "name": "Alchemist Tower",
+    "description": "A mysterious tower",
+    "faction": "",
+    "sells": [
+      [
+        "items.ElixirBerserk",
+        "items.ElixirArrow",
+        "items.ElixirCharge",
+        "items.ElixirWhirlwind",
+        "items.BlueMushroom",
+        "items.RedMushroom",
+        "items.FireBomb",
+        "items.PoisonBomb"
+      ]
+    ],
+    "buys": "",
+    "hires": [],
+    "brews": true,
+    "scene": "scenes/alchemist.png",
+    "image": "locations/alchemist_tower.png",
+    "strip": true
+  },
+  "locations.BabaYaga": {
+    "name": "Baba Yaga",
+    "description": "A mysterious tower",
+    "faction": "",
+    "sells": [
+      [
+        "items.ElixirRaiseUndead",
+        "items.ElixirPoisonBurst",
+        "items.ElixirFireBall",
+        "items.ElixirResurrect",
+        "items.BlueMushroom",
+        "items.YellowMushroom"
+      ]
+    ],
+    "buys": "",
+    "hires": [],
+    "brews": true,
+    "scene": "scenes/baba_yaga.png",
+    "image": "locations/baba_yaga.png",
+    "strip": true
+  },
+  "locations.CaridianCamp": {
+    "name": "Caridian Camp",
+    "description": "The crew approaches the Caridian Camp. Ramshackle tents made of tattered hides are the only dwellings, scavenged carcasses litter the area.",
+    "faction": "factions.Selkie",
+    "sells": [
+      [
+        "items.Food",
+        "items.Potion",
+        "items.SpiderHelm",
+        "items.SpiderArmor",
+        "items.Sickle",
+        "items.ElixirGeyser"
+      ],
+      [
+        "items.SacredHelm",
+        "items.SacredArmor",
+        "items.CrustaceanRod"
+      ],
+      [
+        "items.ElixirSanctuary"
+      ]
+    ],
+    "buys": "equipment",
+    "hires": [
+      "mobs.Caridian"
+    ],
+    "brews": false,
+    "scene": "scenes/caridian_camp.png",
+    "image": "locations/caridian_camp.png",
+    "strip": true
+  },
+  "locations.DryadCity": {
+    "name": "Dryad City",
+    "description": "",
+    "faction": "factions.Fae",
+    "sells": [
+      [
+        "items.Food",
+        "items.Potion",
+        "items.Bow",
+        "items.WhimsicalHat",
+        "items.WhimsicalClothes"
+      ],
+      [
+        "items.RangersHood",
+        "items.RangersCloak",
+        "items.ElixirArrow",
+        "items.Falcata"
+      ],
+      [
+        "items.DryadHelm",
+        "items.DryadArmor",
+        "items.GaleaHelm",
+        "items.GaleaArmor"
+      ],
+      [
+        "items.FaeHood",
+        "items.FaeArmor"
+      ]
+    ],
+    "buys": "equipment",
+    "hires": [
+      "mobs.Dryad"
+    ],
+    "brews": false,
+    "scene": "scenes/dryad_city.png",
+    "image": "locations/dryad_city.png",
+    "strip": false
+  },
+  "locations.DwarfStronghold": {
+    "name": "Dwarf Stronghold",
+    "description": "",
+    "faction": "factions.Empire",
+    "sells": [
+      [
+        "items.Food",
+        "items.Rum",
+        "items.Potion",
+        "items.SentinelHelm",
+        "items.SentinelArmor",
+        "items.Ballpeen",
+        "items.BattleAxe"
+      ],
+      [
+        "items.WarHammer",
+        "items.Axe",
+        "items.ElixirEarthshatter"
+      ],
+      [
+        "items.AdamantineHelm",
+        "items.AdamantineCuirass",
+        "items.ElixirFireBreath"
+      ]
+    ],
+    "buys": "equipment",
+    "hires": [
+      "mobs.Dwarf"
+    ],
+    "brews": false,
+    "scene": "scenes/dwarf_stronghold.png",
+    "image": "locations/dwarf_stronghold.png",
+    "strip": false
+  },
+  "locations.EmpireCastle": {
+    "name": "Empire Castle",
+    "description": "High stone walls above the water. Whoever holds them holds the coast.",
+    "faction": "factions.Empire",
+    "sells": [
+      [
+        "items.Food",
+        "items.Rum",
+        "items.Potion",
+        "items.Sword",
+        "items.PeasantHat",
+        "items.PeasantTunic",
+        "items.ElixirInspire",
+        "items.Shield"
+      ],
+      [
+        "items.Crossbow",
+        "items.ArchersHat",
+        "items.ArchersArmor"
+      ],
+      [
+        "items.GaleaHelm",
+        "items.GaleaArmor",
+        "items.Greatsword"
+      ]
+    ],
+    "buys": "equipment",
+    "hires": [
+      "mobs.Human"
+    ],
+    "brews": false,
+    "scene": "scenes/castle.png",
+    "image": "locations/castle.png",
+    "strip": false
+  },
+  "locations.EmpirePort": {
+    "name": "Empire Port",
+    "description": "Trade at the harbor market",
+    "faction": "factions.Empire",
+    "sells": [
+      [
+        "items.Food",
+        "items.Rum",
+        "items.Harpoon",
+        "items.MerchantsHat",
+        "items.MerchantsRobes"
+      ],
+      [
+        "items.ElixirLightning"
+      ],
+      [
+        "items.MysticalHat",
+        "items.MysticalRobes",
+        "items.MysticalBoots"
+      ]
+    ],
+    "buys": "cargo",
+    "hires": [],
+    "brews": false,
+    "scene": "scenes/port.png",
+    "image": "locations/port.png",
+    "strip": true
+  },
+  "locations.FaeVillage": {
+    "name": "Fae Village",
+    "description": "Gnome Village",
+    "faction": "factions.Fae",
+    "sells": [
+      [
+        "items.Food",
+        "items.Rum",
+        "items.Potion",
+        "items.GnomishHat",
+        "items.GnomishGarb",
+        "items.GnomishShoes",
+        "items.Shroomstick",
+        "items.ShroomHat",
+        "items.ShroomArmor"
+      ],
+      [
+        "items.BriarbarkHelm",
+        "items.BriarbarkArmor",
+        "items.Boomerang",
+        "items.ElixirFireBall"
+      ],
+      [
+        "items.LivingHelm",
+        "items.LivingArmor",
+        "items.Staff",
+        "items.LivingBow"
+      ],
+      [
+        "items.FaeHood",
+        "items.FaeArmor"
+      ]
+    ],
+    "buys": "equipment",
+    "hires": [
+      "mobs.Gnome",
+      "mobs.Satyr"
+    ],
+    "brews": false,
+    "scene": "scenes/gnome_village.png",
+    "image": "locations/gnome_village.png",
+    "strip": false
+  },
+  "locations.GoblinCity": {
+    "name": "Goblin City",
+    "description": "",
+    "faction": "factions.Ravagers",
+    "sells": [
+      [
+        "items.Food",
+        "items.Potion",
+        "items.OrkhideHelm",
+        "items.OrkhideArmor",
+        "items.Club"
+      ],
+      [
+        "items.PlateHelm",
+        "items.PlateArmor",
+        "items.SteelReinforcedBoots",
+        "items.Scimitar",
+        "items.ElixirCharge"
+      ],
+      [
+        "items.TrollhideHelm",
+        "items.TrollhideArmor",
+        "items.WarClub"
+      ]
+    ],
+    "buys": "",
+    "hires": [
+      "mobs.Goblin",
+      "mobs.Cyclops"
+    ],
+    "brews": false,
+    "scene": "scenes/goblin_city.png",
+    "image": "locations/goblin_city.png",
+    "strip": true
+  },
+  "locations.Graveyard": {
+    "name": "Graveyard",
+    "description": "",
+    "faction": "factions.Immortals",
+    "sells": [],
+    "buys": "",
+    "hires": [],
+    "brews": false,
+    "scene": "",
+    "image": "locations/graveyard.png",
+    "strip": false
+  },
+  "locations.ImmortalsPort": {
+    "name": "Immortals Port",
+    "description": "The walls of the undead port rise above the water, dark energy swirls in the mist.",
+    "faction": "factions.Immortals",
+    "sells": [
+      [
+        "items.Food",
+        "items.Potion",
+        "items.RatHat",
+        "items.RatArmor",
+        "items.RatClaws",
+        "items.Orcrist"
+      ],
+      [
+        "items.DeathknightHelm",
+        "items.DeathknightArmor",
+        "items.ElixirRaiseUndead"
+      ],
+      [
+        "items.SanguisHelm",
+        "items.SanguisArmor",
+        "items.SanguineBlade"
+      ]
+    ],
+    "buys": "",
+    "hires": [
+      "mobs.Human"
+    ],
+    "brews": false,
+    "scene": "scenes/undead_port.png",
+    "image": "locations/undead_port.png",
+    "strip": true
+  },
+  "locations.ImmortalsTown": {
+    "name": "Immortals Town",
+    "description": "An undead town",
+    "faction": "factions.Immortals",
+    "sells": [
+      [
+        "items.Food",
+        "items.Potion",
+        "items.RatHat",
+        "items.RatArmor",
+        "items.RatClaws",
+        "items.Orcrist"
+      ],
+      [
+        "items.DeathknightHelm",
+        "items.DeathknightArmor",
+        "items.ElixirRaiseUndead"
+      ],
+      [
+        "items.SanguisHelm",
+        "items.SanguisArmor",
+        "items.SanguineBlade"
+      ]
+    ],
+    "buys": "",
+    "hires": [
+      "mobs.Immortal",
+      "mobs.Strigoi"
+    ],
+    "brews": false,
+    "scene": "scenes/undead_city.png",
+    "image": "locations/undead_town.png",
+    "strip": false
+  },
+  "locations.MerCity": {
+    "name": "Mer City",
+    "description": "A port of the Mer people",
+    "faction": "factions.Selkie",
+    "sells": [
+      [
+        "items.Food",
+        "items.Potion",
+        "items.ClamHelm",
+        "items.ClamArmor",
+        "items.FinCutter",
+        "items.ElixirGeyser"
+      ],
+      [
+        "items.VenomHelm",
+        "items.MerArmor"
+      ],
+      [
+        "items.MerHelm",
+        "items.VenomArmor",
+        "items.Trident"
+      ]
+    ],
+    "buys": "equipment",
+    "hires": [
+      "mobs.Mer"
+    ],
+    "brews": false,
+    "scene": "scenes/merfolk.png",
+    "image": "locations/mer_port.png",
+    "strip": true
+  },
+  "locations.MerTower": {
+    "name": "Mer Tower",
+    "description": "A mysterious tower",
+    "faction": "",
+    "sells": [
+      [
+        "items.ElixirTorrent",
+        "items.ElixirFrostBolt",
+        "items.ElixirFrostBreath",
+        "items.ElixirIce",
+        "items.ElixirStormpearl"
+      ]
+    ],
+    "buys": "",
+    "hires": [],
+    "brews": true,
+    "scene": "scenes/mer_wizard.png",
+    "image": "locations/mer_tower.png",
+    "strip": true
+  },
+  "locations.PirateCove": {
+    "name": "Pirate Cove",
+    "description": "",
+    "faction": "factions.Pirates",
+    "sells": [
+      [
+        "items.Food",
+        "items.Rum",
+        "items.Musket",
+        "items.NavigatorsHat",
+        "items.NavigatorsJacket"
+      ],
+      [
+        "items.PirateHat",
+        "items.Pistol",
+        "items.BucaneersHat",
+        "items.BucaneersCoat",
+        "items.BucaneersBoots"
+      ],
+      [
+        "items.SwashbucklersHat",
+        "items.SwashbucklersJacket",
+        "items.ElixirBerserk"
+      ]
+    ],
+    "buys": "",
+    "hires": [
+      "mobs.Human",
+      "mobs.Pirate"
+    ],
+    "brews": false,
+    "scene": "scenes/pirate_cove.png",
+    "image": "locations/pirate_cove.png",
+    "strip": true
+  },
+  "locations.PirateTavern": {
+    "name": "Pirate Tavern",
+    "description": "Ramshackle tavern, the smell of rum and sweat fills the air.",
+    "faction": "factions.Pirates",
+    "sells": [],
+    "buys": "equipment",
+    "hires": [
+      "mobs.Pirate",
+      "mobs.Amazon"
+    ],
+    "brews": false,
+    "scene": "scenes/tavern.png",
+    "image": "locations/pirate_outpost.png",
+    "strip": false
+  },
+  "locations.SalorianVillage": {
+    "name": "Salorian Village",
+    "description": "",
+    "faction": "factions.Selkie",
+    "sells": [
+      [
+        "items.Food",
+        "items.Potion",
+        "items.IronProw",
+        "items.InsulatedHood",
+        "items.InsulatedArmor",
+        "items.WarmBoots",
+        "items.ElixirFrostBolt",
+        "items.ElixirFrostBreath"
+      ],
+      [
+        "items.ArcticHood",
+        "items.ArcticArmor",
+        "items.IvoryHarpoon"
+      ],
+      [
+        "items.SalorianHelm",
+        "items.SalorianArmor"
+      ]
+    ],
+    "buys": "cargo",
+    "hires": [
+      "mobs.Salorian"
+    ],
+    "brews": false,
+    "scene": "scenes/salorian_village.png",
+    "image": "locations/salorian_village.png",
+    "strip": false
+  },
+  "locations.ShamanHut": {
+    "name": "Shaman Hut",
+    "description": "A mysterious hut",
+    "faction": "",
+    "sells": [
+      [
+        "items.ElixirHealth",
+        "items.ElixirShield",
+        "items.ElixirHaste",
+        "items.ElixirEarthshatter",
+        "items.RedMushroom",
+        "items.BlueMushroom",
+        "items.YellowMushroom"
+      ]
+    ],
+    "buys": "",
+    "hires": [],
+    "brews": true,
+    "scene": "scenes/shaman.png",
+    "image": "locations/shaman_hut.png",
+    "strip": false
+  },
+  "locations.ShrykePort": {
+    "name": "Shryke Port",
+    "description": "Shryke traders hawk plunder from stilt-jetties over the water. Hides, silks and worse, sold to any sail with rations to spare.",
+    "faction": "factions.Ravagers",
+    "sells": [
+      [
+        "items.HeartyStew",
+        "items.Rum"
+      ],
+      [
+        "items.ToughHide",
+        "items.Carapace"
+      ],
+      [
+        "items.Ivory",
+        "items.Silk",
+        "items.Spikes"
+      ],
+      [
+        "items.Poison",
+        "items.DragonsPowder"
+      ]
+    ],
+    "buys": "cargo",
+    "hires": [],
+    "brews": false,
+    "scene": "scenes/shryke_port.png",
+    "image": "locations/shryke_port.png",
+    "strip": false
+  },
+  "locations.ShrykeVillage": {
+    "name": "Shryke Village",
+    "description": "Deep in the fetid jungle swamps a network of crude wooden structures has been constructed. ",
+    "faction": "factions.Ravagers",
+    "sells": [
+      [
+        "items.HeartyStew",
+        "items.FlintSpear",
+        "items.CheiftansHelm",
+        "items.CheiftansArmor"
+      ],
+      [
+        "items.PlumedHelm",
+        "items.PlumedArmor",
+        "items.FeatherySlippers"
+      ],
+      [
+        "items.AvianHelm",
+        "items.AvianArmor",
+        "items.Macuahuitl"
+      ],
+      [
+        "items.Dagger",
+        "items.ElixirWhirlwind"
+      ]
+    ],
+    "buys": "equipment",
+    "hires": [
+      "mobs.Shryke"
+    ],
+    "brews": false,
+    "scene": "scenes/shryke_village.png",
+    "image": "locations/shrykes_village.png",
+    "strip": true
+  },
+  "locations.SlaadPort": {
+    "name": "Slaad Port",
+    "description": "A living structure floating on enormous lilly pads",
+    "faction": "factions.Fae",
+    "sells": [
+      [
+        "items.Food",
+        "items.Rum",
+        "items.Potion",
+        "items.GnomishHat",
+        "items.GnomishGarb",
+        "items.GnomishShoes",
+        "items.Shroomstick",
+        "items.ShroomHat",
+        "items.ShroomArmor"
+      ],
+      [
+        "items.BriarbarkHelm",
+        "items.BriarbarkArmor",
+        "items.Boomerang",
+        "items.ElixirFireBall"
+      ],
+      [
+        "items.LivingHelm",
+        "items.LivingArmor",
+        "items.Staff",
+        "items.LivingBow"
+      ],
+      [
+        "items.FaeHood",
+        "items.FaeArmor"
+      ]
+    ],
+    "buys": "equipment",
+    "hires": [
+      "mobs.Slaad"
+    ],
+    "brews": false,
+    "scene": "scenes/slaad_pad.png",
+    "image": "locations/slaad_pad.png",
+    "strip": false
+  },
+  "locations.WhalingPort": {
+    "name": "Whaling Port",
+    "description": "",
+    "faction": "factions.Whalers",
+    "sells": [
+      [
+        "items.Food",
+        "items.Rum",
+        "items.Potion",
+        "items.Stormpearl",
+        "items.IronProw",
+        "items.Shovel",
+        "items.DeadMansLamp",
+        "items.KelpSail",
+        "items.Harpoon",
+        "items.NavigatorsHat",
+        "items.NavigatorsJacket",
+        "items.TonicTemperance",
+        "items.TonicSanity",
+        "items.TonicCourage"
+      ],
+      [
+        "items.ElixirHaste",
+        "items.ElixirShield",
+        "items.ElixirArrow"
+      ],
+      [
+        "items.PirateHat"
+      ]
+    ],
+    "buys": "cargo",
+    "hires": [
+      "mobs.Salorian",
+      "mobs.Amazon"
+    ],
+    "brews": false,
+    "scene": "scenes/whaling_port.png",
+    "image": "locations/whaling_port.png",
+    "strip": true
+  }
+}

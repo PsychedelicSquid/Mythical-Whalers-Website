@@ -91,13 +91,13 @@ def make_entries(data, sizes, problems):
     entries = {}
     used_addresses = {}
     kinds = {"mobs": "mob", "items": "item", "traits": "trait", "abilities": "ability",
-             "effects": "effect", "factions": "faction"}
+             "effects": "effect", "factions": "faction", "locations": "location"}
 
     for identifier in config.WIKI_NAMES:
         if identifier.split(".")[0] not in data or identifier not in data[identifier.split(".")[0]]:
             problems.append("WIKI_NAMES in builder/config.py names %s, which game/data does not hold" % identifier)
 
-    for source in ["mobs", "items", "traits", "abilities", "effects", "factions"]:
+    for source in ["mobs", "items", "traits", "abilities", "effects", "factions", "locations"]:
         records = data[source]
         identifiers = list(records.keys())
         identifiers.sort()
@@ -127,6 +127,7 @@ def make_entries(data, sizes, problems):
                 "style": "slot",
                 "icon": picture(record.get("image", ""), sizes, problems),
                 "frame": 0,
+                "frame_height": 0,
                 "zoom": 1,
                 "card_zoom": 1,
                 "summary": "",
@@ -134,17 +135,19 @@ def make_entries(data, sizes, problems):
 
             if source == "mobs" and record["group"] == "crewmate":
                 entry["style"] = "portrait"
-            elif source == "mobs":
+            elif source == "mobs" or (source == "locations" and record["strip"]):
                 entry["style"] = "sprite"
                 if entry["icon"] is not None:
                     # A strip is four frames side by side. The Bestiary fits a
                     # frame into a 102-pixel box by a whole number
                     # (Bestiary.entry_frames); cards use a 48-pixel box.
                     frame = entry["icon"]["width"] // 4
+                    height = entry["icon"]["height"]
                     entry["frame"] = frame
-                    entry["zoom"] = max(1, min(102 // frame, 102 // entry["icon"]["height"]))
-                    entry["card_zoom"] = max(1, 48 // frame)
-            elif source == "effects":
+                    entry["frame_height"] = height
+                    entry["zoom"] = max(1, min(102 // frame, 102 // height))
+                    entry["card_zoom"] = max(1, min(48 // frame, 48 // height))
+            elif source == "effects" or source == "locations":
                 entry["style"] = "small"
             elif source == "factions":
                 entry["style"] = "banner"
@@ -160,7 +163,8 @@ def link(entries, reference, note=""):
     """
     entry = entries[reference]
     return {"name": entry["name"], "url": entry["url"], "icon": entry["icon"], "style": entry["style"],
-            "frame": entry["frame"], "card_zoom": entry["card_zoom"], "note": note}
+            "frame": entry["frame"], "frame_height": entry["frame_height"], "card_zoom": entry["card_zoom"],
+            "note": note}
 
 
 def links(entries, references, notes=None):
@@ -268,10 +272,31 @@ def bonus_rows(modifiers, icon_table, data, sizes, problems, hidden):
     return rows
 
 
+def new_page(stat_title, stat_rows):
+    """What every entry page is given. A describer fills in what its kind of entry has."""
+    return {"facts": [], "stat_title": stat_title, "stat_rows": stat_rows, "groups": [], "tiers": [],
+            "portraits": [], "scene": None}
+
+
+def sold_at(entry, entries):
+    """Links to the places that sell an item, each noted with the status it asks for."""
+    places = []
+    for identifier in entries:
+        other = entries[identifier]
+        if other["kind"] != "location":
+            continue
+        for status in range(len(other["record"]["sells"])):
+            if entry["id"] in other["record"]["sells"][status]:
+                note = ""
+                if status > 0:
+                    note = "status %d" % status
+                places.append(link(entries, identifier, note))
+    return by_name(places)
+
+
 def describe_mob(entry, entries, data, sizes, problems):
     record = entry["record"]
-    page = {"facts": [], "stat_title": "STATS", "stat_rows": mob_stat_rows(record, data, sizes, problems),
-            "groups": [], "tiers": [], "portraits": []}
+    page = new_page("STATS", mob_stat_rows(record, data, sizes, problems))
 
     # IMMUNE, with the icons the Bestiary gives five of them
     effect_of_key = {}
@@ -288,7 +313,7 @@ def describe_mob(entry, entries, data, sizes, problems):
         if immunity in effect_of_key:
             address = entries[effect_of_key[immunity]]["url"]
         immune.append({"name": title_words(immunity), "url": address, "icon": icon, "style": "small",
-                       "frame": 0, "card_zoom": 1, "note": ""})
+                       "frame": 0, "frame_height": 0, "card_zoom": 1, "note": ""})
 
     if record["group"] == "crewmate":
         for portrait in record["portraits"]:
@@ -303,6 +328,13 @@ def describe_mob(entry, entries, data, sizes, problems):
             page["facts"].append({"label": "HIRE COST", "text": "%d Gold" % record["hire_cost"], "links": []})
         if record["names"]:
             page["facts"].append({"label": "NAMES", "text": ", ".join(record["names"]), "links": []})
+
+        hired_at = []
+        for identifier in entries:
+            if entries[identifier]["kind"] == "location" and entry["id"] in entries[identifier]["record"]["hires"]:
+                hired_at.append(link(entries, identifier))
+        if hired_at:
+            page["groups"].append({"title": "FOR HIRE AT", "items": by_name(hired_at), "empty": ""})
 
         starts = []
         for innate in record["innate_traits"]:
@@ -334,8 +366,7 @@ def describe_item(entry, entries, data, sizes, problems):
     record = entry["record"]
     # A mana bonus is hidden in the game's item tooltips and in the Bestiary.
     rows = bonus_rows(record["modifiers"], data["meta"].get("item_icons", {}), data, sizes, problems, ["max_mana"])
-    page = {"facts": [], "stat_title": "BONUSES", "stat_rows": rows, "groups": [], "tiers": [],
-            "portraits": []}
+    page = new_page("BONUSES", rows)
 
     if record["slot"]:
         text = record["slot"].capitalize()
@@ -373,6 +404,9 @@ def describe_item(entry, entries, data, sizes, problems):
             brewed_from.append(link(entries, identifier))
         if other["kind"] == "mob" and entry["id"] in other["record"]["drops"]:
             dropped_by.append(link(entries, identifier))
+    places = sold_at(entry, entries)
+    if places:
+        page["groups"].append({"title": "SOLD AT", "items": places, "empty": ""})
     if brewed_from:
         page["groups"].append({"title": "BREWED FROM", "items": by_name(brewed_from), "empty": ""})
     if dropped_by:
@@ -383,8 +417,7 @@ def describe_item(entry, entries, data, sizes, problems):
 def describe_trait(entry, entries, data, sizes, problems):
     record = entry["record"]
     rows = bonus_rows(record["modifiers"], data["meta"].get("trait_icons", {}), data, sizes, problems, [])
-    page = {"facts": [], "stat_title": "MODIFIERS PER LEVEL", "stat_rows": rows, "groups": [], "tiers": [],
-            "portraits": []}
+    page = new_page("MODIFIERS PER LEVEL", rows)
     page["facts"].append({"label": "MAX LEVEL", "text": str(record["max_level"]), "links": []})
     if record["offered_at_level_up"]:
         page["facts"].append({"label": "OFFERED AT LEVEL-UP", "text": "Yes", "links": []})
@@ -435,8 +468,7 @@ def describe_ability(entry, entries, data, sizes, problems):
         value = record["base_stats"][key]
         if isinstance(value, (int, float)) and not isinstance(value, bool):
             rows.append({"icon": None, "label": title_words(key), "value": str(value)})
-    page = {"facts": [], "stat_title": "BASE", "stat_rows": rows, "groups": [], "tiers": [],
-            "portraits": []}
+    page = new_page("BASE", rows)
     if record["type"]:
         page["facts"].append({"label": "TYPE", "text": record["type"].capitalize(), "links": []})
     if record["damage_type"]:
@@ -468,7 +500,7 @@ def describe_ability(entry, entries, data, sizes, problems):
 
 def describe_effect(entry, entries, data, sizes, problems):
     record = entry["record"]
-    page = {"facts": [], "stat_title": "", "stat_rows": [], "groups": [], "tiers": [], "portraits": []}
+    page = new_page("", [])
     if record["duration"]:
         turns = "turns"
         if record["duration"] == 1:
@@ -497,7 +529,7 @@ def describe_effect(entry, entries, data, sizes, problems):
 
 def describe_faction(entry, entries, data, sizes, problems):
     record = entry["record"]
-    page = {"facts": [], "stat_title": "", "stat_rows": [], "groups": [], "tiers": [], "portraits": []}
+    page = new_page("", [])
     for label, key in [("ALLY", "ally"), ("ENEMY", "enemy")]:
         if record[key]:
             found = None
@@ -510,11 +542,44 @@ def describe_faction(entry, entries, data, sizes, problems):
                 page["facts"].append({"label": label, "text": "", "links": [found]})
     if record["heralds"]:
         page["facts"].append({"label": "HERALDS", "text": ", ".join(record["heralds"]), "links": []})
-    if record["sites"]:
-        page["facts"].append({"label": "SITES", "text": ", ".join(record["sites"]), "links": []})
     if record["members"]:
         # In the game's order: it is the order a faction's races unlock in.
         page["groups"].append({"title": "MEMBERS", "items": links(entries, record["members"]), "empty": ""})
+    if record["sites"]:
+        page["groups"].append({"title": "SITES", "items": links(entries, record["sites"]), "empty": ""})
+    return page
+
+
+def describe_location(entry, entries, data, sizes, problems):
+    record = entry["record"]
+    page = new_page("", [])
+    page["scene"] = picture(record["scene"], sizes, problems)
+
+    if record["faction"]:
+        page["facts"].append({"label": "FACTION", "text": "", "links": [link(entries, record["faction"])]})
+    if record["buys"]:
+        page["facts"].append({"label": "BUYS", "text": record["buys"].capitalize(), "links": []})
+    if record["brews"]:
+        gems = data["meta"]["brew_cost"]
+        text = "A creature drop and %d gems make an elixir or tonic." % gems
+        if gems == 1:
+            text = "A creature drop and 1 gem make an elixir or tonic."
+        page["facts"].append({"label": "BREWS", "text": text, "links": []})
+
+    if record["hires"]:
+        page["groups"].append({"title": "FOR HIRE", "items": links(entries, record["hires"]), "empty": ""})
+
+    # What it sells: one row for each status the buyer must hold with the
+    # place's faction (items.stock). An elixir vendor has one row.
+    rows = []
+    for status in range(len(record["sells"])):
+        label = "Anyone"
+        if status > 0:
+            label = "Status %d" % status
+        if record["sells"][status]:
+            rows.append({"label": label, "items": links(entries, record["sells"][status])})
+    if rows:
+        page["tiers"].append({"title": "SELLS", "rows": rows})
     return page
 
 
@@ -525,6 +590,7 @@ DESCRIBERS = {
     "ability": describe_ability,
     "effect": describe_effect,
     "faction": describe_faction,
+    "location": describe_location,
 }
 
 
@@ -551,6 +617,11 @@ def card_summary(entry, data):
             return ", ".join(parts)
         return record["description"]
     if entry["kind"] == "faction":
+        return ""
+    if entry["kind"] == "location":
+        # The faction whose place it is.
+        if record["faction"]:
+            return data["factions"][record["faction"]]["name"]
         return ""
     return record.get("description", "")
 
@@ -607,7 +678,7 @@ def stale_guides(pages):
 def build(environment, site, guides, outputs, problems):
     """Add every Wiki page to outputs. Returns the addresses for the sitemap."""
     data = {}
-    for name in ["mobs", "items", "traits", "abilities", "effects", "factions", "stats", "meta"]:
+    for name in ["mobs", "items", "traits", "abilities", "effects", "factions", "locations", "stats", "meta"]:
         loaded = read_data(name + ".json")
         if loaded is None:
             # No extract has been run. The site builds without a Wiki.

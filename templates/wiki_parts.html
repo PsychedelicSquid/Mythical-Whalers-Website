@@ -10,7 +10,7 @@
 {% elif thing.style == "banner" %}
 <span class="banner"><img src="{{ thing.icon.url }}" width="{{ thing.icon.width }}" height="{{ thing.icon.height }}" alt=""></span>
 {% elif thing.style == "sprite" %}
-<span class="sprite" style="--w:{{ thing.frame }}; --zoom:{{ zoom }}; background-image:url({{ thing.icon.url }})"></span>
+<span class="sprite" style="--w:{{ thing.frame }}; --h:{{ thing.frame_height }}; --zoom:{{ zoom }}; background-image:url({{ thing.icon.url }})"></span>
 {% elif thing.style == "small" %}
 <img class="mini" style="--w:{{ thing.icon.width }}" src="{{ thing.icon.url }}" width="{{ thing.icon.width }}" height="{{ thing.icon.height }}" alt="">
 {% endif %}

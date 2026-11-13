@@ -12,9 +12,9 @@
       "Imperial Commander"
     ],
     "sites": [
-      "Empire Castle",
-      "Empire Port",
-      "Dwarf Stronghold"
+      "locations.EmpireCastle",
+      "locations.EmpirePort",
+      "locations.DwarfStronghold"
     ],
     "ally": "Fae",
     "enemy": "Immortals",
@@ -33,9 +33,9 @@
       "Grove Tender"
     ],
     "sites": [
-      "Fae Village",
-      "Dryad City",
-      "Slaad Port"
+      "locations.FaeVillage",
+      "locations.DryadCity",
+      "locations.SlaadPort"
     ],
     "ally": "Empire",
     "enemy": "Ravagers",
@@ -55,9 +55,9 @@
       "Skeleton King"
     ],
     "sites": [
-      "Immortals Port",
-      "Immortals Town",
-      "Graveyard"
+      "locations.ImmortalsPort",
+      "locations.ImmortalsTown",
+      "locations.Graveyard"
     ],
     "ally": "Ravagers",
     "enemy": "Empire",
@@ -83,8 +83,8 @@
       "Corsair Admiral"
     ],
     "sites": [
-      "Pirate Cove",
-      "Pirate Tavern"
+      "locations.PirateCove",
+      "locations.PirateTavern"
     ],
     "ally": "",
     "enemy": "",
@@ -103,9 +103,9 @@
       "Brood Mother"
     ],
     "sites": [
-      "Goblin City",
-      "Shryke Village",
-      "Shryke Port"
+      "locations.GoblinCity",
+      "locations.ShrykeVillage",
+      "locations.ShrykePort"
     ],
     "ally": "Selkie",
     "enemy": "Fae",
@@ -124,9 +124,9 @@
       "Sea Warden"
     ],
     "sites": [
-      "Mer City",
-      "Salorian Village",
-      "Caridian Camp"
+      "locations.MerCity",
+      "locations.SalorianVillage",
+      "locations.CaridianCamp"
     ],
     "ally": "Ravagers",
     "enemy": "Immortals",
@@ -140,7 +140,7 @@
       "Harbor Master"
     ],
     "sites": [
-      "Whaling Port"
+      "locations.WhalingPort"
     ],
     "ally": "",
     "enemy": "",

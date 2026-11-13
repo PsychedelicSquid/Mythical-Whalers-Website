@@ -132,12 +132,13 @@ img { max-width: 100%; height: auto; }
   image-rendering: auto;
 }
 
-/* A four-frame sprite strip, 250 ms a frame, like tools.animate_strip. */
+/* A four-frame sprite strip, 250 ms a frame, like tools.animate_strip.
+   --w and --h are one frame's size. */
 .sprite {
   display: block;
   flex: none;
   width: calc(var(--w) * var(--zoom, 1) * 1px * var(--px));
-  height: calc(var(--w) * var(--zoom, 1) * 1px * var(--px));
+  height: calc(var(--h) * var(--zoom, 1) * 1px * var(--px));
   background-repeat: no-repeat;
   background-size: calc(var(--w) * var(--zoom, 1) * 4px * var(--px)) 100%;
   animation: strip 1s steps(4) infinite;
@@ -445,6 +446,8 @@ a.entry-card { flex-direction: row; align-items: center; gap: calc(5px * var(--p
 .entry-card > span:last-child { min-width: 0; }
 
 /* An entry page, laid out like the Bestiary. */
+/* The scene a location's window shows, enlarged with the rest of the site. */
+.scene { display: block; margin-inline: auto; --max: calc(256px * var(--px)); }
 .entry-top { display: grid; grid-template-columns: minmax(0, 1fr); gap: calc(6px * var(--px)) calc(11px * var(--px)); align-items: start; }
 .entry-art { display: flex; flex-wrap: wrap; gap: calc(3px * var(--px)); align-items: flex-start; }
 .facts { display: flex; flex-direction: column; gap: calc(3px * var(--px)); min-width: 0; }

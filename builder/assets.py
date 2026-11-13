@@ -311,6 +311,14 @@ def entry_pictures(pictures, cache, problems):
         elif mobs[key]["image"]:
             wanted[mobs[key]["image"]] = True
 
+    # A location's picture on the map (some are strips, like a mob's) and the
+    # scene its window shows.
+    locations = read_data("locations.json")
+    for key in locations:
+        wanted[locations[key]["image"]] = locations[key]["strip"]
+        if locations[key]["scene"]:
+            wanted[locations[key]["scene"]] = False
+
     stats = read_data("stats.json")
     for group in stats:
         for stat in stats[group]:

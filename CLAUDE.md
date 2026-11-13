@@ -98,6 +98,12 @@ hand are the how-to-play pages (see the end of this section).
   every run, so the Wiki shows what the Bestiary shows. An entry page lays out
   what `populate_mob`, `populate_item`, `populate_faction` and `populate_trait`
   draw, then adds the links the Bestiary cannot show.
+- **Locations are not in the Bestiary,** so the rule is the extract's own
+  (`build_locations`): a class in the game's `locations.py` is published if
+  its window is the market window (`gui.Location`), or if a published faction
+  lists it among its `sites`. Huts, nests, ruins, chests, gathering spots and
+  the tutorial stay out. A location's page shows the scene its window shows,
+  what it sells at each status, what it buys and who is for hire there.
 - **An ability or status effect is published only if a published item or mob
   uses it.** A trait with `secret = True` is skipped and never named in this
   repository, and a race born with one is published without it.

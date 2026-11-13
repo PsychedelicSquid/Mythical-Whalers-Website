@@ -32,7 +32,7 @@ that diff is everything the update would change on the site.
 Every page under `/wiki/` is generated from `game/data/`. It shows what the
 in-game Bestiary shows: creatures, crewmate races, weapons, armor, consumables,
 cargo, ship upgrades, factions and traits, plus the abilities and status
-effects they use. To take a category off the site, set its `enabled` to False
+effects they use, and the locations a crew trades at. To take a category off the site, set its `enabled` to False
 in `WIKI_CATEGORIES` in `builder/config.py`.
 
 The how-to-play pages under `/wiki/guide/` are the exception: they are written

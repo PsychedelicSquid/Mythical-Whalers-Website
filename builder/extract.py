@@ -23,8 +23,8 @@ from builder import config
 
 # The content modules. quests.py, events.py, dialogue.py and documents/ are
 # never opened.
-MODULES = ["items", "traits", "abilities", "effects", "mobs", "factions", "crews", "gui", "inventory",
-           "tools", "tooltips", "constants"]
+MODULES = ["items", "traits", "abilities", "effects", "mobs", "factions", "locations", "crews", "gui",
+           "inventory", "tools", "tooltips", "constants"]
 
 # Calls that load a picture, and the folder each one loads from when it is
 # given only a file name.
@@ -33,6 +33,7 @@ IMAGE_LOADERS = {
     "get_image": "abilities/images",
     "get_buff": "abilities/buffs",
     "get_effect": "abilities/effects",
+    "get_location_image": "locations",
 }
 
 
@@ -221,9 +222,21 @@ def evaluate(node, context):
             if target in modules and modules[target] is not None:
                 if node.attr in modules[target]["classes"]:
                     return {"ref": target + "." + node.attr}
+                # items.whale_port_items: a value another content module defines
+                if node.attr in modules[target]["values"]:
+                    elsewhere = {"modules": modules, "module": modules[target], "attrs": {}, "locals": {}}
+                    return evaluate(modules[target]["values"][node.attr], elsewhere)
         return unknown(node)
 
     if isinstance(node, ast.Subscript):
+        # c.FACTIONS['Empire']: the faction the game builds under that name
+        # (factions.initialize_factions), which is the class of the same name.
+        held = node.value
+        if isinstance(held, ast.Attribute) and held.attr == "FACTIONS" and isinstance(held.value, ast.Name):
+            if module["aliases"].get(held.value.id) == "constants" and isinstance(node.slice, ast.Constant):
+                if node.slice.value in modules["factions"]["classes"]:
+                    return {"ref": "factions.%s" % node.slice.value}
+                return unknown(node)
         container = evaluate(node.value, context)
         index = evaluate(node.slice, context)
         if isinstance(container, list) and isinstance(index, int) and -len(container) <= index < len(container):
@@ -270,6 +283,10 @@ def evaluate(node, context):
             if isinstance(inner, dict) and "image" in inner:
                 return {"image": inner["image"], "strip": True}
             return unknown(node)
+
+        # picture.convert(), picture.convert_alpha(): the same picture
+        if name in ["convert", "convert_alpha"] and isinstance(function, ast.Attribute) and not node.args:
+            return evaluate(function.value, context)
 
         if name == "list" and len(node.args) == 1:
             inner = evaluate(node.args[0], context)
@@ -1031,10 +1048,11 @@ def build_factions(modules, rules, mob_records, problems):
         elif raw_heralds is not None:
             problems.append("%s: could not read 'heralds'" % where(module, name))
 
+        # A faction names its sites by their class names in locations.py.
         sites = []
         for site in published(attrs, "sites", [], module, name, problems):
             if isinstance(site, str):
-                sites.append(add_spaces(site))
+                sites.append("locations." + site)
             else:
                 problems.append("%s: 'sites' holds something that is not a name" % where(module, name))
 
@@ -1047,6 +1065,77 @@ def build_factions(modules, rules, mob_records, problems):
             "ally": published(attrs, "ally", "", module, name, problems),
             "enemy": published(attrs, "enemy", "", module, name, problems),
             "image": picture(attrs, "banner", module, name, problems),
+        }
+    return records
+
+
+def build_locations(modules, faction_records, problems):
+    """The places a crew trades at, and the sites a faction's crews point out.
+
+    The Bestiary has no tab for locations, so the rule is the extract's own: a
+    location is published if its window is the market window (gui.Location),
+    or if a published faction lists it among its sites. That leaves out the
+    huts, nests, ruins, chests and gathering spots, and the tutorial.
+    """
+    module = modules["locations"]
+    sites = {}
+    for key in faction_records:
+        for site in faction_records[key]["sites"]:
+            sites[site.split(".")[1]] = True
+
+    records = {}
+    for name in module["order"]:
+        if not descends_from(module, name, "Location"):
+            continue
+        attrs = read_instance(modules, module, name)
+        if ref_of(attrs.get("gui")) != "gui.Location" and name not in sites:
+            continue
+
+        display = add_spaces(name)
+        description = published(attrs, "description", "", module, name, problems)
+        if description.strip().lower() == display.lower():
+            description = ""
+
+        # What it is drawn with on the map: a four-frame strip, or one picture.
+        strip = False
+        animations = attrs.get("animations")
+        if isinstance(animations, dict) and "idle" in animations:
+            drawn = picture(animations, "idle", module, name, problems)
+            strip = True
+        else:
+            drawn = picture(attrs, "image", module, name, problems)
+        if drawn == "":
+            problems.append("%s: has no picture" % where(module, name))
+
+        # What it sells. A faction's place lists its wares in tiers, one for
+        # each status the buyer must hold (items.stock); an elixir vendor has
+        # one list that anyone can buy from.
+        sells = []
+        if attrs.get("wares") is not None:
+            for tier in published(attrs, "wares", [], module, name, problems):
+                sells.append(named(tier, "wares", module, name, problems))
+        elif attrs.get("selling") is not None:
+            sells.append(named(published(attrs, "selling", [], module, name, problems), "selling",
+                               module, name, problems))
+
+        # A place can keep two hands of one race for hire: each race once.
+        hires = []
+        recruits = published(attrs, "recruits", [], module, name, problems)
+        for found in named(recruits, "recruits", module, name, problems):
+            if found not in hires:
+                hires.append(found)
+
+        records["locations." + name] = {
+            "name": display,
+            "description": description,
+            "faction": reference(attrs, "faction", module, name, problems),
+            "sells": sells,
+            "buys": published(attrs, "buying", "", module, name, problems),
+            "hires": hires,
+            "brews": attrs.get("brews") is not None,
+            "scene": picture(attrs, "scene", module, name, problems),
+            "image": drawn,
+            "strip": strip,
         }
     return records
 
@@ -1260,6 +1349,7 @@ def read_game(problems):
     traits = build_traits(modules, problems)
     mobs = build_mobs(modules, rules, whales, traits, problems)
     factions = build_factions(modules, rules, mobs, problems)
+    locations = build_locations(modules, factions, problems)
 
     wanted_abilities = []
     for key in items:
@@ -1283,7 +1373,7 @@ def read_game(problems):
             for found in mobs[key]["ability_changes"][changed].get("status_effects", []):
                 wanted_effects.append(found)
     effects = build_effects(modules, sorted_unique(wanted_effects), problems)
-    check_references(modules, [items, traits, mobs, factions, abilities, effects], problems)
+    check_references(modules, [items, traits, mobs, factions, locations, abilities, effects], problems)
 
     constants = modules["constants"]
     meta = {"version": "", "storm_interval": 0}
@@ -1312,6 +1402,7 @@ def read_game(problems):
         "traits.json": traits,
         "mobs.json": mobs,
         "factions.json": factions,
+        "locations.json": locations,
         "abilities.json": abilities,
         "effects.json": effects,
         "meta.json": meta,
@@ -1392,9 +1483,9 @@ def extract(problems):
         tabs[tab] = tabs.get(tab, 0) + 1
     lines.append("mobs %d %s" % (len(data["mobs.json"]), json.dumps(counts, sort_keys=True)))
     lines.append("items %d %s" % (len(data["items.json"]), json.dumps(tabs, sort_keys=True)))
-    lines.append("traits %d, abilities %d, status effects %d, factions %d"
+    lines.append("traits %d, abilities %d, status effects %d, factions %d, locations %d"
                  % (len(data["traits.json"]), len(data["abilities.json"]),
-                    len(data["effects.json"]), len(data["factions.json"])))
+                    len(data["effects.json"]), len(data["factions.json"]), len(data["locations.json"])))
     lines.append("%d mobs have no description; %d items have a description that only repeats their name"
                  % (len(report["mobs_without_description"]), len(report["placeholder_descriptions"])))
     return lines

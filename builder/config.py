@@ -70,13 +70,16 @@ WIKI_CATEGORIES = [
      "intro": "What an ability can leave on its target."},
     {"key": "factions", "title": "Factions", "source": "factions", "enabled": True,
      "intro": "The powers of the Shrouded Seas."},
+    {"key": "locations", "title": "Locations", "source": "locations", "enabled": True,
+     "intro": "Where a crew trades, hires and brews."},
 ]
 
 # How the Wiki's front page groups the categories.
 WIKI_GROUPS = [
     {"title": "Bestiary", "keys": ["crewmates", "whales", "bosses", "captains", "creatures"]},
     {"title": "Gear", "keys": ["weapons", "armor", "consumables", "cargo", "ship-upgrades"]},
-    {"title": "Crew and combat", "keys": ["traits", "abilities", "status-effects", "factions"]},
+    {"title": "Crew and combat", "keys": ["traits", "abilities", "status-effects"]},
+    {"title": "The world", "keys": ["factions", "locations"]},
 ]
 
 # The entry whose picture stands for each category on its tile. A category
@@ -96,6 +99,7 @@ WIKI_TILE_PICTURES = {
     "abilities": "abilities.FireBreath",
     "status-effects": "effects.Burning",
     "factions": "factions.Selkie",
+    "locations": "locations.WhalingPort",
 }
 
 # The categories the home page shows.
