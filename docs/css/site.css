@@ -385,7 +385,7 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
      either side. A whole number of tiles leaves the clouds inside the scene
      exactly where they were. */
   .cloud { left: calc(-1920px * var(--hpx)); right: calc(-1920px * var(--hpx)); }
-  .hero-copy { align-items: flex-start; gap: calc(8px * var(--px)); padding: calc(24px * var(--px)) 0 0 calc(34px * var(--px)); max-width: calc(250px * var(--px)); }
+  .hero-copy { align-items: flex-start; gap: calc(20px * var(--px)); padding: calc(24px * var(--px)) 0 0 calc(34px * var(--px)); max-width: calc(250px * var(--px)); }
   .hero-copy .logo { animation: bob 1.05s steps(8) infinite alternate; }
   .menu { align-items: flex-start; }
 }
