@@ -135,22 +135,6 @@ def recolour(picture, table):
     return result
 
 
-def native_size(picture):
-    """Undo a whole-number enlargement, if the picture is one.
-
-    Tries the largest factors first and keeps the first whose shrink-and-enlarge
-    round trip gives back the identical picture, so nothing is lost.
-    """
-    for factor in [8, 6, 5, 4, 3, 2]:
-        if picture.width % factor != 0 or picture.height % factor != 0:
-            continue
-        small = picture.resize((picture.width // factor, picture.height // factor), Image.NEAREST)
-        again = small.resize(picture.size, Image.NEAREST)
-        if same_pixels(again, picture):
-            return small
-    return picture
-
-
 def same_pixels(first, second):
     """True when two pictures of the same mode hold the same pixels.
 
@@ -375,8 +359,6 @@ def extract(problems):
             continue
         if "crop" in row:
             picture = picture.crop(row["crop"])
-        if row.get("native"):
-            picture = native_size(picture)
         if row["to"] in pictures:
             problems.append("two config rows both write images/%s" % row["to"])
             continue

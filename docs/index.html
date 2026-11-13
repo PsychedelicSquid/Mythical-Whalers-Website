@@ -4,23 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mythical Whalers</title>
-  <meta name="description" content="A turn-based adventure on the Shrouded Seas. Raise a crew, hunt the whales, and survive the storm that comes every thirteenth day.">
+  <meta name="description" content="Set sail in the shrouded seas. A procedurally generated world where each voyage is unique. Captain a crew of mythical races to face monstrous leviathans and gain status with cunning factions.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0d0e12">
   <link rel="canonical" href="http://www.mythicalwhalers.com/">
   <meta property="og:site_name" content="Mythical Whalers">
   <meta property="og:title" content="Mythical Whalers">
-  <meta property="og:description" content="A turn-based adventure on the Shrouded Seas. Raise a crew, hunt the whales, and survive the storm that comes every thirteenth day.">
+  <meta property="og:description" content="Set sail in the shrouded seas. A procedurally generated world where each voyage is unique. Captain a crew of mythical races to face monstrous leviathans and gain status with cunning factions.">
   <meta property="og:url" content="http://www.mythicalwhalers.com/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="http://www.mythicalwhalers.com/images/site/card.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="icon" href="/images/site/icon.png" type="image/png">
   <link rel="preload" href="/fonts/m5x7.ttf" as="font" type="font/ttf" crossorigin>
   <style>
     @font-face { font-family: "MW Body"; src: url("/fonts/m5x7.ttf") format("truetype"); font-display: block; }
   </style>
-  <link rel="stylesheet" href="/css/site.css?v=48d4c5b9">
+  <link rel="stylesheet" href="/css/site.css?v=9d0b2357">
   <script src="/js/site.js?v=16470b91" defer></script>
 </head>
 <body>
@@ -52,7 +52,7 @@
       </div>
       <div class="hero-copy">
         <h1><img class="logo" src="/images/menu/logo.png" width="206" height="80" alt="Mythical Whalers"></h1>
-        <p class="pitch">Raise a crew. Hunt the whales. Survive the storm that comes every thirteenth day.</p>
+        <p class="pitch">Command a crew. Hunt. Survive.</p>
         <div class="menu">
           <a class="btn" href="https://store.steampowered.com/app/2787860/">Wishlist on Steam</a>
           <a class="btn" href="/wiki/">Open the Wiki</a>
@@ -66,87 +66,49 @@
     <section class="win">
       <div class="win-head"><h2>What is Mythical Whalers?</h2></div>
       <div class="win-mid">
-        <p>A turn-based adventure on the Shrouded Seas. You hire a crew, sail between islands, and hunt whales whose blubber the whaling ports render down to gems.</p>
+        <p>Set sail in the shrouded seas. A procedurally generated world where each voyage is unique. Captain a crew of mythical races to face monstrous leviathans and gain status with cunning factions.</p>
       </div>
       <div class="win-foot">
-        <input class="sr" type="radio" name="feat" id="feat-hunt" checked>
-        <input class="sr" type="radio" name="feat" id="feat-crew">
-        <input class="sr" type="radio" name="feat" id="feat-factions">
-        <input class="sr" type="radio" name="feat" id="feat-storm">
+        <input class="sr" type="radio" name="feat" id="feat-command" checked>
+        <input class="sr" type="radio" name="feat" id="feat-explore">
+        <input class="sr" type="radio" name="feat" id="feat-hunt">
+        <input class="sr" type="radio" name="feat" id="feat-plan">
         <div class="feat-tabs">
+          <label class="btn" for="feat-command">Command</label>
+          <label class="btn" for="feat-explore">Explore</label>
           <label class="btn" for="feat-hunt">Hunt</label>
-          <label class="btn" for="feat-crew">Crew</label>
-          <label class="btn" for="feat-factions">Factions</label>
-          <label class="btn" for="feat-storm">Storm</label>
+          <label class="btn" for="feat-plan">Plan</label>
         </div>
         <div class="panes">
-          <figure class="pane" data-for="hunt">
-            <img class="pixel" style="--w:640; --max:640px" src="/images/screenshots/hunt.png" alt="A battle on arctic water: one crewmate faces a Narwhal among ice floes." width="640" height="360">
+          <figure class="pane">
+            <img class="pixel" style="--w:640; --max:640px" src="/images/steam/command.png" alt="The crew screen: Timothy, Slyne, Long Tom and Zephyr on the left, Timothy&#39;s gear and items in the middle, his abilities and traits on the right." width="640" height="360">
             <figcaption>
-              <h3>Hunt the whales</h3>
-              <p>Eight kinds of whale swim the Shrouded Seas. Fight them turn by turn, then sell the blubber at a Whaling Port.</p>
+              <p>Command your crew as they evolve, their traits shifting for better or worse as the voyage unfolds. Seek out and recruit new members from the mythical races dwelling upon the myriad islands you explore.</p>
             </figcaption>
           </figure>
-          <figure class="pane" data-for="crew">
-            <img class="pixel" style="--w:640; --max:640px" src="/images/screenshots/crew.png" alt="The Tavern window asks: Hire Jezebel for 15 gold? with Hire and Nay buttons." width="640" height="360">
+          <figure class="pane">
+            <img class="pixel" style="--w:640; --max:640px" src="/images/steam/explore.png" alt="The map: the crew follows a dotted path across an island to a castle, with huts, forest and sea around it." width="640" height="360">
             <figcaption>
-              <h3>Raise a crew</h3>
-              <p>Hire crewmates from twenty races. Each race has its own stats, traits and starting gear, and crewmates gain traits as they level up.</p>
+              <p>Assemble your crew and set sail across a perilous, procedurally generated world. Traverse eight distinct biomes teeming with bizarre creatures and factions locked in a desperate struggle for survival.</p>
             </figcaption>
           </figure>
-          <figure class="pane" data-for="factions">
-            <img class="pixel" style="--w:640; --max:640px" src="/images/screenshots/factions.png" alt="The ship journal lists factions with a standing number and a face beside each." width="640" height="360">
+          <figure class="pane">
+            <img class="pixel" style="--w:640; --max:640px" src="/images/steam/hunt.png" alt="A battle at sea: the crew surrounds a Spike Back, and a panel lists its stats, abilities and buffs." width="640" height="360">
             <figcaption>
-              <h3>Pick your friends</h3>
-              <p>Eight factions keep track of what you do. Their heralds offer quests, and your standing with a faction opens up more of its races.</p>
+              <p>Hunt deadly sea beasts for precious resources and barter with nearby factions for vital equipment and supplies.</p>
             </figcaption>
           </figure>
-          <figure class="pane" data-for="storm">
-            <img class="pixel" style="--w:640; --max:640px" src="/images/screenshots/storm.png" alt="A storm scene: black clouds and lightning over the ship." width="640" height="360">
+          <figure class="pane">
+            <img class="pixel" style="--w:640; --max:640px" src="/images/steam/plan.png" alt="The ship screen: the hold&#39;s cargo, the map, and seven factions listed with a face for the crew&#39;s standing with each." width="640" height="360">
             <figcaption>
-              <h3>Outlast the storm</h3>
-              <p>Every thirteenth day the storm comes.</p>
+              <p>Enhance your crew with potent elixirs brewed from the coveted gem horns of the whales they slay, bestowing them with formidable abilities.</p>
+              <p>Forge alliances or wage war with the crews of rival factions. But heed this warning: your choices are remembered, and every decision bears a consequence.</p>
             </figcaption>
           </figure>
         </div>
       </div>
     </section>
 
-    <section class="win">
-      <div class="win-head"><h2>Wiki</h2></div>
-      <div class="win-foot stack">
-        <div class="split">
-          <p>Everything the Bestiary knows, in one place.</p>
-          <a class="btn" href="/wiki/">Open the Wiki</a>
-        </div>
-        <div class="cats">
-          <a class="cat tip" href="/wiki/crewmates/">
-            <span class="cat-art"><span class="portrait"><img src="/images/portraits/salorian_1.png" width="48" height="48" alt=""></span>
-</span>
-            <b>Crewmates</b>
-          </a>
-
-          <a class="cat tip" href="/wiki/whales/">
-            <span class="cat-art"><span class="sprite" style="--w:48; --h:48; --zoom:1; background-image:url(/images/mobs/mobs/narwhal_idle.png)"></span>
-</span>
-            <b>Whales</b>
-          </a>
-
-          <a class="cat tip" href="/wiki/weapons/">
-            <span class="cat-art"><span class="slot"><img src="/images/items/artifact/weapons/cutlass.png" width="32" height="32" alt=""></span>
-</span>
-            <b>Weapons</b>
-          </a>
-
-          <a class="cat tip" href="/wiki/traits/">
-            <span class="cat-art"><span class="slot"><img src="/images/traits/hearty.png" width="32" height="32" alt=""></span>
-</span>
-            <b>Traits</b>
-          </a>
-
-        </div>
-      </div>
-    </section>
     <section class="win">
       <div class="win-head"><h2>From the devlog</h2></div>
       <div class="win-foot">

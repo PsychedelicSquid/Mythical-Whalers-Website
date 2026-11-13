@@ -36,10 +36,13 @@
 
 /* On screens scaled to 125% or 175%, two CSS pixels are not a whole number of
    device pixels, and pixel art turns uneven. These keep a game pixel on whole
-   device pixels: 3 at 125%, 4 at 175%. */
+   device pixels: 3 at 125%, 4 at 175%. The value for 175% is 16/7
+   (2.285714...) rounded up. A browser drops any fraction of a device pixel
+   from a border's width, so rounded down, a 6-pixel border would be drawn 23
+   device pixels wide where 24 are meant. */
 @media (min-resolution: 1.25dppx) and (max-resolution: 1.49dppx) { :root { --px: 2.4; --step: 0.8px; } }
 @media (min-resolution: 1.5dppx) and (max-resolution: 1.74dppx) { :root { --step: 0.66667px; } }
-@media (min-resolution: 1.75dppx) and (max-resolution: 1.99dppx) { :root { --px: 2.28571; --step: 0.57143px; } }
+@media (min-resolution: 1.75dppx) and (max-resolution: 1.99dppx) { :root { --px: 2.28572; --step: 0.57143px; } }
 @media (min-resolution: 2dppx) and (max-resolution: 2.99dppx) { :root { --step: 0.5px; } }
 @media (min-resolution: 3dppx) { :root { --step: 0.33333px; } }
 
@@ -153,8 +156,11 @@ img { max-width: 100%; height: auto; }
 /* ------------------------------------------------------------------ */
 
 /* A window is a stack: .win-head (title bar), any number of .win-mid, and a
-   .win-foot. The corner knots stick out 12 game pixels past the rim. */
+   .win-foot. The corner knots stick out 12 game pixels past the rim, so a
+   window under another window stands 30 below it: room for both sets of
+   knots and 6 pixels between them. */
 .win { margin: calc(12px * var(--px)) calc(12px * var(--px) - 16px); min-width: 0; }
+.win + .win { margin-top: calc(30px * var(--px)); }
 
 .panel {
   border: calc(6px * var(--px)) solid transparent;
@@ -213,24 +219,33 @@ img { max-width: 100%; height: auto; }
   min-width: 0;
 }
 
+/* The game's button. The text stands where TextButton (buttons.py) blits it:
+   9 pixels in from the left of a button 17 wider than the text, with its
+   baseline 16 pixels down. That gives m5x7's 7-pixel capitals 9 pixels of
+   room on all four sides. Centring the line of text instead puts them part
+   of a pixel low, because the font keeps more room above a capital than
+   below it. So the line has no height (line-height 0), and align-items:
+   baseline rests the text on the bottom edge of the ::before box, which
+   starts under the 6-pixel border and is 10 pixels tall. */
 .btn {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   height: calc(25px * var(--px));
   border-style: solid;
   border-color: transparent;
   border-width: calc(6px * var(--px)) calc(7px * var(--px));
   border-image: url(/images/gui/btn.png) 12 8 12 8 fill / calc(12px * var(--px)) calc(8px * var(--px)) stretch;
-  padding: 0 calc(3px * var(--px));
+  padding: 0 calc(1px * var(--px)) 0 calc(2px * var(--px));
   background: none;
-  font: 400 calc(16px * var(--px)) / 1 var(--font-title);
+  font: 400 calc(16px * var(--px)) / 0 var(--font-title);
   color: var(--teal);
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   cursor: url(/images/gui/cursor.png) 6 2, pointer;
 }
+.btn::before { content: ""; height: calc(10px * var(--px)); }
 .btn:hover, .btn:focus-visible { border-image-source: url(/images/gui/btn-hover.png); color: var(--yellow); }
 .btn[aria-current], .btn.is-on { border-image-source: url(/images/gui/btn-selected.png); color: var(--cream); }
 
@@ -299,7 +314,9 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
   .site-nav nav a[href="/"] { display: none; }
 }
 
-.main { padding: calc(3px * var(--px)) 16px calc(9px * var(--px)); }
+/* The first window's knots stand 6 game pixels under the line above the page,
+   the room two windows leave between theirs. */
+.main { padding: calc(6px * var(--px)) 16px calc(9px * var(--px)); }
 
 .site-foot { background: var(--charcoal); color: var(--mist); }
 .site-foot .wrap {
@@ -334,8 +351,9 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
    150 ms; back clouds move one pixel every five frames at 60 frames a second,
    the front cloud one every three. */
 /* In a window wider than the scene, the band beside it is the game's black,
-   as when the game fills a monitor wider than its own screen. */
-.hero-band { background: var(--charcoal); }
+   as when the game fills a monitor wider than its own screen, and the clouds
+   drift on across it. The band is what cuts the scene off at its edges. */
+.hero-band { background: var(--charcoal); overflow: hidden; }
 .hero { position: relative; background: var(--charcoal); overflow: hidden; --hpx: 1; }
 .stage-wrap { position: relative; height: calc(232px * var(--hpx)); overflow: hidden; }
 .stage { position: absolute; top: 0; right: 0; width: calc(640px * var(--hpx)); height: calc(360px * var(--hpx)); }
@@ -357,32 +375,39 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
 .menu { display: flex; flex-direction: column; align-items: stretch; gap: calc(5px * var(--px)); }
 
 @media (min-width: 760px) {
-  .hero { --hpx: var(--px); height: calc(300px * var(--hpx)); }
-  .stage-wrap { position: absolute; inset: 0; height: auto; }
+  .hero { --hpx: var(--px); height: calc(300px * var(--hpx)); overflow: visible; }
+  .stage-wrap { position: absolute; inset: 0; height: auto; overflow: visible; }
+  /* Each cloud strip runs three more of its 640-pixel tiles past the scene on
+     either side. A whole number of tiles leaves the clouds inside the scene
+     exactly where they were. */
+  .cloud { left: calc(-1920px * var(--hpx)); right: calc(-1920px * var(--hpx)); }
   .hero-copy { align-items: flex-start; text-align: left; gap: calc(8px * var(--px)); padding: calc(24px * var(--px)) 0 0 calc(34px * var(--px)); max-width: calc(250px * var(--px)); }
   .hero-copy .logo { animation: bob 1.05s steps(8) infinite alternate; }
   .menu { align-items: flex-start; }
 }
 @keyframes bob { from { transform: translateY(calc(-3px * var(--px))); } to { transform: translateY(calc(3px * var(--px))); } }
 
-/* What you do: four screenshots chosen with radio buttons. */
+/* What you do: screenshots chosen with radio buttons. The radio buttons, their
+   labels in .feat-tabs and the panes in .panes are written in the same order:
+   the first radio button shows the first pane and lights the first label, and
+   so on for up to four. The names of the tabs are only in the page. */
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .feat-tabs { display: flex; flex-wrap: wrap; gap: calc(4px * var(--px)); margin-bottom: calc(7px * var(--px)); }
 .pane { display: none; margin: 0; gap: calc(7px * var(--px)) calc(11px * var(--px)); align-items: start; }
 .pane figcaption { display: flex; flex-direction: column; gap: calc(4px * var(--px)); min-width: 0; }
 .pane .pixel { outline: calc(1px * var(--px)) solid var(--rim-2); }
-#feat-hunt:checked ~ .panes .pane[data-for="hunt"],
-#feat-crew:checked ~ .panes .pane[data-for="crew"],
-#feat-factions:checked ~ .panes .pane[data-for="factions"],
-#feat-storm:checked ~ .panes .pane[data-for="storm"] { display: grid; }
-#feat-hunt:checked ~ .feat-tabs label[for="feat-hunt"],
-#feat-crew:checked ~ .feat-tabs label[for="feat-crew"],
-#feat-factions:checked ~ .feat-tabs label[for="feat-factions"],
-#feat-storm:checked ~ .feat-tabs label[for="feat-storm"] { border-image-source: url(/images/gui/btn-selected.png); color: var(--cream); }
-#feat-hunt:focus-visible ~ .feat-tabs label[for="feat-hunt"],
-#feat-crew:focus-visible ~ .feat-tabs label[for="feat-crew"],
-#feat-factions:focus-visible ~ .feat-tabs label[for="feat-factions"],
-#feat-storm:focus-visible ~ .feat-tabs label[for="feat-storm"] { outline: calc(1px * var(--px)) solid var(--yellow); outline-offset: calc(1px * var(--px)); }
+[name="feat"]:nth-of-type(1):checked ~ .panes > :nth-child(1),
+[name="feat"]:nth-of-type(2):checked ~ .panes > :nth-child(2),
+[name="feat"]:nth-of-type(3):checked ~ .panes > :nth-child(3),
+[name="feat"]:nth-of-type(4):checked ~ .panes > :nth-child(4) { display: grid; }
+[name="feat"]:nth-of-type(1):checked ~ .feat-tabs > :nth-child(1),
+[name="feat"]:nth-of-type(2):checked ~ .feat-tabs > :nth-child(2),
+[name="feat"]:nth-of-type(3):checked ~ .feat-tabs > :nth-child(3),
+[name="feat"]:nth-of-type(4):checked ~ .feat-tabs > :nth-child(4) { border-image-source: url(/images/gui/btn-selected.png); color: var(--cream); }
+[name="feat"]:nth-of-type(1):focus-visible ~ .feat-tabs > :nth-child(1),
+[name="feat"]:nth-of-type(2):focus-visible ~ .feat-tabs > :nth-child(2),
+[name="feat"]:nth-of-type(3):focus-visible ~ .feat-tabs > :nth-child(3),
+[name="feat"]:nth-of-type(4):focus-visible ~ .feat-tabs > :nth-child(4) { outline: calc(1px * var(--px)) solid var(--yellow); outline-offset: calc(1px * var(--px)); }
 @media (min-width: 1100px) {
   .pane { grid-template-columns: auto minmax(0, 1fr); }
 }

@@ -647,13 +647,13 @@ def build(environment, site, outputs, problems):
         loaded = read_data(name + ".json")
         if loaded is None:
             # No extract has been run. The site builds without a Wiki.
-            return [], {"total": 0, "categories": [], "featured": []}
+            return [], {"total": 0}
         data[name] = loaded
 
     sizes = {}
     entries = make_entries(data, sizes, problems)
     if problems:
-        return [], {"total": 0, "categories": [], "featured": []}
+        return [], {"total": 0}
 
     addresses = []
     search = []
@@ -722,10 +722,5 @@ def build(environment, site, outputs, problems):
 
     outputs["wiki/search.json"] = (json.dumps(search, ensure_ascii=False, separators=(",", ":")) + "\n").encode("utf-8")
 
-    # What other pages may show of the Wiki: the home page lists a few categories.
-    featured = []
-    for key in config.HOME_WIKI_CATEGORIES:
-        for category in categories:
-            if category["key"] == key:
-                featured.append(category)
-    return addresses, {"total": total, "categories": categories, "featured": featured}
+    # What other pages are told of the Wiki: whether there is one to link to.
+    return addresses, {"total": total}

@@ -38,13 +38,14 @@ the site, set its `enabled` to False in `WIKI_CATEGORIES` in
 
 ## Preview
 
-    python -m http.server 8000 --directory docs
+    python preview.py
 
 Then open http://localhost:8000/.
 
 ## Layout
 
-    build.py       the one command
+    build.py       builds the site
+    preview.py     serves docs/ on this computer for a look
     builder/       the build code
     templates/     page layouts; base.html holds the <head> and page shell
     content/pages/ the pages: words, and the pictures that belong to them

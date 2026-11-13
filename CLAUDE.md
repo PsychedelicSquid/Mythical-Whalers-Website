@@ -13,8 +13,10 @@ branch. `docs/` is build output: `build.py` writes it from `content/`,
 - **After the game changes:** `python build.py --extract`. This first copies art
   out of the game repository into `game/`, then builds. Read `git diff game/`
   before committing: that diff is everything a game update would put on the site.
-- **Preview:** `python -m http.server 8000 --directory docs`, then open
-  `http://localhost:8000/`.
+- **Preview:** `python preview.py`, then open `http://localhost:8000/`. It
+  serves `docs/` and tells the browser to ask again before it reuses a file.
+  Plain `python -m http.server` does not, and a browser then goes on showing
+  its own copy of a picture after a build has replaced it.
 - **Never edit `docs/` by hand.** The build deletes anything in `docs/` it did
   not produce and overwrites the rest. Edit `content/`, `templates/` or
   `static/` and build again.
@@ -62,10 +64,13 @@ Before doing any work in a new chat, read these to build complete context.
   Play button.
 - `templates/` — Jinja layouts. Keep them free of logic beyond `for` and `if`.
 - `static/` — copied to `docs/` unchanged: the stylesheet, the script, `CNAME`,
-  `.nojekyll`, and any hand-drawn pictures under `static/images/`.
+  `.nojekyll`, and the pictures under `static/images/` that do not come out of
+  the game repository: hand-drawn ones, and the home page's four screenshots
+  (see "The home page").
 - `game/` — written only by `python build.py --extract`: `game/data/` (the
   game's content as JSON), `game/images/` (frame pieces in `gui/`, menu art,
-  screenshots, and every picture a Wiki entry shows) and `game/fonts/`.
+  the browser tab's icon, and every picture a Wiki entry shows) and
+  `game/fonts/`.
   Committed. Never edited by hand; to change what is copied, edit the tables in
   `builder/config.py`.
 - `docs/` — generated. Committed, because GitHub Pages serves it.
@@ -115,6 +120,26 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
 - **Not built yet:** hand-written text for entries the game gives no
   description (43 of the 69 mobs, including all eight whales). They are better
   written in the game's `mobs.py`, which fixes the in-game Bestiary too.
+
+## The home page
+
+- **The words are Steam's.** Under "What is Mythical Whalers?" the opening
+  paragraph is the store's short description, which is also the page's
+  `description`. The four tabs hold the five paragraphs of the game's
+  description on its Steam page ("About this game"): Command the third,
+  Explore the first, Hunt the second, Plan the fourth and fifth. All were
+  copied word for word on 12 November 2026. The tabs' names and the tagline
+  under the logo, "Command a crew. Hunt. Survive.", are Joel's. Do not rewrite
+  any of them.
+- **The four screenshots are the Steam page's**, in `static/images/steam/`.
+  The game repository's own `steam art/screenshots` folder is from 2024 and is
+  not used. Each was made from the store's 1920x1080 JPEG by taking the middle
+  value of every 3x3 block, which gives the game's 640x360 pixels back, and
+  reducing the result to 256 colours. They do not update themselves: when the
+  store page changes, they and the words are copied again by hand. The Plan
+  screenshot shows one quest's name and line, as it does on the Steam page.
+- No section of the home page shows the Wiki. The menu's "Open the Wiki" button
+  is the link to it.
 
 ## The look
 

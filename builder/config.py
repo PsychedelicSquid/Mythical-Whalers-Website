@@ -102,9 +102,6 @@ WIKI_TILE_PICTURES = {
     "locations": "locations.WhalingPort",
 }
 
-# The categories the home page shows.
-HOME_WIKI_CATEGORIES = ["crewmates", "whales", "weapons", "traits"]
-
 # The order a race's level-up traits are listed in (traits.TIER_WEIGHTS).
 TRAIT_TIERS = ["common", "uncommon", "rare", "legendary", "never"]
 
@@ -201,8 +198,6 @@ GUI_VARIANTS = ["btn.png", "slot.png", "portrait.png"]
 # ---------------------------------------------------------------------------
 # Other art the site's own pages show. "to" is the path under images/.
 #   crop    (left, top, right, bottom), right and bottom not included
-#   native  True stores a pre-enlarged picture at its real size (640x360 for a
-#           1920x1080 screenshot); CSS does the enlarging
 # ---------------------------------------------------------------------------
 SITE_ART = [
     {"to": "menu/sea.png", "source": "gui/main_menu/sea.png"},
@@ -212,12 +207,10 @@ SITE_ART = [
     {"to": "menu/cloud-3.png", "source": "gui/main_menu/cloud_3.png"},
     {"to": "menu/cloud-4.png", "source": "gui/main_menu/cloud_4.png"},
     {"to": "menu/logo.png", "source": "gui/main_menu/logo.png", "crop": (39, 21, 245, 101)},
-    {"to": "screenshots/hunt.png", "source": "steam art/screenshots/screen 7.png", "native": True},
-    {"to": "screenshots/crew.png", "source": "steam art/screenshots/screen 8.png", "native": True},
-    {"to": "screenshots/factions.png", "source": "steam art/screenshots/screen 16.png", "native": True},
-    {"to": "screenshots/storm.png", "source": "steam art/screenshots/screen 5.png", "native": True},
     # The picture link previews show (Steam's main capsule).
     {"to": "site/card.png", "source": "steam art/store/Main Capsule.png"},
+    # The browser tab's icon (the game's icon on Steam).
+    {"to": "site/icon.png", "source": "steam art/app_icon.png"},
 ]
 
 MONTHS = ["January", "February", "March", "April", "May", "June", "July",

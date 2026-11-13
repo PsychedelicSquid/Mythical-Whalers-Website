@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% from "parts.html" import post_card %}
-{% from "wiki_parts.html" import category_tile %}
 {% block hero %}
   {# The game's main menu. Layers, back to front, as Window.run draws them.
      The band behind it and the line under it run to the edges of the window. #}
@@ -33,22 +32,6 @@
 {% endblock %}
 {% block main %}
 {{ body }}
-{% if site.wiki.total %}
-    <section class="win">
-      <div class="win-head"><h2>Wiki</h2></div>
-      <div class="win-foot stack">
-        <div class="split">
-          <p>Everything the Bestiary knows, in one place.</p>
-          <a class="btn" href="/wiki/">Open the Wiki</a>
-        </div>
-        <div class="cats">
-{% for category in site.wiki.featured %}
-{{ category_tile(category) }}
-{% endfor %}
-        </div>
-      </div>
-    </section>
-{% endif %}
     <section class="win">
       <div class="win-head"><h2>From the devlog</h2></div>
       <div class="win-foot">

@@ -1,51 +1,51 @@
 title: Mythical Whalers
-description: A turn-based adventure on the Shrouded Seas. Raise a crew, hunt the whales, and survive the storm that comes every thirteenth day.
+description: Set sail in the shrouded seas. A procedurally generated world where each voyage is unique. Captain a crew of mythical races to face monstrous leviathans and gain status with cunning factions.
 template: home.html
-pitch: Raise a crew. Hunt the whales. Survive the storm that comes every thirteenth day.
+pitch: Command a crew. Hunt. Survive.
 ---
+    {# The words are the game's descriptions on its Steam page, and the four
+       pictures are screenshots from that page (see CLAUDE.md, "The home page").
+       The radio buttons, their labels and the panes are in the same order. #}
     <section class="win">
       <div class="win-head"><h2>What is Mythical Whalers?</h2></div>
       <div class="win-mid">
-        <p>A turn-based adventure on the Shrouded Seas. You hire a crew, sail between islands, and hunt whales whose blubber the whaling ports render down to gems.</p>
+        <p>Set sail in the shrouded seas. A procedurally generated world where each voyage is unique. Captain a crew of mythical races to face monstrous leviathans and gain status with cunning factions.</p>
       </div>
       <div class="win-foot">
-        <input class="sr" type="radio" name="feat" id="feat-hunt" checked>
-        <input class="sr" type="radio" name="feat" id="feat-crew">
-        <input class="sr" type="radio" name="feat" id="feat-factions">
-        <input class="sr" type="radio" name="feat" id="feat-storm">
+        <input class="sr" type="radio" name="feat" id="feat-command" checked>
+        <input class="sr" type="radio" name="feat" id="feat-explore">
+        <input class="sr" type="radio" name="feat" id="feat-hunt">
+        <input class="sr" type="radio" name="feat" id="feat-plan">
         <div class="feat-tabs">
+          <label class="btn" for="feat-command">Command</label>
+          <label class="btn" for="feat-explore">Explore</label>
           <label class="btn" for="feat-hunt">Hunt</label>
-          <label class="btn" for="feat-crew">Crew</label>
-          <label class="btn" for="feat-factions">Factions</label>
-          <label class="btn" for="feat-storm">Storm</label>
+          <label class="btn" for="feat-plan">Plan</label>
         </div>
         <div class="panes">
-          <figure class="pane" data-for="hunt">
-            {{ art("screenshots/hunt.png", "A battle on arctic water: one crewmate faces a Narwhal among ice floes.") }}
+          <figure class="pane">
+            {{ art("steam/command.png", "The crew screen: Timothy, Slyne, Long Tom and Zephyr on the left, Timothy's gear and items in the middle, his abilities and traits on the right.") }}
             <figcaption>
-              <h3>Hunt the whales</h3>
-              <p>Eight kinds of whale swim the Shrouded Seas. Fight them turn by turn, then sell the blubber at a Whaling Port.</p>
+              <p>Command your crew as they evolve, their traits shifting for better or worse as the voyage unfolds. Seek out and recruit new members from the mythical races dwelling upon the myriad islands you explore.</p>
             </figcaption>
           </figure>
-          <figure class="pane" data-for="crew">
-            {{ art("screenshots/crew.png", "The Tavern window asks: Hire Jezebel for 15 gold? with Hire and Nay buttons.") }}
+          <figure class="pane">
+            {{ art("steam/explore.png", "The map: the crew follows a dotted path across an island to a castle, with huts, forest and sea around it.") }}
             <figcaption>
-              <h3>Raise a crew</h3>
-              <p>Hire crewmates from twenty races. Each race has its own stats, traits and starting gear, and crewmates gain traits as they level up.</p>
+              <p>Assemble your crew and set sail across a perilous, procedurally generated world. Traverse eight distinct biomes teeming with bizarre creatures and factions locked in a desperate struggle for survival.</p>
             </figcaption>
           </figure>
-          <figure class="pane" data-for="factions">
-            {{ art("screenshots/factions.png", "The ship journal lists factions with a standing number and a face beside each.") }}
+          <figure class="pane">
+            {{ art("steam/hunt.png", "A battle at sea: the crew surrounds a Spike Back, and a panel lists its stats, abilities and buffs.") }}
             <figcaption>
-              <h3>Pick your friends</h3>
-              <p>Eight factions keep track of what you do. Their heralds offer quests, and your standing with a faction opens up more of its races.</p>
+              <p>Hunt deadly sea beasts for precious resources and barter with nearby factions for vital equipment and supplies.</p>
             </figcaption>
           </figure>
-          <figure class="pane" data-for="storm">
-            {{ art("screenshots/storm.png", "A storm scene: black clouds and lightning over the ship.") }}
+          <figure class="pane">
+            {{ art("steam/plan.png", "The ship screen: the hold's cargo, the map, and seven factions listed with a face for the crew's standing with each.") }}
             <figcaption>
-              <h3>Outlast the storm</h3>
-              <p>Every thirteenth day the storm comes.</p>
+              <p>Enhance your crew with potent elixirs brewed from the coveted gem horns of the whales they slay, bestowing them with formidable abilities.</p>
+              <p>Forge alliances or wage war with the crews of rival factions. But heed this warning: your choices are remembered, and every decision bears a consequence.</p>
             </figcaption>
           </figure>
         </div>
