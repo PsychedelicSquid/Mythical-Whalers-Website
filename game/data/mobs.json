@@ -108,47 +108,6 @@
       "never": [
         "traits.Bloodlust"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.MerchantsRobes",
-          "items.Shroomstick"
-        ],
-        [
-          "items.MerchantsHat",
-          "items.MerchantsRobes",
-          "items.Shroomstick"
-        ],
-        [
-          "items.MerchantsHat",
-          "items.Shroomstick"
-        ]
-      ],
-      "2": [
-        [
-          "items.MerchantsHat",
-          "items.MerchantsRobes",
-          "items.Staff"
-        ],
-        [
-          "items.MerchantsHat",
-          "items.MerchantsRobes",
-          "items.Scepter"
-        ]
-      ],
-      "3": [
-        [
-          "items.MysticalHat",
-          "items.MysticalRobes",
-          "items.Staff"
-        ],
-        [
-          "items.MysticalHat",
-          "items.MysticalRobes",
-          "items.Scepter"
-        ]
-      ]
     }
   },
   "mobs.Alligator": {
@@ -402,42 +361,6 @@
       "never": [
         "traits.Necromancer"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.OrkhideArmor",
-          "items.FlintSpear"
-        ],
-        [
-          "items.OrkhideArmor",
-          "items.Bow"
-        ],
-        [
-          "items.OrkhideArmor",
-          "items.Boomerang"
-        ]
-      ],
-      "2": [
-        [
-          "items.OrkhideArmor",
-          "items.Harpoon"
-        ],
-        [
-          "items.OrkhideArmor",
-          "items.Axe"
-        ]
-      ],
-      "3": [
-        [
-          "items.TrollhideArmor",
-          "items.Macuahuitl"
-        ],
-        [
-          "items.TrollhideArmor",
-          "items.Harpoon"
-        ]
-      ]
     }
   },
   "mobs.Beholder": {
@@ -607,46 +530,6 @@
         "traits.Pyromancer",
         "traits.Necromancer"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.Seashellarmor",
-          "items.FinCutter"
-        ],
-        [
-          "items.ClamArmor",
-          "items.Harpoon"
-        ],
-        [
-          "items.Seashellarmor",
-          "items.CrustaceanRod"
-        ]
-      ],
-      "2": [
-        [
-          "items.ClamHelm",
-          "items.ClamArmor",
-          "items.Harpoon"
-        ],
-        [
-          "items.ClamHelm",
-          "items.ClamArmor",
-          "items.CrustaceanRod"
-        ]
-      ],
-      "3": [
-        [
-          "items.RangersHood",
-          "items.RangersCloak",
-          "items.Crossbow"
-        ],
-        [
-          "items.ClamHelm",
-          "items.ClamArmor",
-          "items.Trident"
-        ]
-      ]
     }
   },
   "mobs.CaridianCaptain": {
@@ -787,51 +670,6 @@
         "traits.Priest",
         "traits.Necromancer"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.OrkhideArmor",
-          "items.Club",
-          "items.ElixirCharge"
-        ],
-        [
-          "items.OrkhideArmor",
-          "items.Sprig",
-          "items.ElixirCharge"
-        ],
-        [
-          "items.OrkhideArmor",
-          "items.Club"
-        ]
-      ],
-      "2": [
-        [
-          "items.PlateHelm",
-          "items.PlateArmor",
-          "items.Cleaver",
-          "items.ElixirCharge"
-        ],
-        [
-          "items.TrollhideArmor",
-          "items.Club",
-          "items.ElixirCharge"
-        ]
-      ],
-      "3": [
-        [
-          "items.TrollhideHelm",
-          "items.TrollhideArmor",
-          "items.Macuahuitl",
-          "items.ElixirCharge"
-        ],
-        [
-          "items.TrollhideHelm",
-          "items.TrollhideArmor",
-          "items.WarClub",
-          "items.ElixirCharge"
-        ]
-      ]
     }
   },
   "mobs.Dragon": {
@@ -959,49 +797,6 @@
         "traits.Necromancer",
         "traits.Bloodlust"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.WhimsicalClothes",
-          "items.Bow"
-        ],
-        [
-          "items.WhimsicalHat",
-          "items.WhimsicalClothes",
-          "items.Dagger"
-        ],
-        [
-          "items.WhimsicalHat",
-          "items.WhimsicalClothes",
-          "items.Bow"
-        ]
-      ],
-      "2": [
-        [
-          "items.FaeHood",
-          "items.FaeArmor",
-          "items.Bow"
-        ],
-        [
-          "items.FaeHood",
-          "items.FaeArmor",
-          "items.Dagger"
-        ]
-      ],
-      "3": [
-        [
-          "items.DryadHelm",
-          "items.DryadArmor",
-          "items.DryadBow",
-          "items.ElixirArrow"
-        ],
-        [
-          "items.DryadHelm",
-          "items.DryadArmor",
-          "items.Dagger"
-        ]
-      ]
     }
   },
   "mobs.Dwarf": {
@@ -1093,47 +888,6 @@
         "traits.Optimist"
       ],
       "never": []
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.HornHelmet",
-          "items.SentinelArmor",
-          "items.Ballpeen"
-        ],
-        [
-          "items.SentinelArmor",
-          "items.Ballpeen"
-        ],
-        [
-          "items.SentinelArmor",
-          "items.Axe"
-        ]
-      ],
-      "2": [
-        [
-          "items.SentinelHelm",
-          "items.SentinelArmor",
-          "items.BattleAxe"
-        ],
-        [
-          "items.SentinelHelm",
-          "items.SentinelArmor",
-          "items.Ballpeen"
-        ]
-      ],
-      "3": [
-        [
-          "items.AdamantineHelm",
-          "items.AdamantineCuirass",
-          "items.WarHammer"
-        ],
-        [
-          "items.AdamantineHelm",
-          "items.AdamantineCuirass",
-          "items.BattleAxe"
-        ]
-      ]
     }
   },
   "mobs.Eel": {
@@ -1303,53 +1057,6 @@
         "traits.Necromancer",
         "traits.Bloodlust"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.GnomishHat",
-          "items.GnomishGarb",
-          "items.Sprig"
-        ],
-        [
-          "items.ShroomHat",
-          "items.ShroomArmor",
-          "items.Shroomstick",
-          "items.ElixirHealth"
-        ],
-        [
-          "items.ShroomHat",
-          "items.ShroomArmor",
-          "items.Sprig"
-        ]
-      ],
-      "2": [
-        [
-          "items.GnomishHat",
-          "items.BriarbarkArmor",
-          "items.Sprig"
-        ],
-        [
-          "items.GnomishHat",
-          "items.GnomishGarb",
-          "items.Staff",
-          "items.ElixirFireBall"
-        ]
-      ],
-      "3": [
-        [
-          "items.MysticalHat",
-          "items.MysticalRobes",
-          "items.Staff",
-          "items.ElixirFrostBolt"
-        ],
-        [
-          "items.LivingHelm",
-          "items.LivingArmor",
-          "items.Shroomstick",
-          "items.ElixirFireBreath"
-        ]
-      ]
     }
   },
   "mobs.Goblin": {
@@ -1429,47 +1136,6 @@
         "traits.Heroic",
         "traits.Priest",
         "traits.Necromancer"
-      ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.OrkhideArmor",
-          "items.Harpoon"
-        ],
-        [
-          "items.OrkhideHelm",
-          "items.OrkhideArmor",
-          "items.Club"
-        ],
-        [
-          "items.OrkhideArmor",
-          "items.Bow"
-        ]
-      ],
-      "2": [
-        [
-          "items.OrkhideHelm",
-          "items.OrkhideArmor",
-          "items.Bow"
-        ],
-        [
-          "items.FossilHelm",
-          "items.FossilArmor",
-          "items.Club"
-        ]
-      ],
-      "3": [
-        [
-          "items.FossilHelm",
-          "items.FossilArmor",
-          "items.BattleAxe"
-        ],
-        [
-          "items.TrollhideHelm",
-          "items.TrollhideArmor",
-          "items.Macuahuitl"
-        ]
       ]
     }
   },
@@ -1682,48 +1348,6 @@
         "traits.Oracle"
       ],
       "never": []
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.PeasantTunic",
-          "items.Sprig"
-        ],
-        [
-          "items.PeasantHat",
-          "items.PeasantTunic",
-          "items.WoodenSword"
-        ],
-        [
-          "items.PeasantHat",
-          "items.NavigatorsJacket",
-          "items.WoodenSword"
-        ]
-      ],
-      "2": [
-        [
-          "items.ArchersHat",
-          "items.ArchersArmor",
-          "items.Bow"
-        ],
-        [
-          "items.ArchersHat",
-          "items.ArchersArmor",
-          "items.Sword"
-        ]
-      ],
-      "3": [
-        [
-          "items.KnightsHelm",
-          "items.KnightsArmor",
-          "items.Greatsword"
-        ],
-        [
-          "items.KnightsHelm",
-          "items.KnightsArmor",
-          "items.Crossbow"
-        ]
-      ]
     }
   },
   "mobs.HumanCaptain": {
@@ -1839,47 +1463,6 @@
         "traits.Cook",
         "traits.Optimist",
         "traits.Priest"
-      ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.RatArmor",
-          "items.Sprig"
-        ],
-        [
-          "items.RatHat",
-          "items.RatArmor",
-          "items.WoodenSword"
-        ],
-        [
-          "items.RatHat",
-          "items.RatArmor",
-          "items.Sickle"
-        ]
-      ],
-      "2": [
-        [
-          "items.DeathknightHelm",
-          "items.DeathknightArmor",
-          "items.Shield"
-        ],
-        [
-          "items.DeathknightHelm",
-          "items.DeathknightArmor",
-          "items.Sword"
-        ]
-      ],
-      "3": [
-        [
-          "items.MysticalRobes",
-          "items.ElixirRaiseUndead"
-        ],
-        [
-          "items.SanguisHelm",
-          "items.SanguisArmor",
-          "items.SanguineBlade"
-        ]
       ]
     }
   },
@@ -2041,47 +1624,6 @@
       "never": [
         "traits.Pyromancer",
         "traits.Necromancer"
-      ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.Seashellarmor",
-          "items.FinCutter"
-        ],
-        [
-          "items.ClamHelm",
-          "items.ClamArmor",
-          "items.Harpoon"
-        ],
-        [
-          "items.Seashellarmor",
-          "items.Harpoon"
-        ]
-      ],
-      "2": [
-        [
-          "items.ClamHelm",
-          "items.ClamArmor",
-          "items.Trident"
-        ],
-        [
-          "items.VenomHelm",
-          "items.VenomArmor",
-          "items.Harpoon"
-        ]
-      ],
-      "3": [
-        [
-          "items.VenomHelm",
-          "items.VenomArmor",
-          "items.Trident"
-        ],
-        [
-          "items.MerHelm",
-          "items.MerArmor",
-          "items.IvoryHarpoon"
-        ]
       ]
     }
   },
@@ -2349,47 +1891,6 @@
         "traits.Optimist",
         "traits.Heroic"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.RatArmor",
-          "items.Staff"
-        ],
-        [
-          "items.RatHat",
-          "items.RatArmor",
-          "items.Shroomstick"
-        ],
-        [
-          "items.RatArmor",
-          "items.Shroomstick"
-        ]
-      ],
-      "2": [
-        [
-          "items.RatHat",
-          "items.RatArmor",
-          "items.Staff"
-        ],
-        [
-          "items.DeathknightHelm",
-          "items.DeathknightArmor",
-          "items.Scepter"
-        ]
-      ],
-      "3": [
-        [
-          "items.DeathknightHelm",
-          "items.DeathknightArmor",
-          "items.Staff"
-        ],
-        [
-          "items.SanguisHelm",
-          "items.SanguisArmor",
-          "items.Scepter"
-        ]
-      ]
     }
   },
   "mobs.Piranha": {
@@ -2511,50 +2012,6 @@
       "never": [
         "traits.Priest",
         "traits.Necromancer"
-      ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.NavigatorsJacket",
-          "items.Scimitar"
-        ],
-        [
-          "items.NavigatorsHat",
-          "items.NavigatorsJacket",
-          "items.Saber"
-        ],
-        [
-          "items.NavigatorsJacket",
-          "items.Bow"
-        ],
-        [
-          "items.Harpoon"
-        ]
-      ],
-      "2": [
-        [
-          "items.BucaneersHat",
-          "items.BucaneersCoat",
-          "items.Cutlass"
-        ],
-        [
-          "items.BucaneersHat",
-          "items.BucaneersCoat",
-          "items.Pistol"
-        ]
-      ],
-      "3": [
-        [
-          "items.SwashbucklersHat",
-          "items.SwashbucklersJacket",
-          "items.Musket"
-        ],
-        [
-          "items.PirateHat",
-          "items.SwashbucklersJacket",
-          "items.Cutlass"
-        ]
       ]
     }
   },
@@ -2793,49 +2250,6 @@
         "traits.Necromancer",
         "traits.Bloodlust"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.InsulatedHood",
-          "items.InsulatedArmor",
-          "items.FinCutter"
-        ],
-        [
-          "items.Seashellarmor",
-          "items.Harpoon"
-        ],
-        [
-          "items.InsulatedArmor",
-          "items.Harpoon"
-        ]
-      ],
-      "2": [
-        [
-          "items.InsulatedHood",
-          "items.InsulatedArmor",
-          "items.Harpoon"
-        ],
-        [
-          "items.ArcticHood",
-          "items.ArcticArmor",
-          "items.Trident",
-          "items.ElixirHealth"
-        ]
-      ],
-      "3": [
-        [
-          "items.ArcticHood",
-          "items.ArcticArmor",
-          "items.Trident",
-          "items.ElixirHealth"
-        ],
-        [
-          "items.SalorianHelm",
-          "items.SalorianArmor",
-          "items.IvoryHarpoon"
-        ]
-      ]
     }
   },
   "mobs.Satyr": {
@@ -2917,47 +2331,6 @@
       ],
       "never": [
         "traits.Necromancer"
-      ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.BriarbarkArmor",
-          "items.Sickle",
-          "items.ElixirCharge"
-        ],
-        [
-          "items.BriarbarkArmor",
-          "items.Club",
-          "items.ElixirCharge"
-        ],
-        [
-          "items.BriarbarkHelm",
-          "items.BriarbarkArmor",
-          "items.Sickle",
-          "items.ElixirCharge"
-        ]
-      ],
-      "2": [
-        [
-          "items.BriarbarkArmor",
-          "items.Club",
-          "items.ElixirCharge"
-        ],
-        [
-          "items.BriarbarkHelm",
-          "items.BriarbarkArmor",
-          "items.Axe",
-          "items.ElixirCharge"
-        ]
-      ],
-      "3": [
-        [
-          "items.LivingHelm",
-          "items.LivingArmor",
-          "items.WarClub",
-          "items.ElixirCharge"
-        ]
       ]
     }
   },
@@ -3120,51 +2493,6 @@
         "traits.Priest",
         "traits.Necromancer"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.PlumedArmor",
-          "items.Dagger"
-        ],
-        [
-          "items.PlumedHelm",
-          "items.PlumedArmor",
-          "items.FlintSpear"
-        ],
-        [
-          "items.PlumedHelm",
-          "items.PlumedArmor",
-          "items.Boomerang"
-        ]
-      ],
-      "2": [
-        [
-          "items.PlumedHelm",
-          "items.PlumedArmor",
-          "items.Macuahuitl"
-        ],
-        [
-          "items.AvianHelm",
-          "items.AvianArmor",
-          "items.Axe",
-          "items.ElixirWhirlwind"
-        ]
-      ],
-      "3": [
-        [
-          "items.AvianHelm",
-          "items.AvianArmor",
-          "items.Macuahuitl",
-          "items.ElixirWhirlwind"
-        ],
-        [
-          "items.CheiftansHelm",
-          "items.CheiftansArmor",
-          "items.FlintSpear",
-          "items.ElixirInspire"
-        ]
-      ]
     }
   },
   "mobs.ShrykeCaptain": {
@@ -3271,56 +2599,6 @@
         "traits.Necromancer",
         "traits.Bloodlust"
       ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.Harpoon"
-        ],
-        [
-          "items.FinCutter",
-          "items.ElixirGeyser"
-        ],
-        [
-          "items.FinCutter"
-        ]
-      ],
-      "2": [
-        [
-          "items.MerHelm",
-          "items.Trident"
-        ],
-        [
-          "items.MerHelm",
-          "items.Harpoon"
-        ],
-        [
-          "items.MerHelm",
-          "items.ElixirGeyser"
-        ]
-      ],
-      "3": [
-        [
-          "items.SalorianHelm",
-          "items.IvoryHarpoon"
-        ],
-        [
-          "items.SalorianHelm",
-          "items.Trident"
-        ],
-        [
-          "items.SalorianHelm",
-          "items.ElixirHealth"
-        ],
-        [
-          "items.SalorianHelm",
-          "items.ElixirShield"
-        ],
-        [
-          "items.SalorianHelm",
-          "items.ElixirTorrent"
-        ]
-      ]
     }
   },
   "mobs.Skeleton": {
@@ -3395,47 +2673,6 @@
         "traits.Surgeon",
         "traits.Optimist",
         "traits.Priest"
-      ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.RatArmor",
-          "items.WoodenSword"
-        ],
-        [
-          "items.RatHat",
-          "items.RatArmor",
-          "items.Sickle"
-        ],
-        [
-          "items.RatArmor",
-          "items.Bow"
-        ]
-      ],
-      "2": [
-        [
-          "items.RatHat",
-          "items.RatArmor",
-          "items.Sword"
-        ],
-        [
-          "items.DeathknightHelm",
-          "items.DeathknightArmor",
-          "items.Sickle"
-        ]
-      ],
-      "3": [
-        [
-          "items.DeathknightHelm",
-          "items.DeathknightArmor",
-          "items.Sword"
-        ],
-        [
-          "items.SanguisHelm",
-          "items.SanguisArmor",
-          "items.SanguineBlade"
-        ]
       ]
     }
   },
@@ -3518,45 +2755,6 @@
       "never": [
         "traits.Necromancer",
         "traits.Priest"
-      ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.PlumedArmor",
-          "items.Sprig"
-        ],
-        [
-          "items.PlumedHelm",
-          "items.Bow"
-        ],
-        [
-          "items.PlumedHelm",
-          "items.Harpoon"
-        ]
-      ],
-      "2": [
-        [
-          "items.PlumedHelm",
-          "items.PlumedArmor",
-          "items.Harpoon"
-        ],
-        [
-          "items.PlumedArmor",
-          "items.Bow"
-        ]
-      ],
-      "3": [
-        [
-          "items.CheiftansHelm",
-          "items.CheiftansArmor",
-          "items.Macuahuitl"
-        ],
-        [
-          "items.CheiftansHelm",
-          "items.CheiftansArmor",
-          "items.FlintSpear"
-        ]
       ]
     }
   },
@@ -3805,47 +3003,6 @@
         "traits.Cook",
         "traits.Optimist",
         "traits.Priest"
-      ]
-    },
-    "starting_gear": {
-      "1": [
-        [
-          "items.RatArmor",
-          "items.Dagger"
-        ],
-        [
-          "items.RatHat",
-          "items.RatArmor",
-          "items.Sickle"
-        ],
-        [
-          "items.RatArmor",
-          "items.Sickle"
-        ]
-      ],
-      "2": [
-        [
-          "items.RatHat",
-          "items.RatArmor",
-          "items.Dagger"
-        ],
-        [
-          "items.RangersHood",
-          "items.RangersCloak",
-          "items.Sickle"
-        ]
-      ],
-      "3": [
-        [
-          "items.RangersHood",
-          "items.RangersCloak",
-          "items.Dagger"
-        ],
-        [
-          "items.SanguisHelm",
-          "items.SanguisArmor",
-          "items.SanguineBlade"
-        ]
       ]
     }
   },

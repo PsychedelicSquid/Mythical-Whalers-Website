@@ -72,26 +72,6 @@
       </div>
 {% endfor %}
 
-{% if details.gear %}
-      <div class="win-mid stack">
-        <h2 class="label">STARTING GEAR</h2>
-{% for level in details.gear %}
-        <div class="tier">
-          <span class="olive">{{ level.label }}</span>
-          <div class="gear">
-{% for one_set in level.sets %}
-            <div class="linkrow">
-{% for item in one_set %}
-              {{ chip(item) }}
-{% endfor %}
-            </div>
-{% endfor %}
-          </div>
-        </div>
-{% endfor %}
-      </div>
-{% endif %}
-
       <div class="win-foot">
         <div class="split">
           <a class="btn" href="{{ category.url }}">{{ category.title }}</a>

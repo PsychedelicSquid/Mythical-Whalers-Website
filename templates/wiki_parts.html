@@ -29,6 +29,6 @@
 {% macro category_tile(category) %}
           <a class="cat tip" href="{{ category.url }}">
             <span class="cat-art">{{ icon(category.sample, category.sample.card_zoom) }}</span>
-            <span><b>{{ category.title }}</b><span>{{ category.count }} entries</span></span>
+            <b>{{ category.title }}</b>
           </a>
 {% endmacro %}

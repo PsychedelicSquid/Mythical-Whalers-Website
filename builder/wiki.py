@@ -3,7 +3,7 @@
 Each entry page shows what the in-game Bestiary shows for that entry (see
 Bestiary.populate_mob, populate_item, populate_faction and populate_trait in
 the game's gui.py), then the links the Bestiary cannot show: what drops an
-item, which races start with it, which abilities apply a status effect.
+item, what it brews into, which abilities apply a status effect.
 
 All the deciding is done here. The templates only lay out what they are given.
 """
@@ -93,6 +93,10 @@ def make_entries(data, sizes, problems):
     kinds = {"mobs": "mob", "items": "item", "traits": "trait", "abilities": "ability",
              "effects": "effect", "factions": "faction"}
 
+    for identifier in config.WIKI_NAMES:
+        if identifier.split(".")[0] not in data or identifier not in data[identifier.split(".")[0]]:
+            problems.append("WIKI_NAMES in builder/config.py names %s, which game/data does not hold" % identifier)
+
     for source in ["mobs", "items", "traits", "abilities", "effects", "factions"]:
         records = data[source]
         identifiers = list(records.keys())
@@ -103,9 +107,10 @@ def make_entries(data, sizes, problems):
             if category is None:
                 problems.append("%s fits no row of WIKI_CATEGORIES in builder/config.py" % identifier)
                 continue
+            name = config.WIKI_NAMES.get(identifier, record["name"])
             address = ""
             if category["enabled"]:
-                address = "/wiki/%s/%s/" % (category["key"], slug_of(record["name"]))
+                address = "/wiki/%s/%s/" % (category["key"], slug_of(name))
                 if address in used_addresses:
                     problems.append("%s and %s would both be at %s" % (identifier, used_addresses[address], address))
                     continue
@@ -115,7 +120,7 @@ def make_entries(data, sizes, problems):
                 "id": identifier,
                 "kind": kinds[source],
                 "category": category,
-                "name": record["name"],
+                "name": name,
                 "url": address,
                 "record": record,
                 "description": record.get("description", ""),
@@ -266,7 +271,7 @@ def bonus_rows(modifiers, icon_table, data, sizes, problems, hidden):
 def describe_mob(entry, entries, data, sizes, problems):
     record = entry["record"]
     page = {"facts": [], "stat_title": "STATS", "stat_rows": mob_stat_rows(record, data, sizes, problems),
-            "groups": [], "tiers": [], "gear": [], "portraits": []}
+            "groups": [], "tiers": [], "portraits": []}
 
     # IMMUNE, with the icons the Bestiary gives five of them
     effect_of_key = {}
@@ -314,14 +319,6 @@ def describe_mob(entry, entries, data, sizes, problems):
         if rows:
             page["tiers"].append({"title": "TRAITS OFFERED AT LEVEL-UP", "rows": rows})
 
-        levels = list(record["starting_gear"].keys())
-        levels.sort()
-        for level in levels:
-            sets = []
-            for one_set in record["starting_gear"][level]:
-                sets.append(links(entries, one_set))
-            page["gear"].append({"label": "Level " + level, "sets": sets})
-
     # An ability the mob has changed is noted with what differs (the Dragon's Fire Breath: Radius 4).
     notes = {}
     for reference in record["ability_changes"]:
@@ -337,7 +334,7 @@ def describe_item(entry, entries, data, sizes, problems):
     record = entry["record"]
     # A mana bonus is hidden in the game's item tooltips and in the Bestiary.
     rows = bonus_rows(record["modifiers"], data["meta"].get("item_icons", {}), data, sizes, problems, ["max_mana"])
-    page = {"facts": [], "stat_title": "BONUSES", "stat_rows": rows, "groups": [], "tiers": [], "gear": [],
+    page = {"facts": [], "stat_title": "BONUSES", "stat_rows": rows, "groups": [], "tiers": [],
             "portraits": []}
 
     if record["slot"]:
@@ -370,29 +367,16 @@ def describe_item(entry, entries, data, sizes, problems):
 
     brewed_from = []
     dropped_by = []
-    starting_gear_of = []
     for identifier in entries:
         other = entries[identifier]
         if other["kind"] == "item" and other["record"]["brews_into"] == entry["id"]:
             brewed_from.append(link(entries, identifier))
-        if other["kind"] != "mob":
-            continue
-        if entry["id"] in other["record"]["drops"]:
+        if other["kind"] == "mob" and entry["id"] in other["record"]["drops"]:
             dropped_by.append(link(entries, identifier))
-        if other["record"]["group"] == "crewmate":
-            wears = False
-            for level in other["record"]["starting_gear"]:
-                for one_set in other["record"]["starting_gear"][level]:
-                    if entry["id"] in one_set:
-                        wears = True
-            if wears:
-                starting_gear_of.append(link(entries, identifier))
     if brewed_from:
         page["groups"].append({"title": "BREWED FROM", "items": by_name(brewed_from), "empty": ""})
     if dropped_by:
         page["groups"].append({"title": "DROPPED BY", "items": by_name(dropped_by), "empty": ""})
-    if starting_gear_of:
-        page["groups"].append({"title": "STARTING GEAR OF", "items": by_name(starting_gear_of), "empty": ""})
     return page
 
 
@@ -400,7 +384,7 @@ def describe_trait(entry, entries, data, sizes, problems):
     record = entry["record"]
     rows = bonus_rows(record["modifiers"], data["meta"].get("trait_icons", {}), data, sizes, problems, [])
     page = {"facts": [], "stat_title": "MODIFIERS PER LEVEL", "stat_rows": rows, "groups": [], "tiers": [],
-            "gear": [], "portraits": []}
+            "portraits": []}
     page["facts"].append({"label": "MAX LEVEL", "text": str(record["max_level"]), "links": []})
     if record["offered_at_level_up"]:
         page["facts"].append({"label": "OFFERED AT LEVEL-UP", "text": "Yes", "links": []})
@@ -451,7 +435,7 @@ def describe_ability(entry, entries, data, sizes, problems):
         value = record["base_stats"][key]
         if isinstance(value, (int, float)) and not isinstance(value, bool):
             rows.append({"icon": None, "label": title_words(key), "value": str(value)})
-    page = {"facts": [], "stat_title": "BASE", "stat_rows": rows, "groups": [], "tiers": [], "gear": [],
+    page = {"facts": [], "stat_title": "BASE", "stat_rows": rows, "groups": [], "tiers": [],
             "portraits": []}
     if record["type"]:
         page["facts"].append({"label": "TYPE", "text": record["type"].capitalize(), "links": []})
@@ -484,7 +468,7 @@ def describe_ability(entry, entries, data, sizes, problems):
 
 def describe_effect(entry, entries, data, sizes, problems):
     record = entry["record"]
-    page = {"facts": [], "stat_title": "", "stat_rows": [], "groups": [], "tiers": [], "gear": [], "portraits": []}
+    page = {"facts": [], "stat_title": "", "stat_rows": [], "groups": [], "tiers": [], "portraits": []}
     if record["duration"]:
         turns = "turns"
         if record["duration"] == 1:
@@ -513,7 +497,7 @@ def describe_effect(entry, entries, data, sizes, problems):
 
 def describe_faction(entry, entries, data, sizes, problems):
     record = entry["record"]
-    page = {"facts": [], "stat_title": "", "stat_rows": [], "groups": [], "tiers": [], "gear": [], "portraits": []}
+    page = {"facts": [], "stat_title": "", "stat_rows": [], "groups": [], "tiers": [], "portraits": []}
     for label, key in [("ALLY", "ally"), ("ENEMY", "enemy")]:
         if record[key]:
             found = None
@@ -567,8 +551,6 @@ def card_summary(entry, data):
             return ", ".join(parts)
         return record["description"]
     if entry["kind"] == "faction":
-        if record["members"]:
-            return "%d races" % len(record["members"])
         return ""
     return record.get("description", "")
 
@@ -584,7 +566,45 @@ def view(title, description, address):
             "card": None, "older": None, "newer": None}
 
 
-def build(environment, site, outputs, problems):
+def guide_pages(pages, views, problems):
+    """The how-to-play pages' views, in the order config.WIKI_GUIDES lists them.
+
+    They are the hand-written pages under content/pages/wiki/guide/.
+    """
+    found = {}
+    for page in pages:
+        if page["url"].startswith(config.WIKI_GUIDE_ADDRESS) and page["url"].endswith("/"):
+            found[page["url"][len(config.WIKI_GUIDE_ADDRESS):-1]] = page
+
+    ordered = []
+    for name in config.WIKI_GUIDES:
+        if name not in found:
+            problems.append("WIKI_GUIDES in builder/config.py lists '%s', but there is no page at %s%s/"
+                            % (name, config.WIKI_GUIDE_ADDRESS, name))
+            continue
+        if found[name]["game_version"] == "":
+            problems.append("%s: a how-to-play page needs 'game_version' in its header" % found[name]["source"])
+        ordered.append(views[found[name]["url"]])
+    for name in found:
+        if name not in config.WIKI_GUIDES:
+            problems.append("%s is not listed in WIKI_GUIDES in builder/config.py" % found[name]["source"])
+    return ordered
+
+
+def stale_guides(pages):
+    """A line for each how-to-play page written for another version of the game than game/data holds."""
+    lines = []
+    meta = read_data("meta.json")
+    if meta is None:
+        return lines
+    for page in pages:
+        if page["url"].startswith(config.WIKI_GUIDE_ADDRESS) and page["game_version"] != meta["version"]:
+            lines.append("%s was written for game version %s, and game/data is now %s. Read it against the game again."
+                         % (page["source"], page["game_version"], meta["version"]))
+    return lines
+
+
+def build(environment, site, guides, outputs, problems):
     """Add every Wiki page to outputs. Returns the addresses for the sitemap."""
     data = {}
     for name in ["mobs", "items", "traits", "abilities", "effects", "factions", "stats", "meta"]:
@@ -627,9 +647,8 @@ def build(environment, site, outputs, problems):
         sample = entries.get(config.WIKI_TILE_PICTURES.get(category["key"], ""))
         if sample is None or sample["category"] != category:
             sample = members[0]
-        shown = {"key": category["key"], "title": category["title"], "intro": category["intro"],
-                 "url": "/wiki/%s/" % category["key"], "count": len(members), "entries": members,
-                 "sample": sample}
+        shown = {"key": category["key"], "title": category["title"],
+                 "url": "/wiki/%s/" % category["key"], "entries": members, "sample": sample}
         categories.append(shown)
 
         page = view(category["title"], "%s in Mythical Whalers. %s" % (category["title"], category["intro"]),
@@ -660,11 +679,12 @@ def build(environment, site, outputs, problems):
         if members:
             groups.append({"title": group["title"], "categories": members})
 
-    page = view("Wiki", "The Mythical Whalers Wiki: %d entries on crewmates, creatures, gear, traits and factions."
-                % total, "/wiki/")
-    html = home_layout.render(site=site, page=page, groups=groups, total=total, version=version)
+    page = view("Wiki", "The Mythical Whalers Wiki: crewmates, creatures, gear, traits and factions.", "/wiki/")
+    html = home_layout.render(site=site, page=page, groups=groups, guides=guides, version=version)
     outputs["wiki/index.html"] = html.encode("utf-8")
     addresses.append("/wiki/")
+    for guide in guides:
+        search.append({"n": guide["title"], "c": "How to play", "u": guide["url"]})
 
     outputs["wiki/search.json"] = (json.dumps(search, ensure_ascii=False, separators=(",", ":")) + "\n").encode("utf-8")
 

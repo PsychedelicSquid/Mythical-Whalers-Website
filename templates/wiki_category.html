@@ -7,8 +7,7 @@
         <h1>{{ category.title }}</h1>
         <a class="win-x" href="/wiki/" aria-label="Close: back to the Wiki"></a>
       </div>
-      <div class="win-mid stack">
-        <p>{{ category.count }} entries. {{ category.intro }}</p>
+      <div class="win-mid">
         <div class="row">
           <input class="field" id="wiki-filter" type="search" placeholder="Filter {{ category.title|lower }}" aria-label="Filter {{ category.title|lower }}" data-filter="#wiki-cards" data-none="#wiki-none" autocomplete="off">
         </div>

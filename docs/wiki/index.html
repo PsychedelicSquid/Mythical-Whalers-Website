@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wiki - Mythical Whalers</title>
-  <meta name="description" content="The Mythical Whalers Wiki: 356 entries on crewmates, creatures, gear, traits and factions.">
+  <meta name="description" content="The Mythical Whalers Wiki: crewmates, creatures, gear, traits and factions.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#0d0e12">
   <link rel="canonical" href="http://www.mythicalwhalers.com/wiki/">
   <meta property="og:site_name" content="Mythical Whalers">
   <meta property="og:title" content="Wiki">
-  <meta property="og:description" content="The Mythical Whalers Wiki: 356 entries on crewmates, creatures, gear, traits and factions.">
+  <meta property="og:description" content="The Mythical Whalers Wiki: crewmates, creatures, gear, traits and factions.">
   <meta property="og:url" content="http://www.mythicalwhalers.com/wiki/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="http://www.mythicalwhalers.com/images/site/card.png">
@@ -20,7 +20,7 @@
   <style>
     @font-face { font-family: "MW Body"; src: url("/fonts/m5x7.ttf") format("truetype"); font-display: block; }
   </style>
-  <link rel="stylesheet" href="/css/site.css?v=b25725a6">
+  <link rel="stylesheet" href="/css/site.css?v=05d91b15">
   <script src="/js/site.js?v=16470b91" defer></script>
 </head>
 <body>
@@ -42,11 +42,11 @@
     <section class="win">
       <div class="win-head"><h1>Wiki</h1></div>
       <div class="win-mid stack">
-        <p>356 entries, read from the game itself. Matches game version v0.29.</p>
+        <p>Matches game version v0.29.</p>
         <div class="row">
           <input class="field" id="wiki-search" type="search" placeholder="Search the Wiki" aria-label="Search the Wiki" data-search="/wiki/search.json" data-results="#wiki-results" autocomplete="off">
         </div>
-        <div class="cards" id="wiki-results" hidden></div>
+        <div class="cards" id="wiki-results" aria-live="polite" hidden></div>
       </div>
       <div class="win-mid stack">
         <h2 class="label">Bestiary</h2>
@@ -54,31 +54,31 @@
           <a class="cat tip" href="/wiki/crewmates/">
             <span class="cat-art"><span class="portrait"><img src="/images/portraits/salorian_1.png" width="48" height="48" alt=""></span>
 </span>
-            <span><b>Crewmates</b><span>20 entries</span></span>
+            <b>Crewmates</b>
           </a>
 
           <a class="cat tip" href="/wiki/whales/">
             <span class="cat-art"><span class="sprite" style="--w:48; --zoom:1; background-image:url(/images/mobs/mobs/narwhal_idle.png)"></span>
 </span>
-            <span><b>Whales</b><span>8 entries</span></span>
+            <b>Whales</b>
           </a>
 
           <a class="cat tip" href="/wiki/bosses/">
             <span class="cat-art"><span class="sprite" style="--w:48; --zoom:1; background-image:url(/images/mobs/mobs/kraken_idle.png)"></span>
 </span>
-            <span><b>Bosses</b><span>12 entries</span></span>
+            <b>Bosses</b>
           </a>
 
           <a class="cat tip" href="/wiki/captains/">
             <span class="cat-art"><span class="sprite" style="--w:24; --zoom:2; background-image:url(/images/mobs/mobs/pirate_captain_idle.png)"></span>
 </span>
-            <span><b>Captains</b><span>8 entries</span></span>
+            <b>Captains</b>
           </a>
 
           <a class="cat tip" href="/wiki/creatures/">
             <span class="cat-art"><span class="sprite" style="--w:24; --zoom:2; background-image:url(/images/mobs/mobs/spider_idle.png)"></span>
 </span>
-            <span><b>Creatures</b><span>21 entries</span></span>
+            <b>Creatures</b>
           </a>
 
         </div>
@@ -89,31 +89,31 @@
           <a class="cat tip" href="/wiki/weapons/">
             <span class="cat-art"><span class="slot"><img src="/images/items/artifact/weapons/cutlass.png" width="32" height="32" alt=""></span>
 </span>
-            <span><b>Weapons</b><span>41 entries</span></span>
+            <b>Weapons</b>
           </a>
 
           <a class="cat tip" href="/wiki/armor/">
             <span class="cat-art"><span class="slot"><img src="/images/items/artifact/armor/salorian_armor.png" width="32" height="32" alt=""></span>
 </span>
-            <span><b>Armor</b><span>84 entries</span></span>
+            <b>Armor</b>
           </a>
 
           <a class="cat tip" href="/wiki/consumables/">
             <span class="cat-art"><span class="slot"><img src="/images/items/consumables/elixir_health.png" width="32" height="32" alt=""></span>
 </span>
-            <span><b>Consumables</b><span>30 entries</span></span>
+            <b>Consumables</b>
           </a>
 
           <a class="cat tip" href="/wiki/cargo/">
             <span class="cat-art"><span class="slot"><img src="/images/items/cargo/zypher_blubber.png" width="32" height="32" alt=""></span>
 </span>
-            <span><b>Cargo</b><span>25 entries</span></span>
+            <b>Cargo</b>
           </a>
 
           <a class="cat tip" href="/wiki/ship-upgrades/">
             <span class="cat-art"><span class="slot"><img src="/images/items/artifact/spyglass.png" width="32" height="32" alt=""></span>
 </span>
-            <span><b>Ship upgrades</b><span>5 entries</span></span>
+            <b>Ship upgrades</b>
           </a>
 
         </div>
@@ -124,25 +124,25 @@
           <a class="cat tip" href="/wiki/traits/">
             <span class="cat-art"><span class="slot"><img src="/images/traits/hearty.png" width="32" height="32" alt=""></span>
 </span>
-            <span><b>Traits</b><span>30 entries</span></span>
+            <b>Traits</b>
           </a>
 
           <a class="cat tip" href="/wiki/abilities/">
             <span class="cat-art"><span class="slot"><img src="/images/abilities/images/fire_breath.png" width="32" height="32" alt=""></span>
 </span>
-            <span><b>Abilities</b><span>52 entries</span></span>
+            <b>Abilities</b>
           </a>
 
           <a class="cat tip" href="/wiki/status-effects/">
             <span class="cat-art"><img class="mini" style="--w:11" src="/images/abilities/buffs/fire_debuff.png" width="11" height="14" alt="">
 </span>
-            <span><b>Status effects</b><span>12 entries</span></span>
+            <b>Status effects</b>
           </a>
 
           <a class="cat tip" href="/wiki/factions/">
             <span class="cat-art"><span class="banner"><img src="/images/factions/selkie_banner.png" width="48" height="64" alt=""></span>
 </span>
-            <span><b>Factions</b><span>8 entries</span></span>
+            <b>Factions</b>
           </a>
 
         </div>

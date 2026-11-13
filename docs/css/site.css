@@ -43,6 +43,18 @@
 @media (min-resolution: 2dppx) and (max-resolution: 2.99dppx) { :root { --step: 0.5px; } }
 @media (min-resolution: 3dppx) { :root { --step: 0.33333px; } }
 
+/* A phone. Two CSS pixels to a game pixel leaves about twenty letters to a
+   line, so everything is drawn smaller: 3 device pixels to a game pixel on a
+   screen of 2 device pixels to a CSS pixel, and 5 on a screen of 3. */
+@media (max-width: 759px) and (min-resolution: 2dppx) { :root { --px: 1.5; } }
+@media (max-width: 759px) and (min-resolution: 2.5dppx) { :root { --px: 1.66667; } }
+
+/* A window much wider than the game's 16:9 screen. The game fills such a
+   monitor by drawing its screen as tall as the monitor; the site draws
+   everything one size bigger as soon as the whole menu scene still fits. */
+@media (min-aspect-ratio: 22/10) and (min-width: 1920px) and (min-height: 1100px) and (max-resolution: 1.24dppx) { :root { --px: 3; } }
+@media (min-aspect-ratio: 22/10) and (min-width: 2560px) and (min-height: 1450px) and (max-resolution: 1.24dppx) { :root { --px: 4; } }
+
 * { box-sizing: border-box; }
 
 /* The hidden attribute hides an element whatever display its class gives it.
@@ -280,6 +292,11 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
   text-decoration: none;
 }
 .site-nav nav { display: flex; flex-wrap: wrap; gap: calc(3px * var(--px)); }
+/* On a phone the name is the link home, and the Home button gives up its
+   place so the others fit on one line. */
+@media (max-width: 759px) {
+  .site-nav nav a[href="/"] { display: none; }
+}
 
 .main { padding: calc(3px * var(--px)) 16px calc(9px * var(--px)); }
 
@@ -410,6 +427,10 @@ h2.label { font: 400 calc(16px * var(--px)) / calc(16px * var(--px)) var(--font-
 
 /* Category tiles on the Wiki's front page. */
 .cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(108px * var(--px))), 1fr)); gap: calc(5px * var(--px)); }
+/* Two tiles to a row on a phone. */
+@media (max-width: 759px) {
+  .cats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 a.cat { display: flex; flex-direction: column; align-items: center; gap: calc(3px * var(--px)); padding-top: calc(4px * var(--px)); padding-bottom: calc(3px * var(--px)); text-align: center; color: var(--cream); text-decoration: none; }
 /* Every tile's picture sits in the same box, whatever its own size. */
 .cat-art { display: flex; align-items: center; justify-content: center; min-height: calc(58px * var(--px)); }
@@ -441,8 +462,6 @@ a.entry-card { flex-direction: row; align-items: center; gap: calc(5px * var(--p
 @media (min-width: 760px) {
   .tier { grid-template-columns: calc(70px * var(--px)) minmax(0, 1fr); }
 }
-.gear { display: flex; flex-direction: column; gap: calc(3px * var(--px)); }
-.gear > .linkrow + .linkrow::before { content: "or"; color: var(--mist); }
 
 /* The Art post's recording: a still frame until Play is pressed. */
 .player { display: flex; flex-direction: column; align-items: center; gap: calc(4px * var(--px)); margin: 0; }

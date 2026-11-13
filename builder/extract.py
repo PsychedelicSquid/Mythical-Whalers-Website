@@ -986,20 +986,11 @@ def build_mobs(modules, rules, whales, trait_records, problems):
             for tier in raw_tiers:
                 tiers[tier] = named(raw_tiers[tier], "trait_tiers", module, name, problems)
 
-            gear = {}
-            raw_gear = published(attrs, "equipment_sets", {}, module, name, problems)
-            for level in raw_gear:
-                sets = []
-                for one_set in raw_gear[level]:
-                    sets.append(named(one_set, "equipment_sets", module, name, problems))
-                gear[level] = sets
-
             record["portraits"] = portraits
             record["names"] = names
             record["hire_cost"] = published(attrs, "hire_cost", 0, module, name, problems)
             record["innate_traits"] = innate
             record["trait_tiers"] = tiers
-            record["starting_gear"] = gear
             if portraits:
                 record["image"] = portraits[0]
         else:

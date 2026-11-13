@@ -174,6 +174,7 @@ def page_view(page, problems):
         "date_text": page["date_text"],
         "summary": page["summary"],
         "pitch": page["pitch"],
+        "game_version": page["game_version"],
         "card": card_of(page, problems),
         # Set for devlog posts by link_posts.
         "older": None,
@@ -247,9 +248,16 @@ def render_all(pages, outputs, problems):
     environment = make_environment()
     site = site_context(outputs)
 
+    views = {}
+    for page in pages:
+        views[page["url"]] = page_view(page, problems)
+    posts = link_posts(pages, views)
+
     # The Wiki is built first so the other pages can link to its categories.
+    # Its front page lists the how-to-play pages, which are written by hand.
+    guides = wiki.guide_pages(pages, views, problems)
     try:
-        wiki_addresses, site["wiki"] = wiki.build(environment, site, outputs, problems)
+        wiki_addresses, site["wiki"] = wiki.build(environment, site, guides, outputs, problems)
     except jinja2.TemplateError as error:
         problems.append("the Wiki: %s: %s" % (type(error).__name__, error))
         return
@@ -260,11 +268,6 @@ def render_all(pages, outputs, problems):
             if item["section"] != "wiki":
                 without_wiki.append(item)
         site["nav"] = without_wiki
-
-    views = {}
-    for page in pages:
-        views[page["url"]] = page_view(page, problems)
-    posts = link_posts(pages, views)
 
     sitemap_addresses = list(wiki_addresses)
     for page in pages:

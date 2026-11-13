@@ -104,6 +104,19 @@ HOME_WIKI_CATEGORIES = ["crewmates", "whales", "weapons", "traits"]
 # The order a race's level-up traits are listed in (traits.TIER_WEIGHTS).
 TRAIT_TIERS = ["common", "uncommon", "rare", "legendary", "never"]
 
+# Names the Wiki writes differently from the game. The game names a mob after
+# its class, so GlideFin is "Glide Fin" in the Bestiary; it is written Glidefin.
+# Renaming the class in the game makes its row here unnecessary.
+WIKI_NAMES = {
+    "mobs.GlideFin": "Glidefin",
+}
+
+# The how-to-play pages are written by hand: content/pages/wiki/guide/<name>/index.html,
+# with "template: guide.html" and "game_version" in the header. These are their
+# names, in the order the Wiki's front page lists them.
+WIKI_GUIDE_ADDRESS = "/wiki/guide/"
+WIKI_GUIDES = []
+
 # ---------------------------------------------------------------------------
 # The game repository. Read by `python build.py --extract`, never written to.
 # ---------------------------------------------------------------------------

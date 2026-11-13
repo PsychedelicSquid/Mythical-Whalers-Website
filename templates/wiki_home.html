@@ -4,12 +4,25 @@
     <section class="win">
       <div class="win-head"><h1>{{ page.title }}</h1></div>
       <div class="win-mid stack">
-        <p>{{ total }} entries, read from the game itself. Matches game version {{ version }}.</p>
+        <p>Matches game version {{ version }}.</p>
         <div class="row">
           <input class="field" id="wiki-search" type="search" placeholder="Search the Wiki" aria-label="Search the Wiki" data-search="/wiki/search.json" data-results="#wiki-results" autocomplete="off">
         </div>
-        <div class="cards" id="wiki-results" hidden></div>
+        <div class="cards" id="wiki-results" aria-live="polite" hidden></div>
       </div>
+{% if guides %}
+      <div class="win-mid stack">
+        <h2 class="label">How to play</h2>
+        <div class="cards">
+{% for guide in guides %}
+          <a class="card tip" href="{{ guide.url }}">
+            <h3>{{ guide.title }}</h3>
+            <p>{{ guide.summary }}</p>
+          </a>
+{% endfor %}
+        </div>
+      </div>
+{% endif %}
 {% for group in groups %}
       <div class="{% if loop.last %}win-foot{% else %}win-mid{% endif %} stack">
         <h2 class="label">{{ group.title }}</h2>

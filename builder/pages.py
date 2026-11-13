@@ -15,6 +15,7 @@ Header keys:
     card         a picture in the post's folder, shown beside it in lists
     pitch        the home page's one-line pitch, shown under the logo
     old_url      the address this page used to have; a forwarding page is written there
+    game_version the version of the game a how-to-play page was written for
 """
 
 import os
@@ -22,7 +23,8 @@ import os
 from builder import config
 
 REQUIRED_KEYS = ["title", "description"]
-KNOWN_KEYS = ["title", "description", "template", "date", "summary", "card", "pitch", "old_url"]
+KNOWN_KEYS = ["title", "description", "template", "date", "summary", "card", "pitch", "old_url",
+              "game_version"]
 
 
 def read_page_file(path, problems):
@@ -122,6 +124,7 @@ def load_pages(problems):
                 "card": meta.get("card", ""),
                 "pitch": meta.get("pitch", ""),
                 "old_url": meta.get("old_url", ""),
+                "game_version": meta.get("game_version", ""),
                 "assets": [],
             }
             if page["date"]:

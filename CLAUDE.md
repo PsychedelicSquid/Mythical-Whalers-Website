@@ -44,7 +44,8 @@ Before doing any work in a new chat, read these to build complete context.
   navigation and footer), `home.html`, `page.html`, `post.html`,
   `devlog_index.html`, `parts.html` (pieces more than one layout uses),
   `wiki_home.html`, `wiki_category.html`, `wiki_entry.html`, `wiki_parts.html`,
-  `redirect.html` (the forwarding page left at an old address)
+  `guide.html` (a how-to-play page), `redirect.html` (the forwarding page left
+  at an old address)
 - **Style and script** — `static/css/site.css`, `static/js/site.js`
 
 ## Where things go
@@ -52,7 +53,8 @@ Before doing any work in a new chat, read these to build complete context.
 - `content/pages/` — the words. An `index.html` in a folder becomes that
   folder's address (`team/index.html` is `/team/`). Each file starts with
   `key: value` lines (`title`, `description`, and optionally `template`, `date`,
-  `summary`, `old_url`), then a line holding only `---`, then the page's HTML.
+  `summary`, `old_url`, `game_version`), then a line holding only `---`, then
+  the page's HTML.
   A page with a `date` is a devlog post. Pictures sit beside the page that
   shows them and are placed with `{{ image("name.png", "alt text") }}`. A third
   argument is the widest the picture may be shown, in pixels (640 if absent);
@@ -72,7 +74,8 @@ Before doing any work in a new chat, read these to build complete context.
 
 ## The Wiki
 
-The Wiki is generated. Nothing under `/wiki/` is written by hand.
+The Wiki's entries are generated. The only pages under `/wiki/` written by
+hand are the how-to-play pages (see the end of this section).
 
 - **The game cannot be imported.** Importing any game module opens the game
   window and connects to Steam. `builder/extract.py` reads the source as text
@@ -103,9 +106,16 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
   to its entries into plain text.
 - **After a game update:** run `python build.py --extract`, read what it prints
   (counts, new and removed entries) and `git diff game/data`, then commit.
+- **The how-to-play pages** are `content/pages/wiki/guide/<name>/index.html`,
+  with `template: guide.html` and `game_version` (the version of the game the
+  page was written for) in the header, and their names listed in `WIKI_GUIDES`
+  in `builder/config.py`. Every rule on them was taken from the game's source.
+  After a game update the build prints a warning for each page whose
+  `game_version` is older than `game/data`: read the page against the game
+  again, correct it, and set its `game_version`.
 - **Not built yet:** hand-written text for entries the game gives no
-  description (43 of the 69 mobs, including all eight whales), and the
-  how-to-play pages.
+  description (43 of the 69 mobs, including all eight whales). They are better
+  written in the game's `mobs.py`, which fixes the in-game Bestiary too.
 
 ## The look
 
