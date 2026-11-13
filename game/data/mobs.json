@@ -25,6 +25,7 @@
       "abilities.Melee",
       "abilities.SpawnCorruptedTentacle"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Ivory",
       "items.Ivory",
@@ -52,6 +53,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "portraits/alchemist_1.png",
@@ -168,6 +170,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.ToughHide",
       "items.Fish"
@@ -194,6 +197,7 @@
       "abilities.Move",
       "abilities.Bite"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Fish"
     ],
@@ -220,6 +224,13 @@
       "abilities.Melee",
       "abilities.Shock"
     ],
+    "ability_changes": {
+      "abilities.Shock": {
+        "base_stats": {
+          "range": 5
+        }
+      }
+    },
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/jellyfish_alpha_idle.png"
@@ -243,6 +254,13 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {
+      "abilities.Melee": {
+        "status_effects": [
+          "effects.Poisoned"
+        ]
+      }
+    },
     "drops": [
       "items.Poison"
     ],
@@ -268,6 +286,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Carapace"
     ],
@@ -299,6 +318,7 @@
       "abilities.Melee",
       "abilities.EarthShatter"
     ],
+    "ability_changes": {},
     "drops": [
       "items.ToughHide"
     ],
@@ -325,6 +345,7 @@
       "abilities.Melee",
       "abilities.Whirlwind"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Bow",
       "items.Harpoon"
@@ -439,6 +460,7 @@
       "abilities.Heal",
       "abilities.Inspire"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/beholder_idle.png"
@@ -463,6 +485,7 @@
       "abilities.Melee",
       "abilities.BossCharge"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Meat"
     ],
@@ -494,6 +517,7 @@
       "abilities.Melee",
       "abilities.TonguePull"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Poison"
     ],
@@ -521,6 +545,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Harpoon",
       "items.Bow"
@@ -643,6 +668,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.CrustaceanRod"
     ],
@@ -675,6 +701,7 @@
       "abilities.Melee",
       "abilities.Fear"
     ],
+    "ability_changes": {},
     "drops": [
       "items.FeatherySlippers"
     ],
@@ -700,6 +727,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.OrkhideHelm",
       "items.OrkhideHelm",
@@ -832,6 +860,13 @@
       "abilities.Melee",
       "abilities.FireBreath"
     ],
+    "ability_changes": {
+      "abilities.FireBreath": {
+        "base_stats": {
+          "radius": 4
+        }
+      }
+    },
     "drops": [
       "items.DragonsPowder"
     ],
@@ -857,6 +892,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Sprig",
       "items.Bow"
@@ -987,6 +1023,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Sword",
       "items.SentinelArmor",
@@ -1118,6 +1155,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Fish"
     ],
@@ -1143,6 +1181,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/fly_idle.png"
@@ -1173,6 +1212,7 @@
       "abilities.Melee",
       "abilities.Torrent"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Blubber",
       "items.Blubber",
@@ -1200,6 +1240,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.GnomishHat",
       "items.Sprig"
@@ -1330,6 +1371,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.NavigatorsJacket",
       "items.Sprig",
@@ -1450,6 +1492,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.BattleAxe"
     ],
@@ -1482,6 +1525,7 @@
       "abilities.Melee",
       "abilities.BossCharge"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Blubber",
       "items.TitanBlubber"
@@ -1508,6 +1552,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/gorger_idle.png"
@@ -1537,6 +1582,15 @@
       "abilities.Melee",
       "abilities.PoisonBurst"
     ],
+    "ability_changes": {
+      "abilities.PoisonBurst": {
+        "base_stats": {
+          "range": 12
+        },
+        "stamina_cost": 3,
+        "mana_cost": 0
+      }
+    },
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/gulgothra_idle.png"
@@ -1560,6 +1614,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.PeasantHat",
       "items.Sprig"
@@ -1690,6 +1745,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Sword",
       "items.KnightsHelm"
@@ -1718,6 +1774,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "portraits/undead_male_1.png",
@@ -1845,6 +1902,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Staff"
     ],
@@ -1871,6 +1929,7 @@
       "abilities.Melee",
       "abilities.Shock"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/jellyfish_idle.png"
@@ -1901,6 +1960,7 @@
       "abilities.Melee",
       "abilities.SpawnTentacles"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/kraken_idle.png"
@@ -1924,6 +1984,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Harpoon"
     ],
@@ -2044,6 +2105,7 @@
       "abilities.Melee",
       "abilities.Geyser"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Trident"
     ],
@@ -2074,6 +2136,7 @@
       "abilities.Melee",
       "abilities.BossCharge"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/mimic_idle.png"
@@ -2105,6 +2168,7 @@
       "abilities.Fear",
       "abilities.BossCharge"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/minotaur_idle.png"
@@ -2135,6 +2199,7 @@
       "abilities.Melee",
       "abilities.PoisonBurst"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Blubber",
       "items.ToughHide"
@@ -2168,6 +2233,7 @@
       "abilities.Melee",
       "abilities.PoisonBurst"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Blubber",
       "items.Blubber",
@@ -2203,6 +2269,7 @@
       "abilities.FreezeRay",
       "abilities.BossCharge"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Blubber",
       "items.Blubber",
@@ -2231,6 +2298,7 @@
       "abilities.Melee",
       "abilities.RaiseUndead"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "portraits/necromancer_1.png",
@@ -2343,6 +2411,7 @@
       "abilities.Leap",
       "abilities.Bite"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Fish"
     ],
@@ -2368,6 +2437,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.PirateHat",
       "items.Saber",
@@ -2514,6 +2584,11 @@
       "abilities.Melee",
       "abilities.Bullet"
     ],
+    "ability_changes": {
+      "abilities.Bullet": {
+        "mana_cost": 1
+      }
+    },
     "drops": [
       "items.Musket"
     ],
@@ -2539,6 +2614,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Saber",
       "items.PirateHat"
@@ -2566,6 +2642,13 @@
       "abilities.Melee",
       "abilities.PoisonBurst"
     ],
+    "ability_changes": {
+      "abilities.PoisonBurst": {
+        "base_stats": {
+          "range": 5
+        }
+      }
+    },
     "drops": [
       "items.Silk"
     ],
@@ -2591,6 +2674,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/raptor_idle.png"
@@ -2621,6 +2705,7 @@
       "abilities.Melee",
       "abilities.PoisonBurst"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Blubber",
       "items.Poison"
@@ -2647,6 +2732,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Seashellarmor",
       "items.Harpoon"
@@ -2771,6 +2857,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Sprig"
     ],
@@ -2893,6 +2980,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/scorpion_idle.png"
@@ -2916,6 +3004,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/scuttler_idle.png"
@@ -2942,6 +3031,13 @@
       "abilities.SerpentDive",
       "abilities.Melee"
     ],
+    "ability_changes": {
+      "abilities.Melee": {
+        "status_effects": [
+          "effects.Poisoned"
+        ]
+      }
+    },
     "drops": [
       "items.Scales"
     ],
@@ -2967,6 +3063,7 @@
       "abilities.Leap",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Harpoon"
     ],
@@ -3089,6 +3186,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Macuahuitl"
     ],
@@ -3115,6 +3213,7 @@
       "abilities.Melee",
       "abilities.Charm"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Seashellarmor",
       "items.Harpoon"
@@ -3243,6 +3342,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "portraits/skeleton_1.png",
@@ -3358,6 +3458,7 @@
       "abilities.Leap",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Sprig",
       "items.Harpoon",
@@ -3478,6 +3579,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.FlintSpear"
     ],
@@ -3509,6 +3611,7 @@
       "abilities.Melee",
       "abilities.EyeBeam"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/sogoth_idle.png"
@@ -3533,6 +3636,7 @@
       "abilities.Melee",
       "abilities.Web"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Silk"
     ],
@@ -3557,6 +3661,7 @@
     "abilities": [
       "abilities.SpawnSpider"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Silk"
     ],
@@ -3589,6 +3694,7 @@
       "abilities.SpikeShot",
       "abilities.BossCharge"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Blubber",
       "items.Spikes"
@@ -3615,6 +3721,7 @@
       "abilities.Leap",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Silk"
     ],
@@ -3640,6 +3747,7 @@
       "abilities.Leap",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [
       "items.Dagger",
       "items.Sickle"
@@ -3767,6 +3875,7 @@
       "abilities.Melee",
       "abilities.BossCharge"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/turtle_idle.png"
@@ -3790,6 +3899,7 @@
       "abilities.Move",
       "abilities.EyeBeam"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/visk_idle.png"
@@ -3813,6 +3923,7 @@
       "abilities.Move",
       "abilities.Melee"
     ],
+    "ability_changes": {},
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/yeti_idle.png"

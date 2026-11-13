@@ -158,8 +158,11 @@ def link(entries, reference, note=""):
             "frame": entry["frame"], "card_zoom": entry["card_zoom"], "note": note}
 
 
-def links(entries, references):
-    """Links for a list of references. A reference listed twice becomes one link noted x2."""
+def links(entries, references, notes=None):
+    """Links for a list of references. A reference listed twice becomes one link noted x2.
+
+    notes, when given, holds the note for each reference that has one.
+    """
     counts = {}
     order = []
     for reference in references:
@@ -169,11 +172,37 @@ def links(entries, references):
         counts[reference] += 1
     result = []
     for reference in order:
-        note = ""
+        parts = []
+        if notes is not None and reference in notes:
+            parts.append(notes[reference])
         if counts[reference] > 1:
-            note = "x%d" % counts[reference]
-        result.append(link(entries, reference, note))
+            parts.append("x%d" % counts[reference])
+        result.append(link(entries, reference, ", ".join(parts)))
     return result
+
+
+def change_note(changes, entries):
+    """What an item or mob changes about its ability, as the note beside the link: 'Damage 4, Range 6, 2 stamina'.
+
+    The Bestiary shows an ability as its owner uses it; the ability's own page
+    shows it unchanged.
+    """
+    parts = []
+    for key in changes.get("base_stats", {}):
+        parts.append("%s %s" % (title_words(key), changes["base_stats"][key]))
+    if "stamina_cost" in changes:
+        parts.append("%s stamina" % changes["stamina_cost"])
+    if "mana_cost" in changes:
+        parts.append("%s mana" % changes["mana_cost"])
+    for key in ["type", "damage_type"]:
+        if key in changes:
+            parts.append("%s %s" % (title_words(key), changes[key]))
+    if "status_effects" in changes:
+        names = []
+        for reference in changes["status_effects"]:
+            names.append(entries[reference]["name"])
+        parts.append("applies " + ", ".join(names))
+    return ", ".join(parts)
 
 
 def by_name(items):
@@ -293,7 +322,12 @@ def describe_mob(entry, entries, data, sizes, problems):
                 sets.append(links(entries, one_set))
             page["gear"].append({"label": "Level " + level, "sets": sets})
 
-    page["groups"].append({"title": "ABILITIES", "items": links(entries, record["abilities"]), "empty": "none"})
+    # An ability the mob has changed is noted with what differs (the Dragon's Fire Breath: Radius 4).
+    notes = {}
+    for reference in record["ability_changes"]:
+        notes[reference] = change_note(record["ability_changes"][reference], entries)
+    page["groups"].append({"title": "ABILITIES", "items": links(entries, record["abilities"], notes),
+                           "empty": "none"})
     page["groups"].append({"title": "IMMUNE", "items": immune, "empty": "none"})
     page["groups"].append({"title": "DROPS", "items": links(entries, record["drops"]), "empty": "none"})
     return page
@@ -318,16 +352,29 @@ def describe_item(entry, entries, data, sizes, problems):
         page["facts"].append({"label": "VALUE", "text": "none", "links": []})
 
     if record["ability"]:
-        page["groups"].append({"title": "ABILITY", "items": [link(entries, record["ability"])], "empty": ""})
+        # The ability as this item changes it (the Musket's damage, range and stamina).
+        note = change_note(record["ability_changes"], entries)
+        page["groups"].append({"title": "ABILITY", "items": [link(entries, record["ability"], note)], "empty": ""})
     if record["grants_trait"]:
         page["groups"].append({"title": "TRAIT", "items": [link(entries, record["grants_trait"])], "empty": ""})
     if record["cures"]:
         page["groups"].append({"title": "CURES", "items": [link(entries, record["cures"])], "empty": ""})
+    if record["brews_into"]:
+        # An elixir vendor's cauldron turns one of these and some gems into the brew.
+        gems = data["meta"]["brew_cost"]
+        note = "with %d gems" % gems
+        if gems == 1:
+            note = "with 1 gem"
+        page["groups"].append({"title": "BREWS INTO", "items": [link(entries, record["brews_into"], note)],
+                               "empty": ""})
 
+    brewed_from = []
     dropped_by = []
     starting_gear_of = []
     for identifier in entries:
         other = entries[identifier]
+        if other["kind"] == "item" and other["record"]["brews_into"] == entry["id"]:
+            brewed_from.append(link(entries, identifier))
         if other["kind"] != "mob":
             continue
         if entry["id"] in other["record"]["drops"]:
@@ -340,6 +387,8 @@ def describe_item(entry, entries, data, sizes, problems):
                         wears = True
             if wears:
                 starting_gear_of.append(link(entries, identifier))
+    if brewed_from:
+        page["groups"].append({"title": "BREWED FROM", "items": by_name(brewed_from), "empty": ""})
     if dropped_by:
         page["groups"].append({"title": "DROPPED BY", "items": by_name(dropped_by), "empty": ""})
     if starting_gear_of:
@@ -448,8 +497,13 @@ def describe_effect(entry, entries, data, sizes, problems):
         other = entries[identifier]
         if other["kind"] == "ability" and entry["id"] in other["record"]["status_effects"]:
             applied_by.append(link(entries, identifier))
-        if other["kind"] == "mob" and record["key"] and record["key"] in other["record"]["immunities"]:
-            immune.append(link(entries, identifier))
+        if other["kind"] == "mob":
+            # A mob whose own version of an ability applies it (the Sea Serpent's Melee poisons).
+            for changed in other["record"]["ability_changes"]:
+                if entry["id"] in other["record"]["ability_changes"][changed].get("status_effects", []):
+                    applied_by.append(link(entries, identifier, "with " + entries[changed]["name"]))
+            if record["key"] and record["key"] in other["record"]["immunities"]:
+                immune.append(link(entries, identifier))
     if applied_by:
         page["groups"].append({"title": "APPLIED BY", "items": by_name(applied_by), "empty": ""})
     if immune:

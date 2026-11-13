@@ -13,8 +13,10 @@
     "cost": 165,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/adamantine_cuirass.png"
   },
   "items.AdamantineHelm": {
@@ -31,8 +33,10 @@
     "cost": 165,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/adamantine_helm.png"
   },
   "items.ArchersArmor": {
@@ -50,8 +54,10 @@
     "cost": 45,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/archers_armor.png"
   },
   "items.ArchersHat": {
@@ -69,8 +75,10 @@
     "cost": 40,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/archers_hat.png"
   },
   "items.ArcticArmor": {
@@ -88,8 +96,10 @@
     "cost": 100,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/arctic_armor.png"
   },
   "items.ArcticHood": {
@@ -108,8 +118,10 @@
     "cost": 100,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/arctic_hood.png"
   },
   "items.AvianArmor": {
@@ -125,8 +137,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/avian_armor.png"
   },
   "items.AvianHelm": {
@@ -142,8 +156,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/avian_helm.png"
   },
   "items.Axe": {
@@ -159,8 +175,10 @@
     "cost": 30,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/axe.png"
   },
   "items.Ballpeen": {
@@ -176,8 +194,10 @@
     "cost": 17,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/ballpeen.png"
   },
   "items.BattleAxe": {
@@ -193,8 +213,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "abilities.Cleave",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/battle_axe.png"
   },
   "items.Blubber": {
@@ -208,8 +230,10 @@
     "cost": 1,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/cargo/blubber_barrel.png"
   },
   "items.BlueMushroom": {
@@ -223,8 +247,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "traits.Hearty",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/blue_mushrooms.png"
   },
   "items.Boomerang": {
@@ -238,8 +264,10 @@
     "cost": 45,
     "resource": "gold",
     "ability": "abilities.Boomerang",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/boomerang.png"
   },
   "items.Boots": {
@@ -255,8 +283,10 @@
     "cost": 7,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/boots/boots.png"
   },
   "items.Bow": {
@@ -272,8 +302,10 @@
     "cost": 20,
     "resource": "gold",
     "ability": "abilities.Arrow",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/bow.png"
   },
   "items.BriarbarkArmor": {
@@ -290,8 +322,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/briarbark_armor.png"
   },
   "items.BriarbarkHelm": {
@@ -307,8 +341,10 @@
     "cost": 10,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/briarbark_helm.png"
   },
   "items.BucaneersBoots": {
@@ -325,8 +361,10 @@
     "cost": 40,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/boots/bucaneers_boots.png"
   },
   "items.BucaneersCoat": {
@@ -343,8 +381,10 @@
     "cost": 40,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/bucaneers_coat.png"
   },
   "items.BucaneersHat": {
@@ -360,8 +400,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/bucaneers_hat.png"
   },
   "items.Carapace": {
@@ -375,8 +417,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirShield",
     "image": "items/cargo/carapace.png"
   },
   "items.Cheese": {
@@ -390,8 +434,10 @@
     "cost": 0,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/resource/cheese.png"
   },
   "items.CheiftansArmor": {
@@ -408,8 +454,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/chieftans_armor.png"
   },
   "items.CheiftansHelm": {
@@ -428,8 +476,10 @@
     "cost": 50,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/chieftans_helm.png"
   },
   "items.ClamArmor": {
@@ -447,8 +497,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/clam_armor.png"
   },
   "items.ClamHelm": {
@@ -464,8 +516,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/clam_helm.png"
   },
   "items.Cleaver": {
@@ -481,8 +535,10 @@
     "cost": 23,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/cleaver.png"
   },
   "items.Club": {
@@ -498,8 +554,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/club.png"
   },
   "items.Crossbow": {
@@ -515,8 +573,16 @@
     "cost": 45,
     "resource": "gold",
     "ability": "abilities.Arrow",
+    "ability_changes": {
+      "base_stats": {
+        "damage": 4,
+        "range": 5
+      },
+      "stamina_cost": 2
+    },
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/crossbow.png"
   },
   "items.CrustaceanRod": {
@@ -534,8 +600,10 @@
     "cost": 25,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/crustacean_rod.png"
   },
   "items.Cutlass": {
@@ -551,8 +619,10 @@
     "cost": 30,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/cutlass.png"
   },
   "items.Dagger": {
@@ -569,8 +639,10 @@
     "cost": 45,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/dagger.png"
   },
   "items.DeadMansLamp": {
@@ -584,8 +656,10 @@
     "cost": 40,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/dead_mans_lantern.png"
   },
   "items.DeathknightArmor": {
@@ -602,8 +676,10 @@
     "cost": 180,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/deathknight_armor.png"
   },
   "items.DeathknightHelm": {
@@ -620,8 +696,10 @@
     "cost": 180,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/deathknight_helm.png"
   },
   "items.DragonsPowder": {
@@ -635,8 +713,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirFireBreath",
     "image": "items/cargo/dragons_powder.png"
   },
   "items.DryadArmor": {
@@ -653,8 +733,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/dryad_armor.png"
   },
   "items.DryadBow": {
@@ -671,8 +753,14 @@
     "cost": 50,
     "resource": "gold",
     "ability": "abilities.Arrow",
+    "ability_changes": {
+      "base_stats": {
+        "range": 6
+      }
+    },
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/dryad_bow.png"
   },
   "items.DryadHelm": {
@@ -689,8 +777,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/dryad_helm.png"
   },
   "items.ElixirArrow": {
@@ -704,8 +794,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "abilities.PhantomArrow",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_arrow.png"
   },
   "items.ElixirBerserk": {
@@ -719,8 +811,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "abilities.Berserker",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_sword.png"
   },
   "items.ElixirCharge": {
@@ -734,8 +828,10 @@
     "cost": 6,
     "resource": "gems",
     "ability": "abilities.Charge",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_charge.png"
   },
   "items.ElixirEarthshatter": {
@@ -749,8 +845,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "abilities.EarthShatter",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_earth_shatter.png"
   },
   "items.ElixirFear": {
@@ -764,8 +862,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "abilities.Fear",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_skull.png"
   },
   "items.ElixirFireBall": {
@@ -779,8 +879,10 @@
     "cost": 6,
     "resource": "gems",
     "ability": "abilities.FireBall",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_firebomb.png"
   },
   "items.ElixirFireBreath": {
@@ -794,8 +896,10 @@
     "cost": 6,
     "resource": "gems",
     "ability": "abilities.FireBreath",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_fire_breath.png"
   },
   "items.ElixirFrostBolt": {
@@ -809,8 +913,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "abilities.FrostBolt",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_frost_bolt.png"
   },
   "items.ElixirFrostBreath": {
@@ -824,8 +930,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "abilities.FrostBreath",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_frost_breath.png"
   },
   "items.ElixirGeyser": {
@@ -839,8 +947,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "abilities.Geyser",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_Geyser.png"
   },
   "items.ElixirHaste": {
@@ -854,8 +964,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "abilities.Haste",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_speed.png"
   },
   "items.ElixirHealth": {
@@ -869,8 +981,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "abilities.Heal",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_health.png"
   },
   "items.ElixirIce": {
@@ -884,8 +998,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "abilities.IceWall",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_ice.png"
   },
   "items.ElixirInspire": {
@@ -899,8 +1015,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "abilities.Inspire",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_rally.png"
   },
   "items.ElixirLightning": {
@@ -914,8 +1032,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "abilities.ChainLightning",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_lightning.png"
   },
   "items.ElixirPoisonBurst": {
@@ -929,8 +1049,10 @@
     "cost": 6,
     "resource": "gems",
     "ability": "abilities.PoisonBurst",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_poison.png"
   },
   "items.ElixirRaiseUndead": {
@@ -944,8 +1066,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "abilities.RaiseUndead",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_skull.png"
   },
   "items.ElixirResurrect": {
@@ -959,8 +1083,10 @@
     "cost": 6,
     "resource": "gems",
     "ability": "abilities.Resurrect",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_ressurect.png"
   },
   "items.ElixirSanctuary": {
@@ -974,8 +1100,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "abilities.Sanctuary",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_health.png"
   },
   "items.ElixirShield": {
@@ -989,8 +1117,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "abilities.MagicShield",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_magic_shield.png"
   },
   "items.ElixirStormpearl": {
@@ -1004,8 +1134,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "abilities.Stormpearl",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_storm_pearl.png"
   },
   "items.ElixirTorrent": {
@@ -1019,8 +1151,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "abilities.Torrent",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_torrent.png"
   },
   "items.ElixirWhirlwind": {
@@ -1034,8 +1168,10 @@
     "cost": 6,
     "resource": "gems",
     "ability": "abilities.Whirlwind",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/elixir_cleave.png"
   },
   "items.FaeArmor": {
@@ -1053,8 +1189,10 @@
     "cost": 155,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/fae_armor.png"
   },
   "items.FaeHood": {
@@ -1072,8 +1210,10 @@
     "cost": 150,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/fae_hood.png"
   },
   "items.Falcata": {
@@ -1090,8 +1230,10 @@
     "cost": 45,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/faleata.png"
   },
   "items.FeatherySlippers": {
@@ -1108,8 +1250,10 @@
     "cost": 70,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/boots/feathery_slippers.png"
   },
   "items.FinCutter": {
@@ -1125,8 +1269,10 @@
     "cost": 17,
     "resource": "gold",
     "ability": "abilities.Sting",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/fin_cutter.png"
   },
   "items.FireBomb": {
@@ -1140,8 +1286,10 @@
     "cost": 12,
     "resource": "gold",
     "ability": "abilities.FireBomb",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/fire_bomb.png"
   },
   "items.Fish": {
@@ -1155,8 +1303,10 @@
     "cost": 0,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/resource/fish.png"
   },
   "items.FlintSpear": {
@@ -1172,8 +1322,10 @@
     "cost": 20,
     "resource": "gold",
     "ability": "abilities.Thrust",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/flint_spear.png"
   },
   "items.Food": {
@@ -1187,8 +1339,10 @@
     "cost": 2,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/resource/food.png"
   },
   "items.FossilArmor": {
@@ -1205,8 +1359,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/fossil_armor.png"
   },
   "items.FossilHelm": {
@@ -1223,8 +1379,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/fossil_helm.png"
   },
   "items.GaleaArmor": {
@@ -1240,8 +1398,10 @@
     "cost": 100,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/galea_armor.png"
   },
   "items.GaleaHelm": {
@@ -1257,8 +1417,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/galea_helm.png"
   },
   "items.GnomishGarb": {
@@ -1275,8 +1437,10 @@
     "cost": 40,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/gnomish_garb.png"
   },
   "items.GnomishHat": {
@@ -1293,8 +1457,10 @@
     "cost": 45,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/gnomish_hat.png"
   },
   "items.GnomishShoes": {
@@ -1311,8 +1477,10 @@
     "cost": 30,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/boots/gnomish_shoes.png"
   },
   "items.Greatsword": {
@@ -1328,8 +1496,10 @@
     "cost": 70,
     "resource": "gold",
     "ability": "abilities.Whirlwind",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/greatsword.png"
   },
   "items.Harpoon": {
@@ -1346,8 +1516,10 @@
     "cost": 25,
     "resource": "gold",
     "ability": "abilities.ThrowHarpoon",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/harpoon.png"
   },
   "items.HeartyStew": {
@@ -1361,8 +1533,10 @@
     "cost": 1,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/resource/hearty_stew.png"
   },
   "items.HornHelmet": {
@@ -1379,8 +1553,10 @@
     "cost": 10,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/horn_helm.png"
   },
   "items.InsulatedArmor": {
@@ -1396,8 +1572,10 @@
     "cost": 5,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/insulated_armor.png"
   },
   "items.InsulatedHood": {
@@ -1413,8 +1591,10 @@
     "cost": 5,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/insulated_hood.png"
   },
   "items.IronBar": {
@@ -1428,8 +1608,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirLightning",
     "image": "items/cargo/iron_bar.png"
   },
   "items.IronProw": {
@@ -1445,8 +1627,10 @@
     "cost": 80,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/icebreaker.png"
   },
   "items.Ivory": {
@@ -1460,8 +1644,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirArrow",
     "image": "items/cargo/ivory.png"
   },
   "items.IvoryHarpoon": {
@@ -1478,8 +1664,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "abilities.ThrowHarpoon",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/ivory_harpoon.png"
   },
   "items.KelpSail": {
@@ -1495,8 +1683,10 @@
     "cost": 90,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/kelp_sails.png"
   },
   "items.KnightsArmor": {
@@ -1513,8 +1703,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/knights_armor.png"
   },
   "items.KnightsHelm": {
@@ -1530,8 +1722,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/knights_helm.png"
   },
   "items.LivingArmor": {
@@ -1547,8 +1741,10 @@
     "cost": 75,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/living_armor.png"
   },
   "items.LivingBow": {
@@ -1567,8 +1763,10 @@
     "cost": 75,
     "resource": "gold",
     "ability": "abilities.Arrow",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/living_bow.png"
   },
   "items.LivingHelm": {
@@ -1584,8 +1782,10 @@
     "cost": 75,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/living_helm.png"
   },
   "items.LivingWood": {
@@ -1599,8 +1799,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirSanctuary",
     "image": "items/cargo/living_wood.png"
   },
   "items.Macuahuitl": {
@@ -1616,8 +1818,10 @@
     "cost": 100,
     "resource": "gold",
     "ability": "abilities.Cleave",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/macuahuitl.png"
   },
   "items.Meat": {
@@ -1631,8 +1835,10 @@
     "cost": 0,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/resource/meat.png"
   },
   "items.MerArmor": {
@@ -1648,8 +1854,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/mer_armor.png"
   },
   "items.MerHelm": {
@@ -1666,8 +1874,10 @@
     "cost": 30,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/mer_helm.png"
   },
   "items.MerchantsHat": {
@@ -1685,8 +1895,10 @@
     "cost": 50,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/merchants_hat.png"
   },
   "items.MerchantsRobes": {
@@ -1703,8 +1915,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/merchants_robes.png"
   },
   "items.Musket": {
@@ -1721,8 +1935,16 @@
     "cost": 110,
     "resource": "gold",
     "ability": "abilities.Bullet",
+    "ability_changes": {
+      "base_stats": {
+        "damage": 4,
+        "range": 6
+      },
+      "stamina_cost": 2
+    },
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/rifle.png"
   },
   "items.MysticalBlubber": {
@@ -1736,8 +1958,10 @@
     "cost": 4,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/cargo/mystical_blubber.png"
   },
   "items.MysticalBoots": {
@@ -1756,8 +1980,10 @@
     "cost": 190,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/boots/mystical_boots.png"
   },
   "items.MysticalHat": {
@@ -1776,8 +2002,10 @@
     "cost": 200,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/mystical_hat.png"
   },
   "items.MysticalRobes": {
@@ -1796,8 +2024,10 @@
     "cost": 190,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/mystical_robes.png"
   },
   "items.NavigatorsHat": {
@@ -1814,8 +2044,10 @@
     "cost": 12,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/aviators.png"
   },
   "items.NavigatorsJacket": {
@@ -1831,8 +2063,10 @@
     "cost": 5,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/navigators_jacket.png"
   },
   "items.Obsidian": {
@@ -1846,8 +2080,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirFireBall",
     "image": "items/cargo/obsidian.png"
   },
   "items.Orcrist": {
@@ -1863,8 +2099,10 @@
     "cost": 25,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/orcrist.png"
   },
   "items.OrkhideArmor": {
@@ -1881,8 +2119,10 @@
     "cost": 10,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/orkhide_armor.png"
   },
   "items.OrkhideHelm": {
@@ -1899,8 +2139,10 @@
     "cost": 12,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/orkhide_helm.png"
   },
   "items.PeasantHat": {
@@ -1916,8 +2158,10 @@
     "cost": 7,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/peasant_hat.png"
   },
   "items.PeasantTunic": {
@@ -1933,8 +2177,10 @@
     "cost": 5,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/peasant_tunic.png"
   },
   "items.PirateHat": {
@@ -1950,8 +2196,10 @@
     "cost": 150,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/pirate_hat.png"
   },
   "items.Pistol": {
@@ -1968,8 +2216,14 @@
     "cost": 45,
     "resource": "gold",
     "ability": "abilities.Bullet",
+    "ability_changes": {
+      "base_stats": {
+        "damage": 3
+      }
+    },
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/pistol.png"
   },
   "items.PlateArmor": {
@@ -1986,8 +2240,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/plate_armor.png"
   },
   "items.PlateHelm": {
@@ -2004,8 +2260,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/plate_helm.png"
   },
   "items.PlumedArmor": {
@@ -2023,8 +2281,10 @@
     "cost": 105,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/plumed_armor.png"
   },
   "items.PlumedHelm": {
@@ -2042,8 +2302,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/plumed_helm.png"
   },
   "items.Poison": {
@@ -2057,8 +2319,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirPoisonBurst",
     "image": "items/cargo/poison.png"
   },
   "items.PoisonBomb": {
@@ -2072,8 +2336,10 @@
     "cost": 12,
     "resource": "gold",
     "ability": "abilities.PoisonBomb",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/poison_bomb.png"
   },
   "items.Potion": {
@@ -2089,8 +2355,10 @@
     "cost": 7,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/potion.png"
   },
   "items.PrisonerCage": {
@@ -2104,8 +2372,10 @@
     "cost": 0,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/cargo/prisoner_cage.png"
   },
   "items.RangersCloak": {
@@ -2123,8 +2393,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/rangers_cloak.png"
   },
   "items.RangersHood": {
@@ -2142,8 +2414,10 @@
     "cost": 90,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/rangers_hood.png"
   },
   "items.RatArmor": {
@@ -2159,8 +2433,10 @@
     "cost": 7,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/rat_armor.png"
   },
   "items.RatClaws": {
@@ -2177,8 +2453,10 @@
     "cost": 35,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/claw.png"
   },
   "items.RatHat": {
@@ -2194,8 +2472,10 @@
     "cost": 7,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/rat_hat.png"
   },
   "items.RedMushroom": {
@@ -2209,8 +2489,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "traits.Strong",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/red_mushrooms.png"
   },
   "items.Rum": {
@@ -2224,8 +2506,10 @@
     "cost": 4,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/rum.png"
   },
   "items.Saber": {
@@ -2242,8 +2526,10 @@
     "cost": 23,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/saber.png"
   },
   "items.SacredArmor": {
@@ -2262,8 +2548,10 @@
     "cost": 100,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/sacred_armor.png"
   },
   "items.SacredHelm": {
@@ -2282,8 +2570,10 @@
     "cost": 110,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/sacred_helm.png"
   },
   "items.SalorianArmor": {
@@ -2300,8 +2590,10 @@
     "cost": 170,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/salorian_armor.png"
   },
   "items.SalorianHelm": {
@@ -2318,8 +2610,10 @@
     "cost": 175,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/salorian_helm.png"
   },
   "items.SanguineBlade": {
@@ -2336,8 +2630,10 @@
     "cost": 200,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/sanguine_blade.png"
   },
   "items.SanguisArmor": {
@@ -2354,8 +2650,10 @@
     "cost": 170,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/sanguis_armor.png"
   },
   "items.SanguisHelm": {
@@ -2373,8 +2671,10 @@
     "cost": 175,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/sanguis_helm.png"
   },
   "items.Scales": {
@@ -2388,8 +2688,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirTorrent",
     "image": "items/cargo/scales.png"
   },
   "items.Scepter": {
@@ -2407,8 +2709,10 @@
     "cost": 200,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/scepter.png"
   },
   "items.Scimitar": {
@@ -2424,8 +2728,10 @@
     "cost": 10,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/scimitar.png"
   },
   "items.Seashellarmor": {
@@ -2441,8 +2747,10 @@
     "cost": 10,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/shell_armor.png"
   },
   "items.SentinelArmor": {
@@ -2458,8 +2766,10 @@
     "cost": 40,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/sentinel_armor.png"
   },
   "items.SentinelHelm": {
@@ -2475,8 +2785,10 @@
     "cost": 40,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/sentinel_helm.png"
   },
   "items.Shield": {
@@ -2492,8 +2804,10 @@
     "cost": 23,
     "resource": "gold",
     "ability": "abilities.Charge",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/shield.png"
   },
   "items.Shovel": {
@@ -2507,8 +2821,10 @@
     "cost": 3,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/shovel.png"
   },
   "items.ShroomArmor": {
@@ -2524,8 +2840,10 @@
     "cost": 10,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/shroom_armor.png"
   },
   "items.ShroomHat": {
@@ -2543,8 +2861,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/shroom_hat.png"
   },
   "items.Shroomstick": {
@@ -2560,8 +2880,10 @@
     "cost": 10,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/shroomstick.png"
   },
   "items.Sickle": {
@@ -2577,8 +2899,10 @@
     "cost": 10,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/sickle.png"
   },
   "items.Silk": {
@@ -2592,8 +2916,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirHaste",
     "image": "items/cargo/silk.png"
   },
   "items.SmuggledIdols": {
@@ -2607,8 +2933,10 @@
     "cost": 0,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/cargo/obsidian.png"
   },
   "items.SpiderArmor": {
@@ -2626,8 +2954,10 @@
     "cost": 45,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/spider_armor.png"
   },
   "items.SpiderHelm": {
@@ -2647,8 +2977,10 @@
     "cost": 50,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/spider_helm.png"
   },
   "items.Spikes": {
@@ -2662,8 +2994,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirEarthshatter",
     "image": "items/cargo/spikes.png"
   },
   "items.Sprig": {
@@ -2679,8 +3013,10 @@
     "cost": 10,
     "resource": "gold",
     "ability": "abilities.MagicBolt",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/sprig.png"
   },
   "items.Spyglass": {
@@ -2696,8 +3032,10 @@
     "cost": 40,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/spyglass.png"
   },
   "items.Staff": {
@@ -2715,8 +3053,10 @@
     "cost": 45,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/staff.png"
   },
   "items.SteelReinforcedBoots": {
@@ -2732,8 +3072,10 @@
     "cost": 75,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/boots/steel_reinforced_boots.png"
   },
   "items.Stormpearl": {
@@ -2747,8 +3089,10 @@
     "cost": 4,
     "resource": "gold",
     "ability": "abilities.ThrowPearl",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/storm_pearl.png"
   },
   "items.StripedSail": {
@@ -2764,8 +3108,10 @@
     "cost": 200,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/striped_sails.png"
   },
   "items.SwashbucklersHat": {
@@ -2783,8 +3129,10 @@
     "cost": 70,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/swashbucklers_hat.png"
   },
   "items.SwashbucklersJacket": {
@@ -2801,8 +3149,10 @@
     "cost": 80,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/swashbucklers_jacket.png"
   },
   "items.Sword": {
@@ -2818,8 +3168,10 @@
     "cost": 23,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/sword.png"
   },
   "items.Tentacle": {
@@ -2833,8 +3185,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.TonicCourage",
     "image": "items/cargo/tentacle.png"
   },
   "items.TitanBlubber": {
@@ -2848,8 +3202,10 @@
     "cost": 3,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/cargo/titan_blubber.png"
   },
   "items.TonicCourage": {
@@ -2863,8 +3219,10 @@
     "cost": 3,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "traits.Coward",
+    "brews_into": "",
     "image": "items/consumables/tonic_courage.png"
   },
   "items.TonicSanity": {
@@ -2878,8 +3236,10 @@
     "cost": 3,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "traits.Paranoid",
+    "brews_into": "",
     "image": "items/consumables/tonic_sanity.png"
   },
   "items.TonicTemperance": {
@@ -2893,8 +3253,10 @@
     "cost": 3,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "traits.Glutton",
+    "brews_into": "",
     "image": "items/consumables/tonic_temperance.png"
   },
   "items.ToughHide": {
@@ -2908,8 +3270,10 @@
     "cost": 15,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "items.ElixirCharge",
     "image": "items/cargo/tough_hide.png"
   },
   "items.Trident": {
@@ -2926,8 +3290,10 @@
     "cost": 60,
     "resource": "gold",
     "ability": "abilities.Thrust",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/trident.png"
   },
   "items.TrollhideArmor": {
@@ -2944,8 +3310,10 @@
     "cost": 100,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/trollhide_armor.png"
   },
   "items.TrollhideHelm": {
@@ -2962,8 +3330,10 @@
     "cost": 100,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/trollhide_helm.png"
   },
   "items.VenomArmor": {
@@ -2980,8 +3350,10 @@
     "cost": 100,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/venom_armor.png"
   },
   "items.VenomHelm": {
@@ -2999,8 +3371,10 @@
     "cost": 85,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/venom_helm.png"
   },
   "items.WarClub": {
@@ -3016,8 +3390,10 @@
     "cost": 200,
     "resource": "gold",
     "ability": "abilities.Cleave",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/war_club.png"
   },
   "items.WarHammer": {
@@ -3033,8 +3409,10 @@
     "cost": 110,
     "resource": "gold",
     "ability": "abilities.EarthShatter",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/warhammer.png"
   },
   "items.WarmBoots": {
@@ -3051,8 +3429,10 @@
     "cost": 8,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/boots/warm_boots.png"
   },
   "items.WhimsicalClothes": {
@@ -3069,8 +3449,10 @@
     "cost": 5,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/armor/whimsical_clothes.png"
   },
   "items.WhimsicalHat": {
@@ -3087,8 +3469,10 @@
     "cost": 7,
     "resource": "gold",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/headgear/whimsical_hat.png"
   },
   "items.WoodenSword": {
@@ -3104,8 +3488,10 @@
     "cost": 5,
     "resource": "gold",
     "ability": "abilities.Melee",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/artifact/weapons/wooden_sword.png"
   },
   "items.YellowMushroom": {
@@ -3119,8 +3505,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "traits.Agile",
     "cures": "",
+    "brews_into": "",
     "image": "items/consumables/yellow_mushrooms.png"
   },
   "items.ZypherBlubber": {
@@ -3134,8 +3522,10 @@
     "cost": 2,
     "resource": "gems",
     "ability": "",
+    "ability_changes": {},
     "grants_trait": "",
     "cures": "",
+    "brews_into": "",
     "image": "items/cargo/zypher_blubber.png"
   }
 }

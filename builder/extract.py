@@ -345,32 +345,69 @@ def assign(target, value, context):
     if self_attribute(target) is not None:
         context["attrs"][target.attr] = value
         return True
+    return change(target, value, False, context)
 
-    # bullet.mana_cost = 1, fire_breath.base_stats['radius'] = 4: a change to
-    # something the instance has built. It is kept on that thing, under
-    # "changes", so whatever holds it carries the change too.
+
+def change(target, value, adds, context):
+    """Keep a change to something the instance has built.
+
+    bullet.mana_cost = 1, fire_breath.base_stats['radius'] = 4 and
+    ability.base_stats['damage'] += 2 change an ability after it was built.
+    The changes are kept on that thing, in order, under "changes", so whatever
+    holds it carries them too (see apply_changes). False if the target is not
+    such a thing.
+    """
     key = None
     if isinstance(target, ast.Subscript) and isinstance(target.slice, ast.Constant):
-        key = target.slice.value
+        key = str(target.slice.value)
         target = target.value
-    if isinstance(target, ast.Attribute):
-        built = evaluate(target.value, context)
-        if isinstance(built, dict) and "ref" in built:
-            if "changes" not in built:
-                built["changes"] = {}
-            if key is None:
-                built["changes"][target.attr] = value
+    if not isinstance(target, ast.Attribute):
+        return False
+    built = evaluate(target.value, context)
+    if not isinstance(built, dict) or "ref" not in built:
+        return False
+    if "changes" not in built:
+        built["changes"] = []
+    built["changes"].append({"attr": target.attr, "key": key, "adds": adds, "value": value})
+    return True
+
+
+def apply_changes(attrs, changes):
+    """The values of something an instance built, after the changes made to it since."""
+    lost = {"unknown": "a change the reader could not apply", "line": 0}
+    result = dict(attrs)
+    for one in changes:
+        current = result.get(one["attr"])
+        if one["key"] is not None:
+            if not isinstance(current, dict) or is_unknown(current):
+                result[one["attr"]] = lost
+                continue
+            current = current.get(one["key"])
+        value = one["value"]
+        if one["adds"]:
+            numbers = isinstance(current, (int, float)) and isinstance(value, (int, float))
+            if numbers and not isinstance(current, bool) and not isinstance(value, bool):
+                value = current + value
             else:
-                if not isinstance(built["changes"].get(target.attr), dict):
-                    built["changes"][target.attr] = {}
-                built["changes"][target.attr][str(key)] = value
-            return True
-    return False
+                value = lost
+        if one["key"] is None:
+            result[one["attr"]] = value
+        else:
+            changed = dict(result[one["attr"]])
+            changed[one["key"]] = value
+            result[one["attr"]] = changed
+    return result
 
 
 def follow(statement, context):
     """Apply one statement of a method to the instance. False if it is not one the reader follows."""
     attrs = context["attrs"]
+
+    # ability.base_stats['damage'] += 2
+    if isinstance(statement, ast.AugAssign) and isinstance(statement.op, ast.Add):
+        if not isinstance(statement.target, ast.Name) and self_attribute(statement.target) is None:
+            return change(statement.target, evaluate(statement.value, context), True, context)
+        return False
 
     if isinstance(statement, ast.Assign) and len(statement.targets) == 1:
         target = statement.targets[0]
@@ -412,7 +449,9 @@ CHANGING_METHODS = ["append", "extend", "insert", "remove", "pop", "clear", "sor
 
 
 def changed_by(statement):
-    """The instance values a statement changes: each self.x it assigns to, or changes in place."""
+    """What a statement changes: the instance values (each self.x it assigns
+    to or changes in place) and the local names it assigns to."""
+    values = []
     names = []
     for node in ast.walk(statement):
         targets = []
@@ -428,10 +467,23 @@ def changed_by(statement):
             if isinstance(target, ast.Tuple):
                 parts = target.elts
             for part in parts:
-                name = root_attribute(part)
-                if name is not None and name not in names:
-                    names.append(name)
-    return names
+                if isinstance(part, ast.Name):
+                    if part.id not in names:
+                        names.append(part.id)
+                else:
+                    value = root_attribute(part)
+                    if value is not None and value not in values:
+                        values.append(value)
+    return values, names
+
+
+def forget(statement, context):
+    """Leave unknown everything a statement the reader did not follow may have changed."""
+    values, names = changed_by(statement)
+    for value in values:
+        context["attrs"][value] = unknown(statement)
+    for name in names:
+        context["locals"][name] = unknown(statement)
 
 
 def parameters(modules, module, function, call, caller):
@@ -493,8 +545,7 @@ def run_init(modules, module, owner, instance_class, attrs, call, caller, depth)
             run_init(modules, module, class_with_init(module, parent), instance_class, attrs,
                      statement.value, context, depth + 1)
         elif not follow(statement, context):
-            for name in changed_by(statement):
-                attrs[name] = unknown(statement)
+            forget(statement, context)
 
 
 def class_values(modules, module, class_name):
@@ -760,6 +811,11 @@ def build_items(modules, rules, report, problems):
         if not image:
             problems.append("%s: has no icon" % where(module, name))
 
+        ability_changes = {}
+        if ability:
+            as_set_up = setup_changes(modules, module, name, attrs, ability, problems)
+            ability_changes = changes_to(modules, as_set_up, where(module, name), problems)
+
         records["items." + name] = {
             "name": display,
             "tab": tab_of[item_type],
@@ -771,10 +827,28 @@ def build_items(modules, rules, report, problems):
             "cost": published(attrs, "cost", 0, module, name, problems),
             "resource": published(attrs, "resource", "gold", module, name, problems),
             "ability": ability,
+            "ability_changes": ability_changes,
             "grants_trait": reference(attrs, "grants_trait", module, name, problems),
             "cures": reference(attrs, "cures", module, name, problems),
+            "brews_into": "",
             "image": image,
         }
+
+    # items.brews: what an elixir vendor's cauldron turns each creature drop into.
+    if "brews" not in module["values"]:
+        problems.append("items.py no longer defines brews")
+        return records
+    context = {"modules": modules, "module": module, "attrs": {}, "locals": {}}
+    recipes = evaluate(module["values"]["brews"], context)
+    if not isinstance(recipes, dict) or is_unknown(recipes):
+        problems.append("items.py: could not read brews")
+        return records
+    for ingredient in recipes:
+        if ingredient not in records:
+            problems.append("items.brews names %s, which is not published" % ingredient)
+        else:
+            made = reference(recipes, ingredient, module, ingredient.split(".")[1], problems)
+            records[ingredient]["brews_into"] = made
     return records
 
 
@@ -847,14 +921,25 @@ def build_mobs(modules, rules, whales, trait_records, problems):
             else:
                 shown[key] = stats[key]
 
-        abilities = []
+        # The abilities in the order the Bestiary lists them, each as the mob built it.
+        built = []
         for key in ["move", "default_ability"]:
-            found = reference(attrs, key, module, name, problems)
-            if found:
-                abilities.append(found)
+            if reference(attrs, key, module, name, problems):
+                built.append(attrs[key])
         special = published(attrs, "special_abilities", [], module, name, problems)
-        for found in named(special, "special_abilities", module, name, problems):
-            abilities.append(found)
+        if len(named(special, "special_abilities", module, name, problems)) == len(special):
+            for one in special:
+                built.append(one)
+
+        abilities = []
+        ability_changes = {}
+        for one in built:
+            abilities.append(one["ref"])
+            changed = changes_to(modules, one, where(module, name), problems)
+            if changed:
+                if one["ref"] in ability_changes and ability_changes[one["ref"]] != changed:
+                    problems.append("%s: changes two of its %s in different ways" % (where(module, name), one["ref"]))
+                ability_changes[one["ref"]] = changed
 
         record = {
             "name": add_spaces(name),
@@ -863,6 +948,7 @@ def build_mobs(modules, rules, whales, trait_records, problems):
             "stats": shown,
             "immunities": published(attrs, "immunities", [], module, name, problems),
             "abilities": abilities,
+            "ability_changes": ability_changes,
             "drops": named(published(attrs, "loot", [], module, name, problems), "loot", module, name, problems),
             "drop_chance": published(attrs, "drop_chance", 0.5, module, name, problems),
             "image": "",
@@ -1013,6 +1099,22 @@ def status_effects_of(modules, ability_name, attrs):
     return references
 
 
+def ability_record(modules, name, attrs, problems):
+    """An ability's record, from the values one of its instances carries."""
+    module = modules["abilities"]
+    return {
+        "name": add_spaces(name),
+        "description": published(attrs, "description", "", module, name, problems),
+        "type": published(attrs, "type", "", module, name, problems),
+        "damage_type": published(attrs, "damage_type", "", module, name, problems),
+        "base_stats": published(attrs, "base_stats", {}, module, name, problems),
+        "stamina_cost": published(attrs, "stamina_cost", 0, module, name, problems),
+        "mana_cost": published(attrs, "mana_cost", 0, module, name, problems),
+        "status_effects": status_effects_of(modules, name, attrs),
+        "image": picture(attrs, "image", module, name, problems),
+    }
+
+
 def build_abilities(modules, wanted, problems):
     """Only abilities that a published item or mob refers to are published."""
     module = modules["abilities"]
@@ -1022,19 +1124,64 @@ def build_abilities(modules, wanted, problems):
         if name not in module["classes"]:
             problems.append("abilities.py has no class named %s, which something refers to" % name)
             continue
-        attrs = read_instance(modules, module, name)
-        records[reference] = {
-            "name": add_spaces(name),
-            "description": published(attrs, "description", "", module, name, problems),
-            "type": published(attrs, "type", "", module, name, problems),
-            "damage_type": published(attrs, "damage_type", "", module, name, problems),
-            "base_stats": published(attrs, "base_stats", {}, module, name, problems),
-            "stamina_cost": published(attrs, "stamina_cost", 0, module, name, problems),
-            "mana_cost": published(attrs, "mana_cost", 0, module, name, problems),
-            "status_effects": status_effects_of(modules, name, attrs),
-            "image": picture(attrs, "image", module, name, problems),
-        }
+        records[reference] = ability_record(modules, name, read_instance(modules, module, name), problems)
     return records
+
+
+def changes_to(modules, built, owner, problems):
+    """How an item or mob's own ability differs from the ability's record.
+
+    The Bestiary shows an ability as its owner has changed it (the Musket's
+    damage, range and stamina). built is the ability as the reader holds it,
+    with those changes kept on it. Returns the record's values that differ;
+    of base_stats, only the stats that differ.
+    """
+    name = built["ref"].split(".")[1]
+    if "changes" not in built or name not in modules["abilities"]["classes"]:
+        return {}
+    attrs = read_instance(modules, modules["abilities"], name)
+    plain = ability_record(modules, name, attrs, [])
+    found = []
+    used = ability_record(modules, name, apply_changes(attrs, built["changes"]), found)
+    for problem in found:
+        problems.append("%s: after its changes to the ability, %s" % (owner, problem))
+
+    differing = {}
+    for key in used:
+        if used[key] == plain[key]:
+            continue
+        if key == "base_stats":
+            differing[key] = {}
+            for stat in used[key]:
+                if stat not in plain[key] or used[key][stat] != plain[key][stat]:
+                    differing[key][stat] = used[key][stat]
+        else:
+            differing[key] = used[key]
+    return differing
+
+
+def setup_changes(modules, module, class_name, attrs, ability, problems):
+    """An item's ability as its setup_ability method leaves it: built, with the changes kept on it."""
+    built = {"ref": ability}
+    chain = parents_first(module, class_name)
+    chain.reverse()
+    method = None
+    for name in chain:
+        if method is None:
+            method = module["classes"][name]["methods"].get("setup_ability")
+    if method is None or len(method.args.args) != 2:
+        return built
+
+    context = {"modules": modules, "module": module, "attrs": attrs, "locals": {method.args.args[1].arg: built}}
+    for statement in method.body:
+        if isinstance(statement, ast.Pass):
+            continue
+        if isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Constant):
+            continue
+        if not follow(statement, context):
+            problems.append("%s.py line %d (class %s): setup_ability does something the reader does not follow"
+                            % (module["name"], statement.lineno, class_name))
+    return built
 
 
 def build_effects(modules, wanted, problems):
@@ -1132,10 +1279,18 @@ def read_game(problems):
             wanted_abilities.append(reference)
     abilities = build_abilities(modules, sorted_unique(wanted_abilities), problems)
 
+    # The status effects an ability applies, as it is and as an item or mob changes it.
     wanted_effects = []
     for key in abilities:
-        for reference in abilities[key]["status_effects"]:
-            wanted_effects.append(reference)
+        for found in abilities[key]["status_effects"]:
+            wanted_effects.append(found)
+    for key in items:
+        for found in items[key]["ability_changes"].get("status_effects", []):
+            wanted_effects.append(found)
+    for key in mobs:
+        for changed in mobs[key]["ability_changes"]:
+            for found in mobs[key]["ability_changes"][changed].get("status_effects", []):
+                wanted_effects.append(found)
     effects = build_effects(modules, sorted_unique(wanted_effects), problems)
     check_references(modules, [items, traits, mobs, factions, abilities, effects], problems)
 
@@ -1145,6 +1300,13 @@ def read_game(problems):
         meta["version"] = ast.literal_eval(constants["values"]["VERSION"])
     if "STORM_INTERVAL" in constants["values"]:
         meta["storm_interval"] = ast.literal_eval(constants["values"]["STORM_INTERVAL"])
+
+    # The gems a cauldron asks for on top of the drop it brews (see items.brews).
+    if "Location" not in modules["gui"]["classes"]:
+        problems.append("gui.py no longer has a class named Location")
+    else:
+        shop = read_instance(modules, modules["gui"], "Location")
+        meta["brew_cost"] = published(shop, "brew_cost", 0, modules["gui"], "Location", problems)
 
     # The icon tables the Bestiary uses when it draws an entry.
     bestiary = modules["gui"]["classes"].get("Bestiary")

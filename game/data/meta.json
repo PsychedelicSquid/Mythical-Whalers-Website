@@ -1,4 +1,5 @@
 {
+  "brew_cost": 1,
   "immunity_icons": {
     "fire": "fire_debuff.png",
     "frozen": "frozen.png",
