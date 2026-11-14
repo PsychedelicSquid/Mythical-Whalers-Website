@@ -439,7 +439,6 @@ a.card:hover, a.card:focus-visible { color: var(--cream); }
 /* Wiki                                                                */
 /* ------------------------------------------------------------------ */
 
-.crumbs { padding: calc(4px * var(--px)) calc(12px * var(--px) - 16px) 0; color: var(--mist); }
 h2.label { font: 400 calc(16px * var(--px)) / calc(16px * var(--px)) var(--font-body); color: var(--olive); text-transform: uppercase; }
 
 /* A text box drawn with the button frame. */
