@@ -17,7 +17,7 @@
 {% for entry in category.entries %}
           <a class="card tip entry-card" href="{{ entry.url }}" data-name="{{ entry.name|lower }}">
             {{ icon(entry, entry.card_zoom) }}
-            <span><b>{{ entry.name }}</b>{% if entry.summary %}<span>{{ entry.summary }}</span>{% endif %}</span>
+            <b>{{ entry.name }}</b>
           </a>
 {% endfor %}
         </div>

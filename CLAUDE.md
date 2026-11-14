@@ -113,8 +113,9 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
   the extract. A trait with `secret = True` is skipped and never named in this
   repository, and a race born with one is published without it.
 - **Mobs are two categories,** Crewmates and Mobs. Joel had Whales, Bosses,
-  Captains and Creatures made one category on 13 November 2026, and a mob's
-  card shows only its picture and name.
+  Captains and Creatures made one category on 13 November 2026.
+- **A card on a category page shows the entry's picture and name only.** Joel
+  had the hire cost, stats and descriptions taken off on 13 November 2026.
 - **Categories** are the table `WIKI_CATEGORIES` in `builder/config.py`. Setting
   a row's `enabled` to False takes that category off the site and turns links
   to its entries into plain text.

@@ -130,7 +130,6 @@ def make_entries(data, sizes, problems):
                 "frame_height": 0,
                 "zoom": 1,
                 "card_zoom": 1,
-                "summary": "",
             }
 
             if source == "mobs" and record["group"] == "crewmate":
@@ -597,36 +596,6 @@ DESCRIBERS = {
 }
 
 
-def card_summary(entry, data):
-    """The one line a category page shows under an entry's name."""
-    record = entry["record"]
-    if entry["kind"] == "mob":
-        if record["group"] == "crewmate" and record["hire_cost"]:
-            return "Hire: %d Gold" % record["hire_cost"]
-        return ""
-    if entry["kind"] == "item":
-        names = stat_names(data)
-        icon_table = data["meta"].get("item_icons", {})
-        parts = []
-        for key in record["modifiers"]:
-            if key == "max_mana":
-                continue
-            value = record["modifiers"][key]
-            if isinstance(value, (int, float)) and not isinstance(value, bool):
-                parts.append("%s %s" % (names.get(icon_table.get(key, ""), title_words(key)), sign(value)))
-        if parts:
-            return ", ".join(parts)
-        return record["description"]
-    if entry["kind"] == "faction":
-        return ""
-    if entry["kind"] == "location":
-        # The faction whose place it is.
-        if record["faction"]:
-            return data["factions"][record["faction"]]["name"]
-        return ""
-    return record.get("description", "")
-
-
 # ---------------------------------------------------------------------------
 # Pages
 # ---------------------------------------------------------------------------
@@ -662,7 +631,6 @@ def build(environment, site, outputs, problems):
         if entry["url"] == "":
             continue
         total += 1
-        entry["summary"] = card_summary(entry, data)
         key = entry["category"]["key"]
         if key not in in_category:
             in_category[key] = []
