@@ -40,20 +40,14 @@ NAV = [
 # text. The Wiki follows the in-game Bestiary's tabs; its Mobs tab is split by
 # "group" into five.
 #   source   the file in game/data the entries come from
-#   group    for mobs: crewmate, whale, boss, captain or creature
+#   group    for mobs: crewmate, or mob for everything else that fights
 #   tab      for items: the Bestiary tab
 # ---------------------------------------------------------------------------
 WIKI_CATEGORIES = [
     {"key": "crewmates", "title": "Crewmates", "source": "mobs", "group": "crewmate", "enabled": True,
      "intro": "The races you can hire. Each has its own stats, traits and starting gear."},
-    {"key": "whales", "title": "Whales", "source": "mobs", "group": "whale", "enabled": True,
-     "intro": "The whales of the Shrouded Seas."},
-    {"key": "bosses", "title": "Bosses", "source": "mobs", "group": "boss", "enabled": True,
-     "intro": "The largest things you can fight."},
-    {"key": "captains", "title": "Captains", "source": "mobs", "group": "captain", "enabled": True,
-     "intro": "The captains who lead other crews."},
-    {"key": "creatures", "title": "Creatures", "source": "mobs", "group": "creature", "enabled": True,
-     "intro": "Everything else that fights."},
+    {"key": "mobs", "title": "Mobs", "source": "mobs", "group": "mob", "enabled": True,
+     "intro": "The whales, bosses, captains and creatures a crew fights."},
     {"key": "weapons", "title": "Weapons", "source": "items", "tab": "Weapons", "enabled": True,
      "intro": "A weapon gives the crewmate holding it an ability and stat bonuses."},
     {"key": "armor", "title": "Armor", "source": "items", "tab": "Armor", "enabled": True,
@@ -78,7 +72,7 @@ WIKI_CATEGORIES = [
 
 # How the Wiki's front page groups the categories.
 WIKI_GROUPS = [
-    {"title": "Bestiary", "keys": ["crewmates", "whales", "bosses", "captains", "creatures"]},
+    {"title": "Bestiary", "keys": ["crewmates", "mobs"]},
     {"title": "Gear", "keys": ["weapons", "armor", "consumables", "cargo", "ship-upgrades"]},
     {"title": "Crew and combat", "keys": ["traits", "abilities", "status-effects"]},
     {"title": "The world", "keys": ["factions", "locations"]},
@@ -88,10 +82,7 @@ WIKI_GROUPS = [
 # not listed here, or whose entry is gone, shows its first entry.
 WIKI_TILE_PICTURES = {
     "crewmates": "mobs.Salorian",
-    "whales": "mobs.Narwhal",
-    "bosses": "mobs.Kraken",
-    "captains": "mobs.PirateCaptain",
-    "creatures": "mobs.Spider",
+    "mobs": "mobs.Narwhal",
     "weapons": "items.Cutlass",
     "armor": "items.SalorianArmor",
     "consumables": "items.ElixirHealth",

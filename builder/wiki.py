@@ -603,8 +603,6 @@ def card_summary(entry, data):
     if entry["kind"] == "mob":
         if record["group"] == "crewmate" and record["hire_cost"]:
             return "Hire: %d Gold" % record["hire_cost"]
-        if "max_hp" in record["stats"]:
-            return "Health %s" % record["stats"]["max_hp"]
         return ""
     if entry["kind"] == "item":
         names = stat_names(data)
@@ -715,7 +713,7 @@ def build(environment, site, outputs, problems):
         if members:
             groups.append({"title": group["title"], "categories": members})
 
-    page = view("Wiki", "The Mythical Whalers Wiki: crewmates, creatures, gear, traits and factions.", "/wiki/")
+    page = view("Wiki", "The Mythical Whalers Wiki: crewmates, mobs, gear, traits and factions.", "/wiki/")
     html = home_layout.render(site=site, page=page, groups=groups, version=version)
     outputs["wiki/index.html"] = html.encode("utf-8")
     addresses.append("/wiki/")

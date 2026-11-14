@@ -23,7 +23,7 @@ from builder import config
 
 # The content modules. quests.py, events.py, dialogue.py and documents/ are
 # never opened.
-MODULES = ["items", "traits", "abilities", "effects", "mobs", "factions", "locations", "crews", "gui",
+MODULES = ["items", "traits", "abilities", "effects", "mobs", "factions", "locations", "gui",
            "inventory", "tools", "tooltips", "constants"]
 
 # Calls that load a picture, and the folder each one loads from when it is
@@ -691,23 +691,6 @@ def build_stats(modules, problems):
     return result
 
 
-def whale_classes(modules):
-    """Mobs fielded by a crew whose faction is 'Leviathan' are the whales."""
-    crews = modules["crews"]
-    whales = []
-    for name in crews["order"]:
-        attrs = read_instance(modules, crews, name)
-        if attrs.get("faction") != "Leviathan":
-            continue
-        for key in ["crewmates", "mobs"]:
-            fielded = attrs.get(key)
-            if isinstance(fielded, list):
-                for entry in fielded:
-                    if isinstance(entry, dict) and "ref" in entry and entry["ref"].startswith("mobs."):
-                        whales.append(entry["ref"].split(".")[1])
-    return whales
-
-
 # ---------------------------------------------------------------------------
 # Building the records
 # ---------------------------------------------------------------------------
@@ -911,24 +894,21 @@ def build_traits(modules, problems):
 STAT_KEYS = ["max_hp", "armor", "max_mana", "will", "strength", "luck", "max_stamina", "speed"]
 
 
-def build_mobs(modules, rules, whales, trait_records, problems):
+def build_mobs(modules, rules, trait_records, problems):
     module = modules["mobs"]
+    ability_module = modules["abilities"]
     records = {}
     for name in module["order"]:
         if not descends_from(module, name, "Mob") or name in rules["hidden_mobs"]:
             continue
         attrs = read_instance(modules, module, name)
 
+        # The Bestiary lists every mob on one tab. The Wiki keeps the races a
+        # player can hire apart, because only they have portraits, names,
+        # traits and a hire cost.
+        group = "mob"
         if descends_from(module, name, "Crewmate"):
             group = "crewmate"
-        elif name in whales:
-            group = "whale"
-        elif descends_from(module, name, "Boss"):
-            group = "boss"
-        elif descends_from(module, name, "Captain"):
-            group = "captain"
-        else:
-            group = "creature"
 
         stats = published(attrs, "stats", {}, module, name, problems)
         shown = {}
@@ -951,6 +931,13 @@ def build_mobs(modules, rules, whales, trait_records, problems):
         abilities = []
         ability_changes = {}
         for one in built:
+            # An ability with no picture is left out, and the mob is published
+            # without it: Joel's rule of 13 November 2026.
+            ability_name = one["ref"].split(".")[1]
+            if ability_name in ability_module["classes"]:
+                ability_attrs = read_instance(modules, ability_module, ability_name)
+                if not picture(ability_attrs, "image", ability_module, ability_name, problems):
+                    continue
             abilities.append(one["ref"])
             changed = changes_to(modules, one, where(module, name), problems)
             if changed:
@@ -1197,7 +1184,11 @@ def ability_record(modules, name, attrs, problems):
 
 
 def build_abilities(modules, wanted, problems):
-    """Only abilities that a published item or mob refers to are published."""
+    """Only abilities that a published item or mob refers to are published.
+
+    Every one has a picture. build_mobs leaves an ability without one off its
+    mob, so one that arrives here without a picture is an item's.
+    """
     module = modules["abilities"]
     records = {}
     for reference in wanted:
@@ -1206,6 +1197,8 @@ def build_abilities(modules, wanted, problems):
             problems.append("abilities.py has no class named %s, which something refers to" % name)
             continue
         records[reference] = ability_record(modules, name, read_instance(modules, module, name), problems)
+        if not records[reference]["image"]:
+            problems.append("%s: has no picture, and an item gives this ability" % where(module, name))
     return records
 
 
@@ -1344,11 +1337,10 @@ def read_game(problems):
 
     report = {"placeholder_descriptions": []}
     rules = bestiary_rules(modules, problems)
-    whales = whale_classes(modules)
 
     items = build_items(modules, rules, report, problems)
     traits = build_traits(modules, problems)
-    mobs = build_mobs(modules, rules, whales, traits, problems)
+    mobs = build_mobs(modules, rules, traits, problems)
     factions = build_factions(modules, rules, mobs, problems)
     locations = build_locations(modules, factions, problems)
 

@@ -156,17 +156,6 @@
     "status_effects": [],
     "image": "abilities/images/Cleave.png"
   },
-  "abilities.Dive": {
-    "name": "Dive",
-    "description": "Vanish and reappear at a chosen tile.",
-    "type": "",
-    "damage_type": "",
-    "base_stats": {},
-    "stamina_cost": 2,
-    "mana_cost": 0,
-    "status_effects": [],
-    "image": ""
-  },
   "abilities.EarthShatter": {
     "name": "Earth Shatter",
     "description": "Slam the ground in a cone, with a 50% chance to stun each target. Scales with Strength.",
@@ -532,17 +521,6 @@
     "status_effects": [],
     "image": "abilities/images/HealthBoost.png"
   },
-  "abilities.SerpentDive": {
-    "name": "Serpent Dive",
-    "description": "Vanish and reappear at a chosen tile.",
-    "type": "",
-    "damage_type": "",
-    "base_stats": {},
-    "stamina_cost": 1,
-    "mana_cost": 0,
-    "status_effects": [],
-    "image": ""
-  },
   "abilities.Shock": {
     "name": "Shock",
     "description": "Damage all enemies in a cross around you. Scales with Will.",
@@ -556,53 +534,6 @@
     "mana_cost": 1,
     "status_effects": [],
     "image": "abilities/images/Shock.png"
-  },
-  "abilities.SpawnCorruptedTentacle": {
-    "name": "Spawn Corrupted Tentacle",
-    "description": "Force a tentacle up through the deck. Twice a turn, while mana lasts.",
-    "type": "",
-    "damage_type": "",
-    "base_stats": {},
-    "stamina_cost": 1,
-    "mana_cost": 1,
-    "status_effects": [],
-    "image": ""
-  },
-  "abilities.SpawnSpider": {
-    "name": "Spawn Spider",
-    "description": "Call a spider to the fight.",
-    "type": "magic",
-    "damage_type": "",
-    "base_stats": {},
-    "stamina_cost": 2,
-    "mana_cost": 1,
-    "status_effects": [],
-    "image": ""
-  },
-  "abilities.SpawnTentacles": {
-    "name": "Spawn Tentacles",
-    "description": "Call a tentacle up from the deep.",
-    "type": "magic",
-    "damage_type": "",
-    "base_stats": {},
-    "stamina_cost": 1,
-    "mana_cost": 1,
-    "status_effects": [],
-    "image": ""
-  },
-  "abilities.SpikeShot": {
-    "name": "Spike Shot",
-    "description": "Fling a spike at a distant foe.",
-    "type": "ranged",
-    "damage_type": "",
-    "base_stats": {
-      "damage": 2,
-      "range": 5
-    },
-    "stamina_cost": 1,
-    "mana_cost": 0,
-    "status_effects": [],
-    "image": ""
   },
   "abilities.Sting": {
     "name": "Sting",

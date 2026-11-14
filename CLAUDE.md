@@ -108,8 +108,13 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
   the tutorial stay out. A location's page shows the scene its window shows,
   what it sells at each status, what it buys and who is for hire there.
 - **An ability or status effect is published only if a published item or mob
-  uses it.** A trait with `secret = True` is skipped and never named in this
+  uses it.** An ability with no picture is left out, and a mob that has one is
+  published without it (Joel, 13 November 2026); an item that gives one stops
+  the extract. A trait with `secret = True` is skipped and never named in this
   repository, and a race born with one is published without it.
+- **Mobs are two categories,** Crewmates and Mobs. Joel had Whales, Bosses,
+  Captains and Creatures made one category on 13 November 2026, and a mob's
+  card shows only its picture and name.
 - **Categories** are the table `WIKI_CATEGORIES` in `builder/config.py`. Setting
   a row's `enabled` to False takes that category off the site and turns links
   to its entries into plain text.

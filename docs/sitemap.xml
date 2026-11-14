@@ -20,7 +20,6 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/charge/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/charm/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/cleave/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/abilities/dive/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/earth-shatter/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/eye-beam/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/fear/</loc></url>
@@ -46,12 +45,7 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/raise-undead/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/resurrect/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/sanctuary/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/abilities/serpent-dive/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/shock/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/abilities/spawn-corrupted-tentacle/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/abilities/spawn-spider/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/abilities/spawn-tentacles/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/abilities/spike-shot/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/sting/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/stormpearl/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/throw-harpoon/</loc></url>
@@ -146,28 +140,6 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/armor/warm-boots/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/armor/whimsical-clothes/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/armor/whimsical-hat/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/abhoth/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/alpha-yeti/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/boar-rider/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/bullfrog/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/corrupted-duck/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/dragon/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/gulgothra/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/kraken/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/mimic/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/minotaur/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/pirate-boss/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/bosses/sogoth/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/captains/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/captains/caridian-captain/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/captains/goblin-captain/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/captains/human-captain/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/captains/immortals-captain/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/captains/mer-captain/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/captains/pirate-captain/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/captains/shryke-captain/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/captains/slaad-captain/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/cargo/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/cargo/blubber/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/cargo/carapace/</loc></url>
@@ -225,28 +197,6 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/consumables/warding-elixir/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/consumables/whirlwind-elixir/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/consumables/yellow-mushroom/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/alligator/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/alpha-eel/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/alpha-jellyfish/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/alpha-scorpion/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/alpha-scuttler/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/beholder/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/eel/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/fly/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/gorger/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/jellyfish/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/piranha/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/poison-spider/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/raptor/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/scorpion/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/scuttler/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/sea-serpent/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/spider-egg/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/spider/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/spiny-spider/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/visk/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/creatures/yeti/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/crewmates/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/crewmates/alchemist/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/crewmates/amazon/</loc></url>
@@ -300,6 +250,56 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/locations/shryke-village/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/locations/slaad-port/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/locations/whaling-port/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/abhoth/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/alligator/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/alpha-eel/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/alpha-jellyfish/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/alpha-scorpion/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/alpha-scuttler/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/alpha-yeti/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/beholder/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/boar-rider/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/bullfrog/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/caridian-captain/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/corrupted-duck/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/dragon/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/eel/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/fly/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/glidefin/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/goblin-captain/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/goliath/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/gorger/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/gulgothra/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/human-captain/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/immortals-captain/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/jellyfish/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/kraken/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/mer-captain/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/mimic/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/minotaur/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/mire-quill/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/mystique/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/narwhal/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/piranha/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/pirate-boss/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/pirate-captain/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/poison-spider/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/raptor/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/rot-spout/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/scorpion/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/scuttler/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/sea-serpent/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/shryke-captain/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/slaad-captain/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/sogoth/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/spider-egg/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/spider/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/spike-back/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/spiny-spider/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/turtle/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/visk/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/yeti/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/ship-upgrades/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/ship-upgrades/dead-mans-lamp/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/ship-upgrades/iron-prow/</loc></url>
@@ -392,13 +392,4 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/weapons/war-club/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/weapons/warhammer/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/weapons/wooden-sword/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/whales/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/whales/glidefin/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/whales/goliath/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/whales/mire-quill/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/whales/mystique/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/whales/narwhal/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/whales/rot-spout/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/whales/spike-back/</loc></url>
-  <url><loc>https://www.mythicalwhalers.com/wiki/whales/turtle/</loc></url>
 </urlset>
