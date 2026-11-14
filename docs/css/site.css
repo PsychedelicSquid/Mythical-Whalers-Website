@@ -351,19 +351,31 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
 /* ------------------------------------------------------------------ */
 
 /* The stage is the game's 640x360 menu, anchored to the right so the castle
-   and ship stay in view on a narrow screen. Layers and timings are those of
-   Menu.main_menu and Window.run in gui.py: sea and castle change frame every
-   150 ms; back clouds move one pixel every five frames at 60 frames a second,
-   the front cloud one every three. */
+   and ship stay in view on a narrow screen, with the logo and the buttons
+   standing on its left as they do in the game. The top 300 of its 360 pixels
+   show. Layers and timings are those of Menu.main_menu and Window.run in
+   gui.py: sea and castle change frame every 150 ms; back clouds move one
+   pixel every five frames at 60 frames a second, the front cloud one every
+   three. */
 /* In a window wider than the scene, the band beside it is the game's black,
    as when the game fills a monitor wider than its own screen, and the clouds
    drift on across it. The band is what cuts the scene off at its edges. */
+/* On a phone the scene is drawn one CSS pixel to a game pixel (--hpx), so
+   that the castle and the ship fit beside the buttons, which keep the
+   page's pixel size so that a finger can press them. In a window narrower
+   than 430 the scene also moves right, by up to 40 pixels: the ship's left
+   edge is 230 from the scene's right edge and the widest button ends about
+   200 from the left. 40 is the limit because the castle's wall ends 40
+   pixels from the scene's right edge. */
 .hero-band { background: var(--charcoal); overflow: hidden; }
-.hero { position: relative; background: var(--charcoal); overflow: hidden; --hpx: 1; }
-.stage-wrap { position: relative; height: calc(232px * var(--hpx)); overflow: hidden; }
-.stage { position: absolute; top: 0; right: 0; width: calc(640px * var(--hpx)); height: calc(360px * var(--hpx)); }
+.hero { position: relative; height: calc(300px * var(--hpx)); background: var(--charcoal); overflow: hidden; --hpx: 1; }
+.stage-wrap { position: absolute; inset: 0; }
+.stage { position: absolute; top: 0; right: clamp(-40px, 100vw - 430px, 0px); width: calc(640px * var(--hpx)); height: calc(360px * var(--hpx)); }
 .layer { position: absolute; inset: 0; background-repeat: no-repeat; background-size: calc(640px * var(--hpx)) auto; }
-.cloud { background-repeat: repeat-x; background-position: var(--x0) 0; animation: drift var(--t) steps(640) infinite; }
+/* Each cloud strip runs three more of its 640-pixel tiles past the scene on
+   either side. A whole number of tiles leaves the clouds inside the scene
+   exactly where they were. */
+.cloud { left: calc(-1920px * var(--hpx)); right: calc(-1920px * var(--hpx)); background-repeat: repeat-x; background-position: var(--x0) 0; animation: drift var(--t) steps(640) infinite; }
 .cloud-1 { background-image: url(/images/menu/cloud-1.png); --x0: 0px; --t: 53.33s; }
 .cloud-2 { background-image: url(/images/menu/cloud-2.png); --x0: calc(-214px * var(--hpx)); --t: 53.33s; }
 .cloud-3 { background-image: url(/images/menu/cloud-3.png); --x0: calc(-427px * var(--hpx)); --t: 53.33s; }
@@ -374,22 +386,17 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
 .sea { background-image: url(/images/menu/sea.png); }
 @keyframes frames { to { background-position: 0 calc(-4320px * var(--hpx)); } }
 
-.hero-copy { position: relative; display: flex; flex-direction: column; align-items: center; gap: calc(6px * var(--px)); padding: calc(8px * var(--px)) 16px; text-align: center; }
-.logo { display: block; width: calc(206px * var(--hpx)); max-width: 100%; height: auto; }
-.menu { display: flex; flex-direction: column; align-items: stretch; gap: calc(5px * var(--px)); }
+.hero-copy { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: calc(6px * var(--px)); padding: calc(8px * var(--hpx)) 0 0 calc(12px * var(--hpx)); }
+.logo { display: block; width: calc(206px * var(--hpx)); max-width: 100%; height: auto; animation: bob 1.05s steps(8) infinite alternate; }
+.menu { display: flex; flex-direction: column; align-items: flex-start; gap: calc(5px * var(--px)); }
+@keyframes bob { from { transform: translateY(calc(-3px * var(--hpx))); } to { transform: translateY(calc(3px * var(--hpx))); } }
 
+/* A window as wide as a computer's draws the scene at the page's pixel size
+   and lets the clouds run past the scene's edges. */
 @media (min-width: 760px) {
-  .hero { --hpx: var(--px); height: calc(300px * var(--hpx)); overflow: visible; }
-  .stage-wrap { position: absolute; inset: 0; height: auto; overflow: visible; }
-  /* Each cloud strip runs three more of its 640-pixel tiles past the scene on
-     either side. A whole number of tiles leaves the clouds inside the scene
-     exactly where they were. */
-  .cloud { left: calc(-1920px * var(--hpx)); right: calc(-1920px * var(--hpx)); }
-  .hero-copy { align-items: flex-start; gap: calc(33px * var(--px)); padding: calc(24px * var(--px)) 0 0 calc(34px * var(--px)); max-width: calc(250px * var(--px)); }
-  .hero-copy .logo { animation: bob 1.05s steps(8) infinite alternate; }
-  .menu { align-items: flex-start; }
+  .hero { --hpx: var(--px); overflow: visible; }
+  .hero-copy { gap: calc(33px * var(--px)); padding: calc(24px * var(--px)) 0 0 calc(34px * var(--px)); max-width: calc(250px * var(--px)); }
 }
-@keyframes bob { from { transform: translateY(calc(-3px * var(--px))); } to { transform: translateY(calc(3px * var(--px))); } }
 
 /* What you do: screenshots chosen with radio buttons. The radio buttons, their
    labels in .feat-tabs and the panes in .panes are written in the same order:
@@ -503,5 +510,5 @@ a.entry-card { flex-direction: row; align-items: center; gap: calc(5px * var(--p
 .player { display: flex; flex-direction: column; align-items: center; gap: calc(4px * var(--px)); margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
-  .cloud, .strip, .sprite, .hero-copy .logo { animation: none; }
+  .cloud, .strip, .sprite, .logo { animation: none; }
 }

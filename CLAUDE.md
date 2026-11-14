@@ -159,7 +159,10 @@ with `border-image` from the pieces in `images/gui`, which the extract cuts from
 the game's own GUI pictures. `.tip` is the tooltip frame, used for cards, and
 `.btn` the game's button. The home page's first screen is the game's main menu,
 built from the same layers and timings as `Menu.main_menu` in the game's
-`gui.py`.
+`gui.py`. On a phone the logo and the buttons stand on the scene as well
+(Joel chose this over hiding the scene, 13 November 2026): the scene is drawn
+one CSS pixel to a game pixel there and moves right by up to 40 pixels, so
+the castle and the ship fit beside the buttons.
 
 Headings use the font family "MW Title" and fall back to "MW Body" (m5x7).
 "MW Title" is the game's `df_font.ttf`, which is published only when its row in
