@@ -133,8 +133,9 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
 - **The words are Steam's.** Under "What is Mythical Whalers?" the opening
   paragraph is the store's short description, which is also the page's
   `description`. The four tabs hold the five paragraphs of the game's
-  description on its Steam page ("About this game"): Command the third,
-  Explore the first, Hunt the second, Plan the fourth and fifth. All were
+  description on its Steam page ("About this game"): Explore the first,
+  Command the third, Hunt the second, Plan the fourth and fifth. The tabs'
+  order is Joel's. All were
   copied word for word on 12 November 2026. The tabs' names are Joel's, and
   so is the tagline, "Command a crew. Hunt. Survive.", which follows the
   site's name in the bar at the top of every page (`TAGLINE` in

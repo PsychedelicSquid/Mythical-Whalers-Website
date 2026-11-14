@@ -11,27 +11,27 @@ template: home.html
         <p>Set sail in the shrouded seas. A procedurally generated world where each voyage is unique. Captain a crew of mythical races to face monstrous leviathans and gain status with cunning factions.</p>
       </div>
       <div class="win-foot">
-        <input class="sr" type="radio" name="feat" id="feat-command" checked>
-        <input class="sr" type="radio" name="feat" id="feat-explore">
+        <input class="sr" type="radio" name="feat" id="feat-explore" checked>
+        <input class="sr" type="radio" name="feat" id="feat-command">
         <input class="sr" type="radio" name="feat" id="feat-hunt">
         <input class="sr" type="radio" name="feat" id="feat-plan">
         <div class="feat-tabs">
-          <label class="btn" for="feat-command">Command</label>
           <label class="btn" for="feat-explore">Explore</label>
+          <label class="btn" for="feat-command">Command</label>
           <label class="btn" for="feat-hunt">Hunt</label>
           <label class="btn" for="feat-plan">Plan</label>
         </div>
         <div class="panes">
           <figure class="pane">
-            {{ art("steam/command.png", "The crew screen: Timothy, Slyne, Long Tom and Zephyr on the left, Timothy's gear and items in the middle, his abilities and traits on the right.") }}
-            <figcaption>
-              <p>Command your crew as they evolve, their traits shifting for better or worse as the voyage unfolds. Seek out and recruit new members from the mythical races dwelling upon the myriad islands you explore.</p>
-            </figcaption>
-          </figure>
-          <figure class="pane">
             {{ art("steam/explore.png", "The map: the crew follows a dotted path across an island to a castle, with huts, forest and sea around it.") }}
             <figcaption>
               <p>Assemble your crew and set sail across a perilous, procedurally generated world. Traverse eight distinct biomes teeming with bizarre creatures and factions locked in a desperate struggle for survival.</p>
+            </figcaption>
+          </figure>
+          <figure class="pane">
+            {{ art("steam/command.png", "The crew screen: Timothy, Slyne, Long Tom and Zephyr on the left, Timothy's gear and items in the middle, his abilities and traits on the right.") }}
+            <figcaption>
+              <p>Command your crew as they evolve, their traits shifting for better or worse as the voyage unfolds. Seek out and recruit new members from the mythical races dwelling upon the myriad islands you explore.</p>
             </figcaption>
           </figure>
           <figure class="pane">
