@@ -149,6 +149,9 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
   screenshot shows one quest's name and line, as it does on the Steam page.
 - No section of the home page shows the Wiki. The menu's "Open the Wiki" button
   is the link to it.
+- **The menu's buttons are Wishlist on Steam, Read the Devlog, Open the Wiki,**
+  in that order (Joel, 16 November 2026). On a phone the third button stands
+  beside the ship, and "Read the Devlog" is wide enough to cover its sail.
 
 ## The look
 
@@ -164,10 +167,21 @@ built from the same layers and timings as `Menu.main_menu` in the game's
 one CSS pixel to a game pixel there and moves right by up to 40 pixels, so
 the castle and the ship fit beside the buttons.
 
-Headings use the font family "MW Title" and fall back to "MW Body" (m5x7).
-"MW Title" is the game's `df_font.ttf`, which is published only when its row in
-`config.FONTS` says `"publish": True`. It is off because no licence for it has
-been found.
+Headings and buttons use the font family "MW Title", which is the game's
+`mw_font.ttf` (`constants.FONT`). Everything else uses "MW Body" (m5x7).
+`mw_font.ttf` is Alkhemikal by jeti (fontenddev.com, CC BY 4.0), changed for
+the game with its `font_tool/font_sheet.py`. The licence asks for credit. The
+credit is in the font file's own name records and on no page (Joel,
+16 November 2026), so the file is published byte for byte: never subset it or
+convert it in a way that drops those records. A button's word is drawn in two
+greens, as `tools.render_two_tone` draws a `WordButton`'s word in the game.
+
+The letters of `mw_font.ttf` are about a third wider than m5x7's. On a phone
+the bar at the top keeps 6 pixels clear at each side and 1 game pixel between
+its buttons, so that Wiki, Devlog, Team and Steam fit on one line (Joel asked
+for this on 16 November 2026). They fit on a phone 390 wide with 3 device
+pixels to a CSS pixel. On one 375 or 360 wide with 3, Steam goes to a second
+line.
 
 ## How to write code here
 

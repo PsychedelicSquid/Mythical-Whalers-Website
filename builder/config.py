@@ -125,17 +125,21 @@ GAME_OUT_FONTS = os.path.join(GAME, "fonts")
 FORBIDDEN_FOLDERS = ["unused", "mockups", "legacy", "Effects"]
 
 # Fonts from the game. Only a font with publish True is copied to the site.
-# df_font.ttf carries no licence text and none was found published, so it stays
-# off until the developer confirms it may be put on a public website. The
-# stylesheet asks for it first and falls back to m5x7, so turning it on is this
-# one change. m5x7 is published by Daniel Linssen as CC0.
+# m5x7 is published by Daniel Linssen as CC0.
+#
+# mw_font.ttf is the game's heading font (constants.FONT). It is Alkhemikal by
+# jeti (fontenddev.com), changed for the game with its font_tool/font_sheet.py.
+# Alkhemikal is licensed CC BY 4.0, which allows changing and republishing it
+# when credit is given. The credit is in the font file's own name records and
+# on no page (Joel, 16 November 2026). So the file is copied byte for byte and
+# must never be subsetted or converted in a way that drops those records.
 #
 # "family" is the name the stylesheet uses, not the font's own name. A font
 # installed on a visitor's computer must never stand in for one the site did
 # not send, or the site would look different on the developer's machine.
 FONTS = [
     {"family": "MW Body", "file": "m5x7.ttf", "publish": True},
-    {"family": "MW Title", "file": "df_font.ttf", "publish": False},
+    {"family": "MW Title", "file": "mw_font.ttf", "publish": True},
 ]
 
 # ---------------------------------------------------------------------------

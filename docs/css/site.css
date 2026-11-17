@@ -21,10 +21,10 @@
   --olive: #9fa746;      /* small labels, selected rims */
   --mist: #aea9c5;       /* quieter text */
 
-  /* "MW Title" is the game's heading font and exists only once it has been
-     published (builder/config.py FONTS). Until then titles use the body font.
-     The names are the site's own so that a font installed on a visitor's
-     computer can never stand in for one the site did not send. */
+  /* "MW Title" is the game's heading font, mw_font.ttf, on headers and
+     buttons. "MW Body" is m5x7 (builder/config.py FONTS). The names are the
+     site's own so that a font installed on a visitor's computer can never
+     stand in for one the site did not send. */
   --font-title: "MW Title", "MW Body", "Courier New", monospace;
   --font-body: "MW Body", "Courier New", monospace;
 
@@ -219,14 +219,22 @@ img { max-width: 100%; height: auto; }
   min-width: 0;
 }
 
-/* The game's button. The text stands where TextButton (buttons.py) blits it:
-   9 pixels in from the left of a button 17 wider than the text, with its
-   baseline 16 pixels down. That gives m5x7's 7-pixel capitals 9 pixels of
-   room on all four sides. Centring the line of text instead puts them part
-   of a pixel low, because the font keeps more room above a capital than
-   below it. So the line has no height (line-height 0), and align-items:
-   baseline rests the text on the bottom edge of the ::before box, which
-   starts under the 6-pixel border and is 10 pixels tall. */
+/* The game's button, as WordButton (buttons.py) draws it. The word stands 9
+   pixels in from the left of a button 17 wider than the word. It is blitted
+   5 rows down, which puts the line its letters sit on 17 rows down: a 9-row
+   capital of mw_font.ttf has 8 rows above it and 8 below. Centring the line
+   of text instead puts it half a pixel off, because the font keeps 3 rows
+   above a capital and 4 below it. So the line has no height (line-height 0),
+   and align-items: baseline rests the text on the bottom edge of the
+   ::before box, which starts under the 6-pixel border and is 11 pixels tall.
+
+   The word is in two greens, as tools.render_two_tone draws it: TEAL down to
+   row 7 of the word's 16 rows, the darker green from there. That is the
+   first background, cut to the letters. The letters themselves are
+   transparent until a rule gives them a colour (a hovered button, the
+   selected one). A background is painted under a border-image, so the
+   frame's picture does not paint the button's inside (no fill): the second
+   background does, in the same CHARCOAL. */
 .btn {
   display: inline-flex;
   align-items: baseline;
@@ -235,17 +243,19 @@ img { max-width: 100%; height: auto; }
   border-style: solid;
   border-color: transparent;
   border-width: calc(6px * var(--px)) calc(7px * var(--px));
-  border-image: url(/images/gui/btn.png) 12 8 12 8 fill / calc(12px * var(--px)) calc(8px * var(--px)) stretch;
+  border-image: url(/images/gui/btn.png) 6 8 / calc(6px * var(--px)) calc(8px * var(--px)) stretch;
   padding: 0 calc(1px * var(--px)) 0 calc(2px * var(--px));
-  background: none;
+  background: linear-gradient(var(--teal) calc(6px * var(--px)), var(--teal-deep) 0), var(--charcoal);
+  -webkit-background-clip: text, padding-box;
+  background-clip: text, padding-box;
   font: 400 calc(16px * var(--px)) / 0 var(--font-title);
-  color: var(--teal);
+  color: transparent;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   cursor: url(/images/gui/cursor.png) 6 2, pointer;
 }
-.btn::before { content: ""; height: calc(10px * var(--px)); }
+.btn::before { content: ""; height: calc(11px * var(--px)); }
 .btn:hover, .btn:focus-visible { border-image-source: url(/images/gui/btn-hover.png); color: var(--yellow); }
 .btn[aria-current], .btn.is-on { border-image-source: url(/images/gui/btn-selected.png); color: var(--cream); }
 
@@ -311,9 +321,16 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
 .tagline::before { content: "- "; }
 .site-nav nav { display: flex; flex-wrap: wrap; gap: calc(3px * var(--px)); }
 /* On a phone the name is the link home, and the Home button gives up its
-   place so the others fit on one line. The tagline does not fit beside the
-   name there, so it takes the line under it, without the dash. */
+   place so the others fit on one line. For that the bar keeps only 6 pixels
+   clear at each side and 1 game pixel between its buttons (Joel asked for
+   the four on one line, 16 November 2026). The four need 226 game pixels. A
+   phone 390 wide with 3 device pixels to a CSS pixel has 226.8, and every
+   phone with 2 has more. One 375 or 360 wide with 3 does not, and Steam goes
+   to a second line there. The tagline does not fit beside the name, so it
+   takes the line under it, without the dash. */
 @media (max-width: 759px) {
+  .site-nav .wrap { padding-inline: 6px; }
+  .site-nav nav { gap: calc(1px * var(--px)); }
   .site-nav nav a[href="/"] { display: none; }
   .tagline { display: block; }
   .tagline::before { content: none; }
@@ -364,9 +381,10 @@ a:hover > .portrait, a:focus-visible > .portrait { background-image: url(/images
    that the castle and the ship fit beside the buttons, which keep the
    page's pixel size so that a finger can press them. In a window narrower
    than 430 the scene also moves right, by up to 40 pixels: the ship's left
-   edge is 230 from the scene's right edge and the widest button ends about
-   200 from the left. 40 is the limit because the castle's wall ends 40
-   pixels from the scene's right edge. */
+   edge is 230 from the scene's right edge, and the menu's third button, the
+   one beside the ship, ends about 200 from the left. That is why the
+   shortest of the three, Open the Wiki, is the third. 40 is the limit
+   because the castle's wall ends 40 pixels from the scene's right edge. */
 .hero-band { background: var(--charcoal); overflow: hidden; }
 .hero { position: relative; height: calc(300px * var(--hpx)); background: var(--charcoal); overflow: hidden; --hpx: 1; }
 .stage-wrap { position: absolute; inset: 0; }

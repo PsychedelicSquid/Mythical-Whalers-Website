@@ -18,11 +18,13 @@
       <div class="hero-copy">
         <h1><img class="logo" src="/images/menu/logo.png" width="206" height="80" alt="{{ site.name }}"></h1>
         <div class="menu">
+          {# Open the Wiki is last: on a phone the third button stands beside
+             the ship, and Read the Devlog is wide enough to cover its sail. #}
           <a class="btn" href="{{ site.steam_url }}">Wishlist on Steam</a>
+          <a class="btn" href="/devlog/">Read the Devlog</a>
 {% if site.wiki.total %}
           <a class="btn" href="/wiki/">Open the Wiki</a>
 {% endif %}
-          <a class="btn" href="/devlog/">Read the Devlog</a>
         </div>
       </div>
     </section>
