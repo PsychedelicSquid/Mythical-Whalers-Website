@@ -105,6 +105,13 @@ WIKI_NAMES = {
     "mobs.GlideFin": "Glidefin",
 }
 
+# Mobs and items the in-game Bestiary shows that the Wiki leaves out because
+# they are not finished. CorruptedTentacle has no sprite of its own: the game
+# assembles it from pieces in mobs/corrupted_kraken_roughs, and the icon of its
+# ability, Grab, is a placeholder (Joel, 25 November 2026). Remove its row when
+# the game gives it finished art.
+WIKI_UNFINISHED = ["mobs.CorruptedTentacle"]
+
 
 # ---------------------------------------------------------------------------
 # The game repository. Read by `python build.py --extract`, never written to.

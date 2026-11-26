@@ -328,10 +328,14 @@ def describe_mob(entry, entries, data, sizes, problems):
         if record["names"]:
             page["facts"].append({"label": "NAMES", "text": ", ".join(record["names"]), "links": []})
 
+        # The Pirate Tavern picks one of its two recruits from a list of races.
         hired_at = []
         for identifier in entries:
-            if entries[identifier]["kind"] == "location" and entry["id"] in entries[identifier]["record"]["hires"]:
-                hired_at.append(link(entries, identifier))
+            if entries[identifier]["kind"] == "location":
+                if entry["id"] in entries[identifier]["record"]["hires"]:
+                    hired_at.append(link(entries, identifier))
+                elif entry["id"] in entries[identifier]["record"]["hires_one_of"]:
+                    hired_at.append(link(entries, identifier, "at random"))
         if hired_at:
             page["groups"].append({"title": "FOR HIRE AT", "items": by_name(hired_at), "empty": ""})
 
@@ -513,7 +517,7 @@ def describe_effect(entry, entries, data, sizes, problems):
         if other["kind"] == "ability" and entry["id"] in other["record"]["status_effects"]:
             applied_by.append(link(entries, identifier))
         if other["kind"] == "mob":
-            # A mob whose own version of an ability applies it (the Sea Serpent's Melee poisons).
+            # A mob whose own version of an ability applies it, where the ability's record does not.
             for changed in other["record"]["ability_changes"]:
                 if entry["id"] in other["record"]["ability_changes"][changed].get("status_effects", []):
                     applied_by.append(link(entries, identifier, "with " + entries[changed]["name"]))
@@ -570,6 +574,9 @@ def describe_location(entry, entries, data, sizes, problems):
 
     if record["hires"]:
         page["groups"].append({"title": "FOR HIRE", "items": links(entries, record["hires"]), "empty": ""})
+    if record["hires_one_of"]:
+        # One more recruit, picked at random from these races, in the game's order.
+        page["groups"].append({"title": "AND ONE OF", "items": links(entries, record["hires_one_of"]), "empty": ""})
 
     # What it sells: one row for each status the buyer must hold with the
     # place's faction (items.stock). An elixir vendor has one row.

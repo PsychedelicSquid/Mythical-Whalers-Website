@@ -294,6 +294,14 @@ def evaluate(node, context):
                 return list(inner)
             return unknown(node)
 
+        # random.choice(races): one of the list, picked when the game runs
+        if name == "choice" and isinstance(function, ast.Attribute) and len(node.args) == 1:
+            if isinstance(function.value, ast.Name) and module["aliases"].get(function.value.id) == "random":
+                inner = evaluate(node.args[0], context)
+                if isinstance(inner, list):
+                    return {"one_of": inner}
+                return unknown(node)
+
         # abilities.Melee(self), effects.Haste(), SeaWarden(): building a class
         built = evaluate(function, context)
         if isinstance(built, dict) and "ref" in built:
@@ -1105,12 +1113,19 @@ def build_locations(modules, faction_records, problems):
             sells.append(named(published(attrs, "selling", [], module, name, problems), "selling",
                                module, name, problems))
 
-        # A place can keep two hands of one race for hire: each race once.
+        # A place can keep two hands of one race for hire: each race once. The
+        # Pirate Tavern picks one of its two from a list of races (random.choice).
         hires = []
-        recruits = published(attrs, "recruits", [], module, name, problems)
-        for found in named(recruits, "recruits", module, name, problems):
-            if found not in hires:
-                hires.append(found)
+        hires_one_of = []
+        for recruit in published(attrs, "recruits", [], module, name, problems):
+            if isinstance(recruit, dict) and "one_of" in recruit:
+                for found in named(recruit["one_of"], "recruits", module, name, problems):
+                    if found not in hires_one_of:
+                        hires_one_of.append(found)
+            else:
+                for found in named([recruit], "recruits", module, name, problems):
+                    if found not in hires:
+                        hires.append(found)
 
         records["locations." + name] = {
             "name": display,
@@ -1119,6 +1134,7 @@ def build_locations(modules, faction_records, problems):
             "sells": sells,
             "buys": published(attrs, "buying", "", module, name, problems),
             "hires": hires,
+            "hires_one_of": hires_one_of,
             "brews": attrs.get("brews") is not None,
             "currency": published(attrs, "currency", "gold", module, name, problems),
             "scene": picture(attrs, "scene", module, name, problems),
@@ -1131,10 +1147,13 @@ def build_locations(modules, faction_records, problems):
 def status_effects_of(modules, ability_name, attrs):
     """The status effects an ability can put on a mob.
 
-    An ability names them in its own code: effects.Feared() in a method, or a
-    tile effect such as effects.Fire, which in turn names the buff it leaves
-    (Burning). Parents are not searched, because the base classes mention
-    effects that have nothing to do with the ability at hand.
+    An ability names them in its own code: as its buff or effect, or by
+    building one in a method (effects.Feared()). A tile effect such as
+    effects.Fire in turn names the buff it leaves (Burning). An effect the
+    ability only mentions is not counted: Move lists effects.Fire and
+    effects.Poison as the tiles an AI unit walks around. Parents are not
+    searched, because the base classes mention effects that have nothing to
+    do with the ability at hand.
     """
     abilities = modules["abilities"]
     effects = modules["effects"]
@@ -1145,9 +1164,9 @@ def status_effects_of(modules, ability_name, attrs):
         if reference.startswith("effects."):
             named.append(reference.split(".")[1])
     for node in ast.walk(abilities["classes"][ability_name]["node"]):
-        if isinstance(node, ast.Attribute) and isinstance(node.value, ast.Name):
-            if abilities["aliases"].get(node.value.id) == "effects" and node.attr in effects["classes"]:
-                named.append(node.attr)
+        if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and isinstance(node.func.value, ast.Name):
+            if abilities["aliases"].get(node.func.value.id) == "effects" and node.func.attr in effects["classes"]:
+                named.append(node.func.attr)
 
     found = []
     for name in named:
@@ -1337,6 +1356,16 @@ def read_game(problems):
 
     report = {"placeholder_descriptions": []}
     rules = bestiary_rules(modules, problems)
+    # A class the Bestiary shows that is not finished is left out with the
+    # ones the Bestiary hides.
+    for identifier in config.WIKI_UNFINISHED:
+        source, name = identifier.split(".")
+        key = "hidden_" + source
+        if key in rules and name in modules[source]["classes"]:
+            rules[key].append(name)
+        else:
+            problems.append("WIKI_UNFINISHED in builder/config.py names %s, which is not a mob or item the game has"
+                            % identifier)
 
     items = build_items(modules, rules, report, problems)
     traits = build_traits(modules, problems)

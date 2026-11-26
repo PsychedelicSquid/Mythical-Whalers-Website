@@ -106,7 +106,15 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
   its window is the market window (`gui.Location`), or if a published faction
   lists it among its `sites`. Huts, nests, ruins, chests, gathering spots and
   the tutorial stay out. A location's page shows the scene its window shows,
-  what it sells at each status, what it buys and who is for hire there.
+  what it sells at each status, what it buys and who is for hire there. A
+  recruit the game picks with `random.choice` (the Pirate Tavern's second) is
+  shown as the list it is picked from, under "AND ONE OF" (Joel,
+  25 November 2026).
+- **An unfinished mob or item is left out by a row in `WIKI_UNFINISHED`**
+  (`builder/config.py`), even though the Bestiary shows it. Joel had
+  `CorruptedTentacle` left out on 25 November 2026: it has no sprite of its
+  own and the icon of its ability, Grab, is a placeholder. Remove its row when
+  the game gives it finished art.
 - **An ability or status effect is published only if a published item or mob
   uses it.** An ability with no picture is left out, and a mob that has one is
   published without it (Joel, 13 November 2026); an item that gives one stops
@@ -125,7 +133,7 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
   12 November 2026 (they are in the history, commit 4743d7b). Do not add them
   back without being asked.
 - **Not built yet:** hand-written text for entries the game gives no
-  description (43 of the 69 mobs, including all eight whales). They are better
+  description (43 of the 72 mobs, including all eight whales). They are better
   written in the game's `mobs.py`, which fixes the in-game Bestiary too.
 
 ## The home page
