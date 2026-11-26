@@ -134,7 +134,7 @@
   },
   "factions.Whalers": {
     "name": "Whalers",
-    "description": "A chartered union of free tradesmen. Shares are set by charter, widows are paid, and a captain who shorts his crew never sails again. The tryworks must be fed.",
+    "description": "A chartered union of free tradesfolk. Shares are set by charter, widows are paid, and a captain who shorts their crew never sails again. The tryworks must be fed.",
     "members": [],
     "heralds": [
       "Harbor Master"

@@ -14,6 +14,22 @@
     "status_effects": [],
     "image": "abilities/images/ArrowStrike.png"
   },
+  "abilities.Bash": {
+    "name": "Bash",
+    "description": "Physical damage. 10% chance to stun the target. Scales with Strength.",
+    "type": "melee",
+    "damage_type": "",
+    "base_stats": {
+      "damage": 0,
+      "piercing": 0
+    },
+    "stamina_cost": 1,
+    "mana_cost": 0,
+    "status_effects": [
+      "effects.Stunned"
+    ],
+    "image": "abilities/images/fist.png"
+  },
   "abilities.Berserker": {
     "name": "Berserker",
     "description": "Doubles an ally's strength.",
@@ -492,6 +508,22 @@
     "mana_cost": 2,
     "status_effects": [],
     "image": "abilities/images/SummonUndead.png"
+  },
+  "abilities.Reap": {
+    "name": "Reap",
+    "description": "Hit the target and adjacent enemies in an arc. Makes them bleed. Scales with Strength.",
+    "type": "melee",
+    "damage_type": "",
+    "base_stats": {
+      "damage": 0,
+      "piercing": 0
+    },
+    "stamina_cost": 1,
+    "mana_cost": 0,
+    "status_effects": [
+      "effects.Bleeding"
+    ],
+    "image": "abilities/images/Cleave.png"
   },
   "abilities.Resurrect": {
     "name": "Resurrect",

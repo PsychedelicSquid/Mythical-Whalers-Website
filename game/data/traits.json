@@ -53,9 +53,11 @@
   },
   "traits.Drunk": {
     "name": "Drunk",
-    "description": "-1 Speed, -1 Will for 2 days, +2 Morale",
-    "modifiers": {},
-    "max_level": 3,
+    "description": "Each morning opens another Rum, pukes on the deck or sleeps it off.",
+    "modifiers": {
+      "range": -1
+    },
+    "max_level": 1,
     "offered_at_level_up": false,
     "image": "traits/drunk.png"
   },

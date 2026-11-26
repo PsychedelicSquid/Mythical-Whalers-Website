@@ -4,7 +4,7 @@
     "group": "mob",
     "description": "",
     "stats": {
-      "max_hp": 55,
+      "max_hp": 100,
       "armor": 4,
       "max_mana": 6,
       "will": 3,
@@ -22,9 +22,15 @@
       "push"
     ],
     "abilities": [
-      "abilities.Melee"
+      "abilities.EyeBeam"
     ],
-    "ability_changes": {},
+    "ability_changes": {
+      "abilities.EyeBeam": {
+        "base_stats": {
+          "range": 14
+        }
+      }
+    },
     "drops": [
       "items.Ivory",
       "items.Ivory",
@@ -210,15 +216,9 @@
     "immunities": [],
     "abilities": [
       "abilities.Move",
-      "abilities.Melee"
+      "abilities.Sting"
     ],
-    "ability_changes": {
-      "abilities.Melee": {
-        "status_effects": [
-          "effects.Poisoned"
-        ]
-      }
-    },
+    "ability_changes": {},
     "drops": [
       "items.Poison"
     ],
@@ -293,7 +293,7 @@
       "max_mana": 2,
       "will": 1,
       "strength": 2,
-      "luck": 3,
+      "luck": 2,
       "max_stamina": 3,
       "speed": 3
     },
@@ -386,6 +386,47 @@
     "drops": [],
     "drop_chance": 0.5,
     "image": "mobs/mobs/beholder_idle.png"
+  },
+  "mobs.BlackDragon": {
+    "name": "Black Dragon",
+    "group": "mob",
+    "description": "An old dragon. Spells slide off its scales.",
+    "stats": {
+      "max_hp": 45,
+      "armor": 50,
+      "max_mana": 5,
+      "will": 2,
+      "strength": 6,
+      "luck": 5,
+      "max_stamina": 3,
+      "speed": 4
+    },
+    "immunities": [
+      "fire",
+      "fear",
+      "charm",
+      "stunned",
+      "magic",
+      "push"
+    ],
+    "abilities": [
+      "abilities.Leap",
+      "abilities.Melee",
+      "abilities.FireBreath"
+    ],
+    "ability_changes": {
+      "abilities.FireBreath": {
+        "base_stats": {
+          "radius": 4
+        }
+      }
+    },
+    "drops": [
+      "items.DragonsPowder",
+      "items.DragonsPowder"
+    ],
+    "drop_chance": 0.5,
+    "image": "mobs/mobs/dragon_black_idle.png"
   },
   "mobs.BoarRider": {
     "name": "Boar Rider",
@@ -674,14 +715,14 @@
   "mobs.Dragon": {
     "name": "Dragon",
     "group": "mob",
-    "description": "",
+    "description": "A grown dragon. Its fire reaches far.",
     "stats": {
-      "max_hp": 22,
+      "max_hp": 45,
       "armor": 20,
       "max_mana": 3,
       "will": 1,
       "strength": 5,
-      "luck": 3,
+      "luck": 5,
       "max_stamina": 3,
       "speed": 2
     },
@@ -1220,6 +1261,45 @@
     "drop_chance": 0.5,
     "image": "mobs/mobs/gorger_idle.png"
   },
+  "mobs.GreenDragon": {
+    "name": "Green Dragon",
+    "group": "mob",
+    "description": "A young dragon. It has not yet grown into its fire.",
+    "stats": {
+      "max_hp": 30,
+      "armor": 20,
+      "max_mana": 3,
+      "will": 1,
+      "strength": 5,
+      "luck": 3,
+      "max_stamina": 3,
+      "speed": 2
+    },
+    "immunities": [
+      "fire",
+      "frozen",
+      "fear",
+      "charm",
+      "stunned"
+    ],
+    "abilities": [
+      "abilities.BossMove",
+      "abilities.Melee",
+      "abilities.FireBreath"
+    ],
+    "ability_changes": {
+      "abilities.FireBreath": {
+        "base_stats": {
+          "radius": 4
+        }
+      }
+    },
+    "drops": [
+      "items.DragonsPowder"
+    ],
+    "drop_chance": 0.5,
+    "image": "mobs/mobs/dragon_green_idle.png"
+  },
   "mobs.Gulgothra": {
     "name": "Gulgothra",
     "group": "mob",
@@ -1250,7 +1330,6 @@
         "base_stats": {
           "range": 12
         },
-        "stamina_cost": 3,
         "mana_cost": 0
       }
     },
@@ -2103,7 +2182,7 @@
     "drops": [
       "items.Silk"
     ],
-    "drop_chance": 0.5,
+    "drop_chance": 0.25,
     "image": "mobs/mobs/spider_poison_idle.png"
   },
   "mobs.Raptor": {
@@ -2157,7 +2236,7 @@
     ],
     "ability_changes": {},
     "drops": [
-      "items.Blubber",
+      "items.FermentedBlubber",
       "items.Poison"
     ],
     "drop_chance": 0.5,
@@ -2191,7 +2270,8 @@
     "image": "portraits/salorian_1.png",
     "portraits": [
       "portraits/salorian_1.png",
-      "portraits/salorian_2.png"
+      "portraits/salorian_2.png",
+      "portraits/salorian_3.png"
     ],
     "names": [
       "Murgen",
@@ -2272,7 +2352,8 @@
     "image": "portraits/satyr_1.png",
     "portraits": [
       "portraits/satyr_1.png",
-      "portraits/satyr_2.png"
+      "portraits/satyr_2.png",
+      "portraits/satyr_3.png"
     ],
     "names": [
       "Grov",
@@ -2394,15 +2475,9 @@
       "stunned"
     ],
     "abilities": [
-      "abilities.Melee"
+      "abilities.Sting"
     ],
-    "ability_changes": {
-      "abilities.Melee": {
-        "status_effects": [
-          "effects.Poisoned"
-        ]
-      }
-    },
+    "ability_changes": {},
     "drops": [
       "items.Scales"
     ],
@@ -2830,7 +2905,7 @@
     "drops": [
       "items.Silk"
     ],
-    "drop_chance": 0.5,
+    "drop_chance": 0.25,
     "image": "mobs/mobs/spider_idle.png"
   },
   "mobs.SpiderEgg": {
@@ -2853,7 +2928,7 @@
     "drops": [
       "items.Silk"
     ],
-    "drop_chance": 0.5,
+    "drop_chance": 0.25,
     "image": "mobs/mobs/egg_idle.png"
   },
   "mobs.SpikeBack": {
@@ -2912,7 +2987,7 @@
     "drops": [
       "items.Silk"
     ],
-    "drop_chance": 0.5,
+    "drop_chance": 0.25,
     "image": "mobs/mobs/spiny_spider_idle.png"
   },
   "mobs.Strigoi": {
@@ -2994,6 +3069,30 @@
         "traits.Priest"
       ]
     }
+  },
+  "mobs.Tentacle": {
+    "name": "Tentacle",
+    "group": "mob",
+    "description": "",
+    "stats": {
+      "max_hp": 6,
+      "armor": 0,
+      "max_mana": 2,
+      "will": 0,
+      "strength": 3,
+      "luck": 3,
+      "max_stamina": 2,
+      "speed": 3
+    },
+    "immunities": [],
+    "abilities": [
+      "abilities.Move",
+      "abilities.Melee"
+    ],
+    "ability_changes": {},
+    "drops": [],
+    "drop_chance": 0.5,
+    "image": "mobs/mobs/tentacle_idle.png"
   },
   "mobs.Turtle": {
     "name": "Turtle",

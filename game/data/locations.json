@@ -17,6 +17,7 @@
     ],
     "buys": "",
     "hires": [],
+    "hires_one_of": [],
     "brews": true,
     "currency": "gold",
     "scene": "scenes/alchemist.png",
@@ -33,12 +34,14 @@
         "items.ElixirPoisonBurst",
         "items.ElixirFireBall",
         "items.ElixirResurrect",
+        "items.TonicSanity",
         "items.BlueMushroom",
         "items.YellowMushroom"
       ]
     ],
     "buys": "",
     "hires": [],
+    "hires_one_of": [],
     "brews": true,
     "currency": "gold",
     "scene": "scenes/baba_yaga.png",
@@ -71,6 +74,7 @@
     "hires": [
       "mobs.Caridian"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/caridian_camp.png",
@@ -110,6 +114,7 @@
     "hires": [
       "mobs.Dryad"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/dryad_city.png",
@@ -145,6 +150,7 @@
     "hires": [
       "mobs.Dwarf"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/dwarf_stronghold.png",
@@ -181,6 +187,7 @@
     "hires": [
       "mobs.Human"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/castle.png",
@@ -210,6 +217,7 @@
     ],
     "buys": "cargo",
     "hires": [],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/port.png",
@@ -254,6 +262,7 @@
       "mobs.Gnome",
       "mobs.Satyr"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/gnome_village.png",
@@ -290,6 +299,7 @@
       "mobs.Goblin",
       "mobs.Cyclops"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/goblin_city.png",
@@ -303,6 +313,7 @@
     "sells": [],
     "buys": "",
     "hires": [],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "",
@@ -337,6 +348,7 @@
     "hires": [
       "mobs.Human"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/undead_port.png",
@@ -372,6 +384,7 @@
       "mobs.Immortal",
       "mobs.Strigoi"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/undead_city.png",
@@ -405,6 +418,7 @@
     "hires": [
       "mobs.Mer"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/merfolk.png",
@@ -421,11 +435,13 @@
         "items.ElixirFrostBolt",
         "items.ElixirFrostBreath",
         "items.ElixirIce",
-        "items.ElixirStormpearl"
+        "items.ElixirStormpearl",
+        "items.TonicTemperance"
       ]
     ],
     "buys": "",
     "hires": [],
+    "hires_one_of": [],
     "brews": true,
     "currency": "gold",
     "scene": "scenes/mer_wizard.png",
@@ -462,6 +478,7 @@
       "mobs.Human",
       "mobs.Pirate"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/pirate_cove.png",
@@ -475,8 +492,28 @@
     "sells": [],
     "buys": "equipment",
     "hires": [
-      "mobs.Pirate",
-      "mobs.Amazon"
+      "mobs.Pirate"
+    ],
+    "hires_one_of": [
+      "mobs.Human",
+      "mobs.Alchemist",
+      "mobs.Dwarf",
+      "mobs.Amazon",
+      "mobs.Salorian",
+      "mobs.Mer",
+      "mobs.Siren",
+      "mobs.Caridian",
+      "mobs.Dryad",
+      "mobs.Gnome",
+      "mobs.Slaad",
+      "mobs.Satyr",
+      "mobs.Goblin",
+      "mobs.Shryke",
+      "mobs.Cyclops",
+      "mobs.Immortal",
+      "mobs.Skeleton",
+      "mobs.Strigoi",
+      "mobs.Necromancer"
     ],
     "brews": false,
     "currency": "gold",
@@ -513,6 +550,7 @@
     "hires": [
       "mobs.Salorian"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/salorian_village.png",
@@ -529,6 +567,7 @@
         "items.ElixirShield",
         "items.ElixirHaste",
         "items.ElixirEarthshatter",
+        "items.TonicCourage",
         "items.RedMushroom",
         "items.BlueMushroom",
         "items.YellowMushroom"
@@ -536,6 +575,7 @@
     ],
     "buys": "",
     "hires": [],
+    "hires_one_of": [],
     "brews": true,
     "currency": "gold",
     "scene": "scenes/shaman.png",
@@ -567,6 +607,7 @@
     ],
     "buys": "cargo",
     "hires": [],
+    "hires_one_of": [],
     "brews": false,
     "currency": "food",
     "scene": "scenes/shryke_port.png",
@@ -603,6 +644,7 @@
     "hires": [
       "mobs.Shryke"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "food",
     "scene": "scenes/shryke_village.png",
@@ -646,6 +688,7 @@
     "hires": [
       "mobs.Slaad"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/slaad_pad.png",
@@ -662,23 +705,23 @@
         "items.Rum",
         "items.Potion",
         "items.Stormpearl",
-        "items.IronProw",
         "items.Shovel",
         "items.DeadMansLamp",
-        "items.KelpSail",
         "items.Harpoon",
         "items.NavigatorsHat",
-        "items.NavigatorsJacket",
-        "items.TonicTemperance",
-        "items.TonicSanity",
-        "items.TonicCourage"
+        "items.NavigatorsJacket"
       ],
       [
         "items.ElixirHaste",
         "items.ElixirShield",
-        "items.ElixirArrow"
+        "items.ElixirArrow",
+        "items.IronProw",
+        "items.KelpSail"
       ],
       [
+        "items.TonicTemperance",
+        "items.TonicSanity",
+        "items.TonicCourage",
         "items.PirateHat"
       ]
     ],
@@ -687,6 +730,7 @@
       "mobs.Salorian",
       "mobs.Amazon"
     ],
+    "hires_one_of": [],
     "brews": false,
     "currency": "gold",
     "scene": "scenes/whaling_port.png",

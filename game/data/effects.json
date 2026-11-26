@@ -6,6 +6,13 @@
     "duration": 3,
     "image": "abilities/buffs/attack_boost_buff.png"
   },
+  "effects.Bleeding": {
+    "name": "Bleeding",
+    "key": "bleeding",
+    "description": "Bleeds for 2 health each turn, ignoring armor.",
+    "duration": 1,
+    "image": "abilities/buffs/bleed_debuff.png"
+  },
   "effects.Burning": {
     "name": "Burning",
     "key": "fire",

@@ -10,6 +10,7 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/arrow/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/abilities/bash/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/berserker/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/bite/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/boomerang/</loc></url>
@@ -43,6 +44,7 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/poison-bomb/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/poison-burst/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/raise-undead/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/abilities/reap/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/resurrect/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/sanctuary/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/abilities/shock/</loc></url>
@@ -145,6 +147,7 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/cargo/carapace/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/cargo/cheese/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/cargo/dragons-powder/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/cargo/fermented-blubber/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/cargo/fish/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/cargo/food/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/cargo/hearty-stew/</loc></url>
@@ -187,6 +190,7 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/consumables/resurrection-elixir/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/consumables/sanctuary-elixir/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/consumables/sanity-tonic/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/consumables/steadiness-tonic/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/consumables/stormpearl-elixir/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/consumables/temperance-tonic/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/consumables/tempest-elixir/</loc></url>
@@ -259,6 +263,7 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/alpha-scuttler/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/alpha-yeti/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/beholder/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/black-dragon/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/boar-rider/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/bullfrog/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/caridian-captain/</loc></url>
@@ -270,6 +275,7 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/goblin-captain/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/goliath/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/gorger/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/green-dragon/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/gulgothra/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/human-captain/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/immortals-captain/</loc></url>
@@ -297,6 +303,7 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/spider/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/spike-back/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/spiny-spider/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/mobs/tentacle/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/turtle/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/visk/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/mobs/yeti/</loc></url>
@@ -308,6 +315,7 @@
   <url><loc>https://www.mythicalwhalers.com/wiki/ship-upgrades/striped-sail/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/status-effects/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/status-effects/berserk/</loc></url>
+  <url><loc>https://www.mythicalwhalers.com/wiki/status-effects/bleeding/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/status-effects/burning/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/status-effects/charmed/</loc></url>
   <url><loc>https://www.mythicalwhalers.com/wiki/status-effects/feared/</loc></url>
