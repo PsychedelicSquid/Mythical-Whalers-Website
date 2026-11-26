@@ -26,8 +26,8 @@ branch. `docs/` is build output: `build.py` writes it from `content/`,
   (`python main.py`). The developer edits that repository in other sessions.
   Reading its files is fine.
 - **Work on `main`.** Joel decided this on 13 November 2026: no work branches.
-  A push to `main` changes the live site, so push only when the developer
-  asks.
+  Commit only when Joel says so (25 November 2026). A push to `main` changes
+  the live site, so push only when the developer asks.
 
 ## Start every chat by reviewing the modules
 
@@ -128,7 +128,8 @@ The Wiki is generated. Nothing under `/wiki/` is written by hand.
   a row's `enabled` to False takes that category off the site and turns links
   to its entries into plain text.
 - **After a game update:** run `python build.py --extract`, read what it prints
-  (counts, new and removed entries) and `git diff game/data`, then commit.
+  (counts, new and removed entries) and `git diff game/data`, then report what
+  changed and leave it uncommitted until Joel says to commit.
 - **No how-to-play pages.** Four were drafted and Joel had them removed on
   12 November 2026 (they are in the history, commit 4743d7b). Do not add them
   back without being asked.
